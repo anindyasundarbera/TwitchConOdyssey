@@ -1,0 +1,137 @@
+# Machine-readable task manifest — development-closure-20261102
+# Must agree with 02_TASK_INDEX.md. Versioned engineering intent; executors must not
+# silently rewrite it to match implementation.
+schema_version: 1
+namespace: development-closure-20261102
+created: "2026-11-02"
+planner_packet_sha256: 3a96942eebc1685ca966938a6831073c0fdcea7bacec26981d7e240792e90153
+gates:
+  P: "fresh compiler packet, phase plan, registered task, owned paths bound; rejection stops work"
+  G-A: "explicit user gameplay authorization recorded in directive ledger"
+  G-B: "compiler-accepted execution packet after G-A"
+  G-C: "codebase-memory index available for path assignment"
+read_only_paths:
+  - artifacts/simulations/full-game/**
+status_model: [PLANNED, GATED, IN_PROGRESS, BLOCKED, COMPLETE, FAILED]
+tasks:
+  - id: TASK-001
+    workstream: W1
+    title: "Resolve evidence/commit-hash discrepancy (D-H1)"
+    objective: O1
+    risk: CRITICAL
+    status: PLANNED
+    parallel: SERIAL
+    dependencies: {hard: [], integration: [], gates: [P]}
+    owned_paths:
+      - evidence/remediation-kernel-20261101/09_CORRECTIONS-20261102.md
+    protected_paths: [artifacts/simulations/full-game/**, docs/planning/STATUS.md, config/directive-policy.json]
+  - id: TASK-002
+    workstream: W1
+    title: "Resolve review-packet-hash discrepancy (D-H2)"
+    objective: O1
+    risk: CRITICAL
+    status: PLANNED
+    parallel: SERIAL
+    dependencies: {hard: [TASK-001], integration: [], gates: [P]}
+    owned_paths:
+      - evidence/remediation-kernel-20261101/09_CORRECTIONS-20261102.md
+    protected_paths: [artifacts/simulations/full-game/**]
+  - id: TASK-003
+    workstream: W1
+    title: "Run-root disposition policy and sealed hash baseline"
+    objective: O1
+    risk: CRITICAL
+    status: PLANNED
+    parallel: PARALLEL_SAFE
+    dependencies: {hard: [], integration: [], gates: [P]}
+    owned_paths:
+      - evidence/remediation-kernel-20261101/10_RUN-ROOT-DISPOSITION-20261102.md
+      - evidence/remediation-kernel-20261101/10_RUN-ROOT-HASHES-20261102.json
+    protected_paths: [artifacts/simulations/full-game/**]
+  - id: TASK-004
+    workstream: W2
+    title: "Development-closure verification record (handoff section 7)"
+    objective: O2
+    risk: HIGH
+    status: PLANNED
+    parallel: SERIAL_REQUIRED
+    dependencies: {hard: [TASK-001, TASK-002, TASK-003], integration: [], gates: [P]}
+    owned_paths:
+      - docs/planning/development-closure-20261102/verification/DEVELOPMENT-CLOSURE-VERIFICATION.md
+    protected_paths: [artifacts/simulations/full-game/**, docs/planning/STATUS.md, config/directive-policy.json]
+  - id: TASK-005
+    workstream: W2
+    title: "STATUS.md closure update and directive-ledger rebind"
+    objective: O2
+    risk: CRITICAL
+    status: PLANNED
+    parallel: SERIAL_REQUIRED
+    dependencies: {hard: [TASK-004], integration: [], gates: [P]}
+    owned_paths:
+      - docs/planning/STATUS.md
+      - config/directive-policy.json
+    protected_paths: [artifacts/simulations/full-game/**]
+  - id: TASK-006
+    workstream: W3
+    title: "Gameplay core implementation (authoritative engine boundary)"
+    objective: O3
+    risk: HIGH
+    status: GATED
+    parallel: PARALLEL_WITH_ISOLATION
+    dependencies: {hard: [TASK-005], integration: [TASK-007, TASK-008], gates: [G-A, G-B, G-C]}
+    owned_paths: [server/engine.py]   # provisional pending index (G-C)
+    protected_paths: [artifacts/simulations/full-game/**, coordination/deterministic_kernel.py]
+  - id: TASK-007
+    workstream: W4
+    title: "Presentation and mobile HUD from canonical engine state"
+    objective: O3
+    risk: MEDIUM
+    status: GATED
+    parallel: PARALLEL_SAFE
+    dependencies: {hard: [TASK-005], integration: [TASK-006], gates: [G-A, G-B, G-C]}
+    owned_paths: ["client/ (provisional pending index)"]
+    protected_paths: [artifacts/simulations/full-game/**, server/engine.py]
+  - id: TASK-008
+    workstream: W5
+    title: "Twitch identity linking and canonical command intake"
+    objective: O3
+    risk: HIGH
+    status: GATED
+    parallel: PARALLEL_SAFE
+    dependencies: {hard: [TASK-005], integration: [TASK-006], gates: [G-A, G-B, G-C]}
+    owned_paths: ["server/ adapters (provisional pending index)"]
+    protected_paths: [artifacts/simulations/full-game/**, coordination/deterministic_kernel.py]
+  - id: TASK-009
+    workstream: W6
+    title: "Booth telemetry and privacy-bounded evidence"
+    objective: O3
+    risk: MEDIUM
+    status: GATED
+    parallel: PARALLEL_SAFE
+    dependencies: {hard: [TASK-005], integration: [TASK-006, TASK-010], gates: [G-A, G-B, G-C]}
+    owned_paths: ["telemetry paths (provisional pending index)"]
+    protected_paths: [artifacts/simulations/full-game/**]
+  - id: TASK-010
+    workstream: W7
+    title: "Submission/demo pipeline and evidence packaging"
+    objective: O3
+    risk: MEDIUM
+    status: GATED
+    parallel: SERIAL_REQUIRED
+    dependencies: {hard: [TASK-005], integration: [TASK-006, TASK-007, TASK-008, TASK-009], gates: [G-A, G-B, G-C]}
+    owned_paths: ["submission tooling + evidence/ docs (provisional pending index)"]
+    protected_paths: [artifacts/simulations/full-game/**, evidence/remediation-kernel-20261101/**]
+  - id: TASK-011
+    workstream: W8
+    title: "Independent final review (read-only plus review output)"
+    objective: O3
+    risk: HIGH
+    status: GATED
+    parallel: TERMINAL
+    dependencies: {hard: [TASK-006, TASK-007, TASK-008, TASK-009, TASK-010], integration: [], gates: [G-A]}
+    owned_paths:
+      - docs/planning/development-closure-20261102/review/FINAL-INDEPENDENT-REVIEW.md
+      - docs/planning/development-closure-20261102/review/FINAL-INDEPENDENT-REVIEW.json
+      - docs/planning/development-closure-20261102/review/FINAL-REVIEW-INVOCATION.json
+    protected_paths: ["** (read-only except owned_paths)"]
+    review_route: {task: plan_review, provider: codex_subagent, model: gpt-6-astra, effort: high}

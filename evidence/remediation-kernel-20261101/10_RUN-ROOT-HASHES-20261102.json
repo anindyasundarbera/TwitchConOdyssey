@@ -1,0 +1,51 @@
+{
+  "procedure": "canonical sorted-tree SHA-256: find \"$ROOT\" -type f -printf '%P\\n' | LC_ALL=C sort | while read -r f; do printf '%s:%s\\n' \"$f\" \"$(sha256sum \"$ROOT/$f\" | cut -d' ' -f1)\"; done | sha256sum (per docs/planning/00_CONTEXT.md B-4)",
+  "timestamp": "2026-11-01T19:37:17Z",
+  "git_head": "a55794600b02c8f71f9dd33ebd88b8007e223c71",
+  "roots": {
+    "full-game-20261101T102226Z-a8e33043": {
+      "file_count": 116,
+      "tree_sha256": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d",
+      "sealed": true,
+      "role": "rejected-preserved"
+    },
+    "full-game-20261101T132816Z-2647e033": {
+      "file_count": 164,
+      "tree_sha256": "7b52636fc394a69553ecc615bfd4e623a8cc873d924e9b621cda948b79768e8f",
+      "sealed": true,
+      "role": "intermediate"
+    },
+    "full-game-20261101T161936Z-2647e033": {
+      "file_count": 158,
+      "tree_sha256": "0cfc45005e6ed170e49b34cc91e5622bd2e66afe4b646d4138e078e0fd1625bf",
+      "sealed": true,
+      "role": "intermediate"
+    },
+    "full-game-20261101T164026Z-2647e033": {
+      "file_count": 157,
+      "tree_sha256": "6c4b87f1dc848858f0fd4b1f5482160365f183e1586456d542d37b4b89486448",
+      "sealed": true,
+      "role": "intermediate"
+    },
+    "full-game-20261101T164201Z-2647e033": {
+      "file_count": 164,
+      "tree_sha256": "9c6670af87c8ca711da67b7d3122dde5ba9b25cec5c3894732a4b4792dd3c830",
+      "sealed": true,
+      "role": "intermediate"
+    },
+    "full-game-20261101T174648Z-2647e033": {
+      "file_count": 170,
+      "tree_sha256": "b79455d3eb63ae80002750f7ad673935cfb6249094f60935bb7e31892a7ccaa5",
+      "sealed": true,
+      "role": "historical-reviewed"
+    },
+    "full-game-20261101T185524Z-2647e033": {
+      "file_count": 170,
+      "tree_sha256": "9cb21a1f5109e1fcfecb9d6860173854621e3ba384026ed487b7a78df3ec3b9e",
+      "sealed": true,
+      "role": "current-evidence"
+    }
+  },
+  "verification": "before",
+  "status": "unchanged-vs-records"
+}

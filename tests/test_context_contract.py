@@ -124,7 +124,7 @@ class ContextContractTests(unittest.TestCase):
             for phrase in phrases:
                 self.assertIn(phrase, decisions[ident]["rule"])
             self.assertEqual(decisions[ident]["status"], contract.SELECTED_STATUS)
-        self.assertEqual(packet["ledger_revision"], 9)
+        self.assertEqual(packet["ledger_revision"], 10)
         self.assertFalse(packet["gate"]["gameplay_enabled"])
         for name in ("docs/planning/S1-ASTRA-REVIEW.md",
                      "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md",

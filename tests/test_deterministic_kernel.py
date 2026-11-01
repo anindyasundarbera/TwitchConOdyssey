@@ -686,6 +686,8 @@ class DeterministicKernelRemediationTests(unittest.TestCase):
         good_bundle = {
             "review_invocation": {
                 "reviewer_author": "gpt-6-astra", "agent_id": "subagent-1",
+                "reviewer_provider": "codex_subagent", "reviewer_model": "gpt-6-astra",
+                "evidence_origin": "independent_subagent_review",
                 "route": "codex_subagent/gpt-6-astra", "configured_gate_satisfied": True,
             },
             "review_text": "Verdict: READY\nAll checks passed.",

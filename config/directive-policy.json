@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 9,
+  "revision": 10,
   "current_phase": "plan",
   "allowed_phases": [
     "plan"
@@ -155,14 +155,16 @@
     "docs/planning/S1-ASTRA-REVIEW.md": "29280f55a0d69fd4f8cb06d70f22e7daa23cf0d511c1e0b8eb8a82614c71e530",
     "docs/planning/S1-SIMULATION-PROFILE.md": "2647e033fca26875916446d2b9d45419fcd1d3dcde09b5cb03a5f576ff9bc4a6",
     "docs/planning/SIMULATION-EVIDENCE-AUDIT.md": "adcc2692789d29aae24b35acb522ea494c96748c5a20a04605461dcc52f3a798",
-    "docs/planning/STATUS.md": "7d8b760e7a7184a439e9ffd14cd6126b65b2cd66c55603e41c5405a1f82b9683",
+    "docs/planning/STATUS.md": "5f71f5a9067efa89ffc2675320d635ebe3968a6f79c69804d8225bc5c528b988",
     "docs/planning/USER-DIRECTIVE-AUDIT.md": "8270ea8e29da1097fcb2d21c381350174444b835a7f9b651c4ec3cedd8a86096",
+    "docs/planning/development-closure-20261102/verification/DEVELOPMENT-CLOSURE-VERIFICATION.md": "cdd3b3f5f45b0205ecd8be76476ab96aa8005dbe864f20d90d5e73582c4e80d0",
     "docs/planning/gameplan-v2.json": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147",
     "docs/planning/research/S1-PLATFORM-EVIDENCE.md": "3bc1910f2d55d9cc1b26c6c7644ad759c48e28c32d11e462dfac966b3b23a4d6",
     "docs/planning/research/S1-SYSTEMS-EVIDENCE.md": "b727a60099d9fd3a11809f0e24d1c989d6f87bf5a5ad185f041ababd37ac128c",
+    "evidence/remediation-kernel-20261101/11_D-T1-DISPOSITION-20261102.md": "fab54895807401d22547f11ad272d71372ce3e733efec237bd8a2c9200501f67",
     "server/engine.py": "7f1d7ae13b39419fea30e5e222deab8c14beef82f35195f4cdd993aa80f52e90",
-    "tests/test_context_contract.py": "9b18f0c2a816a793cbe710fbff316e1717e50bb814be02627c0b2f0d8ee90dd3",
-    "tests/test_deterministic_kernel.py": "ba319bedc649eea9eb9f3dce0a28d259711a75c95776aaef17b3b506f30379ef",
+    "tests/test_context_contract.py": "fbb13150f7d1a2001659c5b6ab3429ef168fe8cf2f934f45ef523d6d2040c501",
+    "tests/test_deterministic_kernel.py": "075be5aa81b2334ec0bad2ff948b3b361979c759cd00f838c84e875d3da7fecb",
     "tests/test_full_game_simulation.py": "e16ef8d68437b28d59ff39f77ef20f17107430187e81a988d0a8514199f7a221",
     "tests/test_gameplan_rules.py": "8a1b27c80d4791adc4d33f5fde612567c48ca54c3786e0a23cf6bd4afc86e757",
     "coordination/review_boundary.py": "9b3833a048c768112e682811c37b9a3e8b7189c3ccf7f7d4ba4252d7535fefce",
@@ -803,5 +805,5 @@
       "rule": "90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 100.0-unit route at nominal free speed 100/88 units/s (88.0s nominal, 89.2s with max 3 collisions); diegetic booth waypoints at 35.0% (twitch_booth), 60.0% (codex_booth), 80.0% (aws_booth), and 100.0% (fictional_main_stage). 20Hz authoritative target, not measured runtime. No real-world deadline claim. Monotonic host clock, integer nanoseconds, authoritative sequence; replay uses logical time/sequence. Planning half-open: receipt exactly t=20 expires. Zero post-cutoff grace; client timestamps cannot backdate. Equal-time ordering: deadline first, phase-close, pause request, authoritative sequence-ordered commands, effects/settlement. Pause cannot suspend a reached deadline. Admitted effects: clear_lane removal, collision adjudication, delivery detection, one final settlement. Same-time pre-deadline collision is recorded before delivery and halves settlement once. Delivery strictly precedes deadline; equality wipes for zero settlement. Model timeout min(dispatch+2s, applicable admission close): planning t=15 for hazards, t=20 for general input/counter votes. No retry; cutoff/late results expire without backdating, rollover or tick blocking. Local validation remains required; statuses applied/expired/rejected/duplicate. Pause freezes all simulation clocks/effects, rejects commands, invalidates pending model work; resume anchor reset, no catch-up."
     }
   ],
-  "revision_note": "Revision 9 rebinds coordination/evidence_pipeline.py, coordination/run_full_game_simulation.py, tests/test_full_game_simulation.py, tests/test_context_contract.py and tests/test_gameplan_rules.py after adding a reviewer-binding readiness gate: `independent_review_uses_configured_gate` is true only when the reviewer that actually served the review matches the configured plan_review route (model and effort) and no substitution is declared, so a verified substitute review cannot yield `ready: true`. MODEL-USAGE.json now records reviewer_model separately from configured_model, and the two static ledger-revision assertions track revision 9. No model-policy, provider, routing, plan or decision change; Revision 8 plan synchronization is preserved."
+  "revision_note": "Revision 10 closes D-T1 and rebinds tests/test_deterministic_kernel.py, tests/test_context_contract.py, docs/planning/STATUS.md, the append-only development-closure verification addendum, and the new D-T1 disposition record. The positive fixture now supplies explicit independent evidence origin plus reviewer provider/model required by the existing fail-closed authorship validator; the static ledger-revision assertion advances to 10. The historical 99-PASS statement is corrected without rewriting sealed evidence. The validator, model policy, provider routing, selected decisions, gameplay gate and submission readiness are unchanged."
 }

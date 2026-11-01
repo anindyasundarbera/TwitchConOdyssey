@@ -61,3 +61,36 @@ Pre-serialization traversal/admission hardening remains complete. D-01 through D
 Observed framework and remediation verification: `python3 -m unittest tests.test_full_game_simulation tests.test_gameplan_rules tests.test_context_contract tests.test_city_setting tests.test_deterministic_kernel tests.test_model_router tests.test_plan_rehearsal -v` passed 80 tests (including the 8 positive and anti-forgery negative full-game simulation tests, 8 Revision 5 gameplan rule tests, 22 context-contract tests, 29 deterministic kernel and dual-consumer SDC binding tests, 3 city-setting tests, 6 model-router tests, and 5 plan-rehearsal tests). This is deterministic local/schema/hash/mocked-boundary and headless S1 simulation evidence only. No live gameplay, server, replay, browser, harness, or external network service ran.
 
 San Diego consistency verification is a static source/design check only: `tests/test_city_setting.py` guards the whole repository against removed city and landmark terms. The repository-wide source scan returned zero matches; all 37 JSON files parsed; sanitized rehearsal plan/context, packet copies, result hashes, report hashes and v2 baseline binding were checked for consistency. `python3 -m unittest tests.test_city_setting tests.test_context_contract -v` passed 25 tests. Historical plan/rehearsal artifacts were mechanically sanitized and rebound without new agent inference; they are not original-byte evidence after that redaction. No replay, fixture regeneration, gameplay, server, browser, or harness was run during the migration.
+
+## Development closure verification — 2026-11-02
+
+The current closure plan is
+`docs/planning/development-closure-20261102/`. TASK-001 through TASK-004
+reconciled the commit/review-packet references, sealed all seven run-root hash
+baselines, and produced the section-7 verification record. Its pre-resolution
+SHA-256 was `5c4dfa0988bac596dfd7ef944f15a6571ce754da1d562b2cccd2159ecdbb2453`;
+after the append-only D-T1 resolution addendum it is
+`cdd3b3f5f45b0205ecd8be76476ab96aa8005dbe864f20d90d5e73582c4e80d0`.
+Supporting correction records are
+`evidence/remediation-kernel-20261101/09_CORRECTIONS-20261102.md`,
+`10_RUN-ROOT-DISPOSITION-20261102.md`,
+`10_RUN-ROOT-HASHES-20261102.json`, and
+`11_D-T1-DISPOSITION-20261102.md`.
+
+D-T1 was closed by repairing only the incomplete positive test fixture: it now
+supplies the independent evidence-origin and reviewer provider/model fields
+already required by the unchanged fail-closed authorship validator. The old
+sealed `03_TEST_EVIDENCE.md` 99-PASS statement is historically inaccurate for
+its original committed bytes and is corrected by the new append-only record,
+not rewritten. After repair and revision-10 rebind, the exact permitted
+static/kernel closure suite passed 75/75 with zero failures/errors. The
+rejected preserved run remains 116 files with tree SHA-256
+`411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d`.
+The development-closure verification now has zero open findings.
+
+This is development-evidence closure only. It grants no new authorization:
+`gameplay_enabled: false`, `submission_ready: false`, and the W3–W8 G-A/G-B/G-C
+gates remain unchanged. No gameplay/simulation test, server, replay, browser,
+harness, external network, deployment, publication, or live-service execution
+was performed. `remediation_rerun_and_decision_delegation` remains the only
+active runtime authorization; no later phase starts automatically.
