@@ -1,0 +1,38 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "6f62ffbf14775b9cc33ed637a0b1223a47123eca5bfca886e0f2c735700ef36d",
+    "tick_400_turn_1_resolution_start": "64b4dc17a313046228cd5669cf7d2ffc7d325d223d043337c2b7648b7ce09a68",
+    "tick_404_final": "dcf016497ea4698cb3b8d28011d46e0671f24f94205dba942ca3bc7adbc27e7e",
+    "tick_404_terminal_delivery": "dcf016497ea4698cb3b8d28011d46e0671f24f94205dba942ca3bc7adbc27e7e"
+  },
+  "contract_hash": "63be41779ee038712ee3d60ec6233be6d161ecd1210b9d98feeaee8573594a76",
+  "final_state_hash": "dcf016497ea4698cb3b8d28011d46e0671f24f94205dba942ca3bc7adbc27e7e",
+  "initial_state_hash": "6f62ffbf14775b9cc33ed637a0b1223a47123eca5bfca886e0f2c735700ef36d",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_audio_state": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick_range": true,
+      "expected_hazard_countered": true,
+      "expected_pool": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-CREDIBILITY",
+      "INV-EFFECT-ORDER"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-PRS-02",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-PRS-02"
+}

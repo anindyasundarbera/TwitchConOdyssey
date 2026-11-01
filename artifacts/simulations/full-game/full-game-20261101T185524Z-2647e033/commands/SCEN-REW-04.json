@@ -1,0 +1,71 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "v_0",
+        "command_id": "08657813f9653a8970adc413928b13c5d74c468ce28a12ad8012980016e7ce90",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_mc_1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "10aa735d48afd02add817ce76ec0480ea81670e9f744c056970bb2a9f97e0ba1",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_1",
+        "command_id": "b2352f2fdb7f060a4d0ca58c4d489b8dc511058fba24e1ec16b60b58db885c4c",
+        "kind": "hazard.propose",
+        "logical_tick": 610,
+        "payload": {
+          "hazard_id": "h_mc_2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "ddcfe9a2ba3502593cb27bbc237c9db936aa5e3bf8722d85071f5860c0b1aaf0",
+      "status": "applied",
+      "tick": 610,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_0",
+        "command_id": "1884041b56962ca74b181d27c54ea54806ad46e3578367389702209fd50fbf1e",
+        "kind": "viewer.counter",
+        "logical_tick": 620,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_mc_2"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "c8399a0f3bab867b635dc583520a05aa8e3aa6be859174ef2b574ddf269e4169",
+      "status": "applied",
+      "tick": 620,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "b310321d6e678c71a483c6026eae9fe88235243b934fdd945938f03fce25a5ca",
+  "final_state_hash": "024a2442db23b9b948fa9a6769d2d1780f35db323fddb872fab27b4e35e26a4b",
+  "initial_lane": 1,
+  "initial_roster": [
+    "v_0",
+    "v_1"
+  ],
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "scenario_id": "SCEN-REW-04",
+  "seed": 504
+}

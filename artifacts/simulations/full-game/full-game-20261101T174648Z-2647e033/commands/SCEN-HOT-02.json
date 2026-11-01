@@ -1,0 +1,93 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "attacker",
+        "command_id": "c0492df174b9df09fa4fb41168841406efb34d51a98185e0428100b19bcdaca5",
+        "kind": "booth.hotfix",
+        "logical_tick": 5,
+        "payload": {
+          "patch_data": {
+            "hp_system": true
+          },
+          "patch_version": 1,
+          "signature": "TRUSTED_CODEX_KEY"
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "e6da2c457523097cb63da9ca6f3675605dc3848b9ad160c55c3bdcde852ed974",
+      "status": "rejected",
+      "tick": 5,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "attacker",
+        "command_id": "1b7b356d3a431c45baa4d0cea09e1b64e0e1215eed361f1797954e5c05cfaaa9",
+        "kind": "booth.hotfix",
+        "logical_tick": 6,
+        "payload": {
+          "patch_data": {
+            "slowdown_fraction": 0.5
+          },
+          "patch_version": 1,
+          "signature": "TRUSTED_CODEX_KEY"
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "96320f9e31973004f91ddcd244e3cdf317a0be312b460fc4122423061113655a",
+      "status": "rejected",
+      "tick": 6,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "attacker",
+        "command_id": "f4195abfef696ed3db458e3ec336c1847b51402a99c143448d989c900ed2cda6",
+        "kind": "booth.hotfix",
+        "logical_tick": 7,
+        "payload": {
+          "patch_data": {
+            "slowdown_fraction": 0.1
+          },
+          "patch_version": 1,
+          "signature": "UNTRUSTED_KEY"
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "cda8075c8b692922ac04fc406b5605f632b5210fd3dc2c517106b2d0b008d5df",
+      "status": "rejected",
+      "tick": 7,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "stage_operator",
+        "command_id": "305d953fa09a595499000c09fc724e75775ec08f7c8fe0d70a4fdd4087c66425",
+        "kind": "operator.rollback_hotfix",
+        "logical_tick": 8,
+        "payload": {},
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 4
+      },
+      "state_hash": "b83ce72baa7324bc4c479124993539c84abccb30b5d148458ae0b77b6f797ca5",
+      "status": "rejected",
+      "tick": 8,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "817cf22c7a6dbb7e37af2b5885943d73b5d7ced876a74dcee69b2bb5d67ec4a5",
+  "final_state_hash": "2b2bcaa9fafcceb1c1aadb553d995827adc899b94e828fc7b8f13feb92ccb3ea",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "scenario_id": "SCEN-HOT-02",
+  "seed": 705
+}

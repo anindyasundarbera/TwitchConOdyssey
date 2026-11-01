@@ -1,0 +1,711 @@
+{
+  "audit_findings": [
+    {
+      "blocking": true,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INDEPENDENT-REVIEW.json": "bbc62499d5778e17ba0ef2853e43da3190b050e72457420fbabeb31db966bdbd",
+        "INDEPENDENT-REVIEW.md": "1e67eca3cdf9ea3acd0a7bd6d5426dcf208d0086bc1a3b2ae97ad9b675e0cc37",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "REVIEW-INVOCATION.json": "34a329206243f0c6a0864493d1fba1889e64d2158d88203e9dd7f3e6d940977d",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-01",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "7009f1f40dbddea3767ffc33066d5977c565820f154a60f3e6ab016a5cd10db6",
+      "severity": "S0",
+      "status": "closed",
+      "validator_ids": [
+        "independent_review_verified",
+        "independent_review_uses_configured_gate"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-02",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S0",
+      "status": "closed",
+      "validator_ids": [
+        "frozen_requirements_valid"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-03",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "SCEN-E2E-05",
+        "SCEN-AUD-06"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-04",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "feature_coverage_honestly_derived"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-05",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "all_traces_substantive"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-06",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "candidate_plan_hash_bound_and_matches"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-07",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "all_pipeline_invariants_passed"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-08",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S2",
+      "status": "closed",
+      "validator_ids": [
+        "corpus_hash_valid"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-09",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S2",
+      "status": "closed",
+      "validator_ids": [
+        "pre_review_evidence_complete"
+      ]
+    },
+    {
+      "blocking": true,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INDEPENDENT-REVIEW.json": "bbc62499d5778e17ba0ef2853e43da3190b050e72457420fbabeb31db966bdbd",
+        "INDEPENDENT-REVIEW.md": "1e67eca3cdf9ea3acd0a7bd6d5426dcf208d0086bc1a3b2ae97ad9b675e0cc37",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "REVIEW-INVOCATION.json": "34a329206243f0c6a0864493d1fba1889e64d2158d88203e9dd7f3e6d940977d",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-10",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "7009f1f40dbddea3767ffc33066d5977c565820f154a60f3e6ab016a5cd10db6",
+      "severity": "S0",
+      "status": "closed",
+      "validator_ids": [
+        "independent_review_uses_configured_gate",
+        "review_verdict_is_ready"
+      ]
+    },
+    {
+      "blocking": true,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-11",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "all_scenarios_passed",
+        "frozen_requirements_valid"
+      ]
+    },
+    {
+      "blocking": true,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-12",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "all_s0_s1_blocking_s2_issues_closed"
+      ]
+    },
+    {
+      "blocking": true,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-13",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S1",
+      "status": "closed",
+      "validator_ids": [
+        "frozen_requirements_valid",
+        "all_scenarios_passed"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-14",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S2",
+      "status": "closed",
+      "validator_ids": [
+        "all_pipeline_invariants_passed"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-15",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S2",
+      "status": "closed",
+      "validator_ids": [
+        "independent_review_verified"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": false,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-16",
+      "note": "Historical review remains unverifiable; never retroactively certified",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S3",
+      "status": "open",
+      "validator_ids": [
+        "historical_review_unverified"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-17",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S3",
+      "status": "closed",
+      "validator_ids": [
+        "frozen_requirements_valid"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-18",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S2",
+      "status": "closed",
+      "validator_ids": [
+        "pre_review_evidence_complete"
+      ]
+    },
+    {
+      "blocking": false,
+      "evaluated": true,
+      "evidence_hashes": {
+        "CORPUS-MANIFEST.json": "06641bf1f15b572f5ecd7912eddbd8e3e52ba5548b9836fb335bc14784558225",
+        "COVERAGE.json": "055dcd2650d982089d1a8f6b63767d18414fef14dbdf85fe78ac355b47c0699c",
+        "INVARIANT-CATALOG.json": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+        "INVARIANT-RESULTS.json": "0900b5e88d9614993ef4f616caff70656479afc6e1107b97723d16f5f8abf52f",
+        "ISSUES.json": "a9c8679e8b84c8cca2ef8abc140731164b131074118889eda812d053f24976f5",
+        "MATRIX-FREEZE.json": "5f72269bc738f4afaa441b3d62b4db24b5604e5712a6d5f6383af7a6de2ecd67",
+        "PLAN-CHANGELOG.md": "635c08070e6fc60c718ea306298589e5e62fa13975f2413c0d8e776daa79e866",
+        "READINESS-CONTRACT.json": "5bf7e2d4209d0516ae731ec7eb85b3e344b0d4d706f3bca649116a1f1ab337f4",
+        "SIMULATION-REPORT.md": "539e2d48e85bfba63c9d2b36f345ea736dd1be8169c588327108d5fd52e4826a",
+        "SOURCE-BINDINGS.json": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+        "STAGE-METADATA.json": "0a80a34b39796844759b5c3809c99866be66a422d986a2fe412c72e431c7a379",
+        "results/SCENARIO-RESULTS.jsonl": "2b85d3ebc1779d497132ba9933290144f9c7921b7a599f4e1e88d7381f2ce41e"
+      },
+      "id": "AUDIT-19",
+      "note": "Closure evaluated from these validators at readiness/seal; not a gameplay scenario",
+      "resolution_hash": "aa649fab1f06dd766502797e42b9e6a02441a7e31851eb39101db52fc598c76c",
+      "severity": "S3",
+      "status": "closed",
+      "validator_ids": [
+        "generated_stage_metadata_valid"
+      ]
+    }
+  ],
+  "blocking_issues_count": 0,
+  "candidate_gameplan_json_hash": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147",
+  "candidate_plan_hash": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+  "candidate_plan_revision": 5,
+  "evaluation_errors": {},
+  "expected_invariants": 24,
+  "expected_scenarios": 46,
+  "failed_gates": [],
+  "gates": {
+    "all_pipeline_invariants_passed": true,
+    "all_s0_s1_blocking_s2_issues_closed": true,
+    "all_scenario_invariants_passed": true,
+    "all_scenarios_passed": true,
+    "all_traces_substantive": true,
+    "audit_findings_resolved": true,
+    "candidate_plan_hash_bound_and_matches": true,
+    "candidate_plan_revision_matches_contract": true,
+    "corpus_hash_valid": true,
+    "feature_coverage_honestly_derived": true,
+    "frozen_requirements_valid": true,
+    "generated_stage_metadata_valid": true,
+    "golden_replay_verified": true,
+    "independent_review_uses_configured_gate": true,
+    "independent_review_verified": true,
+    "no_unresolved_blocking_decisions": true,
+    "pre_review_evidence_complete": true,
+    "review_verdict_is_ready": true,
+    "source_bytes_match": true
+  },
+  "independent_review_verified": true,
+  "invariant_results": [
+    {
+      "evaluations_count": 4,
+      "invariant_id": "INV-REPLAY",
+      "name": "Deterministic replay produces identical canonical final and boundary hashes",
+      "passed": true
+    },
+    {
+      "evaluations_count": 8,
+      "invariant_id": "INV-ENGINE-AUTH",
+      "name": "Engine alone owns physics and state mutation; models/fixtures cannot directly alter physics",
+      "passed": true
+    },
+    {
+      "evaluations_count": 3,
+      "invariant_id": "INV-ASYNC-MODEL",
+      "name": "Rendering/simulation never waits for an external model provider",
+      "passed": true
+    },
+    {
+      "evaluations_count": 20,
+      "invariant_id": "INV-COMMAND-VAL",
+      "name": "No late, duplicate, paused, unlinked, or invalid command mutates state",
+      "passed": true
+    },
+    {
+      "evaluations_count": 7,
+      "invariant_id": "INV-ACCOUNT-INFLUENCE",
+      "name": "Every eligible account contributes at most one influence per turn across channels",
+      "passed": true
+    },
+    {
+      "evaluations_count": 5,
+      "invariant_id": "INV-BOT-ISOLATION",
+      "name": "Bots/fixtures never impersonate humans, affect human quorum, create Hype, or receive live Hype",
+      "passed": true
+    },
+    {
+      "evaluations_count": 6,
+      "invariant_id": "INV-HAZARD-BIND",
+      "name": "Hazard commitment, warning, counter, and bounty increment share one committed ID",
+      "passed": true
+    },
+    {
+      "evaluations_count": 2,
+      "invariant_id": "INV-HAZARD-DEPEND",
+      "name": "No committed hazard means no warning, obstacle, or bounty increment",
+      "passed": true
+    },
+    {
+      "evaluations_count": 6,
+      "invariant_id": "INV-SAFETY-CAPS",
+      "name": "Safety caps prevent permanent control loss, stun lock, stacking, refresh, unbounded harm, or unavoidable death",
+      "passed": true
+    },
+    {
+      "evaluations_count": 1,
+      "invariant_id": "INV-REACHABILITY",
+      "name": "Every admitted obstacle state is avoidable under the selected control/geometry contract",
+      "passed": true
+    },
+    {
+      "evaluations_count": 7,
+      "invariant_id": "INV-EFFECT-ORDER",
+      "name": "clear_lane removal precedes collision; collision precedes delivery; deadline precedes equality-time delivery",
+      "passed": true
+    },
+    {
+      "evaluations_count": 10,
+      "invariant_id": "INV-SETTLEMENT-ONCE",
+      "name": "Settlement occurs at most once, only at terminal delivery, with exact selected arithmetic",
+      "passed": true
+    },
+    {
+      "evaluations_count": 2,
+      "invariant_id": "INV-WIPE-CLEAN",
+      "name": "Wipe/deadline/build-drop settles zero and new match carries no state",
+      "passed": true
+    },
+    {
+      "evaluations_count": 4,
+      "invariant_id": "INV-MAX-TURNS",
+      "name": "No fourth turn begins; match terminates strictly by deadline or prior delivery",
+      "passed": true
+    },
+    {
+      "evaluations_count": 2,
+      "invariant_id": "INV-PAUSE-CLEAN",
+      "name": "Pause produces no catch-up ticks and cannot suspend a reached deadline",
+      "passed": true
+    },
+    {
+      "evaluations_count": 4,
+      "invariant_id": "INV-FIXTURE-LABEL",
+      "name": "Fixture/live modes use the same canonical command schema and remain visibly distinguishable",
+      "passed": true
+    },
+    {
+      "evaluations_count": 3,
+      "invariant_id": "INV-HOTFIX-SAFETY",
+      "name": "Data/rules patches cannot relax hard invariants or activate outside a validated boundary",
+      "passed": true
+    },
+    {
+      "evaluations_count": 6,
+      "invariant_id": "INV-CREDIBILITY",
+      "name": "No unsupported promotional or live-service claim is emitted",
+      "passed": true
+    },
+    {
+      "evaluations_count": 1,
+      "invariant_id": "INV-REVIEW-AUTHORSHIP",
+      "kind": "pipeline",
+      "name": "review-artifact authorship",
+      "passed": true
+    },
+    {
+      "evaluations_count": 1,
+      "invariant_id": "INV-RUN-IMMUTABILITY",
+      "kind": "pipeline",
+      "name": "run-root non-reuse/re-seal",
+      "passed": true
+    },
+    {
+      "evaluations_count": 1,
+      "invariant_id": "INV-CITATION-HASHES",
+      "kind": "pipeline",
+      "name": "cited-artifact hash existence",
+      "passed": true
+    },
+    {
+      "evaluations_count": 1,
+      "invariant_id": "INV-SOURCE-BYTES",
+      "kind": "pipeline",
+      "name": "seal-time source-byte match",
+      "passed": true
+    },
+    {
+      "evaluations_count": 1,
+      "invariant_id": "INV-EVIDENCE-COVERAGE",
+      "kind": "pipeline",
+      "name": "coverage as a function of evidence",
+      "passed": true
+    },
+    {
+      "evaluations_count": 1,
+      "invariant_id": "INV-READINESS-SEPARATION",
+      "kind": "pipeline",
+      "name": "ready/submission-ready separation",
+      "passed": true
+    }
+  ],
+  "pipeline_invariant_results": {
+    "INV-CITATION-HASHES": true,
+    "INV-EVIDENCE-COVERAGE": true,
+    "INV-READINESS-SEPARATION": true,
+    "INV-REVIEW-AUTHORSHIP": true,
+    "INV-RUN-IMMUTABILITY": true,
+    "INV-SOURCE-BYTES": true
+  },
+  "ready": true,
+  "required_work_packages_order": [
+    "WP-01-core-engine-implementation",
+    "WP-02-hud-and-mobile-presentation",
+    "WP-03-twitch-extension-linking",
+    "WP-04-codex-booth-telemetry",
+    "WP-05-submission-demo-pipeline"
+  ],
+  "review_verdict": "READY",
+  "simulation_and_plan_ready": true,
+  "submission_ready": false,
+  "unresolved_human_decisions": []
+}

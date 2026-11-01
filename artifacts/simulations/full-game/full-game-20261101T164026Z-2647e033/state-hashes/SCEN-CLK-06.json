@@ -1,0 +1,44 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "9fe7a88a3c69850ae3dd99ec07e3a8b94f701614d295cec5245a85598b74728d",
+    "tick_1000_turn_2_resolution_start": "9683f56b8de5a4919015def50ae5e7cc45a2921ad11fccb5d23fe4111594456f",
+    "tick_1100_turn_2_reward_start": "1bbf930be00df91bf4a2ab87dbfb14ad15dfd5b552705c28059325461283914c",
+    "tick_1200_turn_3_start": "9f4311923813f98f1dd5df5929693a5721e0ccda2ac8939e7f5292b39323577f",
+    "tick_1600_turn_3_resolution_start": "bee275e4428e71efd38d9123753dd4b6c2ab1618be8a4398e2f106e6fd3c2a94",
+    "tick_1700_turn_3_reward_start": "3629aec9d2ca4360709d5d4be381df263cee81493728e57b5b1a2e360b4ce363",
+    "tick_1759_final": "32ce9e111dc11386120aee36789840293613d4c0273a1e5cc1b5bf14300d60dd",
+    "tick_1759_terminal_delivery": "32ce9e111dc11386120aee36789840293613d4c0273a1e5cc1b5bf14300d60dd",
+    "tick_400_turn_1_resolution_start": "f0ff16601eded91b93e07aa03727fc83372184ba45ce8572d1abb792bc573cd2",
+    "tick_500_turn_1_reward_start": "84e69c7f55fbe5fbc15cd88f780e519bb3c93de60952f7bdee10dd60d1d12f5b",
+    "tick_600_turn_2_start": "8456b08d1056f9f2a8403ddeb571a78292eec621bdda1cdecdbaf459ad43dcdb"
+  },
+  "contract_hash": "8fc81d97c08222f5fd121ee42a3519577e2768eaa8491f33c54f6113886ff0a7",
+  "final_state_hash": "32ce9e111dc11386120aee36789840293613d4c0273a1e5cc1b5bf14300d60dd",
+  "initial_state_hash": "9fe7a88a3c69850ae3dd99ec07e3a8b94f701614d295cec5245a85598b74728d",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_boundary_labels": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_final_turn": true,
+      "expected_lane": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-MAX-TURNS"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-CLK-06",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-CLK-06"
+}

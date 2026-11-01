@@ -1,0 +1,34 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+    "tick_25_final": "8f3f38ec7be044bf226e388697774b83a2035bdee554e6d51fa0bcd113bdc7ff"
+  },
+  "contract_hash": "3fbe18b9696fcb295226f26f2544e1f96631d96b80a378b3c6bd57186290c885",
+  "final_state_hash": "8f3f38ec7be044bf226e388697774b83a2035bdee554e6d51fa0bcd113bdc7ff",
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-COMMAND-VAL",
+      "INV-HAZARD-BIND"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-REW-02",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-REW-02"
+}

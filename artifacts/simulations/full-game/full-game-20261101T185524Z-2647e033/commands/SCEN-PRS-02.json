@@ -1,0 +1,51 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "v_aud",
+        "command_id": "8081baacce93d526d01d0ec3d70359af0114b5173f1dee53587f36b7f83db65e",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_aud",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "856f4e668e9ab6ec316c6fac2a8374c20b4ae547f3e5969c80f65c5ab6f5bdb0",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_aud",
+        "command_id": "c135c88da16387db9458bd74c4d12b0d385bbeba8a0d6650925c35c82e029d64",
+        "kind": "viewer.counter",
+        "logical_tick": 310,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_aud"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "991db63e3723e86106cd0d8b796fc88eafe637d255401450ad45952ae5eb8089",
+      "status": "applied",
+      "tick": 310,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "63be41779ee038712ee3d60ec6233be6d161ecd1210b9d98feeaee8573594a76",
+  "final_state_hash": "3c78afb30a7003a9c11092d928dfbaaa70253f1ff1981b8f7f1057977a5e1c67",
+  "initial_lane": 0,
+  "initial_roster": [
+    "v_aud"
+  ],
+  "initial_state_hash": "6f62ffbf14775b9cc33ed637a0b1223a47123eca5bfca886e0f2c735700ef36d",
+  "scenario_id": "SCEN-PRS-02",
+  "seed": 802
+}

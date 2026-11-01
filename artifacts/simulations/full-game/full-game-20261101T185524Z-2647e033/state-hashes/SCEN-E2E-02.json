@@ -1,0 +1,120 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+    "tick_1000_turn_2_resolution_start": "d329403d0995ca824beb18e7a42c8a5e169ab8274449d88034c586844cc3af2c",
+    "tick_1100_turn_2_reward_start": "544bc2fd55e0ab0846a92f0c2cf03af2be895501abbdb73c8f77a2380c2d190f",
+    "tick_1200_turn_3_start": "223321c0c4dfca4e9850a71ac306d7f97c1b8d78477e893a07d9240499036410",
+    "tick_1600_turn_3_resolution_start": "b4127607543606ebde8dbd1030bd69feb335c0ed555aed5744ae17a384d69e16",
+    "tick_1700_turn_3_reward_start": "0ab4d95d08df82940a77645a004da5aaa8f3046a28a013cda24f2b54db82630e",
+    "tick_1800_final": "aec5b20534daea30a7600f051067f86b3cd65dc471ed04b51ad1cb0b6ce5c924",
+    "tick_1800_terminal_wipe_deadline_reached": "aec5b20534daea30a7600f051067f86b3cd65dc471ed04b51ad1cb0b6ce5c924",
+    "tick_400_turn_1_resolution_start": "a8b9e5c2f2e812bb79802ef1da0546f4cface60c9947d7cb8a266f9ddbcef6b0",
+    "tick_500_turn_1_reward_start": "5690e9de8054fade28432d4b622a661f36960027ffd59768c5502d1a76094a1a",
+    "tick_600_turn_2_start": "056dde9f18e21ca46a6545ac1184e3e3e1276d6fd8f005cbe12e2791fe54a462"
+  },
+  "contract_hash": "914a3e7541ee2d2f0733391bded1d7eee69b367cdcf06f0a10c75e3340d36a8d",
+  "final_state_hash": "aec5b20534daea30a7600f051067f86b3cd65dc471ed04b51ad1cb0b6ce5c924",
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_final_turn": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-WIPE-CLEAN_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "terminal_settlement.streamer_share",
+          "terminal_settlement.total_hype"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "expected_wipe_hype": 0
+        },
+        "invariant_id": "INV-WIPE-CLEAN",
+        "notes": "",
+        "observed": {
+          "settlement_hype": 0
+        },
+        "scenario_id": "SCEN-E2E-02",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-MAX-TURNS_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.tick",
+          "final_state.turn"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "max_tick": 1800,
+          "max_turn": 3
+        },
+        "invariant_id": "INV-MAX-TURNS",
+        "notes": "",
+        "observed": {
+          "tick": 1800,
+          "turn": 3
+        },
+        "scenario_id": "SCEN-E2E-02",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-SETTLEMENT-ONCE_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "terminal_settlement.settled_once",
+          "terminal_settlement.total_hype"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "settled_once_valid": true
+        },
+        "invariant_id": "INV-SETTLEMENT-ONCE",
+        "notes": "",
+        "observed": {
+          "settlement_present": true,
+          "status": "wiped"
+        },
+        "scenario_id": "SCEN-E2E-02",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-WIPE-CLEAN",
+      "INV-MAX-TURNS",
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-E2E-02",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-E2E-02"
+}

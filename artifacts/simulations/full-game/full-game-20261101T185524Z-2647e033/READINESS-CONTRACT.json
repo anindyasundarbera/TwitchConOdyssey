@@ -1,0 +1,307 @@
+{
+  "schema_version": 2,
+  "candidate_plan_revision": 5,
+  "scenario_ids": [
+    "SCEN-E2E-01",
+    "SCEN-E2E-02",
+    "SCEN-E2E-03",
+    "SCEN-E2E-04",
+    "SCEN-E2E-05",
+    "SCEN-CTRL-01",
+    "SCEN-CTRL-02",
+    "SCEN-CTRL-03",
+    "SCEN-CTRL-04",
+    "SCEN-CTRL-05",
+    "SCEN-CTRL-06",
+    "SCEN-CTRL-07",
+    "SCEN-CTRL-08",
+    "SCEN-CTRL-09",
+    "SCEN-CLK-01",
+    "SCEN-CLK-02",
+    "SCEN-CLK-03",
+    "SCEN-CLK-04",
+    "SCEN-CLK-05",
+    "SCEN-CLK-06",
+    "SCEN-AUD-01",
+    "SCEN-AUD-02",
+    "SCEN-AUD-03",
+    "SCEN-AUD-04",
+    "SCEN-AUD-05",
+    "SCEN-AUD-06",
+    "SCEN-REW-01",
+    "SCEN-REW-02",
+    "SCEN-REW-03",
+    "SCEN-REW-04",
+    "SCEN-REW-05",
+    "SCEN-REW-06",
+    "SCEN-MDL-01",
+    "SCEN-MDL-02",
+    "SCEN-MDL-03",
+    "SCEN-MDL-04",
+    "SCEN-OFF-01",
+    "SCEN-OFF-02",
+    "SCEN-OFF-03",
+    "SCEN-HOT-01",
+    "SCEN-HOT-02",
+    "SCEN-HOT-03",
+    "SCEN-HOT-04",
+    "SCEN-PRS-01",
+    "SCEN-PRS-02",
+    "SCEN-PRS-03"
+  ],
+  "invariant_ids": [
+    "INV-REPLAY",
+    "INV-ENGINE-AUTH",
+    "INV-ASYNC-MODEL",
+    "INV-COMMAND-VAL",
+    "INV-ACCOUNT-INFLUENCE",
+    "INV-BOT-ISOLATION",
+    "INV-HAZARD-BIND",
+    "INV-HAZARD-DEPEND",
+    "INV-SAFETY-CAPS",
+    "INV-REACHABILITY",
+    "INV-EFFECT-ORDER",
+    "INV-SETTLEMENT-ONCE",
+    "INV-WIPE-CLEAN",
+    "INV-MAX-TURNS",
+    "INV-PAUSE-CLEAN",
+    "INV-FIXTURE-LABEL",
+    "INV-HOTFIX-SAFETY",
+    "INV-CREDIBILITY",
+    "INV-REVIEW-AUTHORSHIP",
+    "INV-RUN-IMMUTABILITY",
+    "INV-CITATION-HASHES",
+    "INV-SOURCE-BYTES",
+    "INV-EVIDENCE-COVERAGE",
+    "INV-READINESS-SEPARATION"
+  ],
+  "scenario_matrix_sha256": "76be1d4a71958ca9ca3678b82c3a520c0c34904abd79f4a1ec0eb4908953a242",
+  "invariant_catalog_sha256": "f23d2fe345a8418c72aa84dbfa7a3312ca92329f6abf3bf0fa8fdaa029b6db7d",
+  "source_bindings_sha256": "ab5cc3c98adc1cd38af56ccecbb77c539b607fc0f83956de0fc4d14bd7489083",
+  "feature_specs": [
+    {
+      "authority_owner": "engine",
+      "category": "route_and_world",
+      "feature_id": "FEAT-01-SAN-DIEGO-ROUTE",
+      "name": "Complete Stylized San Diego Journey",
+      "oracle": "avatar traverses Little Italy, Waterfront, Gaslamp, Convention Center, Main Stage strictly in order",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "deterministic_progress_and_district_mapping",
+      "source_paths": [
+        "docs/planning/SAN-DIEGO-ROUTE.md",
+        "docs/planning/GAMEPLAN-v2.md"
+      ]
+    },
+    {
+      "authority_owner": "streamer_input_to_engine",
+      "category": "controls",
+      "feature_id": "FEAT-02-STREAMER-CONTROL",
+      "name": "Auto-Forward Three-Lane Streamer Control",
+      "oracle": "3 lanes, 0.5s transition, edge clamping, opposite cancel, active through plan/res/reward, no confirmation/override",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "fixed_step_linear_interpolation",
+      "source_paths": [
+        "docs/planning/S1-SIMULATION-PROFILE.md#D-01",
+        "docs/planning/GAMEPLAN-v2.md#D-01"
+      ]
+    },
+    {
+      "authority_owner": "engine_clock",
+      "category": "clock_and_lifecycle",
+      "feature_id": "FEAT-03-CADENCE-AND-CLOCK",
+      "name": "Cadence, Active Deadline, and Cutoff Ordering",
+      "oracle": "20s plan, 5s res, exactly 5.0s reward, 90s deadline, total ordering: deadline->close->pause->commands->effects",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "integer_tick_monotonic_schedule",
+      "source_paths": [
+        "docs/planning/S1-SIMULATION-PROFILE.md#D-05",
+        "docs/planning/GAMEPLAN-v2.md#D-05"
+      ]
+    },
+    {
+      "authority_owner": "audience_ledger",
+      "category": "audience_and_fairness",
+      "feature_id": "FEAT-04-AUDIENCE-ACCOUNTING",
+      "name": "Audience Ingestion, Account Linking, and Quorum",
+      "oracle": "account-level linking, max 1 influence/turn across channels, K=2 squads, ceil(0.60*N) quorum, ties=abstain, bot=0",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "atomic_first_receipt_and_frozen_roster",
+      "source_paths": [
+        "docs/planning/S1-SIMULATION-PROFILE.md#D-03",
+        "docs/planning/GAMEPLAN-v2.md#D-03"
+      ]
+    },
+    {
+      "authority_owner": "engine_hazard_adjudicator",
+      "category": "hazards_and_safety",
+      "feature_id": "FEAT-05-HAZARD-AND-SURVIVAL",
+      "name": "Human-Origin Hazard Commitment and Survival Contract",
+      "oracle": "commit < t=15s, warning [15,20s), clear_lane removes before collision, 20% slowdown for 2s, 0 HP/stun, cap 6s/match",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "half_open_admission_and_collision_bounding",
+      "source_paths": [
+        "docs/planning/S1-SIMULATION-PROFILE.md#D-02",
+        "docs/planning/GAMEPLAN-v2.md#D-02"
+      ]
+    },
+    {
+      "authority_owner": "reward_settler",
+      "category": "rewards_and_economy",
+      "feature_id": "FEAT-06-FICTIONAL-HYPE-REWARD",
+      "name": "Fictional Hype Creation, Halving, and Terminal Settlement",
+      "oracle": "0 start, +20/accepted human hazard < t=15, cap 60, single collision halves total once, wipe settles 0, exact rational shares",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "exact_rational_fraction_arithmetic",
+      "source_paths": [
+        "docs/planning/S1-SIMULATION-PROFILE.md#D-04",
+        "docs/planning/GAMEPLAN-v2.md#D-04"
+      ]
+    },
+    {
+      "authority_owner": "adapter_and_local_validator",
+      "category": "ai_integration",
+      "feature_id": "FEAT-07-OPENAI-CHAT-TO-ACTION",
+      "name": "OpenAI Chat-to-Action Validation and Asynchronous Fallback",
+      "oracle": "strict schemas, local revalidation, timeout min(dispatch+2s, cutoff), late discard, deterministic fallback",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "fixture_schedule_and_schema_validator",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "config/model-policy.json"
+      ]
+    },
+    {
+      "authority_owner": "hotfix_verifier",
+      "category": "booths_and_tooling",
+      "feature_id": "FEAT-08-CODEX-LIVE-HOTFIX",
+      "name": "Codex Live Hotfix Booth Data-Only Patching",
+      "oracle": "data/rules only, signature verification, turn-boundary activation, cannot relax safety invariants, rollback on failure",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "turn_boundary_patch_adjudication",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/DECISIONS.md#DECISION-02"
+      ]
+    },
+    {
+      "authority_owner": "diegetic_booth_manager",
+      "category": "booths_and_tooling",
+      "feature_id": "FEAT-09-TWITCH-BOOTH",
+      "name": "Twitch Booth Moderation-Forcefield Fiction",
+      "oracle": "triggers at progress 35.0% without minting live participant Hype from fixtures, clearly labeled fiction",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "waypoint_trigger_and_hazard_conversion",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/gameplan-v2.json"
+      ]
+    },
+    {
+      "authority_owner": "diegetic_booth_manager",
+      "category": "booths_and_tooling",
+      "feature_id": "FEAT-10-AWS-IVS-BOOTH",
+      "name": "AWS / Amazon IVS Booth Scale-Boost Fiction",
+      "oracle": "+10% speed boost for up to 2s at progress 80.0%, graceful fallback when offline, no unsupported sponsorship claims",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "speed_lane_acceleration_and_offline_fallback",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/research/S1-PLATFORM-EVIDENCE.md"
+      ]
+    },
+    {
+      "authority_owner": "engine_transport_layer",
+      "category": "resilience_and_failover",
+      "feature_id": "FEAT-11-OFFLINE-FIXTURE-DRIVER",
+      "name": "Offline Fixture Driver, Equivalence, and Recovery",
+      "oracle": "live-fixture and offline-fixture produce identical state hashes; safe phase-boundary failover and hash-verified recovery",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "replay_verification_and_state_hash_comparison",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/DECISIONS.md#DECISION-01"
+      ]
+    },
+    {
+      "authority_owner": "presentation_layer",
+      "category": "presentation_and_demo",
+      "feature_id": "FEAT-12-BULLET-TIME-PRESENTATION",
+      "name": "Bullet-Time Matrix Freeze Presentation Alignment",
+      "oracle": "presentation slowdown state without stopping authoritative 20 Hz loop or extending real 90s deadline; visual overlay render capture tracked separately",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "client_interpolation_against_authoritative_ticks",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/S1-SIMULATION-PROFILE.md"
+      ]
+    },
+    {
+      "authority_owner": "audio_state_machine",
+      "category": "audio_and_feedback",
+      "feature_id": "FEAT-13-ADAPTIVE-AUDIO",
+      "name": "Adaptive Audio State Machine and Telemetry Cues",
+      "oracle": "states: crisis, bullet_time, solution, victory, wipe; acoustic output and voiceover intelligibility tracked separately",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "discrete_state_transitions_on_engine_events",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/gameplan-v2.json"
+      ]
+    },
+    {
+      "authority_owner": "hud_formatter",
+      "category": "ui_and_broadcast",
+      "feature_id": "FEAT-14-READABILITY-AND-HUD",
+      "name": "Broadcast and Mobile Readability Architecture",
+      "oracle": "requires rendered browser/mobile viewport capture and compressed-video readability observation; not observed in headless simulation",
+      "required_evidence_kind": "render_capture_and_mobile_viewport",
+      "simulation_method": "minimal_telemetry_hud_projection",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md#D-01",
+        "docs/planning/S1-SIMULATION-PROFILE.md#D-01"
+      ]
+    },
+    {
+      "authority_owner": "demo_director",
+      "category": "presentation_and_demo",
+      "feature_id": "FEAT-15-PUBLIC-DEMO-TIMELINE",
+      "name": "Three-Minute Public Demo Narrative and Claim Verification",
+      "oracle": "timed demo state narrative, verified fixture labels, truthful CTA claims; rendered 3-minute video capture tracked separately",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "timed_scenario_execution",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/DECISIONS.md#DECISION-03"
+      ]
+    },
+    {
+      "authority_owner": "security_perimeter",
+      "category": "architecture_and_security",
+      "feature_id": "FEAT-16-SECURITY-AND-PROVENANCE",
+      "name": "Security, Privacy, Provenance, and Authoritative Writer",
+      "oracle": "single authoritative writer, detached envelopes, explicit human/bot/fixture provenance, no client physics",
+      "required_evidence_kind": "deterministic_state_and_commands",
+      "simulation_method": "envelope_validation_and_size_capping",
+      "source_paths": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "coordination/canonical_commands.py"
+      ]
+    }
+  ],
+  "unresolved_decisions": [
+    {
+      "id": "live_submission_external_capture",
+      "status": "unresolved",
+      "rule": "Live external Twitch channel integration, rendered browser/mobile viewport capture and 3-minute public demo video recording remain deferred until separate live-submission authorization.",
+      "gate": "before_live_submission",
+      "source_path": "docs/planning/CONTEXT-v2.md"
+    }
+  ],
+  "required_work_packages_order": [
+    "WP-01-core-engine-implementation",
+    "WP-02-hud-and-mobile-presentation",
+    "WP-03-twitch-extension-linking",
+    "WP-04-codex-booth-telemetry",
+    "WP-05-submission-demo-pipeline"
+  ]
+}

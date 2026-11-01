@@ -1,0 +1,182 @@
+{
+  "config/directive-policy.json": {
+    "path": "config/directive-policy.json",
+    "role": "authoritative_planning_input",
+    "sha256": "c6bd7bd1afc9959dbb2c539d815f0b292170fecdf45e4263b07509346e1d4852",
+    "size_bytes": 50324
+  },
+  "config/model-policy.json": {
+    "path": "config/model-policy.json",
+    "role": "authoritative_planning_input",
+    "sha256": "7cfe130f28ff0c02f270320560e4a27cb6ca99edd88d39fbf8afe7127e6a289d",
+    "size_bytes": 7248
+  },
+  "coordination/canonical_commands.py": {
+    "path": "coordination/canonical_commands.py",
+    "role": "codebase_source",
+    "sha256": "ac33eca9f890b0b2eb78888f7592135e8d14fa17247dfddaddb24927095ae34e",
+    "size_bytes": 3258
+  },
+  "coordination/content_cache.py": {
+    "path": "coordination/content_cache.py",
+    "role": "codebase_source",
+    "sha256": "c70694c893540d80a50498a0ba700a7a9599cdc7290524c5a98e63004be12a95",
+    "size_bytes": 11519
+  },
+  "coordination/context_contract.py": {
+    "path": "coordination/context_contract.py",
+    "role": "codebase_source",
+    "sha256": "6998844f22691df022a3f76cae155b818a83aa398e4e2eef278e600b69dc0c5f",
+    "size_bytes": 18138
+  },
+  "coordination/evidence_pipeline.py": {
+    "path": "coordination/evidence_pipeline.py",
+    "role": "codebase_source",
+    "sha256": "f9038c0210dec158a3c3dce8c32d50dc37336d6a28e9fe45ec46d15a02aa0808",
+    "size_bytes": 43093
+  },
+  "coordination/full_game_simulator.py": {
+    "path": "coordination/full_game_simulator.py",
+    "role": "codebase_source",
+    "sha256": "9e57674c85db144c7edfa846de22552a059b31d18a35f68601f16162d83bd09d",
+    "size_bytes": 68552
+  },
+  "coordination/model_router.py": {
+    "path": "coordination/model_router.py",
+    "role": "codebase_source",
+    "sha256": "41394c38bb981448e88cefbe41c444f6d0cc4b5500570f9b4a5301bb85344317",
+    "size_bytes": 3121
+  },
+  "coordination/plan_rehearsal.py": {
+    "path": "coordination/plan_rehearsal.py",
+    "role": "codebase_source",
+    "sha256": "51209950eb77fbc4a8ee1db90f13bfe1684d2a848aad48b533fd46e129ba2bbb",
+    "size_bytes": 7857
+  },
+  "coordination/run_full_game_simulation.py": {
+    "path": "coordination/run_full_game_simulation.py",
+    "role": "codebase_source",
+    "sha256": "afb78bd073a680d9fb1a7d3239d4ea35366576c645cb1915c5c69006080f34a1",
+    "size_bytes": 122901
+  },
+  "coordination/scenario_inputs.py": {
+    "path": "coordination/scenario_inputs.py",
+    "role": "codebase_source",
+    "sha256": "e3eed7ae21e7cb62a1e9bd0496f581b6a6adf93b28c01e874ee58bacc05a57af",
+    "size_bytes": 6460
+  },
+  "coordination/state_transport.py": {
+    "path": "coordination/state_transport.py",
+    "role": "codebase_source",
+    "sha256": "05a7168d82807819a4e4c1637ee60a7d27942966f1eeccb16a6e4d100d5bad76",
+    "size_bytes": 5561
+  },
+  "docs/planning/CONTEXT-v2.md": {
+    "path": "docs/planning/CONTEXT-v2.md",
+    "role": "authoritative_planning_input",
+    "sha256": "eb8b6530ffbe210d62bf513f53eb384d6f87c527cbd57e5a5eb42bf08ec0f140",
+    "size_bytes": 14915
+  },
+  "docs/planning/DECISIONS.md": {
+    "path": "docs/planning/DECISIONS.md",
+    "role": "authoritative_planning_input",
+    "sha256": "639bebcaba808e75697641fd5810b7f2e7e130f4bf4b63eb690259892fcf81f1",
+    "size_bytes": 17448
+  },
+  "docs/planning/GAMEPLAN-v2.md": {
+    "path": "docs/planning/GAMEPLAN-v2.md",
+    "role": "authoritative_planning_input",
+    "sha256": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+    "size_bytes": 15785
+  },
+  "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md": {
+    "path": "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md",
+    "role": "authoritative_planning_input",
+    "sha256": "4cf48c7fcc2492529b2b7b13c68cce251c7a6356453aa5582c37499cd8bf15a3",
+    "size_bytes": 3414
+  },
+  "docs/planning/S1-ASTRA-REVIEW.md": {
+    "path": "docs/planning/S1-ASTRA-REVIEW.md",
+    "role": "authoritative_planning_input",
+    "sha256": "29280f55a0d69fd4f8cb06d70f22e7daa23cf0d511c1e0b8eb8a82614c71e530",
+    "size_bytes": 5544
+  },
+  "docs/planning/S1-SIMULATION-PROFILE.md": {
+    "path": "docs/planning/S1-SIMULATION-PROFILE.md",
+    "role": "authoritative_planning_input",
+    "sha256": "2647e033fca26875916446d2b9d45419fcd1d3dcde09b5cb03a5f576ff9bc4a6",
+    "size_bytes": 17307
+  },
+  "docs/planning/SAN-DIEGO-ROUTE.md": {
+    "path": "docs/planning/SAN-DIEGO-ROUTE.md",
+    "role": "authoritative_planning_input",
+    "sha256": "c6ff17eefe410c79162c33e7f8d2336c747244f7c864c7fa24604b5aa0474a8d",
+    "size_bytes": 2733
+  },
+  "docs/planning/STATUS.md": {
+    "path": "docs/planning/STATUS.md",
+    "role": "authoritative_planning_input",
+    "sha256": "7d8b760e7a7184a439e9ffd14cd6126b65b2cd66c55603e41c5405a1f82b9683",
+    "size_bytes": 14916
+  },
+  "docs/planning/gameplan-v2.json": {
+    "path": "docs/planning/gameplan-v2.json",
+    "role": "authoritative_planning_input",
+    "sha256": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147",
+    "size_bytes": 39600
+  },
+  "docs/planning/research/S1-PLATFORM-EVIDENCE.md": {
+    "path": "docs/planning/research/S1-PLATFORM-EVIDENCE.md",
+    "role": "authoritative_planning_input",
+    "sha256": "3bc1910f2d55d9cc1b26c6c7644ad759c48e28c32d11e462dfac966b3b23a4d6",
+    "size_bytes": 9229
+  },
+  "docs/planning/research/S1-SYSTEMS-EVIDENCE.md": {
+    "path": "docs/planning/research/S1-SYSTEMS-EVIDENCE.md",
+    "role": "authoritative_planning_input",
+    "sha256": "b727a60099d9fd3a11809f0e24d1c989d6f87bf5a5ad185f041ababd37ac128c",
+    "size_bytes": 11084
+  },
+  "harness/run.py": {
+    "path": "harness/run.py",
+    "role": "codebase_source",
+    "sha256": "9be65714389370c31da6dfcfdf2783fb0976343978b44d38a1996c970a4cf104",
+    "size_bytes": 6406
+  },
+  "schemas/action.json": {
+    "path": "schemas/action.json",
+    "role": "codebase_source",
+    "sha256": "e79eb335b873e787bf24a7452b2d1e955b134356cb3b13300db41fd613666c21",
+    "size_bytes": 448
+  },
+  "schemas/validate.py": {
+    "path": "schemas/validate.py",
+    "role": "codebase_source",
+    "sha256": "b9eb90d5be24887d433075cef787167d69560c0a315782097c860a609d067681",
+    "size_bytes": 2232
+  },
+  "server/app.py": {
+    "path": "server/app.py",
+    "role": "codebase_source",
+    "sha256": "015329e7856577d0597dd285db3b1f45e2400c32a6bbcd949106a3bc9c16025e",
+    "size_bytes": 8540
+  },
+  "server/engine.py": {
+    "path": "server/engine.py",
+    "role": "codebase_source",
+    "sha256": "f48ed0a6f84efe2b6aabba82b6125ea42bba3dc99df51e787ad6a806578d7260",
+    "size_bytes": 8159
+  },
+  "server/replay.py": {
+    "path": "server/replay.py",
+    "role": "codebase_source",
+    "sha256": "67e416cc8ad4e6cdd7a9a4b20307f0c832752b659a3a18e16864984d481def06",
+    "size_bytes": 2229
+  },
+  "storage/store.py": {
+    "path": "storage/store.py",
+    "role": "codebase_source",
+    "sha256": "f64781500a3517d0810273fba5361f0a722f2a9b104fc6fb9222ae1919a4ca86",
+    "size_bytes": 1494
+  }
+}

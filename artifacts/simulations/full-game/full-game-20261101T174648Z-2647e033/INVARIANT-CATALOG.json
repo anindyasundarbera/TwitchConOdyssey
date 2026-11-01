@@ -1,0 +1,128 @@
+[
+  {
+    "id": "INV-REPLAY",
+    "name": "Deterministic replay produces identical canonical final and boundary hashes",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-ENGINE-AUTH",
+    "name": "Engine alone owns physics and state mutation; models/fixtures cannot directly alter physics",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-ASYNC-MODEL",
+    "name": "Rendering/simulation never waits for an external model provider",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-COMMAND-VAL",
+    "name": "No late, duplicate, paused, unlinked, or invalid command mutates state",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-ACCOUNT-INFLUENCE",
+    "name": "Every eligible account contributes at most one influence per turn across channels",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-BOT-ISOLATION",
+    "name": "Bots/fixtures never impersonate humans, affect human quorum, create Hype, or receive live Hype",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-HAZARD-BIND",
+    "name": "Hazard commitment, warning, counter, and bounty increment share one committed ID",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-HAZARD-DEPEND",
+    "name": "No committed hazard means no warning, obstacle, or bounty increment",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-SAFETY-CAPS",
+    "name": "Safety caps prevent permanent control loss, stun lock, stacking, refresh, unbounded harm, or unavoidable death",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-REACHABILITY",
+    "name": "Every admitted obstacle state is avoidable under the selected control/geometry contract",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-EFFECT-ORDER",
+    "name": "clear_lane removal precedes collision; collision precedes delivery; deadline precedes equality-time delivery",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-SETTLEMENT-ONCE",
+    "name": "Settlement occurs at most once, only at terminal delivery, with exact selected arithmetic",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-WIPE-CLEAN",
+    "name": "Wipe/deadline/build-drop settles zero and new match carries no state",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-MAX-TURNS",
+    "name": "No fourth turn begins; match terminates strictly by deadline or prior delivery",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-PAUSE-CLEAN",
+    "name": "Pause produces no catch-up ticks and cannot suspend a reached deadline",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-FIXTURE-LABEL",
+    "name": "Fixture/live modes use the same canonical command schema and remain visibly distinguishable",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-HOTFIX-SAFETY",
+    "name": "Data/rules patches cannot relax hard invariants or activate outside a validated boundary",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-CREDIBILITY",
+    "name": "No unsupported promotional or live-service claim is emitted",
+    "kind": "scenario"
+  },
+  {
+    "id": "INV-REVIEW-AUTHORSHIP",
+    "name": "review-artifact authorship",
+    "kind": "pipeline",
+    "evaluation_stage": "readiness_and_seal"
+  },
+  {
+    "id": "INV-RUN-IMMUTABILITY",
+    "name": "run-root non-reuse/re-seal",
+    "kind": "pipeline",
+    "evaluation_stage": "readiness_and_seal"
+  },
+  {
+    "id": "INV-CITATION-HASHES",
+    "name": "cited-artifact hash existence",
+    "kind": "pipeline",
+    "evaluation_stage": "readiness_and_seal"
+  },
+  {
+    "id": "INV-SOURCE-BYTES",
+    "name": "seal-time source-byte match",
+    "kind": "pipeline",
+    "evaluation_stage": "readiness_and_seal"
+  },
+  {
+    "id": "INV-EVIDENCE-COVERAGE",
+    "name": "coverage as a function of evidence",
+    "kind": "pipeline",
+    "evaluation_stage": "readiness_and_seal"
+  },
+  {
+    "id": "INV-READINESS-SEPARATION",
+    "name": "ready/submission-ready separation",
+    "kind": "pipeline",
+    "evaluation_stage": "readiness_and_seal"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+    "tick_400_turn_1_resolution_start": "3946f97ce5ecc2245509a973fc824142d2bf13fe66c19cddba71b1050eebbe0d",
+    "tick_500_turn_1_reward_start": "229d5a0d0cb7c90e13e326bae5a104f3ae3bb14e79d84b67a9b04c5635561cf8",
+    "tick_600_turn_2_start": "20847bc8cd97f55f41e4671df5127ac279ee5968213c5f70a057d1930e11bcc2",
+    "tick_601_final": "4a59b832429f7e4646bfca44c204e6cb1ee374e6f1fc0cb427b19c25fd1c6e3d"
+  },
+  "contract_hash": "0ed4cd095878312489eb5bd4a264c63c0e93a02f11073a1de425edff5155ac32",
+  "final_state_hash": "4a59b832429f7e4646bfca44c204e6cb1ee374e6f1fc0cb427b19c25fd1c6e3d",
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_applied_hotfix_version": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_final_turn": true,
+      "expected_hotfix_rules": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-HOTFIX-SAFETY",
+      "INV-ENGINE-AUTH"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-HOT-01",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-HOT-01"
+}

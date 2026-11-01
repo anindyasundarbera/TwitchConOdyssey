@@ -1,0 +1,47 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "aws_booth",
+        "command_id": "574726159b817122e201108f57fb83fd90c0e1eaa932d7e9b40d1a1d4c4e6d3f",
+        "kind": "booth.boost",
+        "logical_tick": 2,
+        "payload": {
+          "duration_ticks": 20
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "247f04ec80ef4196653f38e82ca725f6fd147941b5fbd2bd4b4c144d91eb6466",
+      "status": "applied",
+      "tick": 2,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "aws_booth",
+        "command_id": "ceff8b09a332d8e6e5c58d6798b8506f08216a31e675a0012ce7deaaefaea598",
+        "kind": "booth.boost",
+        "logical_tick": 3,
+        "payload": {
+          "duration_ticks": 999
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "71bfa2a4a2c37e10733fc3fbf369b0706b3c8b8959a47ff1aef550e989c52bd4",
+      "status": "rejected",
+      "tick": 3,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "ce0f52413058278d6c5c6da98ab792484d2351b5cc98121958b0df55ab8cf249",
+  "final_state_hash": "568642c3574b522920f1f44d8e0be50c630e5343ee10cfd605147df40f9803d3",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "36b6cfb10d62a8f2f5502abc06dfd922fd5593b9da3b127fe969b4d13c581d66",
+  "scenario_id": "SCEN-HOT-04",
+  "seed": 707
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "run_id": "full-game-20261101T132816Z-2647e033",
+  "reviewer_role": "Principal Systems Reviewer",
+  "configured_model": "gpt-6-astra",
+  "configured_effort": "high",
+  "evidence_origin": "independent_subagent_review",
+  "subagent_conversation_id": "9714e19d-0457-4175-bf93-197a9a4c4fd5",
+  "packet_hash": "e1ad1dfd69bef48a7eb7ef7541ac845933f206f7e29b7626cb717f544d1913e9",
+  "review_packet_sha256": "65ce6f81cd815b73d51531084b94447e82b126d4a9c4187a41e664a7d97b7b79",
+  "prompt_sha256": "65ce6f81cd815b73d51531084b94447e82b126d4a9c4187a41e664a7d97b7b79",
+  "independent_review_sha256": "d24a8ab95519fdb2eba19ea6ad968f0c908c97801fad37f2985bdb43824bd397",
+  "independent_review_json_sha256": "2ceb4621f14e89d7fb18d8c7e569f4e312a6dc4c3f61dae32e614af44c3007ae",
+  "verdict": "READY"
+}

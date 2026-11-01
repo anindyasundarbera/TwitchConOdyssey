@@ -1,0 +1,49 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "290505b913400faad0532f46d953f267fb6b870b3a270fc5ecdb3a2ff71a40e2",
+    "tick_1000_turn_2_resolution_start": "77cf28c9f53d5a3e00781a9d5865b2d11a309a7082822f379e91ad5c62a819b7",
+    "tick_1100_turn_2_reward_start": "a66ea762b0d625e8294499fda3ae825258080121a2256933fddb60ae1e59ce1e",
+    "tick_1200_turn_3_start": "ff4eb82b4465cb92086c26ef2df57b2279e6031f630e9e33598c8f0de772bf9e",
+    "tick_1600_turn_3_resolution_start": "bcdf276e761fc4f649d0d436c8c73f7a343324ad6f771edad11eb09f8e7987a9",
+    "tick_1700_turn_3_reward_start": "4e62a9fee37edc7bd8dccfb60eb1f4c5b533d286428033fd0bdeba8fe249f68c",
+    "tick_1767_final": "b4efd90c786562878a6ac46ef379325b1e196bd895504efdad665d61a85cd99f",
+    "tick_1767_terminal_delivery": "b4efd90c786562878a6ac46ef379325b1e196bd895504efdad665d61a85cd99f",
+    "tick_400_turn_1_resolution_start": "6625953cd392fb9aa305d3ee181825dd5d873c5ab7cea514729a0cfc916404a0",
+    "tick_500_turn_1_reward_start": "3ae0b3d3d0b8d78eb33dc03d255e7ea7f71828ae376569ed48656a3cd9a1ee80",
+    "tick_600_turn_2_start": "30310f7719e6a74a3ea4b5e6725b895c5fbf118f7e5d12b96bfb87b29646bace"
+  },
+  "contract_hash": "c3f97a6c0b7925e82e3ae023dbd3f8a401560eef4358803d683a8d7c6bd5791e",
+  "final_state_hash": "b4efd90c786562878a6ac46ef379325b1e196bd895504efdad665d61a85cd99f",
+  "initial_state_hash": "290505b913400faad0532f46d953f267fb6b870b3a270fc5ecdb3a2ff71a40e2",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_final_turn": true,
+      "expected_lane": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-SAFETY-CAPS",
+      "INV-SETTLEMENT-ONCE",
+      "INV-EFFECT-ORDER"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 60,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-E2E-03",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-E2E-03"
+}

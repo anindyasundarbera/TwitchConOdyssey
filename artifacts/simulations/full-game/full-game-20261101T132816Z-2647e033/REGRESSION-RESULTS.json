@@ -1,0 +1,13 @@
+{
+  "regression_verdict": "passed",
+  "scenarios_executed": 46,
+  "scenarios_passed": 46,
+  "scenarios_failed": 0,
+  "invariants_passed": 18,
+  "invariants_failed": 0,
+  "golden_replay_verified": true,
+  "golden_replay_final_state_hash": "5e7c32e9ec752e2bcf07cacb8345753fda730edfb88e04be4614c31d3f162460",
+  "offline_replay_final_state_hash": "77bec6e8cb5827c5be55d024a80defba23847f95a7b712b234222f309b09ed00",
+  "scenario_matrix_sha256": "cd71e8651972e175d7b50bd255ecada4128f26508988617cb0bfbd84de4541eb",
+  "corpus_sha256": "03c2ca9c12e89f7215a7918dbadcfa6ad6a36e78b9d74258033fb4d2626b2e3d"
+}

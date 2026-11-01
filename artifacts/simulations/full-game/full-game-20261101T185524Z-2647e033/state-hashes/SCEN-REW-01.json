@@ -1,0 +1,94 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "4c97450b8f463bd856b09cf8d4961e3de521ee70d5f3c566f378bfe1486852cd",
+    "tick_1000_turn_2_resolution_start": "5e358043f701306de5b884ddb3fee53e8563ac51fddfd6a5ca7cae91e0b3bc5c",
+    "tick_1100_turn_2_reward_start": "d73d1b5be0328b0b4aeba32f149c398aaafdac3bd5ee28f95911447fd9730ac7",
+    "tick_1200_turn_3_start": "be68022956bd5cf8aca5b42fa122bfd2d50cc78378d93c51f9f1bca574c53c5e",
+    "tick_1600_turn_3_resolution_start": "9639e4bec9fb3566cf858b122613f743672e0dce460e6ec58576fee8e2e111cc",
+    "tick_1700_turn_3_reward_start": "f16fa3362dd7a31595c746ec6ab48f9043db202bfd1a65903cbaadec484f744e",
+    "tick_1760_final": "a9f37b540f2b349402985f4c4dbdd1834372f2031e0e661c15d25122a2b29b28",
+    "tick_1760_terminal_delivery": "a9f37b540f2b349402985f4c4dbdd1834372f2031e0e661c15d25122a2b29b28",
+    "tick_400_turn_1_resolution_start": "d5f0f5fc0264c994474b8fa283cc2ad2e6dfb61d885101b7ff983135f3515906",
+    "tick_500_turn_1_reward_start": "5ec4ef197e8f69fa50eb637c758b068591f8f8e7f2361975239e807bc4859cd3",
+    "tick_600_turn_2_start": "04256d8cf9550fb69521875d0a682c94005d8d0285f7039b33af27632268bf18"
+  },
+  "contract_hash": "0901d4f4adca19ee2ba8d2d86bcf0dadad9cfa230c35f80e5447ee677f8e4e72",
+  "final_state_hash": "a9f37b540f2b349402985f4c4dbdd1834372f2031e0e661c15d25122a2b29b28",
+  "initial_state_hash": "4c97450b8f463bd856b09cf8d4961e3de521ee70d5f3c566f378bfe1486852cd",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 6,
+        "evaluator": "INV-HAZARD-BIND_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "command_log",
+          "hazard.committed",
+          "hazard.warning_active"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "mismatched_counter_applied": false
+        },
+        "invariant_id": "INV-HAZARD-BIND",
+        "notes": "",
+        "observed": {
+          "mismatched_counter_applied": false
+        },
+        "scenario_id": "SCEN-REW-01",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-SETTLEMENT-ONCE_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "terminal_settlement.settled_once",
+          "terminal_settlement.total_hype"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "settled_once_valid": true
+        },
+        "invariant_id": "INV-SETTLEMENT-ONCE",
+        "notes": "",
+        "observed": {
+          "settlement_present": true,
+          "status": "delivered"
+        },
+        "scenario_id": "SCEN-REW-01",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-HAZARD-BIND",
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 60,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-REW-01",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-REW-01"
+}

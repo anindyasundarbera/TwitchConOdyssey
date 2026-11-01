@@ -1,0 +1,47 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+    "tick_1000_turn_2_resolution_start": "23de5ae88e212db79d77a2ccdc2e5486dd48ebc5d656ca89364fdc43b55eb0b0",
+    "tick_1100_turn_2_reward_start": "2407b06586aa2933d9237e5f475a3ed06d73b1ae9f063f3b25dd17e1c62892c2",
+    "tick_1200_turn_3_start": "7cde2bce5b4add47531a66f05a4290f9c2816ef590f32e3baedb44d50d8db500",
+    "tick_1600_turn_3_resolution_start": "99d5156715b45a4004d1ac8f78b17147b0807036bd0305afa28c71771f6f0228",
+    "tick_1700_turn_3_reward_start": "6033bf4970f2ae24ead5d4c1119e43cd531ffa020ba3c92322d00a80fe739ad4",
+    "tick_1800_final": "edfd28941821c4f56b1886eb29618b5a339274888dc448369981e7e2016b5310",
+    "tick_1800_terminal_wipe_deadline_reached": "edfd28941821c4f56b1886eb29618b5a339274888dc448369981e7e2016b5310",
+    "tick_400_turn_1_resolution_start": "f750427cff681c397c331c0ab34025a94eb6aaf01b1140a0923aa5f63f789ead",
+    "tick_500_turn_1_reward_start": "45196f3c637bed9edc53544ffa6572491160c95f278cca0dbc8f30e13c17d13b",
+    "tick_600_turn_2_start": "669b18d29b8f778444dc9b999623e2b67302ad26b7a39cc1c149aaf2efbdcbcf"
+  },
+  "contract_hash": "927a0432317df0befd64c4d303048a185ce1e1442f70c6be06864bfe46aa7a5f",
+  "final_state_hash": "edfd28941821c4f56b1886eb29618b5a339274888dc448369981e7e2016b5310",
+  "initial_state_hash": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_audio_state": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "expected_synthetic_fixture_pool": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-WIPE-CLEAN",
+      "INV-BOT-ISOLATION",
+      "INV-CREDIBILITY"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 20,
+    "scenario_id": "SCEN-E2E-05",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-E2E-05"
+}

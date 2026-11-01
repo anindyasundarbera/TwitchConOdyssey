@@ -1,0 +1,45 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "4c97450b8f463bd856b09cf8d4961e3de521ee70d5f3c566f378bfe1486852cd",
+    "tick_1000_turn_2_resolution_start": "3660cf24f9949e26e1f80c74b94955fd7f05e8f45ef8ddec86eeea1763f71b70",
+    "tick_1100_turn_2_reward_start": "d73d1b5be0328b0b4aeba32f149c398aaafdac3bd5ee28f95911447fd9730ac7",
+    "tick_1200_turn_3_start": "be68022956bd5cf8aca5b42fa122bfd2d50cc78378d93c51f9f1bca574c53c5e",
+    "tick_1600_turn_3_resolution_start": "63b6ad4374c1ff910e0f0785859b69d4a266a0d7f6d68da2a9393ceb008a75b0",
+    "tick_1700_turn_3_reward_start": "f16fa3362dd7a31595c746ec6ab48f9043db202bfd1a65903cbaadec484f744e",
+    "tick_1759_final": "2a7d78a9f022a49b9aeacc052023032c3a4dc08fe838bfa79f164e6c9b1703a5",
+    "tick_1759_terminal_delivery": "2a7d78a9f022a49b9aeacc052023032c3a4dc08fe838bfa79f164e6c9b1703a5",
+    "tick_400_turn_1_resolution_start": "2cd2bf1c5dfb5e19a968a6c3dddd9b752b7adc35d1583be138dff2c1a5213f40",
+    "tick_500_turn_1_reward_start": "5ec4ef197e8f69fa50eb637c758b068591f8f8e7f2361975239e807bc4859cd3",
+    "tick_600_turn_2_start": "04256d8cf9550fb69521875d0a682c94005d8d0285f7039b33af27632268bf18"
+  },
+  "contract_hash": "73071568f7c3a5f5eb1fd3dbafa1e0b3676db1ecbd3eb22c295d4664de1b1737",
+  "final_state_hash": "2a7d78a9f022a49b9aeacc052023032c3a4dc08fe838bfa79f164e6c9b1703a5",
+  "initial_state_hash": "4c97450b8f463bd856b09cf8d4961e3de521ee70d5f3c566f378bfe1486852cd",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-HAZARD-BIND",
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 60,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-REW-01",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-REW-01"
+}

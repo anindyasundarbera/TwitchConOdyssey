@@ -1,0 +1,46 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+    "tick_1000_turn_2_resolution_start": "b5275154ce87eeb0d8397a88e3db364dfc717caafe2ea303a947bb0d1a59a8ef",
+    "tick_1100_turn_2_reward_start": "5630dddd020a2b93a92315ea299df387dd32c166fad183ed4bb7c1e94e5f0b89",
+    "tick_1200_turn_3_start": "95f584d299b7b97d0db32fd28538fdda272f56970ad690f2270da1d5167da58d",
+    "tick_1600_turn_3_resolution_start": "c0efd2b9e537b8d664dc33d25edbf72b1808fe60589fbd80fc902fe01c0ab577",
+    "tick_1700_turn_3_reward_start": "15a75b471b1d48e6c76ac810a534d1389e9a12b1794a493753a6cc84c5e45933",
+    "tick_1775_final": "a8bc9e6b84885516a82280270ee8f84018fd236b345544b69b090b260b6eac70",
+    "tick_1775_terminal_delivery": "a8bc9e6b84885516a82280270ee8f84018fd236b345544b69b090b260b6eac70",
+    "tick_400_turn_1_resolution_start": "25428ca39da2e92d109bb06cc394f4966a9e1394bd93a30d8e2b89b07f47cb2b",
+    "tick_500_turn_1_reward_start": "664c7bad9aba7ae5d49b594d99088477e6bce50ee6744cb5cb9dc4a5a13d543f",
+    "tick_600_turn_2_start": "9bb711f5490c017f319d98afe7c69991a33939044db022ae599622172d6b10a3"
+  },
+  "contract_hash": "e582aa5665be0460bcf26be46daa63b610b7d0bb493e129ca980207ef53ac88a",
+  "final_state_hash": "a8bc9e6b84885516a82280270ee8f84018fd236b345544b69b090b260b6eac70",
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-SETTLEMENT-ONCE",
+      "INV-SAFETY-CAPS"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 40,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-REW-04",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-REW-04"
+}

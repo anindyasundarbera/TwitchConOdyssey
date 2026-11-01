@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "user_0",
+        "command_id": "66d7f35eb872a594a27d0deb99c39a3cb486423885e3c5613e1f5ca5ecb8a742",
+        "kind": "hazard.propose",
+        "logical_tick": 0,
+        "payload": {
+          "hazard_id": "h_na",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "63ac5c79d0a63f2c544c1961df6329fdd6344d3b403d32cb8b50dd657f9c071b",
+      "status": "applied",
+      "tick": 0,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "2b32467964dbb64de508451e6633a87b38cd9bbafcd56c3e867d2d1230cdb0a7",
+  "final_state_hash": "948833d4a88022e9174bc0345b3a889d860aee2524a357b036d9be96030533f8",
+  "initial_lane": 0,
+  "initial_roster": [],
+  "initial_state_hash": "81cf8ad318e121223ee775b98383d0ffcb769730b06090544acd61ce68d2c258",
+  "scenario_id": "SCEN-REW-05",
+  "seed": 505
+}

@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "codex_booth",
+        "command_id": "a422071448552b5b36f623fa26cb9b9350de6094f376a4e1b9f8d7661b4515d2",
+        "kind": "booth.hotfix",
+        "logical_tick": 100,
+        "payload": {
+          "expiry_tick": 1800,
+          "patch_data": {
+            "slowdown_duration_ticks": 30,
+            "slowdown_fraction": 0.15
+          },
+          "patch_version": 1,
+          "signature": "CODEX_BOOTH_TRUSTED_V1"
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "1bd6b43d8382d6b75583e12e9d6c9d212ef314d9d279927f1f1865ed31919072",
+      "status": "applied",
+      "tick": 100,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "0ed4cd095878312489eb5bd4a264c63c0e93a02f11073a1de425edff5155ac32",
+  "final_state_hash": "4a59b832429f7e4646bfca44c204e6cb1ee374e6f1fc0cb427b19c25fd1c6e3d",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "scenario_id": "SCEN-HOT-01",
+  "seed": 704
+}

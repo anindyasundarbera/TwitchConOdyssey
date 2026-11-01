@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "stage_operator",
+        "command_id": "df04f5303cc1f76eb6f0d6a50282ed8a96335107a0de1d3ba0e783c1c0cd4294",
+        "kind": "operator.pause",
+        "logical_tick": 400,
+        "payload": {
+          "state": true
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "750cd85b641fa7cfbcf647394108b0e6ecad9e2fb772c5b57fefa1a1ca488bc2",
+      "status": "applied",
+      "tick": 400,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "d6cbc2258c4c2cab405498ab6d25ca62506d439689e912adddfea9f22f740833",
+  "final_state_hash": "750cd85b641fa7cfbcf647394108b0e6ecad9e2fb772c5b57fefa1a1ca488bc2",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "c80ffcec2baf3c65959c58cdbf2e9822ded58be5cd19372f7319715cc234ff63",
+  "scenario_id": "SCEN-CLK-04",
+  "seed": 307
+}

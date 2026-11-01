@@ -1,0 +1,51 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "user_0",
+        "command_id": "40f5f8fcee2f5d6447cd6a27aa7f5a8b0b29e2e24d211ac93c60a583dedb8a5d",
+        "kind": "hazard.propose",
+        "logical_tick": 50,
+        "payload": {
+          "hazard_id": "haz_wipe_t1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "7242decb0d9af05b79d6cd82148b3188da6eef1c73fd6ad81beb30ed71dc68ac",
+      "status": "applied",
+      "tick": 50,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "8f1d931d1cb226a590c8593e1aca429e8f0eec95da15a105c00e052e6d3d688f",
+        "kind": "streamer.steer",
+        "logical_tick": 60,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "424cbb0b558f59b2746430043d89d0925d47dda0541447d008f76d86977671c6",
+      "status": "applied",
+      "tick": 60,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "914a3e7541ee2d2f0733391bded1d7eee69b367cdcf06f0a10c75e3340d36a8d",
+  "final_state_hash": "aec5b20534daea30a7600f051067f86b3cd65dc471ed04b51ad1cb0b6ce5c924",
+  "initial_lane": 1,
+  "initial_roster": [
+    "user_0",
+    "user_1"
+  ],
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "scenario_id": "SCEN-E2E-02",
+  "seed": 102
+}

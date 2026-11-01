@@ -1,0 +1,15 @@
+{
+  "total_issues_triaged": 3,
+  "closed_issues": 3,
+  "remaining_open_issues": 0,
+  "plan_remedies_verified": true,
+  "candidate_plan_revision": 5,
+  "candidate_plan_sha256": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+  "candidate_gameplan_json_sha256": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147",
+  "decisions_sha256": "639bebcaba808e75697641fd5810b7f2e7e130f4bf4b63eb690259892fcf81f1",
+  "companion_checks": {
+    "rew_06_three_voter_per_voter_rational": "10",
+    "rew_06_three_voter_final_state_hash": "16368d759c8aaea032b6a8cb8f32f1e108d9c8b3c6153038a700e27dee4682a3",
+    "mdl_02_oversized_64kb_rejected": true
+  }
+}

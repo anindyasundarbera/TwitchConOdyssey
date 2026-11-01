@@ -1,0 +1,38 @@
+[
+  {
+    "claim": "San Diego 5-district route progression and booth waypoints",
+    "status": "observed_in_deterministic_state",
+    "provenance": "deterministic_simulation",
+    "basis": "Verified in SCEN-E2E-01, SCEN-E2E-04, SCEN-HOT-03, SCEN-HOT-04, SCEN-PRS-03"
+  },
+  {
+    "claim": "90s active simulation deadline and 20/5/5s cadence",
+    "status": "observed_in_deterministic_state",
+    "provenance": "deterministic_simulation",
+    "basis": "Enforced by deterministic 20 Hz integer tick clock at tick 1800 across SCEN-E2E-01..05 and SCEN-CLK-01..06"
+  },
+  {
+    "claim": "Twitch Chat / Extension viewer participation",
+    "status": "fixture",
+    "provenance": "generated_fixture",
+    "basis": "Seeded 100,000-message synthetic viewer corpus (CORPUS-MANIFEST.json) and canonical command fixtures; zero live Twitch connection claimed"
+  },
+  {
+    "claim": "Fixture and bot Hype isolation (D-04 / AUDIT-03)",
+    "status": "observed_in_deterministic_state",
+    "provenance": "deterministic_simulation",
+    "basis": "Fixture hazards increment synthetic_fixture_pool only; live participant pool and settlement remain strictly human-origin (verified in SCEN-E2E-05, SCEN-AUD-03, SCEN-AUD-06, SCEN-PRS-03)"
+  },
+  {
+    "claim": "Twitch, Codex, and AWS/IVS Booth moments",
+    "status": "fictional_diegetic_metaphor",
+    "provenance": "project_design",
+    "basis": "Explicitly labeled non-sponsor in-game metaphors; not proof of vendor endorsement or live cloud integration"
+  },
+  {
+    "claim": "Browser/Mobile HUD readability and acoustic output (FEAT-14, FEAT-12/13/15 sub-claims)",
+    "status": "not_observed",
+    "provenance": "capability_boundary",
+    "basis": "Headless deterministic kernel simulation does not execute browser Canvas 2D rendering, Web Audio synthesis, or 3-minute video capture"
+  }
+]

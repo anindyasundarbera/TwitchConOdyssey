@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "ai_model",
+        "command_id": "ea804a2b7016571030c33cad2a9d58cbda8ee1294d8b8dfb76cd6b658aacdd5e",
+        "kind": "hazard.propose",
+        "logical_tick": 310,
+        "payload": {
+          "hazard_id": "h_late",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "e9265c3a6af5c5d6ed2c1b4ff3f4bf3afb62f5ca9b2e7630eb8d20397c9eb63f",
+      "status": "expired",
+      "tick": 310,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "d3da517aa6050d1d547918ccac2cab7bf8a9a31a2af37b99740b0f72848e6c07",
+  "final_state_hash": "cc94f324d1315c3fb0b46203b35fac6361fb25f70b51cff1f45e5a9d8cf75eba",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "33a551dfa24b24fabdd29db81a94ba0bfd4f90f1b4064b162d0eb49e467cbf07",
+  "scenario_id": "SCEN-CLK-03",
+  "seed": 306
+}

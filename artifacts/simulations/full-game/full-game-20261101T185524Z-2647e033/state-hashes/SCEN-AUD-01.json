@@ -1,0 +1,88 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+    "tick_400_turn_1_resolution_start": "9fea6ed4ec68612e15b97d4d1c55343030373b08b971e512afe07debe14501e1",
+    "tick_401_final": "94392ce41b58d5a07e6e01243d9f91baef1736802f46e8921efe7cb4841629e4"
+  },
+  "contract_hash": "e2be243e84559000aba295cf85fdefbc6566a862fe4c68bc9a2da17525da2f81",
+  "final_state_hash": "94392ce41b58d5a07e6e01243d9f91baef1736802f46e8921efe7cb4841629e4",
+  "initial_state_hash": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_eligible_voters_count": true,
+      "expected_final_phase": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_hazard_countered": true,
+      "expected_obstacle_active": true,
+      "expected_roster_size": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-ACCOUNT-INFLUENCE_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "audience.counter_votes_count",
+          "audience.eligible_voters_count"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "nonnegative": true
+        },
+        "invariant_id": "INV-ACCOUNT-INFLUENCE",
+        "notes": "",
+        "observed": {
+          "counter_votes": 1,
+          "eligible": 1
+        },
+        "scenario_id": "SCEN-AUD-01",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 7,
+        "evaluator": "INV-EFFECT-ORDER_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "final_state.terminal_settlement",
+          "trace_deltas"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "status_at_or_after_deadline": "wiped"
+        },
+        "invariant_id": "INV-EFFECT-ORDER",
+        "notes": "",
+        "observed": {
+          "final_status": "racing",
+          "final_tick": 401
+        },
+        "scenario_id": "SCEN-AUD-01",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-ACCOUNT-INFLUENCE",
+      "INV-EFFECT-ORDER"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-AUD-01",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-AUD-01"
+}

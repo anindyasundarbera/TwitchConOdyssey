@@ -1,0 +1,58 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+    "tick_10_final": "280d8d8af816f8cc3799b58a205d9de38de3c43dc66968b0e084982bbca4c28c"
+  },
+  "contract_hash": "aa2720bd22bb36ed1a49af4cc48c9e663b2593411e3baab92190c621a9d08d47",
+  "final_state_hash": "280d8d8af816f8cc3799b58a205d9de38de3c43dc66968b0e084982bbca4c28c",
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_lane": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 3,
+        "evaluator": "INV-COMMAND-VAL_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "command_log.cmd.command_id",
+          "command_log.cmd.schema_version",
+          "command_log.status"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "duplicate_hazards": false
+        },
+        "invariant_id": "INV-COMMAND-VAL",
+        "notes": "",
+        "observed": {
+          "duplicate_hazards": false
+        },
+        "scenario_id": "SCEN-CTRL-04",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-COMMAND-VAL"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-CTRL-04",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-CTRL-04"
+}

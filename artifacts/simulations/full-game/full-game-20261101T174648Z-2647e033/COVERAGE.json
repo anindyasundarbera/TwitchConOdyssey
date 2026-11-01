@@ -1,0 +1,19 @@
+{
+  "covered_features": 12,
+  "environment_capabilities": {
+    "audio_observed": false,
+    "live_service_observed": false,
+    "render_observed": false
+  },
+  "failed_features": 0,
+  "failed_scenarios": 0,
+  "fully_observed_features": 12,
+  "not_observed_features": 1,
+  "partially_observed_state_only_features": 3,
+  "passed_invariants": 18,
+  "passed_scenarios": 46,
+  "state_contract_covered_features": 15,
+  "total_active_features": 16,
+  "total_invariants": 18,
+  "total_scenarios": 46
+}

@@ -1,0 +1,127 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "v_farm",
+        "command_id": "38b64d97d768542aacd30868a9a2a2721b307ece7de2f97c2aa58b5b78900ffb",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "haz_farm_1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 10
+      },
+      "state_hash": "924ff666b4cfad76a31e5fd1aac758bba601be42982d130736fe89217c50f795",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_farm",
+        "command_id": "8e76aa4bfa18c146376648f5f513ce4753423c170089f2cde76969339171d642",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_farm_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 11
+      },
+      "state_hash": "71d2b6ef50d4e4912e2cccb0a6c6202ad8fa3835c1d3136baadae9b04a057a6c",
+      "status": "applied",
+      "tick": 20,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_farm",
+        "command_id": "eecf3374f1efe2e2a08c82a6426f23c5621892dff2caab441b8b27d3e82a25f7",
+        "kind": "hazard.propose",
+        "logical_tick": 610,
+        "payload": {
+          "hazard_id": "haz_farm_2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 20
+      },
+      "state_hash": "7d3c476c27df7106fe32d1f5d9544aefa85c0428b316af9ed715c462d5038675",
+      "status": "applied",
+      "tick": 610,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_farm",
+        "command_id": "0e6dd2cec16969c111e8addb12bdb78208559194767aec85487fd0d2a38192a7",
+        "kind": "viewer.counter",
+        "logical_tick": 620,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_farm_2"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 21
+      },
+      "state_hash": "242aff6906863d43990eb1150aa89bd3136c8772947807e9dcdb2d69fde54870",
+      "status": "applied",
+      "tick": 620,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_farm",
+        "command_id": "8d3b7383cf9e2d60ce0c83de71f50b0f6a41003c4643d3cda70c6adab90d66be",
+        "kind": "hazard.propose",
+        "logical_tick": 1210,
+        "payload": {
+          "hazard_id": "haz_farm_3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 30
+      },
+      "state_hash": "90a08a0eaafa28f1cedcd7ed4b30126562c990c82428b7aed62b53ccd47940b3",
+      "status": "applied",
+      "tick": 1210,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_farm",
+        "command_id": "fc2bd11c98cdf0321c8664ed44a69722a2dd1514d9b358c9ad0b326950c11851",
+        "kind": "viewer.counter",
+        "logical_tick": 1220,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_farm_3"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 31
+      },
+      "state_hash": "033573bf9f965cda817f66dfe30708c6edb3c1f0b01dad63402f74419e9b766e",
+      "status": "applied",
+      "tick": 1220,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "0901d4f4adca19ee2ba8d2d86bcf0dadad9cfa230c35f80e5447ee677f8e4e72",
+  "final_state_hash": "a9f37b540f2b349402985f4c4dbdd1834372f2031e0e661c15d25122a2b29b28",
+  "initial_lane": 0,
+  "initial_roster": [
+    "v_farm"
+  ],
+  "initial_state_hash": "4c97450b8f463bd856b09cf8d4961e3de521ee70d5f3c566f378bfe1486852cd",
+  "scenario_id": "SCEN-REW-01",
+  "seed": 501
+}

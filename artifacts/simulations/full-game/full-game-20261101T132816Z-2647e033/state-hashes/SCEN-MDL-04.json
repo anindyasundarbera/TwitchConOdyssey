@@ -1,0 +1,35 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+    "tick_400_turn_1_resolution_start": "f5558edf886bf519c0870eb86bcebfccdd7d21fcc8837af8b5f9de23d1ef4235",
+    "tick_405_final": "ccbebb93ba48470d5e736d86e72ecdfa6d8a71e2fa97a5519b8a3d8028941015"
+  },
+  "contract_hash": "226df72ddefe13f23228472307ad2f4cad224af27fe0f64a65128d0c5f45d572",
+  "final_state_hash": "ccbebb93ba48470d5e736d86e72ecdfa6d8a71e2fa97a5519b8a3d8028941015",
+  "initial_state_hash": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_final_phase": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-COMMAND-VAL",
+      "INV-ACCOUNT-INFLUENCE"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-MDL-04",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-MDL-04"
+}

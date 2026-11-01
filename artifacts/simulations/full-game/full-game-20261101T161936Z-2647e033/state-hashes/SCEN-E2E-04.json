@@ -1,0 +1,47 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "867a323032b9e3e512fa6928cbbe7c1f9c6cbe64006c70f8a8f399667acbde86",
+    "tick_1000_turn_2_resolution_start": "f24258e053bac15f1bf087d1bf864aa49f839a8cf33d2082ecb91f96f9ad491e",
+    "tick_1100_turn_2_reward_start": "ab12895f6075351809432eb9226f8014f6a2f80cc59542ec76aa0d54fd6564aa",
+    "tick_1200_turn_3_start": "11e36dfeb925abd2972d0d8c931ddc3a04ef95c1172f1b262c093dc7a38bf33e",
+    "tick_1600_turn_3_resolution_start": "b1b32eb392349c5e8113e7313f406231a1c525a11b83f7359696431203e3c504",
+    "tick_1700_turn_3_reward_start": "f5731e18f40649fea6c9caf8019aca5c37b2da95f0ad7f08fc3cf07b836e100c",
+    "tick_1759_final": "55d800d8f497c3f1cf509041cc9ce17409b2c05bfaf6b74e6a40bca0791932a1",
+    "tick_1759_terminal_delivery": "55d800d8f497c3f1cf509041cc9ce17409b2c05bfaf6b74e6a40bca0791932a1",
+    "tick_400_turn_1_resolution_start": "397664bbfdadb90bdb66ca98b594d0c9471825a9933c8a2fbd78e3d23798dee0",
+    "tick_500_turn_1_reward_start": "41a698a4fc366759a921f60efcac9cc499b1d479e09f3c66a5ac62e975240a68",
+    "tick_600_turn_2_start": "9a0fc26e5dad8fc9db56c0779258111e1c2912c02bfe2b427fa7685b19023e51"
+  },
+  "contract_hash": "a90b106d91ac51b0f8f75046416e21a634a1895614fd9dc3955d1d6a7b831c96",
+  "final_state_hash": "55d800d8f497c3f1cf509041cc9ce17409b2c05bfaf6b74e6a40bca0791932a1",
+  "initial_state_hash": "867a323032b9e3e512fa6928cbbe7c1f9c6cbe64006c70f8a8f399667acbde86",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_applied_hotfix_version": true,
+      "expected_audio_state": true,
+      "expected_booths_visited": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_hotfix_rules": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-CREDIBILITY",
+      "INV-ENGINE-AUTH",
+      "INV-HOTFIX-SAFETY"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-E2E-04",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-E2E-04"
+}

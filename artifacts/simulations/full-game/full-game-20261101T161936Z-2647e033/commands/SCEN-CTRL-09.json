@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "user_0",
+        "command_id": "547e90eb856cae9c75b102e1e0e5ae273ec905243193c1970bfe621fb5c6394e",
+        "kind": "hazard.propose",
+        "logical_tick": 100,
+        "payload": {
+          "hazard_id": "h_same",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "38f5a903eff50c84c7e60a29f37bde4e4b382b8918148ff0ea2820526e87f434",
+      "status": "applied",
+      "tick": 100,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "0d516c5a26b0828e9097c66bc58a6c56928474b0a6bbd927351824c7421cc814",
+  "final_state_hash": "6fbb7401fd4cd3bdb04c2369424de63e4d4235abebe290810041207d9c332df9",
+  "initial_lane": 1,
+  "initial_roster": [
+    "user_0"
+  ],
+  "initial_state_hash": "ab7247f13790d4628fc5fa5f9bc16e7b9de5aed6e73725519a032c00a79daaa5",
+  "scenario_id": "SCEN-CTRL-09",
+  "seed": 210
+}

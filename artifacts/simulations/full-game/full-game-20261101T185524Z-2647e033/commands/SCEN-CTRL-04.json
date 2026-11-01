@@ -1,0 +1,65 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "e28f606242fd7623f960bd5e9c6f69d9ee2691db8c53eb5a623a4e32d5fc89fa",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "6942189e61090d3571a687bf8fb73a448da41fd8f031e22212f9e44b42401101",
+      "status": "applied",
+      "tick": 0,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "059beba7c49abcc79697b01d822bafa82e03d49cf14564d11f8b74be86ce42e3",
+        "kind": "streamer.steer",
+        "logical_tick": 1,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "651c1eaa97d1e03c140aa70bd2b61c8f11a84b8030e1c9761e87100a3ae65772",
+      "status": "rejected",
+      "tick": 1,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "c9e1e295116679cd721c0864a8b8696771657bdb502c7fc8932afce7a8dc4190",
+        "kind": "streamer.steer",
+        "logical_tick": 5,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "f073ebb8991a763cd0fd3d02ee7befd9721ec26de8a3243bd6f1c5ea0cc16d25",
+      "status": "rejected",
+      "tick": 5,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "aa2720bd22bb36ed1a49af4cc48c9e663b2593411e3baab92190c621a9d08d47",
+  "final_state_hash": "280d8d8af816f8cc3799b58a205d9de38de3c43dc66968b0e084982bbca4c28c",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "scenario_id": "SCEN-CTRL-04",
+  "seed": 204
+}

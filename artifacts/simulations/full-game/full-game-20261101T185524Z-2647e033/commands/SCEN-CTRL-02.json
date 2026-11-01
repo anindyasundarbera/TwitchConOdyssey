@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "5acf44780927d85f6bd93d2d32daa3d68fff4773f5590c99c28a69ea33694587",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "cancel"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+      "status": "applied",
+      "tick": 0,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "8c18cb756bc99a846b31872d43646759da79e4489d047e88c08c40c2aada077f",
+  "final_state_hash": "e6da2c457523097cb63da9ca6f3675605dc3848b9ad160c55c3bdcde852ed974",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "scenario_id": "SCEN-CTRL-02",
+  "seed": 202
+}

@@ -1,0 +1,123 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "290505b913400faad0532f46d953f267fb6b870b3a270fc5ecdb3a2ff71a40e2",
+    "tick_1000_turn_2_resolution_start": "f060cf33b2df939d04cd6925849ef2476885f19eb95f133313a8b7c3e7e1c990",
+    "tick_1100_turn_2_reward_start": "a66ea762b0d625e8294499fda3ae825258080121a2256933fddb60ae1e59ce1e",
+    "tick_1200_turn_3_start": "ff4eb82b4465cb92086c26ef2df57b2279e6031f630e9e33598c8f0de772bf9e",
+    "tick_1600_turn_3_resolution_start": "197ab55b7c7c6bc292af5489366f8d6c9496ac5320d8493e6768352b12ff82e2",
+    "tick_1700_turn_3_reward_start": "4e62a9fee37edc7bd8dccfb60eb1f4c5b533d286428033fd0bdeba8fe249f68c",
+    "tick_1768_final": "da9b58d1030ba1dff123b2a3092b05415555e3b183c8878c2990c509a41ed818",
+    "tick_1768_terminal_delivery": "da9b58d1030ba1dff123b2a3092b05415555e3b183c8878c2990c509a41ed818",
+    "tick_400_turn_1_resolution_start": "a375ce1df4deead3c783f5e16dabce19f9ad807accc8e1a7736b9d194874daa4",
+    "tick_500_turn_1_reward_start": "3ae0b3d3d0b8d78eb33dc03d255e7ea7f71828ae376569ed48656a3cd9a1ee80",
+    "tick_600_turn_2_start": "30310f7719e6a74a3ea4b5e6725b895c5fbf118f7e5d12b96bfb87b29646bace"
+  },
+  "contract_hash": "ed3d397a93873d91091a0db5429f3a23af1a036ecefc0495ff3df1e35b6fa7ba",
+  "final_state_hash": "da9b58d1030ba1dff123b2a3092b05415555e3b183c8878c2990c509a41ed818",
+  "initial_state_hash": "290505b913400faad0532f46d953f267fb6b870b3a270fc5ecdb3a2ff71a40e2",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_final_turn": true,
+      "expected_lane": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-SAFETY-CAPS_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "movement.match_slowdown_ticks",
+          "movement.turn_slowdown_ticks"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "max_match_slowdown": 120,
+          "max_turn_slowdown": 40
+        },
+        "invariant_id": "INV-SAFETY-CAPS",
+        "notes": "",
+        "observed": {
+          "match_slowdown": 40,
+          "turn_slowdown": 40
+        },
+        "scenario_id": "SCEN-E2E-03",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-SETTLEMENT-ONCE_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "terminal_settlement.settled_once",
+          "terminal_settlement.total_hype"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "settled_once_valid": true
+        },
+        "invariant_id": "INV-SETTLEMENT-ONCE",
+        "notes": "",
+        "observed": {
+          "settlement_present": true,
+          "status": "delivered"
+        },
+        "scenario_id": "SCEN-E2E-03",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 33,
+        "evaluator": "INV-EFFECT-ORDER_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "final_state.terminal_settlement",
+          "trace_deltas"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "status_at_or_after_deadline": "wiped"
+        },
+        "invariant_id": "INV-EFFECT-ORDER",
+        "notes": "",
+        "observed": {
+          "final_status": "delivered",
+          "final_tick": 1768
+        },
+        "scenario_id": "SCEN-E2E-03",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-SAFETY-CAPS",
+      "INV-SETTLEMENT-ONCE",
+      "INV-EFFECT-ORDER"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 60,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-E2E-03",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-E2E-03"
+}

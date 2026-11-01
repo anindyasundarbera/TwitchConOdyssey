@@ -1,0 +1,17 @@
+{
+  "count": 100000,
+  "generator_id": "viewer-fixture-v1",
+  "generator_source_path": "coordination/scenario_inputs.py",
+  "generator_source_sha256": "e3eed7ae21e7cb62a1e9bd0496f581b6a6adf93b28c01e874ee58bacc05a57af",
+  "generator_spec_sha256": "c87ef089893b5249625665630533ad7731260024e6c9b54843dbb5c9e9088600",
+  "generator_version": 1,
+  "provenance": "generated_fixture",
+  "regeneration_recipe": "from coordination.scenario_inputs import generate_viewer_corpus; generate_viewer_corpus(seed=42, count=100000)",
+  "schema_version": 1,
+  "seed": 42,
+  "sha256": "03c2ca9c12e89f7215a7918dbadcfa6ad6a36e78b9d74258033fb4d2626b2e3d",
+  "start_tick": 0,
+  "template_sha256": "4be1e60cad0c9bf18d7835604b90dc203797ba96ab651241fef1acdf83eb2e3a",
+  "tick_stride": 1,
+  "verified_regeneration_match": true
+}

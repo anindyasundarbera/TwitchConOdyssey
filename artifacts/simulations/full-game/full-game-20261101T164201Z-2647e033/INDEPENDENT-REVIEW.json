@@ -1,0 +1,73 @@
+{
+  "run_id": "full-game-20261101T164201Z-2647e033",
+  "reviewer_model": "ollama-cloud/kimi-k3",
+  "reviewer_effort": "high",
+  "configured_model": "codex_subagent/gpt-6-astra",
+  "configured_model_available": false,
+  "gate_binding": "substitute_reviewer_authorized_by_requester",
+  "configured_gate_satisfied": false,
+  "review_packet_sha256": "a84e6b5302d8586a386390f38439ecf297794914298386efc8b217b7d24d30fb",
+  "verdict": "REVISE",
+  "findings": [
+    {
+      "id": "AUDIT-01",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "AUDIT-02",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "AUDIT-03",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "AUDIT-04",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "AUDIT-05",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "AUDIT-06",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "AUDIT-07",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "AUDIT-08",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "AUDIT-09",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "F1-packet-binds-aggregates-only",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "F2-no-per-audit-issues-or-regression-scenarios",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "F3-readiness-gates-hardcoded-and-fail-open",
+      "status": "FAILED"
+    },
+    {
+      "id": "F4-plan-changelog-directive-revision-textual-staleness",
+      "status": "PARTIAL"
+    }
+  ],
+  "limitations": [
+    "Headless deterministic simulation is not live-service evidence; visual, acoustic, rendered-video and live Twitch claims remain unobserved and are honestly labeled not_observed.",
+    "Oracle pre-freeze ordering is evidenced by exclusive-write code order and hash chains, not independently observed wall-clock provenance.",
+    "Oracle evaluation shares a module with the kernel; independence rests on frozen contract hashes, forged-bundle negative tests, and this external recomputation.",
+    "This is a substitute review by kimi-k3; the configured gpt-6-astra gate is unsatisfied and ready must remain false.",
+    "SHA-256 bindings attest exact bytes only, not behavioral truth or authorization.",
+    "live_submission_external_capture unresolved; DECISION-01..04 are provisional delegated inputs, not fresh human decisions."
+  ]
+}

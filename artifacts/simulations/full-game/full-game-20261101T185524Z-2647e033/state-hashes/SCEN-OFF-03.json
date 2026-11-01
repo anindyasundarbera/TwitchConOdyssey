@@ -1,0 +1,107 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+    "tick_400_final": "3946f97ce5ecc2245509a973fc824142d2bf13fe66c19cddba71b1050eebbe0d",
+    "tick_400_turn_1_resolution_start": "3946f97ce5ecc2245509a973fc824142d2bf13fe66c19cddba71b1050eebbe0d"
+  },
+  "contract_hash": "cb66547bce034c6b03ff30d87281ea493588cc2838912db217bcec9161b60491",
+  "final_state_hash": "3946f97ce5ecc2245509a973fc824142d2bf13fe66c19cddba71b1050eebbe0d",
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_execution_mode": true,
+      "expected_final_phase": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 6,
+        "evaluator": "INV-REPLAY_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state_hash",
+          "initial_state_hash",
+          "trace_deltas"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "final_hash_matches_trace": true
+        },
+        "invariant_id": "INV-REPLAY",
+        "notes": "",
+        "observed": {
+          "final_hash_matches_trace": true
+        },
+        "scenario_id": "SCEN-OFF-03",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 6,
+        "evaluator": "INV-ENGINE-AUTH_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "command_log",
+          "trace_deltas"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "traces_recorded_gt_0": true
+        },
+        "invariant_id": "INV-ENGINE-AUTH",
+        "notes": "",
+        "observed": {
+          "traces_recorded": 6
+        },
+        "scenario_id": "SCEN-OFF-03",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 3,
+        "evaluator": "INV-COMMAND-VAL_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "command_log.cmd.command_id",
+          "command_log.cmd.schema_version",
+          "command_log.status"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "duplicate_hazards": false
+        },
+        "invariant_id": "INV-COMMAND-VAL",
+        "notes": "",
+        "observed": {
+          "duplicate_hazards": false
+        },
+        "scenario_id": "SCEN-OFF-03",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-REPLAY",
+      "INV-ENGINE-AUTH",
+      "INV-COMMAND-VAL"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-OFF-03",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-OFF-03"
+}

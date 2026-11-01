@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "run_id": "full-game-20261101T161936Z-2647e033",
+  "status": "BLOCKED_REVIEW_UNAVAILABLE",
+  "recorded_at_utc": "2026-11-01T16:22:27Z",
+  "authorization": "AUTHORIZE_COMPLETE_GAME_SIMULATION=true",
+  "required_review": {
+    "task": "plan_review",
+    "profile": "principal_review",
+    "provider": "codex_subagent",
+    "configured_model": "gpt-6-astra",
+    "configured_effort": "high",
+    "max_input_chars": 40000,
+    "compiled_packet_sha256": "662a887e85efb13bb59bc2dc5b17cb03247934f61a33e06b9b9a0bbd4b3e82db",
+    "review_packet_sha256": "215092df0ee68dfdd2a3c4eef095c7313c0274a7300812797033af644e3919c5"
+  },
+  "dispatch_attempts": [
+    {
+      "attempt": 1,
+      "boundary": "subagent (configured agent boundary)",
+      "agent": "general",
+      "requested_model": "codex_subagent/gpt-6-astra",
+      "result": "dispatch_rejected_before_inference",
+      "error_type": "tool.execution",
+      "error_message": "Model \"codex_subagent/gpt-6-astra\" is not available. Use the models tool to see what is available."
+    }
+  ],
+  "catalog_evidence": {
+    "tool": "opencode.models (all providers, all versions)",
+    "total_models_listed": 75,
+    "providers": [
+      "ollama-cloud",
+      "anthropic",
+      "google",
+      "opencode"
+    ],
+    "configured_model_present": false
+  },
+  "decision": "No retry, no escalation, no provider change and no silent model fallback. The configured plan_review model is unavailable in this environment, so no INDEPENDENT-REVIEW.md or INDEPENDENT-REVIEW.json was authored and no substitute reviewer was used. The simulator did not write a verdict.",
+  "consequences": {
+    "independent_review_exists": false,
+    "finalize_stage_run": false,
+    "development_readiness_computed": false,
+    "run_manifest_sealed": false,
+    "ready": false,
+    "submission_ready": false
+  },
+  "human_authorization_required": "A human must either restore access to the configured reviewer (plan_review -> gpt-6-astra / high) or explicitly authorize a named substitute reviewer and accept that the substitute is not the configured gate; until then ready stays false.",
+  "evidence_origin": "orchestrator_record_of_failed_dispatch"
+}

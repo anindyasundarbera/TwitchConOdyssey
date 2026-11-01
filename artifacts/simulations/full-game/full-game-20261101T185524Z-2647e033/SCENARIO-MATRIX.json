@@ -1,0 +1,3348 @@
+[
+  {
+    "category": "nominal_e2e",
+    "contract_hash": "9f7a95d875fa144186e87b3a57f8c45ba5290952fff3c2df62ebcb03e76360d5",
+    "description": "Full 3-turn San Diego journey with avoided and crowd-cleared hazards reaching Main Stage before 90s deadline",
+    "expected_oracle": {
+      "expected_booths_visited": [
+        "aws_booth",
+        "codex_booth",
+        "twitch_booth"
+      ],
+      "expected_boundary_labels": [
+        "init",
+        "turn_2_start",
+        "turn_3_start",
+        "terminal_delivery"
+      ],
+      "expected_collision_halved": false,
+      "expected_collisions_total": 0,
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1760,
+      "expected_final_turn": 3,
+      "expected_lane": 0,
+      "expected_pool": 60,
+      "expected_settlement": {
+        "audience_share_total": 30,
+        "audience_withheld": 0,
+        "eligible_voters_count": 7,
+        "per_voter_rational": "30/7",
+        "settled_once": true,
+        "status": "delivered",
+        "streamer_share": 30,
+        "total_hype": 60
+      },
+      "expected_synthetic_fixture_pool": 0
+    },
+    "features_exercised": [
+      "FEAT-01-SAN-DIEGO-ROUTE",
+      "FEAT-02-STREAMER-CONTROL",
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-04-AUDIENCE-ACCOUNTING",
+      "FEAT-05-HAZARD-AND-SURVIVAL",
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "user_0",
+      "user_1",
+      "user_2",
+      "user_3",
+      "user_4",
+      "user_5",
+      "user_6",
+      "user_7",
+      "user_8",
+      "user_9"
+    ],
+    "invariants_tested": [
+      "INV-REPLAY",
+      "INV-ENGINE-AUTH",
+      "INV-EFFECT-ORDER",
+      "INV-SETTLEMENT-ONCE",
+      "INV-MAX-TURNS",
+      "INV-HAZARD-BIND"
+    ],
+    "scenario_id": "SCEN-E2E-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 100,
+        "payload": {
+          "hazard_id": "haz_t1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 100
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 200,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 200
+      },
+      {
+        "actor_id": "user_1",
+        "kind": "hazard.propose",
+        "logical_tick": 700,
+        "payload": {
+          "hazard_id": "haz_t2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 700
+      },
+      {
+        "actor_id": "user_0",
+        "kind": "viewer.counter",
+        "logical_tick": 750,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_t2"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 750
+      },
+      {
+        "actor_id": "user_1",
+        "kind": "viewer.counter",
+        "logical_tick": 751,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_t2"
+        },
+        "provenance": "human",
+        "sequence": 5,
+        "submit_at_tick": 751
+      },
+      {
+        "actor_id": "user_2",
+        "kind": "viewer.counter",
+        "logical_tick": 752,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_t2"
+        },
+        "provenance": "human",
+        "sequence": 6,
+        "submit_at_tick": 752
+      },
+      {
+        "actor_id": "user_3",
+        "kind": "viewer.counter",
+        "logical_tick": 753,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_t2"
+        },
+        "provenance": "human",
+        "sequence": 7,
+        "submit_at_tick": 753
+      },
+      {
+        "actor_id": "user_4",
+        "kind": "viewer.counter",
+        "logical_tick": 754,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_t2"
+        },
+        "provenance": "human",
+        "sequence": 8,
+        "submit_at_tick": 754
+      },
+      {
+        "actor_id": "user_5",
+        "kind": "viewer.counter",
+        "logical_tick": 755,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_t2"
+        },
+        "provenance": "human",
+        "sequence": 9,
+        "submit_at_tick": 755
+      },
+      {
+        "actor_id": "user_6",
+        "kind": "viewer.counter",
+        "logical_tick": 756,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_t2"
+        },
+        "provenance": "human",
+        "sequence": 10,
+        "submit_at_tick": 756
+      },
+      {
+        "actor_id": "user_2",
+        "kind": "hazard.propose",
+        "logical_tick": 1300,
+        "payload": {
+          "hazard_id": "haz_t3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 20,
+        "submit_at_tick": 1300
+      }
+    ],
+    "seed": 101,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "base_speed_override": 0.5,
+    "category": "nominal_e2e",
+    "contract_hash": "914a3e7541ee2d2f0733391bded1d7eee69b367cdcf06f0a10c75e3340d36a8d",
+    "description": "Complete match wipe at exact 90s (1800-tick) deadline settling zero Hype",
+    "expected_oracle": {
+      "expected_collisions_total": 0,
+      "expected_command_statuses": [
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "wiped",
+      "expected_final_tick": 1800,
+      "expected_final_turn": 3,
+      "expected_pool": 20,
+      "expected_settlement": {
+        "audience_share_total": 0,
+        "audience_withheld": 20,
+        "reason": "deadline_reached",
+        "settled_once": true,
+        "status": "wiped",
+        "streamer_share": 0,
+        "total_hype": 0
+      }
+    },
+    "features_exercised": [
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-05-HAZARD-AND-SURVIVAL",
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "user_0",
+      "user_1"
+    ],
+    "invariants_tested": [
+      "INV-WIPE-CLEAN",
+      "INV-MAX-TURNS",
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "scenario_id": "SCEN-E2E-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 50,
+        "payload": {
+          "hazard_id": "haz_wipe_t1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 50
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 60,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 60
+      }
+    ],
+    "seed": 102,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "nominal_e2e",
+    "contract_hash": "ed3d397a93873d91091a0db5429f3a23af1a036ecefc0495ff3df1e35b6fa7ba",
+    "description": "Three hazard turns (avoided, crowd-cleared, collided) halving 60 Hype pool once to 30 at delivery",
+    "expected_oracle": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": 1,
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1768,
+      "expected_final_turn": 3,
+      "expected_lane": 1,
+      "expected_pool": 60,
+      "expected_settlement": {
+        "audience_share_total": 15,
+        "collision_halved": true,
+        "eligible_voters_count": 7,
+        "original_pool": 60,
+        "per_voter_rational": "15/7",
+        "settled_once": true,
+        "status": "delivered",
+        "streamer_share": 15,
+        "total_hype": 30
+      }
+    },
+    "features_exercised": [
+      "FEAT-01-SAN-DIEGO-ROUTE",
+      "FEAT-02-STREAMER-CONTROL",
+      "FEAT-05-HAZARD-AND-SURVIVAL",
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "user_0",
+      "user_1",
+      "user_2",
+      "user_3",
+      "user_4",
+      "user_5",
+      "user_6",
+      "user_7",
+      "user_8",
+      "user_9"
+    ],
+    "invariants_tested": [
+      "INV-SAFETY-CAPS",
+      "INV-SETTLEMENT-ONCE",
+      "INV-EFFECT-ORDER"
+    ],
+    "scenario_id": "SCEN-E2E-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 50,
+        "payload": {
+          "hazard_id": "h1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 50
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 100,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 100
+      },
+      {
+        "actor_id": "user_1",
+        "kind": "hazard.propose",
+        "logical_tick": 650,
+        "payload": {
+          "hazard_id": "h2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 650
+      },
+      {
+        "actor_id": "user_0",
+        "kind": "viewer.counter",
+        "logical_tick": 700,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h2"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 700
+      },
+      {
+        "actor_id": "user_1",
+        "kind": "viewer.counter",
+        "logical_tick": 701,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h2"
+        },
+        "provenance": "human",
+        "sequence": 5,
+        "submit_at_tick": 701
+      },
+      {
+        "actor_id": "user_2",
+        "kind": "viewer.counter",
+        "logical_tick": 702,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h2"
+        },
+        "provenance": "human",
+        "sequence": 6,
+        "submit_at_tick": 702
+      },
+      {
+        "actor_id": "user_3",
+        "kind": "viewer.counter",
+        "logical_tick": 703,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h2"
+        },
+        "provenance": "human",
+        "sequence": 7,
+        "submit_at_tick": 703
+      },
+      {
+        "actor_id": "user_4",
+        "kind": "viewer.counter",
+        "logical_tick": 704,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h2"
+        },
+        "provenance": "human",
+        "sequence": 8,
+        "submit_at_tick": 704
+      },
+      {
+        "actor_id": "user_5",
+        "kind": "viewer.counter",
+        "logical_tick": 705,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h2"
+        },
+        "provenance": "human",
+        "sequence": 9,
+        "submit_at_tick": 705
+      },
+      {
+        "actor_id": "user_6",
+        "kind": "viewer.counter",
+        "logical_tick": 706,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h2"
+        },
+        "provenance": "human",
+        "sequence": 10,
+        "submit_at_tick": 706
+      },
+      {
+        "actor_id": "user_2",
+        "kind": "hazard.propose",
+        "logical_tick": 1250,
+        "payload": {
+          "hazard_id": "h3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 20,
+        "submit_at_tick": 1250
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 1300,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "sequence": 21,
+        "submit_at_tick": 1300
+      }
+    ],
+    "seed": 103,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "nominal_e2e",
+    "contract_hash": "a580c0bfb5b5d619c0670128d2446c4509b60727f0f6db1fefb381c613841d1d",
+    "description": "Full public demo timeline visiting Twitch, Codex, and AWS/IVS booths with Bullet-Time state transition",
+    "expected_oracle": {
+      "expected_applied_hotfix_version": 1,
+      "expected_audio_state": "victory",
+      "expected_booths_visited": [
+        "aws_booth",
+        "codex_booth",
+        "twitch_booth"
+      ],
+      "expected_command_statuses": [
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1760,
+      "expected_hotfix_rules": {
+        "slowdown_duration_ticks": 40,
+        "slowdown_fraction": 0.15
+      }
+    },
+    "features_exercised": [
+      "FEAT-01-SAN-DIEGO-ROUTE",
+      "FEAT-08-CODEX-LIVE-HOTFIX",
+      "FEAT-09-TWITCH-BOOTH",
+      "FEAT-10-AWS-IVS-BOOTH",
+      "FEAT-12-BULLET-TIME-PRESENTATION",
+      "FEAT-13-ADAPTIVE-AUDIO",
+      "FEAT-15-PUBLIC-DEMO-TIMELINE"
+    ],
+    "initial_lane": 0,
+    "initial_roster": [
+      "viewer_a",
+      "viewer_b"
+    ],
+    "invariants_tested": [
+      "INV-CREDIBILITY",
+      "INV-ENGINE-AUTH",
+      "INV-HOTFIX-SAFETY"
+    ],
+    "scenario_id": "SCEN-E2E-04",
+    "scheduled_commands": [
+      {
+        "actor_id": "demo_director",
+        "kind": "presentation.bullet_time",
+        "logical_tick": 240,
+        "payload": {
+          "active": true,
+          "factor": 0.25,
+          "freeze_tick": 240
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 240
+      },
+      {
+        "actor_id": "codex_booth",
+        "kind": "booth.hotfix",
+        "logical_tick": 300,
+        "payload": {
+          "expiry_tick": 1800,
+          "patch_data": {
+            "slowdown_fraction": 0.15
+          },
+          "patch_version": 1,
+          "signature": "CODEX_BOOTH_TRUSTED_V1"
+        },
+        "provenance": "fixture",
+        "sequence": 2,
+        "submit_at_tick": 300
+      }
+    ],
+    "seed": 104,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "base_speed_override": 0.4,
+    "category": "nominal_e2e",
+    "contract_hash": "927a0432317df0befd64c4d303048a185ce1e1442f70c6be06864bfe46aa7a5f",
+    "description": "Public demo wipe variant with synthetic fixture hazard isolated from live participant pool",
+    "expected_oracle": {
+      "expected_audio_state": "wipe",
+      "expected_command_statuses": [
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "wiped",
+      "expected_final_tick": 1800,
+      "expected_pool": 0,
+      "expected_settlement": {
+        "live_participant_minted_from_fixture": false,
+        "original_pool": 0,
+        "status": "wiped",
+        "synthetic_fixture_hype_illustrated": 20,
+        "total_hype": 0
+      },
+      "expected_synthetic_fixture_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-13-ADAPTIVE-AUDIO",
+      "FEAT-15-PUBLIC-DEMO-TIMELINE"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "viewer_a"
+    ],
+    "invariants_tested": [
+      "INV-WIPE-CLEAN",
+      "INV-BOT-ISOLATION",
+      "INV-CREDIBILITY"
+    ],
+    "scenario_id": "SCEN-E2E-05",
+    "scheduled_commands": [
+      {
+        "actor_id": "fixture_driver",
+        "kind": "hazard.propose",
+        "logical_tick": 100,
+        "payload": {
+          "hazard_id": "h_demo_wipe",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 100
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 120,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 120
+      }
+    ],
+    "seed": 105,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "7f9b1c0f8ed8847beb71d67983f59c9e5c80482399ce62af260851e5df5a4f3f",
+    "description": "Three-lane geometry traversal from right lane (2) through center (1) to left lane (0)",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 25,
+      "expected_lane": 0
+    },
+    "features_exercised": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "initial_lane": 2,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-ENGINE-AUTH",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-CTRL-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 12,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 12
+      }
+    ],
+    "seed": 201,
+    "steps_to_run": 25
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "8c18cb756bc99a846b31872d43646759da79e4489d047e88c08c40c2aada077f",
+    "description": "Same-tick opposite steering inputs cancel cleanly without lateral displacement",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 5,
+      "expected_lane": 1
+    },
+    "features_exercised": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-CTRL-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "cancel"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      }
+    ],
+    "seed": 202,
+    "steps_to_run": 5
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "b27a618829d041456648d7c3f8144d977b2212f5028757fdde5f89d48af86bfc",
+    "description": "Edge lane clamping rejects left from lane 0 and right from lane 2 without wrapping",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "rejected",
+        "applied",
+        "applied",
+        "rejected"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 25,
+      "expected_lane": 2
+    },
+    "features_exercised": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "initial_lane": 0,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-CTRL-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 1,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 1
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 12,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 12
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 23,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 23
+      }
+    ],
+    "seed": 203,
+    "steps_to_run": 25
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "aa2720bd22bb36ed1a49af4cc48c9e663b2593411e3baab92190c621a9d08d47",
+    "description": "In-flight 0.5s (10-tick) transition lockout rejects overlapping steering commands",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "rejected",
+        "rejected"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 10,
+      "expected_lane": 0
+    },
+    "features_exercised": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-CTRL-04",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 1,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 1
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 5,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 5
+      }
+    ],
+    "seed": 204,
+    "steps_to_run": 10
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "e8679316f358a70fa4dbf759ef542e8bbe6fd3532ded60be8de9007ab0cc8b7b",
+    "description": "Completed steering shift holds discrete target lane without auto-repeat",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 15,
+      "expected_lane": 0
+    },
+    "features_exercised": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-CTRL-05",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      }
+    ],
+    "seed": 205,
+    "steps_to_run": 15
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "58e0b9ea8ec936ef14d5496bd74ed2e12ef6c104c433100d33e9c308f4289ff8",
+    "description": "Obstacle reachability: steering after warning onset (t=15s) clears center lane before resolution (t=20s)",
+    "expected_oracle": {
+      "expected_collisions_total": 0,
+      "expected_command_statuses": [
+        "applied",
+        "applied"
+      ],
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 460,
+      "expected_lane": 0,
+      "expected_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-05-HAZARD-AND-SURVIVAL"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "user_0"
+    ],
+    "invariants_tested": [
+      "INV-REACHABILITY",
+      "INV-HAZARD-BIND",
+      "INV-SAFETY-CAPS"
+    ],
+    "scenario_id": "SCEN-CTRL-06",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 200,
+        "payload": {
+          "hazard_id": "h_reach",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 200
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 310,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 310
+      }
+    ],
+    "seed": 206,
+    "steps_to_run": 460
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "4d515794b2c531f89a60f6aebfe0b3778e6edac0f3133f7b7ed0ac441e503ec0",
+    "description": "Collision slowdown capped at 40 ticks (2.0s) per turn with zero multi-hit stacking on a single obstacle",
+    "expected_oracle": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": 1,
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 450,
+      "expected_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-05-HAZARD-AND-SURVIVAL"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "user_0"
+    ],
+    "invariants_tested": [
+      "INV-SAFETY-CAPS",
+      "INV-HAZARD-DEPEND"
+    ],
+    "scenario_id": "SCEN-CTRL-07",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 100,
+        "payload": {
+          "hazard_id": "h_cap",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 100
+      }
+    ],
+    "seed": 207,
+    "steps_to_run": 450
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "27463abeb1ebdc19a868202bf134f2f098fa9c6abb24927ce935f64a4f774645",
+    "description": "Delivery strictly prior to tick 1800 settles delivered rather than deadline wipe",
+    "expected_oracle": {
+      "expected_collisions_total": 0,
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick_range": [
+        1758,
+        1762
+      ]
+    },
+    "features_exercised": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "initial_lane": 0,
+    "initial_progress": 99.9,
+    "initial_roster": [],
+    "initial_tick": 1758,
+    "invariants_tested": [
+      "INV-EFFECT-ORDER",
+      "INV-MAX-TURNS",
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "scenario_id": "SCEN-CTRL-08",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 1758,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 1758
+      }
+    ],
+    "seed": 208,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "control_and_safety",
+    "contract_hash": "f5a908d79f49003263a51b3be3003f8bebace2b7e55a34086cbbf5e9f6af8cff",
+    "description": "Same-tick pre-deadline collision and delivery adjudicates collision first and halves settlement once",
+    "expected_oracle": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": 1,
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 401,
+      "expected_pool": 20,
+      "expected_settlement": {
+        "audience_share_total": 0,
+        "audience_withheld": 5,
+        "collision_halved": true,
+        "original_pool": 20,
+        "settled_once": true,
+        "status": "delivered",
+        "streamer_share": 5,
+        "total_hype": 10
+      }
+    },
+    "features_exercised": [
+      "FEAT-05-HAZARD-AND-SURVIVAL",
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 1,
+    "initial_progress": 77.26,
+    "initial_roster": [
+      "user_0"
+    ],
+    "invariants_tested": [
+      "INV-EFFECT-ORDER",
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "scenario_id": "SCEN-CTRL-09",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 100,
+        "payload": {
+          "hazard_id": "h_same",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 100
+      }
+    ],
+    "seed": 210,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "phase_and_clock",
+    "contract_hash": "c28460dbbb15ecb44e0c6f19945c71f2896377bfd2046cf44a2f314a9f9d58c6",
+    "description": "Half-open hazard admission window [0, 15.0s): tick 299 applies, ticks 300 and 301 expire",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "expired",
+        "expired"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 303,
+      "expected_pool": 20,
+      "expected_warning_active": true
+    },
+    "features_exercised": [
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-05-HAZARD-AND-SURVIVAL"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "user_0"
+    ],
+    "initial_tick": 298,
+    "invariants_tested": [
+      "INV-COMMAND-VAL",
+      "INV-HAZARD-BIND"
+    ],
+    "scenario_id": "SCEN-CLK-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 299,
+        "payload": {
+          "hazard_id": "h_cut1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 299
+      },
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 300,
+        "payload": {
+          "hazard_id": "h_cut2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 300
+      },
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 301,
+        "payload": {
+          "hazard_id": "h_cut3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 301
+      }
+    ],
+    "seed": 301,
+    "steps_to_run": 5
+  },
+  {
+    "category": "phase_and_clock",
+    "contract_hash": "4e429a7efff53cc51fb9c579f483b4893a53b47773e5af4a8b886d4cec9c8b3a",
+    "description": "Half-open counter-vote window [0, 20.0s): tick 399 applies, ticks 400 and 401 expire",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "expired",
+        "expired"
+      ],
+      "expected_eligible_voters_count": 1,
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 402
+    },
+    "features_exercised": [
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "v_cnt_1",
+      "v_cnt_2"
+    ],
+    "invariants_tested": [
+      "INV-COMMAND-VAL",
+      "INV-ACCOUNT-INFLUENCE"
+    ],
+    "scenario_id": "SCEN-CLK-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "v_cnt_1",
+        "kind": "hazard.propose",
+        "logical_tick": 50,
+        "payload": {
+          "hazard_id": "h_cnt",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 50
+      },
+      {
+        "actor_id": "v_cnt_1",
+        "kind": "viewer.counter",
+        "logical_tick": 399,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_cnt"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 399
+      },
+      {
+        "actor_id": "v_cnt_2",
+        "kind": "viewer.counter",
+        "logical_tick": 400,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_cnt"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 400
+      },
+      {
+        "actor_id": "v_cnt_2",
+        "kind": "viewer.counter",
+        "logical_tick": 401,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_cnt"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 401
+      }
+    ],
+    "seed": 304,
+    "steps_to_run": 402
+  },
+  {
+    "category": "phase_and_clock",
+    "contract_hash": "d3da517aa6050d1d547918ccac2cab7bf8a9a31a2af37b99740b0f72848e6c07",
+    "description": "Late model completion arriving at tick 310 expires without warning, obstacle, or pool increment",
+    "expected_oracle": {
+      "expected_collisions_total": 0,
+      "expected_command_statuses": [
+        "expired"
+      ],
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 405,
+      "expected_obstacle_active": false,
+      "expected_pool": 0,
+      "expected_synthetic_fixture_pool": 0,
+      "expected_warning_active": false
+    },
+    "features_exercised": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "initial_tick": 305,
+    "invariants_tested": [
+      "INV-ASYNC-MODEL",
+      "INV-HAZARD-DEPEND",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-CLK-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "ai_model",
+        "kind": "hazard.propose",
+        "logical_tick": 310,
+        "payload": {
+          "hazard_id": "h_late",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 310
+      }
+    ],
+    "seed": 306,
+    "steps_to_run": 100
+  },
+  {
+    "category": "phase_and_clock",
+    "contract_hash": "d6cbc2258c4c2cab405498ab6d25ca62506d439689e912adddfea9f22f740833",
+    "description": "Phase-close boundary coincidence with operator pause freezes tick progression cleanly at tick 400",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 400,
+      "expected_is_paused": true
+    },
+    "features_exercised": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "initial_tick": 399,
+    "invariants_tested": [
+      "INV-PAUSE-CLEAN",
+      "INV-EFFECT-ORDER"
+    ],
+    "scenario_id": "SCEN-CLK-04",
+    "scheduled_commands": [
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.pause",
+        "logical_tick": 400,
+        "payload": {
+          "state": true
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 400
+      }
+    ],
+    "seed": 307,
+    "steps_to_run": 5
+  },
+  {
+    "category": "phase_and_clock",
+    "contract_hash": "495eaede376bdf862eeec92d0c4a8f63e65bde697cf068ff5f9337090d5d46ad",
+    "description": "Pause rejects gameplay commands while active and resumes without catch-up ticks",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "rejected",
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 5,
+      "expected_is_paused": false
+    },
+    "features_exercised": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-PAUSE-CLEAN",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-CLK-05",
+    "scheduled_commands": [
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.pause",
+        "logical_tick": 0,
+        "payload": {
+          "state": true
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.pause",
+        "logical_tick": 0,
+        "payload": {
+          "state": false
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 2,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 2
+      }
+    ],
+    "seed": 308,
+    "steps_to_run": 5
+  },
+  {
+    "category": "phase_and_clock",
+    "contract_hash": "aefbd685a78894a16fcd25c85bcb9a7d0854b0b49cc164d706df1128ba9cee0a",
+    "description": "Three-turn bound: match completes in Turn 3 and Turn 4 never begins",
+    "expected_oracle": {
+      "expected_boundary_labels": [
+        "init",
+        "turn_2_start",
+        "turn_3_start",
+        "terminal_delivery"
+      ],
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1760,
+      "expected_final_turn": 3,
+      "expected_lane": 1
+    },
+    "features_exercised": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "initial_lane": 0,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-MAX-TURNS"
+    ],
+    "scenario_id": "SCEN-CLK-06",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 1210,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 1210
+      }
+    ],
+    "seed": 309,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "audience_scale",
+    "contract_hash": "e2be243e84559000aba295cf85fdefbc6566a862fe4c68bc9a2da17525da2f81",
+    "description": "Small roster N=1 quorum: single eligible counter vote satisfies ceil(0.60*1)=1 and clears lane",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied"
+      ],
+      "expected_eligible_voters_count": 1,
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 401,
+      "expected_hazard_countered": true,
+      "expected_obstacle_active": false,
+      "expected_roster_size": 1
+    },
+    "features_exercised": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "user_single"
+    ],
+    "invariants_tested": [
+      "INV-ACCOUNT-INFLUENCE",
+      "INV-EFFECT-ORDER"
+    ],
+    "scenario_id": "SCEN-AUD-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_single",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "user_single",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h1"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 20
+      }
+    ],
+    "seed": 402,
+    "steps_to_run": 401
+  },
+  {
+    "category": "audience_scale",
+    "contract_hash": "5d00c5c08d0d00515ae6e52767e8bb5b4c0e84ba0b1843e8473eb085771fac71",
+    "description": "Quorum boundary N=5: 3 eligible counter votes satisfy ceil(0.60*5)=3 threshold",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_eligible_voters_count": 3,
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 401,
+      "expected_hazard_countered": true,
+      "expected_obstacle_active": false,
+      "expected_roster_size": 5
+    },
+    "features_exercised": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "u_0",
+      "u_1",
+      "u_2",
+      "u_3",
+      "u_4"
+    ],
+    "invariants_tested": [
+      "INV-ACCOUNT-INFLUENCE"
+    ],
+    "scenario_id": "SCEN-AUD-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "u_0",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h5",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "u_0",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h5"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "u_1",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h5"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 21
+      },
+      {
+        "actor_id": "u_2",
+        "kind": "viewer.counter",
+        "logical_tick": 22,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h5"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 22
+      }
+    ],
+    "seed": 404,
+    "steps_to_run": 401
+  },
+  {
+    "category": "audience_scale",
+    "contract_hash": "7be13d5b8539e447da13ba91b381da0eb0301a3308b19f2e4824aa7ed3302d48",
+    "description": "100,000-message fixture corpus evaluation: fixture hazard and counter commands never mint live Hype or human quorum",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "rejected",
+        "rejected"
+      ],
+      "expected_eligible_voters_count": 0,
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 401,
+      "expected_hazard_countered": false,
+      "expected_pool": 0,
+      "expected_synthetic_fixture_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "human_voter_0",
+      "human_voter_1"
+    ],
+    "invariants_tested": [
+      "INV-BOT-ISOLATION",
+      "INV-FIXTURE-LABEL"
+    ],
+    "scenario_id": "SCEN-AUD-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "fixture-viewer-0",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_corpus_fixture",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "fixture-viewer-1",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_corpus_fixture"
+        },
+        "provenance": "fixture",
+        "sequence": 2,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "fixture-viewer-2",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_corpus_fixture"
+        },
+        "provenance": "fixture",
+        "sequence": 3,
+        "submit_at_tick": 21
+      }
+    ],
+    "seed": 42,
+    "steps_to_run": 401
+  },
+  {
+    "category": "audience_scale",
+    "contract_hash": "b57294bdf3b5e9e94c6c708a4becc5b9d46785d9a88290687a6dd66316e91dbf",
+    "description": "Cross-channel atomic deduplication: first valid counter vote applies and second from same account is duplicate",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "duplicate"
+      ],
+      "expected_eligible_voters_count": 1,
+      "expected_final_status": "racing",
+      "expected_final_tick": 30
+    },
+    "features_exercised": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "v_cross"
+    ],
+    "invariants_tested": [
+      "INV-ACCOUNT-INFLUENCE",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-AUD-04",
+    "scheduled_commands": [
+      {
+        "actor_id": "v_cross",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_dup",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "v_cross",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_dup"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "v_cross",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_dup"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 21
+      }
+    ],
+    "seed": 405,
+    "steps_to_run": 30
+  },
+  {
+    "category": "audience_scale",
+    "contract_hash": "3e3a2e0918a2c5696771525f5b397671f6095891d8db2518e1e1e35429de62f0",
+    "description": "Mid-turn account registration deferred to Turn 2 frozen roster boundary",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "rejected",
+        "applied",
+        "applied"
+      ],
+      "expected_eligible_voters_count": 1,
+      "expected_final_status": "racing",
+      "expected_final_tick": 601,
+      "expected_final_turn": 2,
+      "expected_roster_size": 2
+    },
+    "features_exercised": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "u_init"
+    ],
+    "invariants_tested": [
+      "INV-ACCOUNT-INFLUENCE"
+    ],
+    "scenario_id": "SCEN-AUD-05",
+    "scheduled_commands": [
+      {
+        "actor_id": "u_init",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_t1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "u_late",
+        "kind": "audience.register",
+        "logical_tick": 15,
+        "payload": {
+          "account_id": "u_late"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 15
+      },
+      {
+        "actor_id": "u_late",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_t1"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "u_init",
+        "kind": "hazard.propose",
+        "logical_tick": 601,
+        "payload": {
+          "hazard_id": "h_t2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 601
+      },
+      {
+        "actor_id": "u_late",
+        "kind": "viewer.counter",
+        "logical_tick": 601,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_t2"
+        },
+        "provenance": "human",
+        "sequence": 5,
+        "submit_at_tick": 601
+      }
+    ],
+    "seed": 406,
+    "steps_to_run": 601
+  },
+  {
+    "category": "audience_scale",
+    "contract_hash": "778d9b815370515573ed07a7803c8e5bb2ae768053add2feddfbd51d71357131",
+    "description": "Unlinked human accounts and bot provenance rejected from hazard commitment and quorum voting",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "rejected",
+        "applied",
+        "rejected",
+        "rejected"
+      ],
+      "expected_eligible_voters_count": 0,
+      "expected_final_status": "racing",
+      "expected_final_tick": 30,
+      "expected_pool": 20,
+      "expected_synthetic_fixture_pool": 0
+    },
+    "features_exercised": [
+      "FEAT-04-AUDIENCE-ACCOUNTING",
+      "FEAT-16-SECURITY-AND-PROVENANCE"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "human_user"
+    ],
+    "invariants_tested": [
+      "INV-BOT-ISOLATION",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-AUD-06",
+    "scheduled_commands": [
+      {
+        "actor_id": "bot_actor",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_bot",
+          "lane": 1
+        },
+        "provenance": "bot",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "human_user",
+        "kind": "hazard.propose",
+        "logical_tick": 12,
+        "payload": {
+          "hazard_id": "h_real",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 12
+      },
+      {
+        "actor_id": "unlinked_rando",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_real"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "bot_actor",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_real"
+        },
+        "provenance": "bot",
+        "sequence": 4,
+        "submit_at_tick": 21
+      }
+    ],
+    "seed": 407,
+    "steps_to_run": 30
+  },
+  {
+    "category": "incentive_attacks",
+    "contract_hash": "0901d4f4adca19ee2ba8d2d86bcf0dadad9cfa230c35f80e5447ee677f8e4e72",
+    "description": "Safe-danger farming bounded at 20 Hype/turn and 60 Hype/match cap",
+    "expected_oracle": {
+      "expected_collisions_total": 0,
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1760,
+      "expected_pool": 60,
+      "expected_settlement": {
+        "audience_share_total": 30,
+        "eligible_voters_count": 1,
+        "per_voter_rational": "30",
+        "status": "delivered",
+        "streamer_share": 30,
+        "total_hype": 60
+      }
+    },
+    "features_exercised": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 0,
+    "initial_roster": [
+      "v_farm"
+    ],
+    "invariants_tested": [
+      "INV-HAZARD-BIND",
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "scenario_id": "SCEN-REW-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "v_farm",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "haz_farm_1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 10,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "v_farm",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_farm_1"
+        },
+        "provenance": "human",
+        "sequence": 11,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "v_farm",
+        "kind": "hazard.propose",
+        "logical_tick": 610,
+        "payload": {
+          "hazard_id": "haz_farm_2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 20,
+        "submit_at_tick": 610
+      },
+      {
+        "actor_id": "v_farm",
+        "kind": "viewer.counter",
+        "logical_tick": 620,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_farm_2"
+        },
+        "provenance": "human",
+        "sequence": 21,
+        "submit_at_tick": 620
+      },
+      {
+        "actor_id": "v_farm",
+        "kind": "hazard.propose",
+        "logical_tick": 1210,
+        "payload": {
+          "hazard_id": "haz_farm_3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 30,
+        "submit_at_tick": 1210
+      },
+      {
+        "actor_id": "v_farm",
+        "kind": "viewer.counter",
+        "logical_tick": 1220,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "haz_farm_3"
+        },
+        "provenance": "human",
+        "sequence": 31,
+        "submit_at_tick": 1220
+      }
+    ],
+    "seed": 501,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "incentive_attacks",
+    "contract_hash": "3fbe18b9696fcb295226f26f2544e1f96631d96b80a378b3c6bd57186290c885",
+    "description": "Duplicate hazard_id returns duplicate and second distinct hazard in same turn returns rejected",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "duplicate",
+        "rejected"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 25,
+      "expected_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "u1",
+      "u2"
+    ],
+    "invariants_tested": [
+      "INV-COMMAND-VAL",
+      "INV-HAZARD-BIND"
+    ],
+    "scenario_id": "SCEN-REW-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "u1",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "dup_haz",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "u2",
+        "kind": "hazard.propose",
+        "logical_tick": 11,
+        "payload": {
+          "hazard_id": "dup_haz",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 11
+      },
+      {
+        "actor_id": "u2",
+        "kind": "hazard.propose",
+        "logical_tick": 12,
+        "payload": {
+          "hazard_id": "second_haz_same_turn",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 12
+      }
+    ],
+    "seed": 502,
+    "steps_to_run": 25
+  },
+  {
+    "category": "incentive_attacks",
+    "contract_hash": "69b36398f4d67b7dd7cbf1940aa7340da467ad06b7fe0deb24385632526d039e",
+    "description": "Danger-only proposers who cast zero counter votes earn 0 audience share; audience half is withheld",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_eligible_voters_count": 0,
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1760,
+      "expected_pool": 20,
+      "expected_settlement": {
+        "audience_share_total": 0,
+        "audience_withheld": 10,
+        "eligible_voters_count": 0,
+        "per_voter_rational": "0",
+        "status": "delivered",
+        "streamer_share": 10,
+        "total_hype": 20
+      }
+    },
+    "features_exercised": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 0,
+    "initial_roster": [
+      "danger_proposer"
+    ],
+    "invariants_tested": [
+      "INV-SETTLEMENT-ONCE",
+      "INV-HAZARD-BIND"
+    ],
+    "scenario_id": "SCEN-REW-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "danger_proposer",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_do",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      }
+    ],
+    "seed": 503,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "incentive_attacks",
+    "contract_hash": "b310321d6e678c71a483c6026eae9fe88235243b934fdd945938f03fce25a5ca",
+    "description": "Multiple collisions across turns halve the final Hype pool only once before 50/50 split",
+    "expected_oracle": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": 2,
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1776,
+      "expected_pool": 40,
+      "expected_settlement": {
+        "audience_share_total": 10,
+        "audience_withheld": 0,
+        "collision_halved": true,
+        "eligible_voters_count": 1,
+        "original_pool": 40,
+        "per_voter_rational": "10",
+        "status": "delivered",
+        "streamer_share": 10,
+        "total_hype": 20
+      }
+    },
+    "features_exercised": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "v_0",
+      "v_1"
+    ],
+    "invariants_tested": [
+      "INV-SETTLEMENT-ONCE",
+      "INV-SAFETY-CAPS"
+    ],
+    "scenario_id": "SCEN-REW-04",
+    "scheduled_commands": [
+      {
+        "actor_id": "v_0",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_mc_1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "v_1",
+        "kind": "hazard.propose",
+        "logical_tick": 610,
+        "payload": {
+          "hazard_id": "h_mc_2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 610
+      },
+      {
+        "actor_id": "v_0",
+        "kind": "viewer.counter",
+        "logical_tick": 620,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_mc_2"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 620
+      }
+    ],
+    "seed": 504,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "incentive_attacks",
+    "contract_hash": "2b32467964dbb64de508451e6633a87b38cd9bbafcd56c3e867d2d1230cdb0a7",
+    "description": "Empty eligible audience at terminal delivery withholds audience share without carry or rounding redistribution",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_eligible_voters_count": 0,
+      "expected_final_status": "delivered",
+      "expected_final_tick": 36,
+      "expected_pool": 20,
+      "expected_settlement": {
+        "audience_share_total": 0,
+        "audience_withheld": 10,
+        "eligible_voters_count": 0,
+        "per_voter_rational": "0",
+        "status": "delivered",
+        "streamer_share": 10,
+        "total_hype": 20
+      }
+    },
+    "features_exercised": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 0,
+    "initial_progress": 98.0,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "scenario_id": "SCEN-REW-05",
+    "scheduled_commands": [
+      {
+        "actor_id": "user_0",
+        "kind": "hazard.propose",
+        "logical_tick": 0,
+        "payload": {
+          "hazard_id": "h_na",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      }
+    ],
+    "seed": 505,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "incentive_attacks",
+    "contract_hash": "c6da6d48bd37eb55ecc4ec10480f17471574d741174edb8fcc463099b49c6d0d",
+    "description": "Exact rational division of 30 audience Hype across 7 eligible voters (30/7) and companion 3-voter check (10)",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_eligible_voters_count": 7,
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1760,
+      "expected_pool": 60,
+      "expected_settlement": {
+        "audience_share_total": 30,
+        "audience_withheld": 0,
+        "eligible_voters_count": 7,
+        "per_voter_rational": "30/7",
+        "settled_once": true,
+        "status": "delivered",
+        "streamer_share": 30,
+        "total_hype": 60
+      }
+    },
+    "features_exercised": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "initial_lane": 0,
+    "initial_roster": [
+      "v_0",
+      "v_1",
+      "v_2",
+      "v_3",
+      "v_4",
+      "v_5",
+      "v_6"
+    ],
+    "invariants_tested": [
+      "INV-SETTLEMENT-ONCE",
+      "INV-ACCOUNT-INFLUENCE"
+    ],
+    "scenario_id": "SCEN-REW-06",
+    "scheduled_commands": [
+      {
+        "actor_id": "v_0",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_rat_1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "v_0",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "v_1",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 21
+      },
+      {
+        "actor_id": "v_2",
+        "kind": "viewer.counter",
+        "logical_tick": 22,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 22
+      },
+      {
+        "actor_id": "v_3",
+        "kind": "viewer.counter",
+        "logical_tick": 23,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "sequence": 5,
+        "submit_at_tick": 23
+      },
+      {
+        "actor_id": "v_4",
+        "kind": "viewer.counter",
+        "logical_tick": 24,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "sequence": 6,
+        "submit_at_tick": 24
+      },
+      {
+        "actor_id": "v_5",
+        "kind": "viewer.counter",
+        "logical_tick": 25,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "sequence": 7,
+        "submit_at_tick": 25
+      },
+      {
+        "actor_id": "v_6",
+        "kind": "viewer.counter",
+        "logical_tick": 26,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "sequence": 8,
+        "submit_at_tick": 26
+      },
+      {
+        "actor_id": "v_1",
+        "kind": "hazard.propose",
+        "logical_tick": 610,
+        "payload": {
+          "hazard_id": "h_rat_2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 10,
+        "submit_at_tick": 610
+      },
+      {
+        "actor_id": "v_2",
+        "kind": "hazard.propose",
+        "logical_tick": 1210,
+        "payload": {
+          "hazard_id": "h_rat_3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 11,
+        "submit_at_tick": 1210
+      }
+    ],
+    "seed": 506,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "model_failures",
+    "contract_hash": "8157dd77ea34090461b2e7f442746f086fc6de89990743756fd322b6958b7831",
+    "description": "Malformed model schema / refusal payload rejected by local validator while fallback command applies",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "rejected",
+        "applied"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 12,
+      "expected_lane": 0
+    },
+    "features_exercised": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-COMMAND-VAL",
+      "INV-ASYNC-MODEL"
+    ],
+    "scenario_id": "SCEN-MDL-01",
+    "scheduled_commands": [
+      {
+        "raw_command": {
+          "kind": "hazard.propose",
+          "payload": "not_a_dict",
+          "schema_version": 999
+        },
+        "tick": 0
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 2,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 2
+      }
+    ],
+    "seed": 601,
+    "steps_to_run": 12
+  },
+  {
+    "category": "model_failures",
+    "contract_hash": "62ab3d043ab98f1ce78d3c64c1464ccdd542b38f8fb172962d2909bc52339256",
+    "description": "Oversized actor identifier and injected envelope fields rejected before state mutation",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "rejected",
+        "rejected"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 5,
+      "expected_pool": 0
+    },
+    "features_exercised": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION",
+      "FEAT-16-SECURITY-AND-PROVENANCE"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-COMMAND-VAL",
+      "INV-ENGINE-AUTH"
+    ],
+    "scenario_id": "SCEN-MDL-02",
+    "scheduled_commands": [
+      {
+        "raw_command": {
+          "actor_id": "actor_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "command_id": "0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "hazard.propose",
+          "logical_tick": 0,
+          "payload": {
+            "hazard_id": "h_big"
+          },
+          "provenance": "human",
+          "schema_version": 1,
+          "sequence": 1
+        },
+        "tick": 0
+      },
+      {
+        "raw_command": {
+          "actor_id": "u",
+          "command_id": "0000000000000000000000000000000000000000000000000000000000000000",
+          "injected_physics": true,
+          "kind": "hazard.propose",
+          "logical_tick": 1,
+          "payload": {
+            "hazard_id": "h_inj"
+          },
+          "provenance": "human",
+          "schema_version": 1,
+          "sequence": 2
+        },
+        "tick": 1
+      }
+    ],
+    "seed": 602,
+    "steps_to_run": 5
+  },
+  {
+    "category": "model_failures",
+    "contract_hash": "d0b1a9f36c5bee2a39a324c737de48847074d6aedaef3e48619687142e3afcf8",
+    "description": "Provider latency never blocks 20 Hz ticks; late model hazard arrival after tick 300 is discarded as expired",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "expired"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 320,
+      "expected_lane": 0,
+      "expected_pool": 0,
+      "expected_synthetic_fixture_pool": 0
+    },
+    "features_exercised": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "v_async"
+    ],
+    "invariants_tested": [
+      "INV-ASYNC-MODEL",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-MDL-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 10,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "ai_adapter",
+        "kind": "hazard.propose",
+        "logical_tick": 310,
+        "payload": {
+          "hazard_id": "h_delayed",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "sequence": 2,
+        "submit_at_tick": 310
+      }
+    ],
+    "seed": 603,
+    "steps_to_run": 320
+  },
+  {
+    "category": "model_failures",
+    "contract_hash": "226df72ddefe13f23228472307ad2f4cad224af27fe0f64a65128d0c5f45d572",
+    "description": "Deterministic command validation statuses across applied, duplicate, rejected, and expired paths",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "duplicate",
+        "rejected",
+        "expired"
+      ],
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 405
+    },
+    "features_exercised": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "v_det"
+    ],
+    "invariants_tested": [
+      "INV-COMMAND-VAL",
+      "INV-ACCOUNT-INFLUENCE"
+    ],
+    "scenario_id": "SCEN-MDL-04",
+    "scheduled_commands": [
+      {
+        "actor_id": "v_det",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_det",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "v_det",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 20
+      },
+      {
+        "actor_id": "v_det",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 21
+      },
+      {
+        "actor_id": "unlinked_user",
+        "kind": "viewer.counter",
+        "logical_tick": 22,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 22
+      },
+      {
+        "actor_id": "v_det",
+        "kind": "viewer.counter",
+        "logical_tick": 405,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "sequence": 5,
+        "submit_at_tick": 405
+      }
+    ],
+    "seed": 604,
+    "steps_to_run": 405
+  },
+  {
+    "category": "offline_and_failover",
+    "contract_hash": "7d160773a7764121696ffedfe1aabcf58a895e80c001330ccae94ec4c3678b52",
+    "description": "Offline fixture driver mode at phase boundary produces identical state hashes under canonical replay",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_execution_mode": "offline_fixture",
+      "expected_final_status": "racing",
+      "expected_final_tick": 50,
+      "expected_lane": 0,
+      "expected_pool": 0,
+      "expected_synthetic_fixture_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-11-OFFLINE-FIXTURE-DRIVER"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [
+      "v_0",
+      "v_1"
+    ],
+    "invariants_tested": [
+      "INV-REPLAY",
+      "INV-FIXTURE-LABEL"
+    ],
+    "scenario_id": "SCEN-OFF-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.failover",
+        "logical_tick": 0,
+        "payload": {
+          "reason": "offline_driver_test"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "fixture_driver",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_off_1",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "sequence": 2,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "streamer",
+        "kind": "streamer.steer",
+        "logical_tick": 20,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 20
+      }
+    ],
+    "seed": 701,
+    "steps_to_run": 50
+  },
+  {
+    "category": "offline_and_failover",
+    "contract_hash": "f1da3b246585d599512f4069bdad45ee2b3e9f04a8be59768da237903fc28bf9",
+    "description": "D-06 failover boundary: mid-phase and automatic client failover rejected; stage-operator phase-close failover applied",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "rejected",
+        "rejected",
+        "applied"
+      ],
+      "expected_execution_mode": "offline_fixture",
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 403
+    },
+    "features_exercised": [
+      "FEAT-11-OFFLINE-FIXTURE-DRIVER"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "initial_tick": 398,
+    "invariants_tested": [
+      "INV-ENGINE-AUTH",
+      "INV-COMMAND-VAL",
+      "INV-FIXTURE-LABEL"
+    ],
+    "scenario_id": "SCEN-OFF-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.failover",
+        "logical_tick": 399,
+        "payload": {
+          "reason": "mid_phase_attempt"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 399
+      },
+      {
+        "actor_id": "client_auto",
+        "kind": "operator.failover",
+        "logical_tick": 400,
+        "payload": {
+          "automatic": true
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 400
+      },
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.failover",
+        "logical_tick": 400,
+        "payload": {
+          "reason": "phase_boundary_confirmed"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 400
+      }
+    ],
+    "seed": 702,
+    "steps_to_run": 5
+  },
+  {
+    "category": "offline_and_failover",
+    "contract_hash": "cb66547bce034c6b03ff30d87281ea493588cc2838912db217bcec9161b60491",
+    "description": "D-06 recovery acceptance: operator.recover at tick 400 with mismatched expected_state_hash is rejected",
+    "expected_oracle": {
+      "expected_command_statuses": [
+        "applied",
+        "rejected",
+        "rejected"
+      ],
+      "expected_execution_mode": "offline_fixture",
+      "expected_final_phase": "resolution",
+      "expected_final_status": "racing",
+      "expected_final_tick": 400
+    },
+    "features_exercised": [
+      "FEAT-11-OFFLINE-FIXTURE-DRIVER"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-REPLAY",
+      "INV-ENGINE-AUTH",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-OFF-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.failover",
+        "logical_tick": 400,
+        "payload": {
+          "reason": "network_drop"
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 400
+      },
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.recover",
+        "logical_tick": 400,
+        "payload": {
+          "expected_phase": "resolution",
+          "expected_state_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "expected_tick": 400,
+          "expected_turn": 1,
+          "health_ok": true
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 400
+      },
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.recover",
+        "logical_tick": 400,
+        "payload": {
+          "expected_state_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "health_ok": false
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 400
+      }
+    ],
+    "seed": 703,
+    "steps_to_run": 400
+  },
+  {
+    "category": "hotfix_and_booth",
+    "contract_hash": "0ed4cd095878312489eb5bd4a264c63c0e93a02f11073a1de425edff5155ac32",
+    "description": "D-07 Codex Live Hotfix Booth valid signed data patch stages in Turn 1 and activates at Turn 2 boundary",
+    "expected_oracle": {
+      "expected_applied_hotfix_version": 1,
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 601,
+      "expected_final_turn": 2,
+      "expected_hotfix_rules": {
+        "slowdown_duration_ticks": 30,
+        "slowdown_fraction": 0.15
+      }
+    },
+    "features_exercised": [
+      "FEAT-08-CODEX-LIVE-HOTFIX"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-HOTFIX-SAFETY",
+      "INV-ENGINE-AUTH"
+    ],
+    "scenario_id": "SCEN-HOT-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "codex_booth",
+        "kind": "booth.hotfix",
+        "logical_tick": 100,
+        "payload": {
+          "expiry_tick": 1800,
+          "patch_data": {
+            "slowdown_duration_ticks": 30,
+            "slowdown_fraction": 0.15
+          },
+          "patch_version": 1,
+          "signature": "CODEX_BOOTH_TRUSTED_V1"
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 100
+      }
+    ],
+    "seed": 704,
+    "steps_to_run": 601
+  },
+  {
+    "category": "hotfix_and_booth",
+    "contract_hash": "817cf22c7a6dbb7e37af2b5885943d73b5d7ced876a74dcee69b2bb5d67ec4a5",
+    "description": "D-07 hotfix safety: disallowed keys, out-of-range slowdown, untrusted signer, and mid-turn rollback rejected",
+    "expected_oracle": {
+      "expected_applied_hotfix_version": 0,
+      "expected_command_statuses": [
+        "rejected",
+        "rejected",
+        "rejected",
+        "rejected"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 20,
+      "expected_hotfix_rules": {
+        "slowdown_duration_ticks": 40,
+        "slowdown_fraction": 0.2
+      }
+    },
+    "features_exercised": [
+      "FEAT-08-CODEX-LIVE-HOTFIX"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-HOTFIX-SAFETY",
+      "INV-SAFETY-CAPS",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-HOT-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "attacker",
+        "kind": "booth.hotfix",
+        "logical_tick": 5,
+        "payload": {
+          "patch_data": {
+            "hp_system": true
+          },
+          "patch_version": 1,
+          "signature": "TRUSTED_CODEX_KEY"
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 5
+      },
+      {
+        "actor_id": "attacker",
+        "kind": "booth.hotfix",
+        "logical_tick": 6,
+        "payload": {
+          "patch_data": {
+            "slowdown_fraction": 0.5
+          },
+          "patch_version": 1,
+          "signature": "TRUSTED_CODEX_KEY"
+        },
+        "provenance": "fixture",
+        "sequence": 2,
+        "submit_at_tick": 6
+      },
+      {
+        "actor_id": "attacker",
+        "kind": "booth.hotfix",
+        "logical_tick": 7,
+        "payload": {
+          "patch_data": {
+            "slowdown_fraction": 0.1
+          },
+          "patch_version": 1,
+          "signature": "UNTRUSTED_KEY"
+        },
+        "provenance": "fixture",
+        "sequence": 3,
+        "submit_at_tick": 7
+      },
+      {
+        "actor_id": "stage_operator",
+        "kind": "operator.rollback_hotfix",
+        "logical_tick": 8,
+        "payload": {},
+        "provenance": "human",
+        "sequence": 4,
+        "submit_at_tick": 8
+      }
+    ],
+    "seed": 705,
+    "steps_to_run": 20
+  },
+  {
+    "category": "hotfix_and_booth",
+    "contract_hash": "f02eeeed3ab62cbb7ab031ff44395698e024fe779a7c370dafbebf6666488e8d",
+    "description": "Twitch Booth waypoint at progress 35.0% activates forcefield metaphor without minting live Hype from fixtures",
+    "expected_oracle": {
+      "expected_booths_visited": [
+        "twitch_booth"
+      ],
+      "expected_command_statuses": [
+        "applied"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 10,
+      "expected_pool": 0,
+      "expected_synthetic_fixture_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-09-TWITCH-BOOTH",
+      "FEAT-01-SAN-DIEGO-ROUTE"
+    ],
+    "initial_lane": 1,
+    "initial_progress": 34.9,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-CREDIBILITY",
+      "INV-BOT-ISOLATION"
+    ],
+    "scenario_id": "SCEN-HOT-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "fixture_actor",
+        "kind": "hazard.propose",
+        "logical_tick": 0,
+        "payload": {
+          "hazard_id": "h_twitch_booth",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 0
+      }
+    ],
+    "seed": 706,
+    "steps_to_run": 10
+  },
+  {
+    "category": "hotfix_and_booth",
+    "contract_hash": "ce0f52413058278d6c5c6da98ab792484d2351b5cc98121958b0df55ab8cf249",
+    "description": "AWS/IVS Booth waypoint at progress 80.0% applies bounded +10% scale boost and rejects >40-tick duration",
+    "expected_oracle": {
+      "expected_booths_subset": [
+        "aws_booth"
+      ],
+      "expected_command_statuses": [
+        "applied",
+        "rejected"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 15
+    },
+    "features_exercised": [
+      "FEAT-10-AWS-IVS-BOOTH",
+      "FEAT-01-SAN-DIEGO-ROUTE"
+    ],
+    "initial_lane": 1,
+    "initial_progress": 79.9,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-CREDIBILITY",
+      "INV-SAFETY-CAPS"
+    ],
+    "scenario_id": "SCEN-HOT-04",
+    "scheduled_commands": [
+      {
+        "actor_id": "aws_booth",
+        "kind": "booth.boost",
+        "logical_tick": 2,
+        "payload": {
+          "duration_ticks": 20
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 2
+      },
+      {
+        "actor_id": "aws_booth",
+        "kind": "booth.boost",
+        "logical_tick": 3,
+        "payload": {
+          "duration_ticks": 999
+        },
+        "provenance": "fixture",
+        "sequence": 2,
+        "submit_at_tick": 3
+      }
+    ],
+    "seed": 707,
+    "steps_to_run": 15
+  },
+  {
+    "category": "presentation_and_audio",
+    "contract_hash": "1e78813f782b13cfdf5b5e2a13db9cae44010ef4bcc73be37875ec44b189931c",
+    "description": "Bullet-Time presentation state activates without stopping authoritative 20 Hz ticks; invalid factor rejected",
+    "expected_oracle": {
+      "expected_audio_state": "bullet_time",
+      "expected_command_statuses": [
+        "applied",
+        "rejected"
+      ],
+      "expected_final_status": "racing",
+      "expected_final_tick": 10
+    },
+    "features_exercised": [
+      "FEAT-12-BULLET-TIME-PRESENTATION"
+    ],
+    "initial_lane": 1,
+    "initial_roster": [],
+    "invariants_tested": [
+      "INV-ENGINE-AUTH",
+      "INV-COMMAND-VAL"
+    ],
+    "scenario_id": "SCEN-PRS-01",
+    "scheduled_commands": [
+      {
+        "actor_id": "presentation_director",
+        "kind": "presentation.bullet_time",
+        "logical_tick": 0,
+        "payload": {
+          "active": true,
+          "factor": 0.25,
+          "freeze_tick": 0
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 0
+      },
+      {
+        "actor_id": "presentation_director",
+        "kind": "presentation.bullet_time",
+        "logical_tick": 1,
+        "payload": {
+          "active": true,
+          "factor": 2.5
+        },
+        "provenance": "fixture",
+        "sequence": 2,
+        "submit_at_tick": 1
+      }
+    ],
+    "seed": 801,
+    "steps_to_run": 10
+  },
+  {
+    "category": "presentation_and_audio",
+    "contract_hash": "63be41779ee038712ee3d60ec6233be6d161ecd1210b9d98feeaee8573594a76",
+    "description": "Adaptive audio state machine transitions across warning (crisis), quorum clear (solution), and delivery (victory)",
+    "expected_oracle": {
+      "expected_audio_state": "victory",
+      "expected_command_statuses": [
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick_range": [
+        401,
+        415
+      ],
+      "expected_hazard_countered": true,
+      "expected_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-13-ADAPTIVE-AUDIO"
+    ],
+    "initial_lane": 0,
+    "initial_progress": 77.0,
+    "initial_roster": [
+      "v_aud"
+    ],
+    "invariants_tested": [
+      "INV-CREDIBILITY",
+      "INV-EFFECT-ORDER"
+    ],
+    "scenario_id": "SCEN-PRS-02",
+    "scheduled_commands": [
+      {
+        "actor_id": "v_aud",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_aud",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "v_aud",
+        "kind": "viewer.counter",
+        "logical_tick": 310,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_aud"
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 310
+      }
+    ],
+    "seed": 802,
+    "steps_to_run": "until_terminal_or_deadline"
+  },
+  {
+    "category": "presentation_and_audio",
+    "contract_hash": "1925188012a9dd6d3959d7e92bd9d33cc0a373d46505118ece7c27e59a697520",
+    "description": "Truthful claims and provenance audit: fixture hazard and booth triggers never mint live participant Hype",
+    "expected_oracle": {
+      "expected_booths_visited": [
+        "aws_booth",
+        "codex_booth",
+        "twitch_booth"
+      ],
+      "expected_command_statuses": [
+        "applied",
+        "applied",
+        "applied"
+      ],
+      "expected_final_status": "delivered",
+      "expected_final_tick": 1760,
+      "expected_pool": 20,
+      "expected_settlement": {
+        "audience_share_total": 10,
+        "audience_withheld": 0,
+        "eligible_voters_count": 1,
+        "live_participant_minted": false,
+        "live_participant_minted_from_fixture": false,
+        "original_pool": 20,
+        "per_voter_rational": "10",
+        "settled_once": true,
+        "status": "delivered",
+        "streamer_share": 10,
+        "synthetic_fixture_hype_illustrated": 20,
+        "total_hype": 20
+      },
+      "expected_synthetic_fixture_pool": 20
+    },
+    "features_exercised": [
+      "FEAT-15-PUBLIC-DEMO-TIMELINE",
+      "FEAT-16-SECURITY-AND-PROVENANCE"
+    ],
+    "initial_lane": 0,
+    "initial_roster": [
+      "human_viewer"
+    ],
+    "invariants_tested": [
+      "INV-CREDIBILITY",
+      "INV-BOT-ISOLATION",
+      "INV-FIXTURE-LABEL"
+    ],
+    "scenario_id": "SCEN-PRS-03",
+    "scheduled_commands": [
+      {
+        "actor_id": "fixture_driver",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_prs_fixture",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "sequence": 1,
+        "submit_at_tick": 10
+      },
+      {
+        "actor_id": "human_viewer",
+        "kind": "hazard.propose",
+        "logical_tick": 610,
+        "payload": {
+          "hazard_id": "h_prs_human",
+          "lane": 1
+        },
+        "provenance": "human",
+        "sequence": 2,
+        "submit_at_tick": 610
+      },
+      {
+        "actor_id": "human_viewer",
+        "kind": "viewer.counter",
+        "logical_tick": 620,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_prs_human"
+        },
+        "provenance": "human",
+        "sequence": 3,
+        "submit_at_tick": 620
+      }
+    ],
+    "seed": 803,
+    "steps_to_run": "until_terminal_or_deadline"
+  }
+]

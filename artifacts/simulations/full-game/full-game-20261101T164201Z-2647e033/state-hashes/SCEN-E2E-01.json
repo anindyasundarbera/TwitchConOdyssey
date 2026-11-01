@@ -1,0 +1,55 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "290505b913400faad0532f46d953f267fb6b870b3a270fc5ecdb3a2ff71a40e2",
+    "tick_1000_turn_2_resolution_start": "f95325264e2bfff6c1649383a5d3932a20fd1eec937ee54a6d267800ce21ee7a",
+    "tick_1100_turn_2_reward_start": "e106f1be603bece48abd52baa36869cdd6845286e19126f9e0a38b9ef1d90b44",
+    "tick_1200_turn_3_start": "ff4eb82b4465cb92086c26ef2df57b2279e6031f630e9e33598c8f0de772bf9e",
+    "tick_1600_turn_3_resolution_start": "e29cf3c3d6a57d88ca465c2d412cfd361d272049a179549071351c07d54d5a87",
+    "tick_1700_turn_3_reward_start": "3e94fe8f9b72e61c3b7cefa853f268ce6d611820c40ab2acfa08604c623a074c",
+    "tick_1759_final": "5e7c32e9ec752e2bcf07cacb8345753fda730edfb88e04be4614c31d3f162460",
+    "tick_1759_terminal_delivery": "5e7c32e9ec752e2bcf07cacb8345753fda730edfb88e04be4614c31d3f162460",
+    "tick_400_turn_1_resolution_start": "a5b6686febb26237d2008204124edb731d84629552447fabbb3f34fa2f9e5046",
+    "tick_500_turn_1_reward_start": "120de3d931380a7425d9e7c5751e97cfd279f753a9bc4c355cdc724275fdaf43",
+    "tick_600_turn_2_start": "30310f7719e6a74a3ea4b5e6725b895c5fbf118f7e5d12b96bfb87b29646bace"
+  },
+  "contract_hash": "d4a9d1cf7f759f3fa0fac86ceb323f07771136082416041ab11e9dafb403c54f",
+  "final_state_hash": "5e7c32e9ec752e2bcf07cacb8345753fda730edfb88e04be4614c31d3f162460",
+  "initial_state_hash": "290505b913400faad0532f46d953f267fb6b870b3a270fc5ecdb3a2ff71a40e2",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_booths_visited": true,
+      "expected_boundary_labels": true,
+      "expected_collision_halved": true,
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_final_turn": true,
+      "expected_lane": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "expected_synthetic_fixture_pool": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-REPLAY",
+      "INV-ENGINE-AUTH",
+      "INV-EFFECT-ORDER",
+      "INV-SETTLEMENT-ONCE",
+      "INV-MAX-TURNS",
+      "INV-HAZARD-BIND"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 60,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-E2E-01",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-E2E-01"
+}

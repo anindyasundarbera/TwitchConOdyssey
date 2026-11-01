@@ -1,0 +1,14 @@
+[
+  {
+    "agent_role": "Independent Evidence Reviewer",
+    "model": "gpt-6-astra",
+    "provider": "codex_subagent",
+    "reasoning_effort": "high",
+    "configured_model": "gpt-6-astra",
+    "configured_gate_satisfied": true,
+    "subagent_conversation_id": "/root/r6_astra_review",
+    "evidence_origin": "independent_subagent_review",
+    "output_sha256": "937dd798395976881dcd30a38c5c3719fa4429e0e82c09f1ab18aabd2dd6e6fa",
+    "verdict": "REVISE"
+  }
+]

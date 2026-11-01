@@ -1,0 +1,86 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "6f62ffbf14775b9cc33ed637a0b1223a47123eca5bfca886e0f2c735700ef36d",
+    "tick_400_turn_1_resolution_start": "71576665126dfcc9c7311fa494e29540580f2d3fb2586b6fb08b63563406753d",
+    "tick_405_final": "3c78afb30a7003a9c11092d928dfbaaa70253f1ff1981b8f7f1057977a5e1c67",
+    "tick_405_terminal_delivery": "3c78afb30a7003a9c11092d928dfbaaa70253f1ff1981b8f7f1057977a5e1c67"
+  },
+  "contract_hash": "63be41779ee038712ee3d60ec6233be6d161ecd1210b9d98feeaee8573594a76",
+  "final_state_hash": "3c78afb30a7003a9c11092d928dfbaaa70253f1ff1981b8f7f1057977a5e1c67",
+  "initial_state_hash": "6f62ffbf14775b9cc33ed637a0b1223a47123eca5bfca886e0f2c735700ef36d",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_audio_state": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick_range": true,
+      "expected_hazard_countered": true,
+      "expected_pool": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 11,
+        "evaluator": "INV-CREDIBILITY_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state_hash",
+          "trace_deltas.state_hash"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "trace_head_matches": true
+        },
+        "invariant_id": "INV-CREDIBILITY",
+        "notes": "",
+        "observed": {
+          "trace_head_matches": true
+        },
+        "scenario_id": "SCEN-PRS-02",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 11,
+        "evaluator": "INV-EFFECT-ORDER_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "final_state.terminal_settlement",
+          "trace_deltas"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "status_at_or_after_deadline": "wiped"
+        },
+        "invariant_id": "INV-EFFECT-ORDER",
+        "notes": "",
+        "observed": {
+          "final_status": "delivered",
+          "final_tick": 405
+        },
+        "scenario_id": "SCEN-PRS-02",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-CREDIBILITY",
+      "INV-EFFECT-ORDER"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-PRS-02",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-PRS-02"
+}

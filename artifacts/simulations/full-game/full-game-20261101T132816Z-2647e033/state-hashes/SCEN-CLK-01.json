@@ -1,0 +1,36 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "1fee8515b05025b6de62fc7de095e4fc43221a3ee2dde91adb87faa36e3149f9",
+    "tick_298_init": "1fee8515b05025b6de62fc7de095e4fc43221a3ee2dde91adb87faa36e3149f9",
+    "tick_303_final": "acfa2fea68ca496259cb6d0e52104c9e2c855f643dfb466f9622a2d07d3cca40"
+  },
+  "contract_hash": "c28460dbbb15ecb44e0c6f19945c71f2896377bfd2046cf44a2f314a9f9d58c6",
+  "final_state_hash": "acfa2fea68ca496259cb6d0e52104c9e2c855f643dfb466f9622a2d07d3cca40",
+  "initial_state_hash": "1fee8515b05025b6de62fc7de095e4fc43221a3ee2dde91adb87faa36e3149f9",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "expected_warning_active": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-COMMAND-VAL",
+      "INV-HAZARD-BIND"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-CLK-01",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-CLK-01"
+}

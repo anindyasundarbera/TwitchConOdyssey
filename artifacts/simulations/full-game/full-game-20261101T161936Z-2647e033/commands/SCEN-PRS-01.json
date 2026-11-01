@@ -1,0 +1,50 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "presentation_director",
+        "command_id": "2b2921b98c96dec90501c60e88d143bd6fe06ef6e8cfd36b7ea9c08909d65591",
+        "kind": "presentation.bullet_time",
+        "logical_tick": 0,
+        "payload": {
+          "active": true,
+          "factor": 0.25,
+          "freeze_tick": 0
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "d14f2d76fdd1e7da072540a23819205b30874a7761cb3bf0d1c795328eec5792",
+      "status": "applied",
+      "tick": 0,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "presentation_director",
+        "command_id": "97da9e3a42a5c41ab4449f4e7f53af41b17fac01bf619ae5e3c4c637b725dd49",
+        "kind": "presentation.bullet_time",
+        "logical_tick": 1,
+        "payload": {
+          "active": true,
+          "factor": 2.5
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "f34f2d7e8b50e20d9afef06c5dbff0502a5fde1afe976b3656718f1313e2c798",
+      "status": "rejected",
+      "tick": 1,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "1e78813f782b13cfdf5b5e2a13db9cae44010ef4bcc73be37875ec44b189931c",
+  "final_state_hash": "e7e8c025f96700f03a2ee5bd793d9384d0b2e9596d978a3eb67d3b5f711b9f43",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "scenario_id": "SCEN-PRS-01",
+  "seed": 801
+}

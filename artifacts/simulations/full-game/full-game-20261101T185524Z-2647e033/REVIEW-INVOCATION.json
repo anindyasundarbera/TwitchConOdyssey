@@ -1,0 +1,37 @@
+{
+  "verdict": "READY",
+  "configured_model": "gpt-6-astra",
+  "configured_effort": "high",
+  "configured_provider": "codex_subagent",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_effort": "high",
+  "reviewer_provider": "codex_subagent",
+  "configured_model_available": true,
+  "configured_gate_satisfied": true,
+  "gate_binding": "configured_gate",
+  "evidence_origin": "independent_subagent_review",
+  "subagent_conversation_id": "2d17a3bb-4dc0-4aab-a523-9808954b5762",
+  "packet_hash": "a9339b7cf897211bea5ca94f77a36942ab758a35f1e17d450caac09fb4697cca",
+  "review_packet_sha256": "a9339b7cf897211bea5ca94f77a36942ab758a35f1e17d450caac09fb4697cca",
+  "prompt_sha256": "e228de3bd0277fb7bed534d7d7ae9144055a72b2b789ae80bc04c8835e24cef6",
+  "schema_version": 2,
+  "run_id": "full-game-20261101T185524Z-2647e033",
+  "authored_by": "coordination.review_boundary",
+  "evidence_root_sha256": "cf355b27b84b79ad7ebd0ca7ff129e64779af792d9bda1e5276e60514238ce1d",
+  "independent_review_sha256": "1e67eca3cdf9ea3acd0a7bd6d5426dcf208d0086bc1a3b2ae97ad9b675e0cc37",
+  "independent_review_json_sha256": "bbc62499d5778e17ba0ef2853e43da3190b050e72457420fbabeb31db966bdbd",
+  "model_usage": [
+    {
+      "agent_role": "Independent Evidence Reviewer",
+      "model": "gpt-6-astra",
+      "provider": "codex_subagent",
+      "reasoning_effort": "high",
+      "configured_model": "gpt-6-astra",
+      "configured_gate_satisfied": true,
+      "subagent_conversation_id": "2d17a3bb-4dc0-4aab-a523-9808954b5762",
+      "evidence_origin": "independent_subagent_review",
+      "output_sha256": "1e67eca3cdf9ea3acd0a7bd6d5426dcf208d0086bc1a3b2ae97ad9b675e0cc37",
+      "verdict": "READY"
+    }
+  ]
+}

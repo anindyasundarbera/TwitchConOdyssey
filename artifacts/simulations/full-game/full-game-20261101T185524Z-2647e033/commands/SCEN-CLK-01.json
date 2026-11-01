@@ -1,0 +1,70 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "user_0",
+        "command_id": "5e0a4b7a9972135542e7ca161af810f27b183725b051668a3523ae1f2d7fe9a6",
+        "kind": "hazard.propose",
+        "logical_tick": 299,
+        "payload": {
+          "hazard_id": "h_cut1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "ad08d7dd8ab53bfc83c0f47a23369d31909576a84c8ae6993fad89768b7bc7f3",
+      "status": "applied",
+      "tick": 299,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "user_0",
+        "command_id": "559890f3724f6d96ff96ee264fa32627e4263238b9ec2970446ee486226cae5e",
+        "kind": "hazard.propose",
+        "logical_tick": 300,
+        "payload": {
+          "hazard_id": "h_cut2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "8aefc447d1447572a2e51072019a686c2bddf5cbf02b1bbc8aae6faf99e6aa4a",
+      "status": "expired",
+      "tick": 300,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "user_0",
+        "command_id": "05fb75356ba093041b8e43b049f0be10502466bf656117f5de7d8f8cdd049b21",
+        "kind": "hazard.propose",
+        "logical_tick": 301,
+        "payload": {
+          "hazard_id": "h_cut3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "bf2d99c932f4b811154c0892ecdf047c9e8b6e501f1099a3a2309996650b0414",
+      "status": "expired",
+      "tick": 301,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "c28460dbbb15ecb44e0c6f19945c71f2896377bfd2046cf44a2f314a9f9d58c6",
+  "final_state_hash": "acfa2fea68ca496259cb6d0e52104c9e2c855f643dfb466f9622a2d07d3cca40",
+  "initial_lane": 1,
+  "initial_roster": [
+    "user_0"
+  ],
+  "initial_state_hash": "1fee8515b05025b6de62fc7de095e4fc43221a3ee2dde91adb87faa36e3149f9",
+  "scenario_id": "SCEN-CLK-01",
+  "seed": 301
+}

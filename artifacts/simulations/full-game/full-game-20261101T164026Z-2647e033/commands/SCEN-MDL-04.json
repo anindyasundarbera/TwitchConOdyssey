@@ -1,0 +1,108 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "v_det",
+        "command_id": "77c2faef94bb441dad3a8d2fa45eb3fa31b76da4c156603cc7fdeec89de9e7e2",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_det",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "045eb04659cae39e8ea6f21760056a7b4fd2f7097cb537d6dfbe836a44e5243f",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_det",
+        "command_id": "5d3dc77a2bfff66ceac65fa161af1333c922f435f4cd42ab9aefcc71134a3249",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "3bc80e8b94ef9dbad476358b5c84e9ba84695f95114652c12c50ac76b91027f1",
+      "status": "applied",
+      "tick": 20,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_det",
+        "command_id": "781839ebda8a2cbbe4d1e98206c7e5f4bd40a00b1601376858d67129aa0cdfa0",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "059c64ae7990d0a0f348739bd85a2435924990d40d9ea0a70b9e547b63ff1873",
+      "status": "duplicate",
+      "tick": 21,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "unlinked_user",
+        "command_id": "24e141218f33ab8f335f2486f46615af3f7c3593acdf1768e4340de52a3d0743",
+        "kind": "viewer.counter",
+        "logical_tick": 22,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 4
+      },
+      "state_hash": "87aa9b8b71e4bd1c3f64a3addaf234d30f462e6e205457d620af528bee267e36",
+      "status": "rejected",
+      "tick": 22,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_det",
+        "command_id": "c1091ca96cdb6a5e7c16d4a8d7bb93db26a5805b0372c671fdb268eac5a09d41",
+        "kind": "viewer.counter",
+        "logical_tick": 405,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_det"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 5
+      },
+      "state_hash": "ccbebb93ba48470d5e736d86e72ecdfa6d8a71e2fa97a5519b8a3d8028941015",
+      "status": "expired",
+      "tick": 405,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "226df72ddefe13f23228472307ad2f4cad224af27fe0f64a65128d0c5f45d572",
+  "final_state_hash": "ccbebb93ba48470d5e736d86e72ecdfa6d8a71e2fa97a5519b8a3d8028941015",
+  "initial_lane": 1,
+  "initial_roster": [
+    "v_det"
+  ],
+  "initial_state_hash": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+  "scenario_id": "SCEN-MDL-04",
+  "seed": 604
+}

@@ -1,0 +1,65 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "stage_operator",
+        "command_id": "2e524ceb3dfe0927db7db49e5fa17c65fbc1c77d9450dc8b1f388604a7191af1",
+        "kind": "operator.failover",
+        "logical_tick": 399,
+        "payload": {
+          "reason": "mid_phase_attempt"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "ac6e1b207e23ffbb05df6096ba33ca9a5daacb1d721531b93688afa770eb89cd",
+      "status": "rejected",
+      "tick": 399,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "client_auto",
+        "command_id": "8803021041bdf0144eaf0e9e57ec184b9fba766bfb78b97bdcf9c886231362ac",
+        "kind": "operator.failover",
+        "logical_tick": 400,
+        "payload": {
+          "automatic": true
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "9a142ce94cb35041937dcaa8c0740252a1dee20a31afd6dc34b56bdbb6874d58",
+      "status": "rejected",
+      "tick": 400,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "stage_operator",
+        "command_id": "0898b20d0d1e0e463111206178d4cc3cfd9f6685b1979e2fa6226441ac885a9d",
+        "kind": "operator.failover",
+        "logical_tick": 400,
+        "payload": {
+          "reason": "phase_boundary_confirmed"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "9a142ce94cb35041937dcaa8c0740252a1dee20a31afd6dc34b56bdbb6874d58",
+      "status": "applied",
+      "tick": 400,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "f1da3b246585d599512f4069bdad45ee2b3e9f04a8be59768da237903fc28bf9",
+  "final_state_hash": "3a6133742fca020f84bf072261408c66c45c3b25b87c3bb7b68a33a9f3cad5b9",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "09222b57c9a9e3091bb6ec3f07876644ddcaa719b7fe92b1cfee74868b08f0de",
+  "scenario_id": "SCEN-OFF-02",
+  "seed": 702
+}

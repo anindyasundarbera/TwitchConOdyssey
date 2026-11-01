@@ -1,0 +1,71 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "fixture-viewer-0",
+        "command_id": "19bc35b7962cd1d9c50abe7124b033516720b62b55f10c096d9ab1f729166e2f",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_corpus_fixture",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "76dda33a70c890d4217a80f5a93f380817992d8459b6739eda969600e3b1cd05",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "fixture-viewer-1",
+        "command_id": "524e2998c6fc4b8231e306197b868ae7593e35f363bd4fa94559bfea711f4ea6",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_corpus_fixture"
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "288a35815473b6652073d5c30699016870caf1b15db7524cb24138d2b4b6be88",
+      "status": "rejected",
+      "tick": 20,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "fixture-viewer-2",
+        "command_id": "886fb1660d58eea54648bd41efb513ff4650c9c0e4c0e7c0642c355b21c89157",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_corpus_fixture"
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "c1c23c005c186adc70471b4ec053d075bff50f202c73146b936e552e56078132",
+      "status": "rejected",
+      "tick": 21,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "7be13d5b8539e447da13ba91b381da0eb0301a3308b19f2e4824aa7ed3302d48",
+  "final_state_hash": "4d23eccc0ca763dac80271e96044aafd46b1628ff33631cab65658cfbd78bfc9",
+  "initial_lane": 1,
+  "initial_roster": [
+    "human_voter_0",
+    "human_voter_1"
+  ],
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "scenario_id": "SCEN-AUD-03",
+  "seed": 42
+}

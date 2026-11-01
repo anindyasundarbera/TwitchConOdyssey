@@ -1,0 +1,62 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "81cf8ad318e121223ee775b98383d0ffcb769730b06090544acd61ce68d2c258",
+    "tick_36_final": "948833d4a88022e9174bc0345b3a889d860aee2524a357b036d9be96030533f8",
+    "tick_36_terminal_delivery": "948833d4a88022e9174bc0345b3a889d860aee2524a357b036d9be96030533f8"
+  },
+  "contract_hash": "2b32467964dbb64de508451e6633a87b38cd9bbafcd56c3e867d2d1230cdb0a7",
+  "final_state_hash": "948833d4a88022e9174bc0345b3a889d860aee2524a357b036d9be96030533f8",
+  "initial_state_hash": "81cf8ad318e121223ee775b98383d0ffcb769730b06090544acd61ce68d2c258",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_eligible_voters_count": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-SETTLEMENT-ONCE_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "terminal_settlement.settled_once",
+          "terminal_settlement.total_hype"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "settled_once_valid": true
+        },
+        "invariant_id": "INV-SETTLEMENT-ONCE",
+        "notes": "",
+        "observed": {
+          "settlement_present": true,
+          "status": "delivered"
+        },
+        "scenario_id": "SCEN-REW-05",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-SETTLEMENT-ONCE"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-REW-05",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-REW-05"
+}

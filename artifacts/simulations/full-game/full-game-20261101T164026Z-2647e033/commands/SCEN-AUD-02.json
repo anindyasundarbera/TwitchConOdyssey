@@ -1,0 +1,93 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "u_0",
+        "command_id": "cad89978fdd70f93207334383f83e19ddca1966bc266e88e2b4d3efa28415f2f",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h5",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "fe012ee92e7453b43ed2e1654ecf8e68341526d35be02c6da948df5001d94b83",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "u_0",
+        "command_id": "1fd4dda727c258e81aa361a8ad22b1711b690d4c10e971557cd7d01fcdb62f3c",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h5"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "0439961f4e8364999504c9abadc6930c95d41f7f50aaa2e6489bbc7bef42632f",
+      "status": "applied",
+      "tick": 20,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "u_1",
+        "command_id": "e9f86675a6e040e13dac2c68a29c4bf7e4b3d1b1353e1c5ec018194808c5e5d6",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h5"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "650e12d40e12ce444084fc4fdc02bdf2a67125bdd27ea5d4d0955c656fd826b7",
+      "status": "applied",
+      "tick": 21,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "u_2",
+        "command_id": "8c2086c6add2ee82edc312aee51bbc0d987e1ba79d45c9a56c292d9a4b6d326f",
+        "kind": "viewer.counter",
+        "logical_tick": 22,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h5"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 4
+      },
+      "state_hash": "15bfa7c40671a2820de2fce2ee8d1b18fe890167a9b0b3494a880e4c8a7acf3d",
+      "status": "applied",
+      "tick": 22,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "5d00c5c08d0d00515ae6e52767e8bb5b4c0e84ba0b1843e8473eb085771fac71",
+  "final_state_hash": "f1d6eacd78c4868078a45b3feb648dea4ac5d5e9b25cdd083558d0d8a34bfa3b",
+  "initial_lane": 1,
+  "initial_roster": [
+    "u_0",
+    "u_1",
+    "u_2",
+    "u_3",
+    "u_4"
+  ],
+  "initial_state_hash": "8a7a562bcb53b9f1edb007719406acad819425f5e1d5facb77a1a3ca9bb12278",
+  "scenario_id": "SCEN-AUD-02",
+  "seed": 404
+}

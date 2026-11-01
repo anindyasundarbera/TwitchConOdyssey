@@ -1,0 +1,33 @@
+[
+  {
+    "agent_role": "Simulation Orchestrator",
+    "model": "deterministic_kernel",
+    "reasoning_effort": "none",
+    "packet_characters": 0,
+    "packet_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "purpose": "Authoritative fixed-step simulation execution",
+    "output_artifact": "results/SCENARIO-RESULTS.jsonl",
+    "evidence_origin": "deterministic_simulation",
+    "status": "completed"
+  },
+  {
+    "agent_role": "Independent Evidence Reviewer (disclosed substitute)",
+    "model": "ollama-cloud/kimi-k3",
+    "configured_model": "gpt-6-astra",
+    "configured_model_available": false,
+    "gate_binding": "substitute_reviewer_authorized_by_requester",
+    "configured_gate_satisfied": false,
+    "reasoning_effort": "high",
+    "subagent_conversation_id": "ses_e68026c21ffepFXZHltDsqDuum",
+    "packet_characters": 1235,
+    "packet_hash": "cead19c10493e5a920b4c7712ca30cb05a1a3a5e5d51286084c707aa6d5d302f",
+    "review_packet_sha256": "a84e6b5302d8586a386390f38439ecf297794914298386efc8b217b7d24d30fb",
+    "prompt_sha256": "a84e6b5302d8586a386390f38439ecf297794914298386efc8b217b7d24d30fb",
+    "purpose": "Independent version-bound review gate",
+    "output_artifact": "INDEPENDENT-REVIEW.md",
+    "output_sha256": "268dcabeca8beef5b64686150a246f106e74a65c1c70186dea775ba6a5d47ae6",
+    "evidence_origin": "independent_subagent_review",
+    "verdict": "REVISE",
+    "status": "completed"
+  }
+]

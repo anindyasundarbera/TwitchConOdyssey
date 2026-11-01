@@ -1,0 +1,209 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "v_0",
+        "command_id": "d13ef4c49a3401f4dc595043581c40144651cadde0ed73127aabf5b5034ce201",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_rat_1",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "967bd59ceba83cfedc683077c454b19bcadf7400e6dc5ad38f04358affc5d265",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_0",
+        "command_id": "0fbccc7234db09da7bcb857ce0188f520a6911b0b6846544a60a77cc13930d3b",
+        "kind": "viewer.counter",
+        "logical_tick": 20,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "31794157af098280dc8930e8a296146dacb8dd04cef754a79ebd6d8a298f42e2",
+      "status": "applied",
+      "tick": 20,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_1",
+        "command_id": "67f6cb4f4c4f182ce4970a76c71ea5a5d1121670a59afb1a4c20a761755c03a4",
+        "kind": "viewer.counter",
+        "logical_tick": 21,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "a934b2124b2084099da103c11cc027bad24b95359a07fc808d01e2a0e5ff8a79",
+      "status": "applied",
+      "tick": 21,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_2",
+        "command_id": "50b80334341500398405a816108c0705a7ce311d0d426b2d9b8e3f4e076d5e1d",
+        "kind": "viewer.counter",
+        "logical_tick": 22,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 4
+      },
+      "state_hash": "6b7c05d1a22eb275d414217b1923175a55c9eaa9f03f94cb85f814605c57c652",
+      "status": "applied",
+      "tick": 22,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_3",
+        "command_id": "ecebf17e1abc1e8341e9f45451cfa9dd2286152d3c8e29a0dbfc6ddc89ac3373",
+        "kind": "viewer.counter",
+        "logical_tick": 23,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 5
+      },
+      "state_hash": "8af41dfffeaa5b72918d73c97f4a04d164d66dc10ef7a33334189990fb11a565",
+      "status": "applied",
+      "tick": 23,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_4",
+        "command_id": "b5bb7f921d3b11efa5475a102b75388f7721796a4c234e830ed6e8bf839dfaef",
+        "kind": "viewer.counter",
+        "logical_tick": 24,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 6
+      },
+      "state_hash": "ad34ecf255b8a36d6b06b9a3baf4bc5c2b0d1c927c0709c61f0bf8f4b2e3eb6e",
+      "status": "applied",
+      "tick": 24,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_5",
+        "command_id": "93646bbf9e68f13a184bf1ea9c2f2dfb48ee48ea04eee003da769d85267ca5bd",
+        "kind": "viewer.counter",
+        "logical_tick": 25,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 7
+      },
+      "state_hash": "378949a2b7b5e61efeb67f1de3a6d3553b1184ccf02c6bceaea907b85d150808",
+      "status": "applied",
+      "tick": 25,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_6",
+        "command_id": "83d30c9cbe8c1d374cf8295d0fd4b720e1eda7ff34f22b001450d263d6f17d95",
+        "kind": "viewer.counter",
+        "logical_tick": 26,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_rat_1"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 8
+      },
+      "state_hash": "218a2ef1676d9db04954497799cbf8ae2893e7311b1b07c141d740a0da05fcee",
+      "status": "applied",
+      "tick": 26,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_1",
+        "command_id": "e7e4244a76d1f45d019ddc6bbcacf93e4fcf2da9670cdca3e0214d1d1350d290",
+        "kind": "hazard.propose",
+        "logical_tick": 610,
+        "payload": {
+          "hazard_id": "h_rat_2",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 10
+      },
+      "state_hash": "6106dc30e8078cafbb7621b521f09cacf6c602f7124b6a754bdeae0b3fe38b72",
+      "status": "applied",
+      "tick": 610,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_2",
+        "command_id": "4f595b8e815c5c8f993240eb4d76a67a765a7994e6cf5eacf05f901a7b1f3e2e",
+        "kind": "hazard.propose",
+        "logical_tick": 1210,
+        "payload": {
+          "hazard_id": "h_rat_3",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 11
+      },
+      "state_hash": "6e47bd1c861e0e674fb382a060da6b07139e10177faa812dd3b912706e79c0e1",
+      "status": "applied",
+      "tick": 1210,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "c6da6d48bd37eb55ecc4ec10480f17471574d741174edb8fcc463099b49c6d0d",
+  "final_state_hash": "be8e851f2c7fa77b42ac936e47b075af47026152153baeefd51d4101bb783b49",
+  "initial_lane": 0,
+  "initial_roster": [
+    "v_0",
+    "v_1",
+    "v_2",
+    "v_3",
+    "v_4",
+    "v_5",
+    "v_6"
+  ],
+  "initial_state_hash": "be0ca8e3e8d5324560bc7d8f5d03635f902fff2985eede1dbb21f929e83bbb25",
+  "scenario_id": "SCEN-REW-06",
+  "seed": 506
+}

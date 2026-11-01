@@ -1,0 +1,90 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "v_cnt_1",
+        "command_id": "136b334ec62f4e0fd7c746f713a95357b0334a527b92834efbd2a9843afee573",
+        "kind": "hazard.propose",
+        "logical_tick": 50,
+        "payload": {
+          "hazard_id": "h_cnt",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "a0e8f8ac4cb587944a2dae1c7e32a1ee04b9c72a813aaa5eca288179b05f9740",
+      "status": "applied",
+      "tick": 50,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_cnt_1",
+        "command_id": "df6704b71f3bebe76bc064b2a0dbb5de98b6c4472b2eed65417a7f0257d58b75",
+        "kind": "viewer.counter",
+        "logical_tick": 399,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_cnt"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "4c2ff8fdbfa35d3c79e28f8c3f9e14871fe1a4fccac965eec033838d4e1d9848",
+      "status": "applied",
+      "tick": 399,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_cnt_2",
+        "command_id": "6819fb574263cab03040ea598ad2db4db091c835ae69298cae6b37156271d182",
+        "kind": "viewer.counter",
+        "logical_tick": 400,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_cnt"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "e83d264e1a6a36e67e6dfa8a5cc8e472902a079352c857089b5462f5b4515386",
+      "status": "expired",
+      "tick": 400,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "v_cnt_2",
+        "command_id": "5b1f1098eb1afe260391f6c12841d398bee28b08902ec5327d9975ad73058272",
+        "kind": "viewer.counter",
+        "logical_tick": 401,
+        "payload": {
+          "counter": "clear_lane",
+          "hazard_id": "h_cnt"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 4
+      },
+      "state_hash": "0de154fc74d3be16432eafd502eab563771349e33246929b93c6df29bb7dfe6b",
+      "status": "expired",
+      "tick": 401,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "4e429a7efff53cc51fb9c579f483b4893a53b47773e5af4a8b886d4cec9c8b3a",
+  "final_state_hash": "e4648a4239ad905872305f01885c2cae0ab87e2ec3e2bc734b282dc97170f6a3",
+  "initial_lane": 1,
+  "initial_roster": [
+    "v_cnt_1",
+    "v_cnt_2"
+  ],
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "scenario_id": "SCEN-CLK-02",
+  "seed": 304
+}

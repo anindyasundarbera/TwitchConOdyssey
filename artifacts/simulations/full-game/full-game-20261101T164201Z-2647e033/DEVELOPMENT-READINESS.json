@@ -1,0 +1,38 @@
+{
+  "blocking_issues_count": 0,
+  "candidate_gameplan_json_hash": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147",
+  "candidate_plan_hash": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+  "candidate_plan_revision": 5,
+  "failed_gates": [
+    "independent_review_uses_configured_gate",
+    "review_verdict_is_ready"
+  ],
+  "gates": {
+    "all_18_invariants_passed": true,
+    "all_46_scenarios_passed": true,
+    "all_46_traces_substantive": true,
+    "all_s0_s1_blocking_s2_issues_closed": true,
+    "candidate_plan_hash_bound_and_matches": true,
+    "candidate_plan_revision_is_5": true,
+    "corpus_hash_valid": true,
+    "feature_coverage_honestly_derived": true,
+    "golden_replay_verified": true,
+    "independent_review_uses_configured_gate": false,
+    "independent_review_verified": true,
+    "no_unresolved_blocking_decisions": true,
+    "review_verdict_is_ready": false
+  },
+  "independent_review_verified": true,
+  "ready": false,
+  "required_work_packages_order": [
+    "WP-01-core-engine-implementation",
+    "WP-02-hud-and-mobile-presentation",
+    "WP-03-twitch-extension-linking",
+    "WP-04-codex-booth-telemetry",
+    "WP-05-submission-demo-pipeline"
+  ],
+  "review_verdict": "REVISE",
+  "simulation_and_plan_ready": false,
+  "submission_ready": false,
+  "unresolved_human_decisions": []
+}

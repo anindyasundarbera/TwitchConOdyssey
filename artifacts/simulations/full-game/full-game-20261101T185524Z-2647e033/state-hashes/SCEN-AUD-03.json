@@ -1,0 +1,89 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+    "tick_400_turn_1_resolution_start": "1357d51992e8f7cc0e8fe7ab49e4d7e0a2709431f58322b350f4d1c28574f8f2",
+    "tick_401_final": "583a461183407ae78b32700ac1db9d7da7c24253bba8708a25ca5e52a6f29f8c"
+  },
+  "contract_hash": "7be13d5b8539e447da13ba91b381da0eb0301a3308b19f2e4824aa7ed3302d48",
+  "final_state_hash": "583a461183407ae78b32700ac1db9d7da7c24253bba8708a25ca5e52a6f29f8c",
+  "initial_state_hash": "343f7d35f77a4d987f12e8056b6cd76db7def40fabc67115839bbb8ff0e3a00b",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_eligible_voters_count": true,
+      "expected_final_phase": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_hazard_countered": true,
+      "expected_pool": true,
+      "expected_synthetic_fixture_pool": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 3,
+        "evaluator": "INV-BOT-ISOLATION_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "bounty.pool",
+          "bounty.synthetic_fixture_pool",
+          "command_log.provenance",
+          "command_log.status"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "bot_applied": 0,
+          "expected_pool": 0
+        },
+        "invariant_id": "INV-BOT-ISOLATION",
+        "notes": "",
+        "observed": {
+          "bot_applied": 0,
+          "observed_pool": 0
+        },
+        "scenario_id": "SCEN-AUD-03",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 3,
+        "evaluator": "INV-FIXTURE-LABEL_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "bounty.synthetic_fixture_pool",
+          "command_log.provenance"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "fixture_pool_credited": true
+        },
+        "invariant_id": "INV-FIXTURE-LABEL",
+        "notes": "",
+        "observed": {
+          "fixture_pool_credited": true
+        },
+        "scenario_id": "SCEN-AUD-03",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-BOT-ISOLATION",
+      "INV-FIXTURE-LABEL"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 20,
+    "scenario_id": "SCEN-AUD-03",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-AUD-03"
+}

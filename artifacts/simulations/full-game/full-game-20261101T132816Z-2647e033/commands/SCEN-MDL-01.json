@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "kind": "hazard.propose",
+        "payload": "not_a_dict",
+        "schema_version": 999
+      },
+      "state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+      "status": "rejected",
+      "tick": 0,
+      "valid_envelope": false
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "bd41c325e95558a4fee610292b26d879cfa29e0a39d95a84d255e8a8c36764b8",
+        "kind": "streamer.steer",
+        "logical_tick": 2,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "eb1c40b59af2500e9333c5cce3862cbbfdd26d09b754ae1f1388cdcd13e93f3c",
+      "status": "applied",
+      "tick": 2,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "8157dd77ea34090461b2e7f442746f086fc6de89990743756fd322b6958b7831",
+  "final_state_hash": "37a3c9f11d1e2b4ea16c72ebfa25ce538f54db8b2e861b0bdff434c08728b92c",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "6b2fcd82eec1544e42857374b76d2ff7f7701ce2199f6021293d837acdff9170",
+  "scenario_id": "SCEN-MDL-01",
+  "seed": 601
+}

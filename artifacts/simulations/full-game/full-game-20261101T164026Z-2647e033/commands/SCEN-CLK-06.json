@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "d8db4435e5d5c621e18eb14e074552e0b830546d32c3885ac9fb854dfd29079a",
+        "kind": "streamer.steer",
+        "logical_tick": 1210,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "4e0ae49345a63b28129fab847bc60e01f12b3bcb8da878c17126609bb4f11880",
+      "status": "applied",
+      "tick": 1210,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "8fc81d97c08222f5fd121ee42a3519577e2768eaa8491f33c54f6113886ff0a7",
+  "final_state_hash": "32ce9e111dc11386120aee36789840293613d4c0273a1e5cc1b5bf14300d60dd",
+  "initial_lane": 0,
+  "initial_roster": [],
+  "initial_state_hash": "9fe7a88a3c69850ae3dd99ec07e3a8b94f701614d295cec5245a85598b74728d",
+  "scenario_id": "SCEN-CLK-06",
+  "seed": 309
+}

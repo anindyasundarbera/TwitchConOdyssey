@@ -1,0 +1,38 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "09222b57c9a9e3091bb6ec3f07876644ddcaa719b7fe92b1cfee74868b08f0de",
+    "tick_398_init": "09222b57c9a9e3091bb6ec3f07876644ddcaa719b7fe92b1cfee74868b08f0de",
+    "tick_400_turn_1_resolution_start": "9a142ce94cb35041937dcaa8c0740252a1dee20a31afd6dc34b56bdbb6874d58",
+    "tick_403_final": "3a6133742fca020f84bf072261408c66c45c3b25b87c3bb7b68a33a9f3cad5b9"
+  },
+  "contract_hash": "f1da3b246585d599512f4069bdad45ee2b3e9f04a8be59768da237903fc28bf9",
+  "final_state_hash": "3a6133742fca020f84bf072261408c66c45c3b25b87c3bb7b68a33a9f3cad5b9",
+  "initial_state_hash": "09222b57c9a9e3091bb6ec3f07876644ddcaa719b7fe92b1cfee74868b08f0de",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_execution_mode": true,
+      "expected_final_phase": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-ENGINE-AUTH",
+      "INV-COMMAND-VAL",
+      "INV-FIXTURE-LABEL"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-OFF-02",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-OFF-02"
+}

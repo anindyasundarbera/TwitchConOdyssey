@@ -1,0 +1,50 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "fixture_driver",
+        "command_id": "5eb9d44eb1905b57b63b2dd4967643ce32e93c6c98d1c35a662e81698b433a96",
+        "kind": "hazard.propose",
+        "logical_tick": 100,
+        "payload": {
+          "hazard_id": "h_demo_wipe",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "ef16e64acffaf60bc97114f5b130fc73da47b6e47376824d9453f91d9b5af6da",
+      "status": "applied",
+      "tick": 100,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "9f1e2ca2567bccf5ec48412a64bde331b75a6af1373550e6a064a35be411e42c",
+        "kind": "streamer.steer",
+        "logical_tick": 120,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "a91227aee495c6672c29c36d362e1279692f502a083ccf2a7fb27866da433cd7",
+      "status": "applied",
+      "tick": 120,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "927a0432317df0befd64c4d303048a185ce1e1442f70c6be06864bfe46aa7a5f",
+  "final_state_hash": "edfd28941821c4f56b1886eb29618b5a339274888dc448369981e7e2016b5310",
+  "initial_lane": 1,
+  "initial_roster": [
+    "viewer_a"
+  ],
+  "initial_state_hash": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+  "scenario_id": "SCEN-E2E-05",
+  "seed": 105
+}

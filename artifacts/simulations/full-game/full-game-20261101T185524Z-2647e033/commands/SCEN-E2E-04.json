@@ -1,0 +1,57 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "demo_director",
+        "command_id": "0d86ccfac7063340d07a4afc5aa078a28b5ba144f9e04d1a0b4c5196d36e7a48",
+        "kind": "presentation.bullet_time",
+        "logical_tick": 240,
+        "payload": {
+          "active": true,
+          "factor": 0.25,
+          "freeze_tick": 240
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "25974a34393c84a79f2e7109c04bbf538db0fd483b055cd0e99c3353dfef84cb",
+      "status": "applied",
+      "tick": 240,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "codex_booth",
+        "command_id": "cbdbeaef5e32ee8fa1af29281c3e6854067ff29cce1937348970c06216ac1a33",
+        "kind": "booth.hotfix",
+        "logical_tick": 300,
+        "payload": {
+          "expiry_tick": 1800,
+          "patch_data": {
+            "slowdown_fraction": 0.15
+          },
+          "patch_version": 1,
+          "signature": "CODEX_BOOTH_TRUSTED_V1"
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "b22ab9175d606825b379e0fa6262a2dea8298391c25edf6f1c572f5380047a7c",
+      "status": "applied",
+      "tick": 300,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "a580c0bfb5b5d619c0670128d2446c4509b60727f0f6db1fefb381c613841d1d",
+  "final_state_hash": "619063c2863be6c51ef15a09465b35174dc7947818e9f5da992d496f681e0ac9",
+  "initial_lane": 0,
+  "initial_roster": [
+    "viewer_a",
+    "viewer_b"
+  ],
+  "initial_state_hash": "867a323032b9e3e512fa6928cbbe7c1f9c6cbe64006c70f8a8f399667acbde86",
+  "scenario_id": "SCEN-E2E-04",
+  "seed": 104
+}

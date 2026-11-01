@@ -1,0 +1,142 @@
+[
+  {
+    "affected_features": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "affected_invariants": [
+      "INV-COMMAND-VAL"
+    ],
+    "affected_scenarios": [
+      "SCEN-CTRL-03",
+      "SCEN-CTRL-04"
+    ],
+    "alternatives_considered": [
+      "Input queueing during active transition",
+      "Wrap-around lane movement"
+    ],
+    "blocks_development": false,
+    "blocks_report_review": false,
+    "blocks_simulation_validity": false,
+    "category": "plan",
+    "deterministic_reproduction_command": "python3 -m unittest tests.test_full_game_simulation -v",
+    "evidence_hashes": {
+      "coordination/full_game_simulator.py": "9e57674c85db144c7edfa846de22552a059b31d18a35f68601f16162d83bd09d",
+      "docs/planning/DECISIONS.md": "639bebcaba808e75697641fd5810b7f2e7e130f4bf4b63eb690259892fcf81f1",
+      "docs/planning/GAMEPLAN-v2.md": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+      "docs/planning/gameplan-v2.json": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147"
+    },
+    "evidence_paths": [
+      "coordination/full_game_simulator.py",
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/DECISIONS.md"
+    ],
+    "expected_behavior": "Input during active 10-tick transition is rejected; edge movement clamped to lanes [0, 2] without wrapping",
+    "issue_id": "ISSUE-SIM-01",
+    "observed_behavior": "Revision 4 baseline plan did not specify whether steering requests during an in-flight 0.5s transition queue, overwrite, or reject",
+    "proposed_remediation": "Synchronized in Revision 5 (DECISION-04 / D-01): inputs during an active 10-tick transition are rejected; edge moves fail closed",
+    "remediation_owner": "Principal Simulation Orchestrator",
+    "resolution_hash": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+    "root_cause": "plan",
+    "root_cause_confidence": "high",
+    "severity": "S2",
+    "status": "closed",
+    "title": "Unspecified edge-clamping and transition lockout during 0.5s steering shift"
+  },
+  {
+    "affected_features": [
+      "FEAT-01-SAN-DIEGO-ROUTE",
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "affected_invariants": [
+      "INV-MAX-TURNS",
+      "INV-EFFECT-ORDER",
+      "INV-SAFETY-CAPS"
+    ],
+    "affected_scenarios": [
+      "SCEN-E2E-01",
+      "SCEN-E2E-03",
+      "SCEN-CTRL-08"
+    ],
+    "alternatives_considered": [
+      "Dynamic route distance shortening",
+      "Extending active deadline grace period"
+    ],
+    "blocks_development": false,
+    "blocks_report_review": false,
+    "blocks_simulation_validity": false,
+    "category": "plan",
+    "deterministic_reproduction_command": "python3 -m unittest tests.test_full_game_simulation -v",
+    "evidence_hashes": {
+      "coordination/full_game_simulator.py": "9e57674c85db144c7edfa846de22552a059b31d18a35f68601f16162d83bd09d",
+      "docs/planning/DECISIONS.md": "639bebcaba808e75697641fd5810b7f2e7e130f4bf4b63eb690259892fcf81f1",
+      "docs/planning/GAMEPLAN-v2.md": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+      "docs/planning/gameplan-v2.json": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147"
+    },
+    "evidence_paths": [
+      "coordination/full_game_simulator.py",
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/DECISIONS.md"
+    ],
+    "expected_behavior": "Streamer at nominal free speed (100/88 units/s) reaches finish at 88.0s nominal and 89.2s with max 3 collisions (< 90.0s deadline)",
+    "issue_id": "ISSUE-SIM-02",
+    "observed_behavior": "Revision 4 baseline plan left nominal free speed unspecified, risking inadvertent wipe on full-clear runs",
+    "proposed_remediation": "Synchronized in Revision 5 (DECISION-04 / D-02 & D-05): calibrate base speed to exact rational 100/88 units/s across the 100.0-unit 5-district San Diego route",
+    "remediation_owner": "Principal Simulation Orchestrator",
+    "resolution_hash": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+    "root_cause": "plan",
+    "root_cause_confidence": "high",
+    "severity": "S2",
+    "status": "closed",
+    "title": "Missing nominal route speed and progress calibration relative to 90s deadline"
+  },
+  {
+    "affected_features": [
+      "FEAT-01-SAN-DIEGO-ROUTE",
+      "FEAT-08-CODEX-LIVE-HOTFIX",
+      "FEAT-09-TWITCH-BOOTH",
+      "FEAT-10-AWS-IVS-BOOTH"
+    ],
+    "affected_invariants": [
+      "INV-CREDIBILITY",
+      "INV-ENGINE-AUTH"
+    ],
+    "affected_scenarios": [
+      "SCEN-E2E-04",
+      "SCEN-HOT-01",
+      "SCEN-HOT-03",
+      "SCEN-HOT-04",
+      "SCEN-PRS-03"
+    ],
+    "alternatives_considered": [
+      "Turn-number-based booth triggers independent of route progress",
+      "Omitting booth progress waypoints from deterministic simulation"
+    ],
+    "blocks_development": false,
+    "blocks_report_review": false,
+    "blocks_simulation_validity": false,
+    "category": "plan",
+    "deterministic_reproduction_command": "python3 -m unittest tests.test_full_game_simulation -v",
+    "evidence_hashes": {
+      "coordination/full_game_simulator.py": "9e57674c85db144c7edfa846de22552a059b31d18a35f68601f16162d83bd09d",
+      "docs/planning/DECISIONS.md": "639bebcaba808e75697641fd5810b7f2e7e130f4bf4b63eb690259892fcf81f1",
+      "docs/planning/GAMEPLAN-v2.md": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+      "docs/planning/gameplan-v2.json": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147"
+    },
+    "evidence_paths": [
+      "coordination/full_game_simulator.py",
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/DECISIONS.md"
+    ],
+    "expected_behavior": "Diegetic booths trigger deterministically at progress 35.0% (twitch_booth), 60.0% (codex_booth), 80.0% (aws_booth), and 100.0% (fictional_main_stage)",
+    "issue_id": "ISSUE-SIM-03",
+    "observed_behavior": "Revision 4 baseline plan named the diegetic booths and districts without binding exact route progress percentages in the machine-readable specification",
+    "proposed_remediation": "Synchronized in Revision 5 (DECISION-04 / D-09): bind diegetic booth waypoints at 35.0%, 60.0%, 80.0%, and 100.0% progress across GAMEPLAN-v2.md, gameplan-v2.json, and S1-SIMULATION-PROFILE.md",
+    "remediation_owner": "Principal Simulation Orchestrator",
+    "resolution_hash": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
+    "root_cause": "plan",
+    "root_cause_confidence": "high",
+    "severity": "S2",
+    "status": "closed",
+    "title": "Unspecified diegetic booth progress waypoints and bounded effect triggers along San Diego route"
+  }
+]

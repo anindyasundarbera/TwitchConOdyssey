@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "danger_proposer",
+        "command_id": "d3c9caa015783a6d15f357b7b4561e1b43af90a647856b060518f398d68d6b03",
+        "kind": "hazard.propose",
+        "logical_tick": 10,
+        "payload": {
+          "hazard_id": "h_do",
+          "lane": 1
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "799dc0e23e546f628f11eb09e764d30855025451c921f54c6d4c0a659ad5cba9",
+      "status": "applied",
+      "tick": 10,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "69b36398f4d67b7dd7cbf1940aa7340da467ad06b7fe0deb24385632526d039e",
+  "final_state_hash": "61f9c9577e5d2ee1f6c7a83614be2ea34cd97ef50f2597743f92c61f131ab6f6",
+  "initial_lane": 0,
+  "initial_roster": [
+    "danger_proposer"
+  ],
+  "initial_state_hash": "4c97450b8f463bd856b09cf8d4961e3de521ee70d5f3c566f378bfe1486852cd",
+  "scenario_id": "SCEN-REW-03",
+  "seed": 503
+}

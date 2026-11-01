@@ -1,0 +1,83 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "e28f606242fd7623f960bd5e9c6f69d9ee2691db8c53eb5a623a4e32d5fc89fa",
+        "kind": "streamer.steer",
+        "logical_tick": 0,
+        "payload": {
+          "direction": "left"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "9fe7a88a3c69850ae3dd99ec07e3a8b94f701614d295cec5245a85598b74728d",
+      "status": "rejected",
+      "tick": 0,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "059beba7c49abcc79697b01d822bafa82e03d49cf14564d11f8b74be86ce42e3",
+        "kind": "streamer.steer",
+        "logical_tick": 1,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 2
+      },
+      "state_hash": "ac3ee641da00ab4cf91b032c2f62e90b37b35184678a81953a4e77ebed9da3cb",
+      "status": "applied",
+      "tick": 1,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "9735a81d5d947d3c6f3ceb49877371501d1e0623b987830598c61be8ec28696c",
+        "kind": "streamer.steer",
+        "logical_tick": 12,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 3
+      },
+      "state_hash": "fa807731019640a4dd21b2ecfbe1107ed52c346f642b28aac5839f637b06216e",
+      "status": "applied",
+      "tick": 12,
+      "valid_envelope": true
+    },
+    {
+      "cmd": {
+        "actor_id": "streamer",
+        "command_id": "e7305ec9ff0b6b8cb5dc7fd8d8a8a7f1c9aa530a2e1fe3a125f3d5b119d37a02",
+        "kind": "streamer.steer",
+        "logical_tick": 23,
+        "payload": {
+          "direction": "right"
+        },
+        "provenance": "human",
+        "schema_version": 1,
+        "sequence": 4
+      },
+      "state_hash": "2fae04702820e8fdbada704379781c687cf5970d7e66c7cefc10d2784386cabe",
+      "status": "rejected",
+      "tick": 23,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "b27a618829d041456648d7c3f8144d977b2212f5028757fdde5f89d48af86bfc",
+  "final_state_hash": "b9c08c6e46f59884af6aa53d4052ac38e18d2272ea7a88e7d9c18453e1812fa2",
+  "initial_lane": 0,
+  "initial_roster": [],
+  "initial_state_hash": "9fe7a88a3c69850ae3dd99ec07e3a8b94f701614d295cec5245a85598b74728d",
+  "scenario_id": "SCEN-CTRL-03",
+  "seed": 203
+}

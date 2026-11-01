@@ -1,0 +1,110 @@
+[
+  {
+    "invariant_id": "INV-REPLAY",
+    "name": "Deterministic replay produces identical canonical final and boundary hashes",
+    "evaluations_count": 4,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-ENGINE-AUTH",
+    "name": "Engine alone owns physics and state mutation; models/fixtures cannot directly alter physics",
+    "evaluations_count": 8,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-ASYNC-MODEL",
+    "name": "Rendering/simulation never waits for an external model provider",
+    "evaluations_count": 3,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-COMMAND-VAL",
+    "name": "No late, duplicate, paused, unlinked, or invalid command mutates state",
+    "evaluations_count": 20,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-ACCOUNT-INFLUENCE",
+    "name": "Every eligible account contributes at most one influence per turn across channels",
+    "evaluations_count": 7,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-BOT-ISOLATION",
+    "name": "Bots/fixtures never impersonate humans, affect human quorum, create Hype, or receive live Hype",
+    "evaluations_count": 5,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-HAZARD-BIND",
+    "name": "Hazard commitment, warning, counter, and bounty increment share one committed ID",
+    "evaluations_count": 6,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-HAZARD-DEPEND",
+    "name": "No committed hazard means no warning, obstacle, or bounty increment",
+    "evaluations_count": 2,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-SAFETY-CAPS",
+    "name": "Safety caps prevent permanent control loss, stun lock, stacking, refresh, unbounded harm, or unavoidable death",
+    "evaluations_count": 6,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-REACHABILITY",
+    "name": "Every admitted obstacle state is avoidable under the selected control/geometry contract",
+    "evaluations_count": 1,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-EFFECT-ORDER",
+    "name": "clear_lane removal precedes collision; collision precedes delivery; deadline precedes equality-time delivery",
+    "evaluations_count": 7,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-SETTLEMENT-ONCE",
+    "name": "Settlement occurs at most once, only at terminal delivery, with exact selected arithmetic",
+    "evaluations_count": 10,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-WIPE-CLEAN",
+    "name": "Wipe/deadline/build-drop settles zero and new match carries no state",
+    "evaluations_count": 2,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-MAX-TURNS",
+    "name": "No fourth turn begins; match terminates strictly by deadline or prior delivery",
+    "evaluations_count": 4,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-PAUSE-CLEAN",
+    "name": "Pause produces no catch-up ticks and cannot suspend a reached deadline",
+    "evaluations_count": 2,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-FIXTURE-LABEL",
+    "name": "Fixture/live modes use the same canonical command schema and remain visibly distinguishable",
+    "evaluations_count": 4,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-HOTFIX-SAFETY",
+    "name": "Data/rules patches cannot relax hard invariants or activate outside a validated boundary",
+    "evaluations_count": 3,
+    "passed": true
+  },
+  {
+    "invariant_id": "INV-CREDIBILITY",
+    "name": "No unsupported promotional or live-service claim is emitted",
+    "evaluations_count": 6,
+    "passed": true
+  }
+]

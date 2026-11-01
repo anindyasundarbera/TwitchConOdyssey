@@ -1,0 +1,38 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+    "tick_400_turn_1_resolution_start": "cebec207b2bb2e0133bbdd2a03e3cbd462194c1ed4e0c91f083d7e9bd328dd6a",
+    "tick_450_final": "fb6d9395e8ff6da1d2e7a9aa89041b0f30212eb2538a38ce844cca0d4c45f088"
+  },
+  "contract_hash": "4d515794b2c531f89a60f6aebfe0b3778e6edac0f3133f7b7ed0ac441e503ec0",
+  "final_state_hash": "fb6d9395e8ff6da1d2e7a9aa89041b0f30212eb2538a38ce844cca0d4c45f088",
+  "initial_state_hash": "67bdc5a7688348c5505570a7b4e874a7869fc8dbbd4588e073418e18d13426d1",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_collision_halved": true,
+      "expected_collisions_total": true,
+      "expected_command_statuses": true,
+      "expected_final_phase": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-SAFETY-CAPS",
+      "INV-HAZARD-DEPEND"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 20,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-CTRL-07",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-CTRL-07"
+}

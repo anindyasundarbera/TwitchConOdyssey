@@ -1,0 +1,94 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "be0ca8e3e8d5324560bc7d8f5d03635f902fff2985eede1dbb21f929e83bbb25",
+    "tick_1000_turn_2_resolution_start": "9bf5ce3f345ff930e7ccad83d9fb7f7c1c4f3da7484bc817b8ff70416e9034a6",
+    "tick_1100_turn_2_reward_start": "09a157a1eea35deda3bf44db3e1dc5b92206382c05bfd0b6306b93f464c07ca9",
+    "tick_1200_turn_3_start": "7a20c6957e77d0902c33dc328c994c270d0deaeb3e0f0d7cc12f947f6fee852a",
+    "tick_1600_turn_3_resolution_start": "a599b3b1aebace92e04dcba5ae7899e5eecc3f3f7b82af5efe45a0dcc38d15a9",
+    "tick_1700_turn_3_reward_start": "3764fbe3aebd46e32f48fbe33ccdd9683a81796a4916e0cc9f214dfe8b8e09f5",
+    "tick_1760_final": "be8e851f2c7fa77b42ac936e47b075af47026152153baeefd51d4101bb783b49",
+    "tick_1760_terminal_delivery": "be8e851f2c7fa77b42ac936e47b075af47026152153baeefd51d4101bb783b49",
+    "tick_400_turn_1_resolution_start": "36d583d90c525ce07bfe49423567cdff9522cf85ea847a4a3fb86cca2cf0026a",
+    "tick_500_turn_1_reward_start": "c016459e7fccaa6f5ff6fac2586403326fc72b010c40ccb96d9d3a587c0af057",
+    "tick_600_turn_2_start": "600a89094c755ca637eef00f5a924fd6a6705272259f9ba0a7c4f423369a509b"
+  },
+  "contract_hash": "c6da6d48bd37eb55ecc4ec10480f17471574d741174edb8fcc463099b49c6d0d",
+  "final_state_hash": "be8e851f2c7fa77b42ac936e47b075af47026152153baeefd51d4101bb783b49",
+  "initial_state_hash": "be0ca8e3e8d5324560bc7d8f5d03635f902fff2985eede1dbb21f929e83bbb25",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_command_statuses": true,
+      "expected_eligible_voters_count": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "expected_pool": true,
+      "expected_settlement": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariant_evaluations": [
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-SETTLEMENT-ONCE_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "final_state.status",
+          "terminal_settlement.settled_once",
+          "terminal_settlement.total_hype"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "settled_once_valid": true
+        },
+        "invariant_id": "INV-SETTLEMENT-ONCE",
+        "notes": "",
+        "observed": {
+          "settlement_present": true,
+          "status": "delivered"
+        },
+        "scenario_id": "SCEN-REW-06",
+        "status": "PASS"
+      },
+      {
+        "contract_version": "2",
+        "evaluation_count": 1,
+        "evaluator": "INV-ACCOUNT-INFLUENCE_validator:deterministic_kernel_v2.0",
+        "evidence_fields_checked": [
+          "audience.counter_votes_count",
+          "audience.eligible_voters_count"
+        ],
+        "evidence_refs": [
+          "EV-009"
+        ],
+        "expected": {
+          "nonnegative": true
+        },
+        "invariant_id": "INV-ACCOUNT-INFLUENCE",
+        "notes": "",
+        "observed": {
+          "counter_votes": 0,
+          "eligible": 7
+        },
+        "scenario_id": "SCEN-REW-06",
+        "status": "PASS"
+      }
+    ],
+    "invariants_verified": [
+      "INV-SETTLEMENT-ONCE",
+      "INV-ACCOUNT-INFLUENCE"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 60,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-REW-06",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-REW-06"
+}

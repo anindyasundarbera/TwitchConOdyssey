@@ -1,0 +1,34 @@
+{
+  "boundary_hashes": {
+    "tick_0_init": "36b6cfb10d62a8f2f5502abc06dfd922fd5593b9da3b127fe969b4d13c581d66",
+    "tick_15_final": "568642c3574b522920f1f44d8e0be50c630e5343ee10cfd605147df40f9803d3"
+  },
+  "contract_hash": "ce0f52413058278d6c5c6da98ab792484d2351b5cc98121958b0df55ab8cf249",
+  "final_state_hash": "568642c3574b522920f1f44d8e0be50c630e5343ee10cfd605147df40f9803d3",
+  "initial_state_hash": "36b6cfb10d62a8f2f5502abc06dfd922fd5593b9da3b127fe969b4d13c581d66",
+  "oracle_evaluation": {
+    "checks": {
+      "expected_booths_subset": true,
+      "expected_command_statuses": true,
+      "expected_final_status": true,
+      "expected_final_tick": true,
+      "inv_bot_isolation": true,
+      "inv_hotfix_safety": true,
+      "inv_max_turns": true,
+      "inv_safety_caps": true,
+      "inv_settlement": true,
+      "trace_chain_valid": true
+    },
+    "failures": [],
+    "invariants_verified": [
+      "INV-CREDIBILITY",
+      "INV-SAFETY-CAPS"
+    ],
+    "passed": true,
+    "recomputed_human_pool": 0,
+    "recomputed_synthetic_fixture_pool": 0,
+    "scenario_id": "SCEN-HOT-04",
+    "trace_chain_valid": true
+  },
+  "scenario_id": "SCEN-HOT-04"
+}

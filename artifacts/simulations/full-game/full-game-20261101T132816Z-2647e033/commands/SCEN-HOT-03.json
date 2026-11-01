@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": {
+        "actor_id": "fixture_actor",
+        "command_id": "eae78610bdca8d93964cb1d00172cf1cb4c1b3fcf1da0efe0720bdea3ed15f66",
+        "kind": "hazard.propose",
+        "logical_tick": 0,
+        "payload": {
+          "hazard_id": "h_twitch_booth",
+          "lane": 1
+        },
+        "provenance": "fixture",
+        "schema_version": 1,
+        "sequence": 1
+      },
+      "state_hash": "5d791abd27a6fbeda7132c999aad6cfdee77ccbfdd2237e4495801e788e358c7",
+      "status": "applied",
+      "tick": 0,
+      "valid_envelope": true
+    }
+  ],
+  "contract_hash": "f02eeeed3ab62cbb7ab031ff44395698e024fe779a7c370dafbebf6666488e8d",
+  "final_state_hash": "8188734f70f66c38976d625518d3b954d2db5ffc95d99b5658f16f7afaa26700",
+  "initial_lane": 1,
+  "initial_roster": [],
+  "initial_state_hash": "97b94421402c712817337ff8c4d7c667cb48573c8c5b9e480238ee832c06c8f9",
+  "scenario_id": "SCEN-HOT-03",
+  "seed": 706
+}

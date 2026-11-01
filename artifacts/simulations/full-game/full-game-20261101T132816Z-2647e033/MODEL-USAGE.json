@@ -1,0 +1,29 @@
+[
+  {
+    "agent_role": "Simulation Orchestrator",
+    "model": "deterministic_kernel",
+    "reasoning_effort": "none",
+    "packet_characters": 0,
+    "packet_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "purpose": "Authoritative fixed-step simulation execution",
+    "output_artifact": "results/SCENARIO-RESULTS.jsonl",
+    "evidence_origin": "deterministic_simulation",
+    "status": "completed"
+  },
+  {
+    "agent_role": "Principal Systems Reviewer",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "subagent_conversation_id": "9714e19d-0457-4175-bf93-197a9a4c4fd5",
+    "packet_characters": 1235,
+    "packet_hash": "e1ad1dfd69bef48a7eb7ef7541ac845933f206f7e29b7626cb717f544d1913e9",
+    "review_packet_sha256": "65ce6f81cd815b73d51531084b94447e82b126d4a9c4187a41e664a7d97b7b79",
+    "prompt_sha256": "65ce6f81cd815b73d51531084b94447e82b126d4a9c4187a41e664a7d97b7b79",
+    "purpose": "Independent version-bound review gate",
+    "output_artifact": "INDEPENDENT-REVIEW.md",
+    "output_sha256": "d24a8ab95519fdb2eba19ea6ad968f0c908c97801fad37f2985bdb43824bd397",
+    "evidence_origin": "independent_subagent_review",
+    "verdict": "READY",
+    "status": "completed"
+  }
+]
