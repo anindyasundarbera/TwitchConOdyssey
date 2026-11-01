@@ -5,15 +5,22 @@ from fractions import Fraction
 from typing import Any, Dict, List, Optional
 from coordination.canonical_commands import make_command, validate_command
 from coordination.content_cache import canonical_hash
-from coordination.full_game_simulator import (
+from coordination.deterministic_kernel import (
+    advance_tick,
+    evaluate_scenario_properties,
+    get_district_for_progress,
+    hazard_warning_active,
+    is_delivery_before_deadline,
     DISTRICTS as SDC_DISTRICTS,
-    FullGameSimulator,
     HZ,
     MATCH_DEADLINE_TICKS,
     PLANNING_TICKS,
     RESOLUTION_TICKS,
     REWARD_TICKS,
     TURN_TICKS,
+)
+from coordination.full_game_simulator import (
+    FullGameSimulator,
     evaluate_independent_oracles,
     replay_command_stream,
 )

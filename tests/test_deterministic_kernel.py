@@ -409,15 +409,18 @@ class CacheTests(unittest.TestCase):
 class ImportBoundaryTests(unittest.TestCase):
     def test_kernel_static_imports_are_data_only(self):
         root = Path(__file__).resolve().parents[1] / "coordination"
-        allowed = {"hashlib", "json", "math", "re", "content_cache"}
-        for name in ("content_cache", "scenario_inputs", "canonical_commands", "state_transport"):
+        allowed = {
+            "hashlib", "json", "math", "re", "content_cache", "copy", "fractions",
+            "typing", "canonical_commands", "state_transport", "deterministic_kernel"
+        }
+        for name in ("content_cache", "scenario_inputs", "canonical_commands", "state_transport", "deterministic_kernel"):
             tree = ast.parse((root / f"{name}.py").read_text())
             for node in ast.walk(tree):
                 if isinstance(node, ast.Import):
                     for item in node.names:
-                        self.assertIn(item.name, allowed, name)
+                        self.assertIn(item.name, allowed, f"{name}: {item.name}")
                 elif isinstance(node, ast.ImportFrom):
-                    self.assertIn(node.module, allowed, name)
+                    self.assertIn(node.module, allowed, f"{name}: {node.module}")
                 elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
                     self.assertNotEqual(node.func.id, "__import__", name)
 
@@ -514,6 +517,252 @@ class DualConsumerSdcBindingTests(unittest.TestCase):
                 command_log=tampered_log,
                 steps_to_run=1,
             )
+
+
+class DeterministicKernelRemediationTests(unittest.TestCase):
+    """Test matrix TST-01 through TST-20 covering deadline, warning, purity, parity, and invariants."""
+
+    def test_tst01_delivery_at_1799(self):
+        """TST-01: Delivery at tick 1799 is eligible; settlement occurs."""
+        from coordination.deterministic_kernel import is_delivery_before_deadline
+        import coordination.full_game_simulator as fgs
+
+        self.assertTrue(is_delivery_before_deadline(1798, 1799))
+        sim = fgs.FullGameSimulator(initial_tick=1798, initial_progress=99.9375, base_speed_override=1.25)
+        sim.step()
+        self.assertEqual(sim.status, "delivered")
+        self.assertEqual(sim.tick, 1799)
+        self.assertIsNotNone(sim.terminal_settlement)
+        self.assertEqual(sim.terminal_settlement["status"], "delivered")
+        self.assertEqual(sim.terminal_settlement["tick"], 1799)
+
+    def test_tst02_delivery_at_1800(self):
+        """TST-02: Delivery at tick 1800 is not eligible; deadline wipe wins; settlement is exactly zero."""
+        from coordination.deterministic_kernel import is_delivery_before_deadline
+        import coordination.full_game_simulator as fgs
+
+        self.assertFalse(is_delivery_before_deadline(1799, 1800))
+        sim = fgs.FullGameSimulator(initial_tick=1799, initial_progress=99.9375, base_speed_override=1.25)
+        sim.step()
+        self.assertEqual(sim.status, "wiped")
+        self.assertEqual(sim.tick, 1800)
+        self.assertIsNotNone(sim.terminal_settlement)
+        self.assertEqual(sim.terminal_settlement["status"], "wiped")
+        self.assertEqual(sim.terminal_settlement["reason"], "deadline_equality_wipe")
+        self.assertEqual(sim.terminal_settlement["total_hype"], 0)
+        self.assertEqual(sim.terminal_settlement["streamer_share"], 0)
+        self.assertEqual(sim.terminal_settlement["audience_share_total"], 0)
+
+    def test_tst03_delivery_at_1801(self):
+        """TST-03: Delivery at tick 1801 is not eligible; no settlement."""
+        from coordination.deterministic_kernel import is_delivery_before_deadline
+        import coordination.full_game_simulator as fgs
+
+        self.assertFalse(is_delivery_before_deadline(1800, 1801))
+        sim = fgs.FullGameSimulator(initial_tick=1800, initial_progress=100.0)
+        sim.step()
+        self.assertEqual(sim.status, "wiped")
+        self.assertEqual(sim.terminal_settlement["total_hype"], 0)
+
+    def test_tst04_tst07_warning_boundaries(self):
+        """TST-04..TST-07: Warning activity is half-open interval [300, 400)."""
+        from coordination.deterministic_kernel import hazard_warning_active
+        import coordination.full_game_simulator as fgs
+
+        committed = {"hazard_id": "haz_t1", "committed_tick": 50}
+        self.assertFalse(hazard_warning_active(committed, 299))   # TST-04
+        self.assertTrue(hazard_warning_active(committed, 300))    # TST-05
+        self.assertTrue(hazard_warning_active(committed, 399))    # TST-06
+        self.assertFalse(hazard_warning_active(committed, 400))   # TST-07
+        self.assertFalse(hazard_warning_active(committed, 450))   # In resolution
+        self.assertFalse(hazard_warning_active(committed, 500))   # In reward
+
+        # Verify on FullGameSimulator
+        sim = fgs.FullGameSimulator()
+        sim.submit_command(make_command("hazard.propose", "u0", "human", 10, 1, {"hazard_id": "h1", "lane": 1}))
+        for _ in range(299):
+            sim.step()
+        self.assertFalse(sim.warning_active)
+        sim.step()
+        self.assertEqual(sim.tick, 300)
+        self.assertTrue(sim.warning_active)
+
+    def test_tst08_warning_hazard_id_mismatch(self):
+        """TST-08: Committed hazard ID mismatch produces inactive warning state."""
+        from coordination.deterministic_kernel import hazard_warning_active
+        import coordination.full_game_simulator as fgs
+
+        committed = {"hazard_id": "committed_haz_1", "committed_tick": 50}
+        self.assertTrue(hazard_warning_active(committed, 350, target_hazard_id="committed_haz_1"))
+        self.assertFalse(hazard_warning_active(committed, 350, target_hazard_id="wrong_hazard_id"))
+        self.assertFalse(hazard_warning_active(None, 350))
+
+        sim = fgs.FullGameSimulator()
+        sim.submit_command(make_command("hazard.propose", "u0", "human", 10, 1, {"hazard_id": "h_real", "lane": 1}))
+        for _ in range(350):
+            sim.step()
+        mismatch_cmd = make_command("viewer.counter", "u1", "human", 350, 2, {"hazard_id": "h_fake", "counter": "clear_lane"})
+        res = sim.submit_command(mismatch_cmd)
+        self.assertEqual(res, "rejected")
+
+    def test_tst09_command_at_1799_applies_before_deadline(self):
+        """TST-09: Command at 1799 applies before deadline boundary."""
+        import coordination.full_game_simulator as fgs
+
+        sim = fgs.FullGameSimulator(initial_tick=1798, initial_lane=1)
+        cmd = make_command("streamer.steer", "s0", "human", 1799, 1, {"direction": "left"})
+        res = sim.submit_command(cmd)
+        self.assertEqual(res, "applied")
+        self.assertEqual(sim.transition_target_lane, 0)
+        sim.step()
+        self.assertEqual(sim.tick, 1799)
+        self.assertEqual(sim.status, "racing")
+
+    def test_tst10_command_at_1800_wipe_wins(self):
+        """TST-10: Command at 1800 with deadline at 1800 -> wipe wins; command does not apply."""
+        import coordination.full_game_simulator as fgs
+
+        sim = fgs.FullGameSimulator(initial_tick=1800, initial_lane=1)
+        cmd = make_command("streamer.steer", "s0", "human", 1800, 1, {"direction": "left"})
+        res = sim.submit_command(cmd)
+        sim.step()
+        self.assertEqual(sim.status, "wiped")
+        self.assertEqual(sim.terminal_settlement["total_hype"], 0)
+
+    def test_tst11_event_tick_preservation(self):
+        """TST-11: State and trace record actual event tick, not settlement tick."""
+        import coordination.full_game_simulator as fgs
+
+        sim = fgs.FullGameSimulator(initial_tick=1798, initial_progress=99.9375, base_speed_override=1.25)
+        sim.step()
+        self.assertEqual(sim.tick, 1799)
+        delivery_events = [e for e in sim.events if e.get("kind") == "delivery_settlement"]
+        self.assertTrue(len(delivery_events) > 0)
+        self.assertEqual(delivery_events[0]["tick"], 1799)
+
+    def test_tst12_purity(self):
+        """TST-12: Shared kernel performs no file, network, clock, or process I/O."""
+        import coordination.deterministic_kernel as dk
+        forbidden_attrs = ["time", "datetime", "socket", "urllib", "requests", "os", "sys"]
+        for attr in forbidden_attrs:
+            self.assertFalse(hasattr(dk, attr), f"Purity violation: {attr} exposed in deterministic_kernel")
+
+    def test_tst13_authority_shared_functions(self):
+        """TST-13: Engine and simulator call the shared functions; no duplicate transition logic."""
+        import coordination.deterministic_kernel as dk
+        import coordination.full_game_simulator as fgs
+        import server.engine as engine
+
+        self.assertIs(engine.advance_tick, dk.advance_tick)
+        self.assertIs(engine.is_delivery_before_deadline, dk.is_delivery_before_deadline)
+        self.assertIs(engine.hazard_warning_active, dk.hazard_warning_active)
+        self.assertIs(engine.evaluate_scenario_properties, dk.evaluate_scenario_properties)
+        self.assertIs(fgs.is_delivery_before_deadline, dk.is_delivery_before_deadline)
+        self.assertIs(fgs.hazard_warning_active, dk.hazard_warning_active)
+        self.assertIs(fgs.evaluate_scenario_properties, dk.evaluate_scenario_properties)
+
+    def test_tst14_tst15_replay_parity(self):
+        """TST-14 & TST-15: Engine and simulator produce identical states, events, and replays."""
+        import coordination.full_game_simulator as fgs
+        import server.engine as engine
+
+        sim = engine.create_s1_simulator(seed=42, initial_lane=1, initial_roster=["u1", "u2"])
+        cmd = engine.make_command("streamer.steer", "s0", "human", 0, 1, {"direction": "right"})
+        sim.submit_command(cmd)
+        sim.step()
+        sim.finalize_trace()
+
+        expected_hash = engine.canonical_hash(sim.get_canonical_state())
+        replayed = engine.verify_s1_replay(
+            seed=42, initial_lane=1, initial_roster=["u1", "u2"],
+            command_log=sim.command_history, steps_to_run=1, expected_final_state_hash=expected_hash,
+        )
+        self.assertEqual(replayed["final_state_hash"], expected_hash)
+
+    def test_tst16_tst18_pipeline_invariants(self):
+        """TST-16..TST-18: Six pipeline invariants pass with complete evidence, fail on tamper/missing."""
+        import coordination.deterministic_kernel as dk
+
+        good_bundle = {
+            "review_invocation": {
+                "reviewer_author": "gpt-6-astra", "agent_id": "subagent-1",
+                "route": "codex_subagent/gpt-6-astra", "configured_gate_satisfied": True,
+            },
+            "review_text": "Verdict: READY\nAll checks passed.",
+            "new_run_id": "full-game-20261101T200000Z-12345678",
+            "old_run_id": "full-game-20261101T174648Z-2647e033",
+            "old_run_tree_sha256_before": "hash_a",
+            "old_run_tree_sha256_after": "hash_a",
+            "manifest": {"a.txt": "sha_a"},
+            "recomputed_hashes": {"a.txt": "sha_a"},
+            "source_bindings": {"s.py": {"sha256": "sha_s"}},
+            "recomputed_source_hashes": {"s.py": "sha_s"},
+            "matrix": [{"scenario_id": "S1", "invariants_tested": ["INV-A"]}],
+            "per_invariant_results": [{"scenario_id": "S1", "invariant_id": "INV-A", "status": "PASS"}],
+            "readiness": {"ready": True, "submission_ready": False},
+            "review_verdict": "READY",
+            "evidence_passed": True,
+        }
+
+        # TST-16: All 6 pass on good evidence
+        r_auth = dk.validate_review_authorship(good_bundle)
+        r_imm = dk.validate_run_immutability(good_bundle)
+        r_cit = dk.validate_citation_hashes(good_bundle)
+        r_src = dk.validate_source_bytes(good_bundle)
+        r_cov = dk.validate_evidence_coverage(good_bundle)
+        r_sep = dk.validate_readiness_separation(good_bundle)
+        self.assertEqual(r_auth["status"], "PASS")
+        self.assertEqual(r_imm["status"], "PASS")
+        self.assertEqual(r_cit["status"], "PASS")
+        self.assertEqual(r_src["status"], "PASS")
+        self.assertEqual(r_cov["status"], "PASS")
+        self.assertEqual(r_sep["status"], "PASS")
+
+        # TST-17: Missing evidence produces FAIL
+        bad_auth = dk.validate_review_authorship({})
+        self.assertEqual(bad_auth["status"], "FAIL")
+
+        # TST-18: Tampered trace or hash mismatch produces FAIL
+        tampered_cit = dk.validate_citation_hashes({"manifest": {"a.txt": "sha_a"}, "recomputed_hashes": {"a.txt": "sha_tampered"}})
+        self.assertEqual(tampered_cit["status"], "FAIL")
+
+        # Readiness true while review is REVISE produces FAIL
+        bad_readiness = dk.validate_readiness_separation({
+            "readiness": {"ready": True, "submission_ready": False},
+            "review_verdict": "REVISE",
+            "evidence_passed": True,
+        })
+        self.assertEqual(bad_readiness["status"], "FAIL")
+
+    def test_tst19_generic_oracle_pass_declared_property_fail(self):
+        """TST-19: Generic oracle passes but declared property fails -> scenario fails, failing property reported."""
+        import coordination.deterministic_kernel as dk
+
+        contract = {
+            "scenario_id": "TEST-SCEN",
+            "invariants_tested": ["INV-BOT-ISOLATION"],
+            "expected_oracle": {"expected_final_status": "racing"},
+        }
+        # Bot command applied (violating INV-BOT-ISOLATION)
+        cmd_log = [{"cmd": {"provenance": "bot", "kind": "hazard.propose"}, "status": "applied"}]
+        state = {"status": "racing", "bounty": {"pool": 20}}
+        results = dk.evaluate_scenario_properties(contract, cmd_log, [], (state, state))
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["invariant_id"], "INV-BOT-ISOLATION")
+        self.assertEqual(results[0]["status"], "FAIL")
+
+    def test_tst20_undeclared_invariant_excluded(self):
+        """TST-20: Undeclared invariant is NOT evaluated and excluded from results."""
+        import coordination.deterministic_kernel as dk
+
+        contract = {
+            "scenario_id": "TEST-SCEN",
+            "invariants_tested": ["INV-SAFETY-CAPS"],
+        }
+        results = dk.evaluate_scenario_properties(contract, [], [], ({}, {}))
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["invariant_id"], "INV-SAFETY-CAPS")
+        self.assertNotIn("INV-BOT-ISOLATION", [r["invariant_id"] for r in results])
 
 
 if __name__ == "__main__":

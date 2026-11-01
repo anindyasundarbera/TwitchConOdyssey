@@ -30,34 +30,33 @@ from coordination.content_cache import (
     validate_json,
 )
 from coordination.state_transport import apply_diff, state_diff
+from .deterministic_kernel import (
+    advance_tick as kernel_advance_tick,
+    evaluate_scenario_properties,
+    get_district_for_progress,
+    hazard_warning_active,
+    is_delivery_before_deadline,
+    BASE_SPEED,
+    COLLISION_SLOWDOWN_TICKS,
+    DISTRICTS,
+    GENERAL_INPUT_CLOSE_TICKS,
+    HAZARD_ACTIVE_TICKS,
+    HAZARD_ADMISSION_CLOSE_TICKS,
+    HZ,
+    MATCH_DEADLINE_TICKS,
+    MAX_TURNS,
+    PERMITTED_HOTFIX_FIELDS,
+    PLANNING_TICKS,
+    RESOLUTION_TICKS,
+    REWARD_TICKS,
+    TICK_DURATION_SEC,
+    TRANSITION_TICKS,
+    TURN_TICKS,
+)
 
-HZ = 20
-TICK_DURATION_SEC = Fraction(1, HZ)  # 0.05s per tick
 TICKS_PER_SECOND = HZ
-PLANNING_TICKS = 20 * HZ    # 400 ticks (20.0s)
-RESOLUTION_TICKS = 5 * HZ   # 100 ticks (5.0s)
-REWARD_TICKS = 5 * HZ       # 100 ticks (5.0s)
-TURN_TICKS = PLANNING_TICKS + RESOLUTION_TICKS + REWARD_TICKS  # 600 ticks (30.0s)
-MAX_TURNS = 3
-MATCH_DEADLINE_TICKS = 90 * HZ  # 1800 ticks (90.0s)
-
-HAZARD_ADMISSION_CLOSE_TICKS = 15 * HZ  # 300 ticks (15.0s into planning)
-GENERAL_INPUT_CLOSE_TICKS = 20 * HZ     # 400 ticks (20.0s into planning)
-HAZARD_ACTIVE_TICKS = 3 * HZ            # 60 ticks (first 3.0s of resolution)
-TRANSITION_TICKS = 10                   # 0.5s lane transition at 20Hz
-COLLISION_SLOWDOWN_TICKS = 2 * HZ       # 40 ticks (2.0s slowdown)
-
-BASE_SPEED = 100.0 / 88.0  # 100.0 distance units in 88.0 seconds nominal (~1.13636 units/s)
 SAFE_PHASE_BOUNDARY_TURN_TICKS = (0, PLANNING_TICKS, PLANNING_TICKS + RESOLUTION_TICKS)
 TRUSTED_HOTFIX_KEYS = ("TRUSTED_CODEX_KEY", "CODEX_BOOTH_TRUSTED_V1")
-PERMITTED_HOTFIX_FIELDS = frozenset({"slowdown_fraction", "slowdown_duration_ticks"})
-DISTRICTS = (
-    {"id": "little_italy_north_embarcadero", "name": "Little Italy / North Embarcadero", "min_p": 0.0, "max_p": 25.0},
-    {"id": "embarcadero_waterfront_marina", "name": "Embarcadero Waterfront / Marina", "min_p": 25.0, "max_p": 50.0},
-    {"id": "gaslamp_quarter", "name": "Gaslamp Quarter", "min_p": 50.0, "max_p": 75.0},
-    {"id": "san_diego_convention_center", "name": "San Diego Convention Center", "min_p": 75.0, "max_p": 95.0},
-    {"id": "fictional_main_stage", "name": "Fictional Main Stage", "min_p": 95.0, "max_p": 100.0},
-)
 
 
 class ScenarioContract(TypedDict, total=False):
@@ -537,6 +536,7 @@ class FullGameSimulator:
             self._record_trace_delta(f"turn_{self.turn}_start", "phase_boundary")
         elif turn_t == PLANNING_TICKS:
             self.phase = "resolution"
+            self.warning_active = False
             self._record_boundary_hash(f"turn_{self.turn}_resolution_start")
             self._record_trace_delta(f"turn_{self.turn}_resolution_start", "phase_boundary")
             self._adjudicate_counter_quorum()
@@ -546,13 +546,20 @@ class FullGameSimulator:
             self.warning_active = False
             self._record_boundary_hash(f"turn_{self.turn}_reward_start")
             self._record_trace_delta(f"turn_{self.turn}_reward_start", "phase_boundary")
+        else:
+            was_warning = self.warning_active
+            self.warning_active = hazard_warning_active(self.committed_hazard, self.tick)
+            if self.warning_active:
+                self.audio_state = "crisis"
+                if not was_warning:
+                    self._record_trace_delta("warning_window_open", "warning_active")
 
     def step(self):
         """Advance simulation by exactly one authoritative 20 Hz tick."""
         if self.status != "racing":
             return
 
-        # 1. Total order: Deadline first
+        # 1. Total order: Deadline boundary evaluated FIRST at current tick
         if self.tick >= MATCH_DEADLINE_TICKS:
             self._handle_wipe("deadline_reached")
             return
@@ -562,19 +569,16 @@ class FullGameSimulator:
             # Paused simulation produces no ticks, clocks frozen
             return
 
+        current_tick = self.tick
         turn_t = self.turn_tick
 
         # Warning evaluation during planning [15.0s, 20.0s)
-        if self.phase == "planning":
-            if HAZARD_ADMISSION_CLOSE_TICKS <= turn_t < GENERAL_INPUT_CLOSE_TICKS:
-                was_warning = self.warning_active
-                self.warning_active = (self.committed_hazard is not None)
-                if self.warning_active:
-                    self.audio_state = "crisis"
-                    if not was_warning:
-                        self._record_trace_delta("warning_window_open", "warning_active")
-            else:
-                self.warning_active = False
+        was_warning = self.warning_active
+        self.warning_active = hazard_warning_active(self.committed_hazard, self.tick)
+        if self.warning_active:
+            self.audio_state = "crisis"
+            if not was_warning:
+                self._record_trace_delta("warning_window_open", "warning_active")
 
         # Obstacle active during first 3.0s of resolution (ticks 400..460 of turn)
         if self.phase == "resolution":
@@ -583,6 +587,8 @@ class FullGameSimulator:
                 self.obstacle_active = True
             else:
                 self.obstacle_active = False
+        else:
+            self.obstacle_active = False
 
         # 3. Steering & Lane transition interpolation
         if self.transition_remaining_ticks > 0:
@@ -619,28 +625,30 @@ class FullGameSimulator:
                 self.collision_halved_settlement = True
                 self.slowdown_ticks_remaining = self.hotfix_rules["slowdown_duration_ticks"]
                 self.audio_state = "crisis"
-                self.events.append({"tick": self.tick, "kind": "collision", "lane": 1, "turn": self.turn})
+                self.events.append({"tick": current_tick, "kind": "collision", "lane": 1, "turn": self.turn})
                 self._record_trace_delta("event:collision", "collision")
-
-        # c. delivery detection
-        if self.progress >= 100.0:
-            # Delivered strictly before deadline!
-            self._handle_delivery()
-            return
 
         # Booth triggers
         self._check_booth_triggers()
 
-        # Advance tick
+        # Advance tick clock
         self.tick += 1
+
+        # Check delivery vs deadline at new tick
+        if self.progress >= 100.0:
+            if is_delivery_before_deadline(current_tick, self.tick):
+                # Delivered strictly before deadline!
+                self._handle_delivery()
+                return
+            else:
+                # Delivery reached at or after deadline (e.g. at tick 1800):
+                # Deadline wipe wins, settlement is zero!
+                self._handle_wipe("deadline_equality_wipe")
+                return
 
         # Check deadline at tick boundary
         if self.tick >= MATCH_DEADLINE_TICKS:
-            if self.progress >= 100.0:
-                # Delivery strictly before deadline was checked above; if progress reaches exactly at 1800, deadline wipes
-                self._handle_wipe("deadline_equality_wipe")
-            else:
-                self._handle_wipe("deadline_reached")
+            self._handle_wipe("deadline_reached")
             return
 
         # Update phase boundaries for new tick
@@ -1511,12 +1519,39 @@ def evaluate_independent_oracles(
         if not ok:
             failures.append(f"Oracle mismatch on expected_boundary_labels: missing {missing_labels} in {sorted(b_keys)}")
 
-    return {
+    raw_eval = {
         "scenario_id": contract.get("scenario_id"),
         "passed": len(failures) == 0,
         "failures": failures,
         "checks": checks,
-        "invariants_verified": list(contract.get("invariants_tested", [])) if len(failures) == 0 else [],
+        "terminal_settlement": settlement,
+    }
+    invariant_evaluations = evaluate_scenario_properties(
+        contract,
+        command_log,
+        trace_deltas if trace_chain_valid else [],
+        (initial_state, final_state),
+        oracle_evaluation=raw_eval,
+    )
+    invariants_verified = [r["invariant_id"] for r in invariant_evaluations if r.get("status") == "PASS"]
+    declared_invariants = list(contract.get("invariants_tested", []))
+    all_declared_passed = (
+        len(invariants_verified) == len(declared_invariants)
+        and all(r.get("status") == "PASS" for r in invariant_evaluations)
+    )
+    if not all_declared_passed:
+        failing_props = [r["invariant_id"] for r in invariant_evaluations if r.get("status") != "PASS"]
+        failures.append(f"Declared invariant verification failed: {failing_props}")
+
+    passed_overall = (len(failures) == 0 and all_declared_passed)
+
+    return {
+        "scenario_id": contract.get("scenario_id"),
+        "passed": passed_overall,
+        "failures": failures,
+        "checks": checks,
+        "invariants_verified": invariants_verified if passed_overall else [],
+        "invariant_evaluations": invariant_evaluations,
         "trace_chain_valid": trace_chain_valid,
         "recomputed_human_pool": expected_human_pool,
         "recomputed_synthetic_fixture_pool": expected_synthetic_pool,

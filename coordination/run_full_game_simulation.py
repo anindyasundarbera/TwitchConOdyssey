@@ -394,7 +394,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             ],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1759,
+                "expected_final_tick": 1760,
                 "expected_final_turn": 3,
                 "expected_lane": 0,
                 "expected_pool": 60,
@@ -481,7 +481,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-SAFETY-CAPS", "INV-SETTLEMENT-ONCE", "INV-EFFECT-ORDER"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1767,
+                "expected_final_tick": 1768,
                 "expected_final_turn": 3,
                 "expected_lane": 1,
                 "expected_pool": 60,
@@ -525,7 +525,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-CREDIBILITY", "INV-ENGINE-AUTH", "INV-HOTFIX-SAFETY"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1759,
+                "expected_final_tick": 1760,
                 "expected_booths_visited": ["aws_booth", "codex_booth", "twitch_booth"],
                 "expected_audio_state": "victory",
                 "expected_applied_hotfix_version": 1,
@@ -762,7 +762,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-EFFECT-ORDER", "INV-SETTLEMENT-ONCE"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 400,
+                "expected_final_tick": 401,
                 "expected_pool": 20,
                 "expected_collisions_total": 1,
                 "expected_collision_halved": True,
@@ -920,7 +920,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-MAX-TURNS"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1759,
+                "expected_final_tick": 1760,
                 "expected_final_turn": 3,
                 "expected_lane": 1,
                 "expected_command_statuses": ["applied"],
@@ -1103,7 +1103,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-HAZARD-BIND", "INV-SETTLEMENT-ONCE"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1759,
+                "expected_final_tick": 1760,
                 "expected_pool": 60,
                 "expected_collisions_total": 0,
                 "expected_command_statuses": ["applied"] * 6,
@@ -1154,7 +1154,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-SETTLEMENT-ONCE", "INV-HAZARD-BIND"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1759,
+                "expected_final_tick": 1760,
                 "expected_pool": 20,
                 "expected_eligible_voters_count": 0,
                 "expected_command_statuses": ["applied"],
@@ -1186,7 +1186,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-SETTLEMENT-ONCE", "INV-SAFETY-CAPS"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1775,
+                "expected_final_tick": 1776,
                 "expected_pool": 40,
                 "expected_collisions_total": 2,
                 "expected_collision_halved": True,
@@ -1220,7 +1220,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-SETTLEMENT-ONCE"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 35,
+                "expected_final_tick": 36,
                 "expected_pool": 20,
                 "expected_eligible_voters_count": 0,
                 "expected_command_statuses": ["applied"],
@@ -1256,7 +1256,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-SETTLEMENT-ONCE", "INV-ACCOUNT-INFLUENCE"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1759,
+                "expected_final_tick": 1760,
                 "expected_pool": 60,
                 "expected_eligible_voters_count": 7,
                 "expected_command_statuses": ["applied"] * 10,
@@ -1663,7 +1663,7 @@ def build_frozen_scenario_contracts() -> List[Dict[str, Any]]:
             "invariants_tested": ["INV-CREDIBILITY", "INV-BOT-ISOLATION", "INV-FIXTURE-LABEL"],
             "expected_oracle": {
                 "expected_final_status": "delivered",
-                "expected_final_tick": 1759,
+                "expected_final_tick": 1760,
                 "expected_pool": 20,
                 "expected_synthetic_fixture_pool": 20,
                 "expected_booths_visited": ["aws_booth", "codex_booth", "twitch_booth"],

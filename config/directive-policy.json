@@ -142,10 +142,10 @@
     "config/model-policy.json": "7cfe130f28ff0c02f270320560e4a27cb6ca99edd88d39fbf8afe7127e6a289d",
     "coordination/content_cache.py": "c70694c893540d80a50498a0ba700a7a9599cdc7290524c5a98e63004be12a95",
     "coordination/context_contract.py": "6998844f22691df022a3f76cae155b818a83aa398e4e2eef278e600b69dc0c5f",
-    "coordination/evidence_pipeline.py": "a967d84060c2c244846e6e8f0b87a82d6236e496bbbf297673d12eab670625a1",
-    "coordination/full_game_simulator.py": "9e57674c85db144c7edfa846de22552a059b31d18a35f68601f16162d83bd09d",
+    "coordination/evidence_pipeline.py": "ff7eba561014dcba2493f244d48080391a540fdbd37a26775dc71f50702783ee",
+    "coordination/full_game_simulator.py": "151ade893ccded3d535375f7e8f38d834ff5259ad5bfb36ef49bc84f78b48aff",
     "coordination/model_router.py": "41394c38bb981448e88cefbe41c444f6d0cc4b5500570f9b4a5301bb85344317",
-    "coordination/run_full_game_simulation.py": "b690c4442b3e78bda8743c939985ca027912fc77979b659b994d4464a333603d",
+    "coordination/run_full_game_simulation.py": "978c24a2df0680ed8e005b9ab255e29fc0f486c3de79024a224b6fd79303e10b",
     "coordination/scenario_inputs.py": "e3eed7ae21e7cb62a1e9bd0496f581b6a6adf93b28c01e874ee58bacc05a57af",
     "docs/planning/CONTEXT-RETENTION-RESEARCH.md": "cf6eb23e1010b86caf172d6915c221bb80053178bd15bd24bfc332ea236fd7c3",
     "docs/planning/CONTEXT-v2.md": "eb8b6530ffbe210d62bf513f53eb384d6f87c527cbd57e5a5eb42bf08ec0f140",
@@ -160,12 +160,13 @@
     "docs/planning/gameplan-v2.json": "6e20481549e188472a8369041760495a15d033a97fa3aa8898bf7d04f3b13147",
     "docs/planning/research/S1-PLATFORM-EVIDENCE.md": "3bc1910f2d55d9cc1b26c6c7644ad759c48e28c32d11e462dfac966b3b23a4d6",
     "docs/planning/research/S1-SYSTEMS-EVIDENCE.md": "b727a60099d9fd3a11809f0e24d1c989d6f87bf5a5ad185f041ababd37ac128c",
-    "server/engine.py": "f48ed0a6f84efe2b6aabba82b6125ea42bba3dc99df51e787ad6a806578d7260",
+    "server/engine.py": "7f1d7ae13b39419fea30e5e222deab8c14beef82f35195f4cdd993aa80f52e90",
     "tests/test_context_contract.py": "9b18f0c2a816a793cbe710fbff316e1717e50bb814be02627c0b2f0d8ee90dd3",
-    "tests/test_deterministic_kernel.py": "0677e4c6c09bcff31c3ca13089cfae373b455d2dbcb9feb17b3d056a35528372",
+    "tests/test_deterministic_kernel.py": "ba319bedc649eea9eb9f3dce0a28d259711a75c95776aaef17b3b506f30379ef",
     "tests/test_full_game_simulation.py": "e16ef8d68437b28d59ff39f77ef20f17107430187e81a988d0a8514199f7a221",
     "tests/test_gameplan_rules.py": "8a1b27c80d4791adc4d33f5fde612567c48ca54c3786e0a23cf6bd4afc86e757",
-    "coordination/review_boundary.py": "9b3833a048c768112e682811c37b9a3e8b7189c3ccf7f7d4ba4252d7535fefce"
+    "coordination/review_boundary.py": "9b3833a048c768112e682811c37b9a3e8b7189c3ccf7f7d4ba4252d7535fefce",
+    "coordination/deterministic_kernel.py": "10850339d2ae2969b679c7e20a394ae516e10edee5a0666d694b3322f6237db6"
   },
   "directives": [
     {

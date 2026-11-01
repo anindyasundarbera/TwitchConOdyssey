@@ -8,6 +8,14 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from .content_cache import bytes_hash, canonical_hash, detached, require_hash, validate_json
 from .state_transport import _validate_delta
+from .deterministic_kernel import (
+    validate_review_authorship,
+    validate_run_immutability,
+    validate_citation_hashes,
+    validate_source_bytes,
+    validate_evidence_coverage,
+    validate_readiness_separation,
+)
 
 PRESERVED_REJECTED_RUN_ID = "full-game-20261101T102226Z-a8e33043"
 PRESERVED_REJECTED_TREE_SHA256 = "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d"
@@ -1089,14 +1097,55 @@ def compute_development_readiness(
         "unresolved_decisions" in contract and not unresolved
         and (unresolved_human_decisions is None or unresolved_human_decisions == [])))
 
-    pipeline_results = {
-        "INV-REVIEW-AUTHORSHIP": gates["independent_review_verified"],
-        "INV-RUN-IMMUTABILITY": gates["pre_review_evidence_complete"],
-        "INV-CITATION-HASHES": gates["pre_review_evidence_complete"],
-        "INV-SOURCE-BYTES": gates["source_bytes_match"],
-        "INV-EVIDENCE-COVERAGE": gates["feature_coverage_honestly_derived"],
-        "INV-READINESS-SEPARATION": True,  # Offline evidence never grants live submission.
+    def safe_read(rel, default=None):
+        try:
+            return read(rel)
+        except Exception:
+            return default
+
+    manifest_obj = safe_read("RUN-MANIFEST.json", {})
+    artifacts_map = manifest_obj.get("artifact_hashes", {}) if isinstance(manifest_obj, dict) else {}
+    if not artifacts_map:
+        rev_ev = safe_read("REVIEW-EVIDENCE.json", {})
+        if isinstance(rev_ev, dict) and "artifact_hashes" in rev_ev:
+            artifacts_map = rev_ev["artifact_hashes"]
+            manifest_obj = {"artifact_hashes": artifacts_map}
+    review_inv_obj = safe_read("REVIEW-INVOCATION.json", {})
+    review_md_text = ""
+    try:
+        if (root / "INDEPENDENT-REVIEW.md").is_file():
+            review_md_text = _safe_artifact(root, "INDEPENDENT-REVIEW.md").read_text(encoding="utf-8")
+    except Exception:
+        pass
+
+    bundle_for_pipe = {
+        "review_invocation": review_inv_obj if isinstance(review_inv_obj, dict) else {},
+        "review_text": review_md_text,
+        "new_run_id": root.name,
+        "old_run_id": PRESERVED_REJECTED_RUN_ID,
+        "old_run_tree_sha256_before": PRESERVED_REJECTED_TREE_SHA256,
+        "old_run_tree_sha256_after": compute_tree_sha256(repo / "artifacts/simulations/full-game" / PRESERVED_REJECTED_RUN_ID) if (repo / "artifacts/simulations/full-game" / PRESERVED_REJECTED_RUN_ID).is_dir() else None,
+        "manifest": manifest_obj,
+        "recomputed_hashes": {f: file_sha256(root / f) for f in artifacts_map if (root / f).is_file()},
+        "source_bindings": bindings,
+        "recomputed_source_hashes": {p: file_sha256(repo / p) for p in bindings if (repo / p).is_file()},
+        "matrix": data.get("matrix", []),
+        "per_invariant_results": safe_read("INVARIANT-RESULTS.json", []),
+        "readiness": safe_read("DEVELOPMENT-READINESS.json", {}),
+        "review_verdict": verdict,
+        "evidence_passed": gates.get("pre_review_evidence_complete", False) and gates.get("all_scenarios_passed", False),
     }
+
+    pipe_evals = {
+        "INV-REVIEW-AUTHORSHIP": validate_review_authorship(bundle_for_pipe),
+        "INV-RUN-IMMUTABILITY": validate_run_immutability(bundle_for_pipe),
+        "INV-CITATION-HASHES": validate_citation_hashes(bundle_for_pipe),
+        "INV-SOURCE-BYTES": validate_source_bytes(bundle_for_pipe),
+        "INV-EVIDENCE-COVERAGE": validate_evidence_coverage(bundle_for_pipe),
+        "INV-READINESS-SEPARATION": validate_readiness_separation(bundle_for_pipe),
+    }
+
+    pipeline_results = {k: (v.get("status") == "PASS") for k, v in pipe_evals.items()}
     check("all_pipeline_invariants_passed", lambda: all(pipeline_results.values()))
     def stage_metadata():
         metadata = read("STAGE-METADATA.json")
