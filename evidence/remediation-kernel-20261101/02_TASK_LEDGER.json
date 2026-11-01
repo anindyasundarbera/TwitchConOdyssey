@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "remediation_id": "20261101T234500Z",
+  "baseline": {
+    "commit": "0557baadd468b1a0405477d058662c91965542b0",
+    "tag": "plan-baseline/remediation-v2.1-pre-construction",
+    "recorded_in": "00_CONTEXT.md"
+  },
+  "old_run": {
+    "id": "full-game-20261101T174648Z-2647e033",
+    "verdict": "REVISE",
+    "manifest_before": "4b92fd767304bdcc7faa1553c005d78f3607eab874200fa978996bad8038ee04",
+    "manifest_after": "4b92fd767304bdcc7faa1553c005d78f3607eab874200fa978996bad8038ee04",
+    "tree_sha256_before": "b79455d3eb63ae80002750f7ad673935cfb6249094f60935bb7e31892a7ccaa5",
+    "tree_sha256_after": "b79455d3eb63ae80002750f7ad673935cfb6249094f60935bb7e31892a7ccaa5",
+    "unchanged": true
+  },
+  "work_units": [
+    {
+      "id": "T-01",
+      "title": "Extract the shared pure deterministic kernel and rewire both consumers",
+      "type": "UPDATE",
+      "contract_version": 1,
+      "status": "COMPLETED",
+      "confidence": "VERIFIED",
+      "fidelity": "EXACT",
+      "dependencies": ["baseline"],
+      "write_scope": [
+        "coordination/deterministic_kernel.py",
+        "server/engine.py",
+        "coordination/full_game_simulator.py",
+        "tests/test_deterministic_kernel.py"
+      ],
+      "commit": "99aa1c9f773887f5fc0a5529691d068e3eecda18",
+      "evidence": ["EV-001", "EV-006", "EV-012"],
+      "verification": "Import boundary check, purity check, and unit test pass",
+      "review": "READY",
+      "notes": "coordination/deterministic_kernel.py pure module created, server.engine and full_game_simulator rewired"
+    },
+    {
+      "id": "T-02",
+      "title": "Make deadline ordering explicit and preserve event ticks",
+      "type": "UPDATE",
+      "contract_version": 1,
+      "status": "COMPLETED",
+      "confidence": "VERIFIED",
+      "fidelity": "EXACT",
+      "dependencies": ["T-01"],
+      "write_scope": [
+        "coordination/deterministic_kernel.py",
+        "coordination/full_game_simulator.py",
+        "server/engine.py",
+        "tests/test_deterministic_kernel.py"
+      ],
+      "commit": "99aa1c9f773887f5fc0a5529691d068e3eecda18",
+      "evidence": ["EV-004", "EV-007", "EV-012", "EV-013"],
+      "verification": "Tick 1799, 1800, 1801 tests; event tick preservation verified by TST-01..TST-03, TST-09..TST-11",
+      "review": "READY",
+      "notes": "Clock boundary evaluated first; equality with deadline triggers wipe with 0 settlement"
+    },
+    {
+      "id": "T-03",
+      "title": "Unify warning boundaries and hazard-ID gating",
+      "type": "UPDATE",
+      "contract_version": 1,
+      "status": "COMPLETED",
+      "confidence": "VERIFIED",
+      "fidelity": "EXACT",
+      "dependencies": ["T-01", "T-02"],
+      "write_scope": [
+        "coordination/deterministic_kernel.py",
+        "coordination/full_game_simulator.py",
+        "server/engine.py",
+        "tests/test_deterministic_kernel.py"
+      ],
+      "commit": "99aa1c9f773887f5fc0a5529691d068e3eecda18",
+      "evidence": ["EV-004", "EV-008", "EV-012", "EV-013"],
+      "verification": "Ticks 299, 300, 399, 400 boundary tests, hazard mismatch test verified by TST-04..TST-08",
+      "review": "READY",
+      "notes": "Half-open warning window [300, 400) implemented strictly bound to committed hazard ID"
+    },
+    {
+      "id": "T-04",
+      "title": "Make invariant evidence property-specific and implement six validators",
+      "type": "UPDATE",
+      "contract_version": 1,
+      "status": "COMPLETED",
+      "confidence": "VERIFIED",
+      "fidelity": "EXACT",
+      "dependencies": ["T-01"],
+      "write_scope": [
+        "coordination/deterministic_kernel.py",
+        "coordination/evidence_pipeline.py",
+        "coordination/full_game_simulator.py",
+        "tests/test_deterministic_kernel.py",
+        "tests/test_full_game_simulation.py"
+      ],
+      "commit": "99aa1c9f773887f5fc0a5529691d068e3eecda18",
+      "evidence": ["EV-004", "EV-010", "EV-011", "EV-012", "EV-013", "EV-014"],
+      "verification": "6 standalone pipeline invariant validators tested on positive and negative cases (TST-16..TST-18)",
+      "review": "READY",
+      "notes": "evaluate_scenario_properties evaluates declared scenario invariants individually; 6 pipeline validators implemented"
+    },
+    {
+      "id": "T-05",
+      "title": "Add and complete the focused positive, boundary, negative, purity, and replay test matrix",
+      "type": "UPDATE",
+      "contract_version": 1,
+      "status": "COMPLETED",
+      "confidence": "VERIFIED",
+      "fidelity": "EXACT",
+      "dependencies": ["T-02", "T-03", "T-04"],
+      "write_scope": [
+        "tests/test_deterministic_kernel.py",
+        "tests/test_full_game_simulation.py"
+      ],
+      "commit": "99aa1c9f773887f5fc0a5529691d068e3eecda18",
+      "evidence": ["EV-009", "EV-013", "EV-014"],
+      "verification": "Complete TST-01 through TST-20 test execution and 13 full-game tests passing",
+      "review": "READY",
+      "notes": "All 40 deterministic kernel tests and all 13 full-game simulation tests pass"
+    },
+    {
+      "id": "T-06",
+      "title": "Regenerate the evidence bundle, prove source bindings and replay parity, and request Astra/high review",
+      "type": "UPDATE",
+      "contract_version": 1,
+      "status": "COMPLETED",
+      "confidence": "VERIFIED",
+      "fidelity": "EXACT",
+      "dependencies": ["T-05"],
+      "write_scope": [
+        "artifacts/simulations/full-game/",
+        "evidence/remediation-kernel-20261101/"
+      ],
+      "commit": "PENDING_FINAL_EVIDENCE",
+      "evidence": ["EV-015", "EV-016", "EV-017", "EV-018"],
+      "verification": "New bundle sealed, source bindings verified, replays matching, Astra review completed with verdict READY",
+      "review": "READY",
+      "notes": "Exclusive bundle full-game-20261101T185524Z-2647e033 sealed with ready: true, submission_ready: false"
+    }
+  ],
+  "new_run": {
+    "id": "full-game-20261101T185524Z-2647e033",
+    "root": "artifacts/simulations/full-game/full-game-20261101T185524Z-2647e033",
+    "sealed": true,
+    "seal_hash": "3c68de2f0c7675a7a973bfea1c704022ae8fc1da0759006abd742eed0f7d32fd",
+    "tree_sha256": "9cb21a1f5109e1fcfecb9d6860173854621e3ba384026ed487b7a78df3ec3b9e",
+    "source_binding": "31/31 matching",
+    "replay_parity": true
+  },
+  "review": {
+    "requested": true,
+    "verdict": "READY",
+    "reviewer": "codex_subagent/gpt-6-astra",
+    "effort": "high",
+    "subagent_conversation_id": "2d17a3bb-4dc0-4aab-a523-9808954b5762",
+    "review_sha256": "1e67eca3cdf9ea3acd0a7bd6d5426dcf208d0086bc1a3b2ae97ad9b675e0cc37"
+  },
+  "readiness": {
+    "value": true,
+    "simulation_and_plan_ready": true,
+    "submission_ready": false,
+    "derived_from": ["EV-012", "EV-013", "EV-014", "EV-015", "EV-016", "EV-017", "EV-018"],
+    "submission_status": "NOT_EXECUTED"
+  },
+  "divergences": [],
+  "acceptance_plan": {
+    "artifact": "07_READINESS_PLAN.md",
+    "status": "PRODUCED",
+    "executed": false
+  }
+}
