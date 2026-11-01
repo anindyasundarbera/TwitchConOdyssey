@@ -1,6 +1,6 @@
 # San Diego game plan v2 — selected S1 plan
 
-**Status: revision 4, `selected_for_s1_simulation_unverified`; gameplay remains disabled.** D-01 through D-05 select the exact [S1 simulation profile](S1-SIMULATION-PROFILE.md) for a later separately authorized simulation. Revision 4 records design closure of the three critical findings in the unchanged [S1 REVISE review](S1-ASTRA-REVIEW.md); the [response](S1-ASTRA-REVIEW-RESPONSE.md) is not a new Astra verdict. Fresh version-bound review remains required. [Machine-readable plan](gameplan-v2.json)
+**Status: revision 5, `selected_for_s1_simulation_unverified`; gameplay remains disabled outside authorized deterministic simulation.** D-01 through D-05 select the exact [S1 simulation profile](S1-SIMULATION-PROFILE.md) for bounded S1 simulation, and D-06 through D-09 (`DECISION-01..04`, `ISSUE-SIM-01..03`) are recorded as `delegated_for_s1_remediation_provisional` in [DECISIONS.md](DECISIONS.md). Revision 5 builds on baseline Revision 4 (`a6967a24601f259be027ed7fbebed5ad6e0784d4a7f7b7f6c0a2c3967e47e6ed` for `GAMEPLAN-v2.md`; `1b43be51add9d6c5e1cc2b6378e66a7f48fb76985435693b3dcf303ad6234937` for `gameplan-v2.json`), preserving design closure of the three critical findings in the unchanged [S1 REVISE review](S1-ASTRA-REVIEW.md) ([response](S1-ASTRA-REVIEW-RESPONSE.md)) while binding steering lockout/clamping, `100/88` nominal speed calibration, diegetic booth waypoints (`35.0/60.0/80.0/100.0`), phase-boundary failover, 2-key signed turn-boundary hotfixes, and simulation-versus-live submission separation. Fresh version-bound independent review (`gpt-6-astra`) remains required. [Machine-readable plan](gameplan-v2.json)
 
 ## Route and core experience
 
@@ -40,7 +40,7 @@ External evidence is separate: [platform review](research/S1-PLATFORM-EVIDENCE.m
 
 ### D-01 — player_agency
 
-Auto-forward; 3 lanes; remappable digital left/right, initially arrows and gamepad D-pad. One press requests one adjacent-lane transition over 0.5s; no held repeat; same-tick opposites cancel.
+Auto-forward; 3 discrete lanes (0, 1, 2); remappable digital left/right, initially arrows and gamepad D-pad. One press requests one adjacent-lane transition over 0.5s (10-tick at 20Hz linear interpolation, lateral collision overlap |x - 1.0| < 0.4); edge clamping and in-flight transition lockout return rejected; no held repeat; same-tick opposites cancel.
 
 Auto-forward and steering remain active through planning, resolution and reward until terminal state, subject to pause; only crowd/counter input locks. No streamer counter confirmation/override; no valid crowd result means abstain.
 
@@ -50,7 +50,7 @@ HUD: one progress meter, hazard timer, one plain-language action/consequence pre
 
 One localized Little Italy center-lane obstacle and clear_lane; maximum 1 obstacle/turn and 3/match; no overlap. Hazard proposal/admission is half-open [0,15.000s); one accepted human-origin hazard committed before t=15 creates the fixed center-lane warning for the entire [15,20) interval and one deduplicated bounty increment. Warning/counter/increment bind to committed hazard ID. Proposal/model result at or after t=15 expires for that turn; no backdating or rollover. No accepted hazard by cutoff means no hazard, warning or increment. Active first 3s resolution.
 
-Collision once/obstacle: 20% forward-speed reduction for 2s; zero HP damage/stun/steering loss/displacement. No stacking, refresh or residual. Caps: 2s slowdown/turn, 6s/match; equivalent free-speed travel loss at most 0.4s/turn and 1.2s/match.
+Collision once/obstacle: 20% forward-speed reduction for 2s; zero HP damage/stun/steering loss/displacement. No stacking, refresh or residual. Caps: 2s slowdown/turn, 6s/match; equivalent free-speed travel loss at most 0.4s/turn and 1.2s/match over the 100.0-unit 5-segment route ([0,25), [25,50), [50,75), [75,95), [95,100]) at nominal speed 100/88 units/s (88.0s nominal, 89.2s with max 3 collisions < 90.0s deadline).
 
 clear_lane removes before collision; missing quorum uses bounded uncountered branch. No HP/death/respawn/checkpoints. INV-02 cumulative harm limits remain mandatory; later fixtures must establish reachability from every admitted state.
 
@@ -80,7 +80,7 @@ Bots/fixtures add and earn 0; fixture arithmetic is synthetic only. Residual saf
 
 ### D-05 — clock_contract
 
-90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 20Hz authoritative target, not measured runtime. No real-world deadline claim.
+90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 100.0-unit route at nominal free speed 100/88 units/s (88.0s nominal, 89.2s with max 3 collisions); diegetic booth waypoints at 35.0% (twitch_booth), 60.0% (codex_booth), 80.0% (aws_booth), and 100.0% (fictional_main_stage). 20Hz authoritative target, not measured runtime. No real-world deadline claim.
 
 Monotonic host clock, integer nanoseconds, authoritative sequence; replay uses logical time/sequence. Planning half-open: receipt exactly t=20 expires. Zero post-cutoff grace; client timestamps cannot backdate.
 
@@ -92,13 +92,13 @@ Pause freezes all simulation clocks/effects, rejects commands, invalidates pendi
 
 Two prior ambiguities are explicitly resolved for S1: “locked input” means crowd/counter input only; streamer steering remains active. INV-04's one-human aspiration is not an identity guarantee: the selected live accounting unit is an authenticated linked account subject, and offline actors remain labeled fixtures.
 
-D-06 failover, D-07 data-only hotfix trust and D-08 live demonstration/submission readiness remain unresolved at their existing later gates. No new streamer veto, checkpoint, per-event manual bounty approval or operator powers are introduced. Legacy `100+25/voter` reward formulas remain retired.
+Under the requester's Same-Day Deterministic Remediation Grant ([DECISIONS.md](DECISIONS.md)), D-06 (`failover_contract`, `DECISION-01`: stage-operator phase-boundary failover at `turn_tick in {0, 400, 500}` and pre-recovery `(tick, turn, phase, state_hash)` equality), D-07 (`hotfix_contract`, `DECISION-02`: dual-gated `CODEX_BOOTH_TRUSTED_V1` + operator-approved turn-boundary manifest restricted to `slowdown_fraction` and `slowdown_duration_ticks` with rollback), D-08 (`submission_and_coverage_honesty`, `DECISION-03`: simulation-versus-live readiness split, non-sponsor diegetic booth labeling, synthesized opt-in audio, and mechanical `not_observed` derivation for unrendered features), and D-09 (`DECISION-04` / `ISSUE-SIM-01..03`: steering lockout/clamping, `100/88` speed calibration, and `35.0/60.0/80.0/100.0` booth placement) are recorded as `delegated_for_s1_remediation_provisional`. Live external Twitch channel integration, rendered browser/mobile capture, and the 3-minute public demo video remain deferred under `before_live_submission`. Legacy `100+25/voter` reward formulas remain retired.
 
 ## Separate gates
 
-Plan rehearsal evaluates completeness and contradictions. The offline slice needs separate explicit authorization and deterministic expected outcomes, reachability and initial-state/geometry/transition specifications before testing. Submission readiness separately needs actual Twitch functionality, Codex build/session evidence, permitted assets and the required demo. Passing one gate does not satisfy another.
+Plan rehearsal evaluates completeness and contradictions. The offline slice needs explicit authorization, concrete initial-state/geometry/transition fixtures, reachability and deterministic expected outcomes before product development. Submission readiness separately needs actual Twitch functionality, Codex build/session evidence, permitted assets and the required demo. Passing one gate does not satisfy another.
 
-**Next gate:** fresh version-bound independent review of the revised profile, later fixture specifications and separate explicit bounded S1 gameplay-simulation authorization. D-01 through D-05 are selected and unverified; gameplay remains disabled. No later phase starts automatically.
+**Next gate:** fresh version-bound independent review (`plan_review` / `gpt-6-astra`) of the frozen Revision 5 simulation evidence bundle. D-01 through D-05 are selected and D-06 through D-09 are recorded in [DECISIONS.md](DECISIONS.md); live gameplay remains disabled. No later phase starts automatically.
 
 ## Revision record
 
@@ -107,3 +107,4 @@ Plan rehearsal evaluates completeness and contradictions. The offline slice need
 
 - Revision 3 (2026-11-01): selected D-01 through D-05 for S1 as unverified design inferences, recorded primary-source limits, resolved steering/account-assurance ambiguities and separated selected decisions from unresolved later gates. No gameplay execution or new independent review.
 - Revision 4 (2026-11-01): resolved exactly the three S1 REVISE findings: exact reward timeline and single terminal settlement, total boundary/effect priority, and hazard commitment strictly before t=15 with complete [15,20) warning and committed-ID binding. Other selected values and later gates are preserved; no new Astra verdict or gameplay evidence.
+- Revision 5 (2026-11-01): synchronized `ISSUE-SIM-01` (discrete lanes `0, 1, 2`, `0.5s`/`10`-tick linear interpolation, `|x - 1.0| < 0.4` collision overlap, edge clamping `rejected`, in-flight transition lockout `rejected`), `ISSUE-SIM-02` (`100.0`-unit 5-segment route, nominal free speed `100/88` units/s for `88.0s` nominal and `89.2s` max-collision completion < `90.0s` deadline), `ISSUE-SIM-03` / `DECISION-04` (diegetic booth waypoints at `35.0%` `twitch_booth`, `60.0%` `codex_booth`, `80.0%` `aws_booth`, `100.0%` `fictional_main_stage`), and delegated decisions `DECISION-01..03` (`D-06` phase-boundary failover, `D-07` 2-key signed turn-boundary hotfixes, `D-08` simulation-vs-live submission readiness split) bound to [DECISIONS.md](DECISIONS.md) against baseline Revision 4 (`a6967a24601f259be027ed7fbebed5ad6e0784d4a7f7b7f6c0a2c3967e47e6ed` MD / `1b43be51add9d6c5e1cc2b6378e66a7f48fb76985435693b3dcf303ad6234937` JSON).

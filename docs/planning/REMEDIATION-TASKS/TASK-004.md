@@ -3,7 +3,9 @@
 ## Task Identity
 - **Task ID:** `TASK-004`
 - **Title:** Simulation Orchestrator Refactor: Pre-Execution Frozen Matrix, 46 Substantive Traces & Two-Stage Review/Finalize CLI
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
+- **Work Mode (`B-2` Reconciled):** Converge-existing-to-contract refactor of `coordination/run_full_game_simulation.py` (exists at 1,934 lines, SHA-256 `d436204cf7482919b6ae8602a278587de461b6ceb5203b07920eca5722e86cb4`) to pre-execution frozen `SCENARIO-MATRIX.json`, 46 substantive command/trace emissions, and two-stage `--stage simulate` / `--stage finalize` CLI without synthetic review generation.
 - **Planning Status:** `PLANNED`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `CRITICAL` (Refactors `coordination/run_full_game_simulation.py` to close S0 `AUDIT-01`, S0 `AUDIT-02`, and S1 `AUDIT-04..09`)

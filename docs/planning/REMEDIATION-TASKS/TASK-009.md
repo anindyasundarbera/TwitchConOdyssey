@@ -3,7 +3,9 @@
 ## Task Identity
 - **Task ID:** `TASK-009`
 - **Title:** Genuine Independent Review Invocation via Configured Agent Boundary & Bundle Finalization (`AUDIT-01`, `AUDIT-07`, `AUDIT-09`)
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
+- **Reviewer Authorization Citation (§8 / §12.4):** Authorized via `config/directive-policy.json` active directive `remediation_rerun_and_decision_delegation` (lines 499–531, provenance `docs/planning/SIMULATION-EVIDENCE-AUDIT.md` locator `"Required next action"` step 9 line 181), `tasks.plan_review` (lines 85–88), `model_allocation` (line 289), `bounded_subagents` (line 313), and `config/model-policy.json` (`principal_review` -> `provider: "codex_subagent", model: "gpt-6-astra", reasoning_effort: "high"`), using the local `invoke_subagent` boundary with fresh narrow context while external network/live-service API calls remain disabled (`live_model_calls_authorized: false`).
 - **Planning Status:** `PLANNED`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `CRITICAL` (Closes S0 `AUDIT-01`, S1 `AUDIT-07`, and S2 `AUDIT-09`)
@@ -45,18 +47,19 @@ python3 -m coordination.context_contract --task plan_review --phase plan \
 - Frozen pre-review artifacts in `artifacts/simulations/full-game/<NEW_RUN_ID>/`.
 
 ## Output Contracts
-- `artifacts/simulations/full-game/<NEW_RUN_ID>/INDEPENDENT-REVIEW.md`: written by the independent reviewer agent, containing bound artifact hashes from `REVIEW-PACKET.md`, independent verification of `AUDIT-01..09` closures, limitations, and exact verdict `READY` or `REVISE`.
-- `artifacts/simulations/full-game/<NEW_RUN_ID>/REVIEW-INVOCATION.json`: records `{schema_version, reviewer_role, configured_model, configured_effort, subagent_conversation_id, packet_hash, review_packet_sha256, prompt_sha256, independent_review_sha256, verdict, evidence_origin: "independent_subagent_review"}`.
+- `artifacts/simulations/full-game/<NEW_RUN_ID>/INDEPENDENT-REVIEW.md` and `artifacts/simulations/full-game/<NEW_RUN_ID>/INDEPENDENT-REVIEW.json`: written by the independent reviewer agent, containing bound artifact hashes from `REVIEW-PACKET.md`, independent verification of `AUDIT-01..09` closures, limitations, and exact verdict `READY` or `REVISE`.
+- `artifacts/simulations/full-game/<NEW_RUN_ID>/REVIEW-INVOCATION.json`: records `{schema_version, reviewer_role, configured_model, configured_effort, subagent_conversation_id, packet_hash, review_packet_sha256, prompt_sha256, independent_review_sha256, independent_review_json_sha256, verdict, evidence_origin: "independent_subagent_review"}`.
 - Finalized post-review artifacts in `<NEW_RUN_ID>/` produced by `--stage finalize`:
   - `MODEL-USAGE.json`
-  - `DEVELOPMENT-READINESS.json` (with derived `ready` boolean)
+  - `DEVELOPMENT-READINESS.json` (with derived `ready` boolean across all readiness predicates)
   - `README.md`
-  - `RUN-MANIFEST.json` (sealing all artifact SHA-256 digests last)
+  - `RUN-MANIFEST.json` (sealing all artifact SHA-256 digests last; manifest entry count derived mechanically from actual emitted files in `<NEW_RUN_ID>/`, never copied from the rejected run's 116 count per §12.5)
 
 ## Write Scope
 - **Permitted Modifications:** None to existing pre-review files in `<NEW_RUN_ID>/` (verified by `RUN-MANIFEST.json` and `REVIEW-PACKET.md` hashes).
 - **Permitted New Files (Exact within `<NEW_RUN_ID>`):**
   - `artifacts/simulations/full-game/<NEW_RUN_ID>/INDEPENDENT-REVIEW.md`
+  - `artifacts/simulations/full-game/<NEW_RUN_ID>/INDEPENDENT-REVIEW.json`
   - `artifacts/simulations/full-game/<NEW_RUN_ID>/REVIEW-INVOCATION.json`
   - `artifacts/simulations/full-game/<NEW_RUN_ID>/MODEL-USAGE.json`
   - `artifacts/simulations/full-game/<NEW_RUN_ID>/DEVELOPMENT-READINESS.json`

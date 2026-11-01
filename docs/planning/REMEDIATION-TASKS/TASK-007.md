@@ -3,7 +3,8 @@
 ## Task Identity
 - **Task ID:** `TASK-007`
 - **Title:** Pre-Rerun Directive Ledger Binding & Context-Contract Verification Gate
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
 - **Planning Status:** `PLANNED`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `MEDIUM` (Ensures zero stale source bindings before the authorized simulation run and independent Astra review)

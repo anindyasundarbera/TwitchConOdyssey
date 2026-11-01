@@ -14,7 +14,11 @@ Explicitly excluded: modification of the rejected run; product development;
 Supersedes: the checkpoint's "do not rerun without new explicit authorization" clause.
 ```
 
-- **Directive Ledger Binding:** Appended to [`config/directive-policy.json`](../../config/directive-policy.json) as active directive `remediation_rerun_and_decision_delegation` (`topic: "remediation_authorization"`).
+- **Directive Ledger Binding:** Appended to [`config/directive-policy.json`](../../config/directive-policy.json) as active directive `remediation_rerun_and_decision_delegation` (`topic: "remediation_authorization"`, lines 499–531), binding `docs/planning/SIMULATION-EVIDENCE-AUDIT.md` (`"Required next action"` step 9, line 181) and routing `plan_review` via `codex_subagent` (`config/directive-policy.json` lines 85–88, 289, 313; `config/model-policy.json` line 51) without external network/API calls (`live_model_calls_authorized: false`).
+- **Protocol §3.1 Baseline Commit Gate (`B-1` Resolved):**
+  - **Branch:** `main`
+  - **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d`
+  - **Baseline Tag:** `plan-baseline/remediation-v2.0`
 - **Authoritative Previous Checkpoint:** [`docs/planning/SIMULATION-EVIDENCE-AUDIT.md`](SIMULATION-EVIDENCE-AUDIT.md)
   - **Recorded Date (verbatim):** `Recorded: 2026-11-01`
   - **Current Verdict (verbatim):** `Current verdict: **REJECT READY; evidence pipeline requires remediation before development**`
@@ -119,7 +123,9 @@ flowchart TD
   T9 --> T10
 ```
 
-- **Critical Path:** `DECISION-01..04 (Done) → TASK-001 / TASK-003 → TASK-004 → TASK-006 → TASK-007 (Freeze) → TASK-008 → TASK-009 → TASK-010` (`6.5` bounded sessions, `~145` active minutes across a `359`-minute window before `23:59` cutoff).
+- **Critical Path & Budget Arithmetic:** `DECISION-01..04 (Done) → TASK-001 / TASK-003 → TASK-004 → TASK-006 → TASK-007 (Freeze) → TASK-008 → TASK-009 → TASK-010`. Critical path is `240` minutes (`4.0` hours) against a `270`-minute net execution ceiling (leaving `30` minutes net buffer) and a `360`-minute gross window (`18:00–23:59` IST, `120` minutes gross buffer including the `60`-minute contingency repair window and `30`-minute freeze/handoff margins).
+- **Wave Boundary Hash-Cascade Gate (§5.1):** `config/directive-policy.json` binds SHA-256 digests of `GAMEPLAN-v2.md`, `STATUS.md`, and `CONTEXT-v2.md`. Both `TASK-005` and `TASK-010` mutate `STATUS.md`, so `TASK-010` must re-derive the `config/directive-policy.json` hash cascade a second time after audit sign-off. No wave boundary may pass while `python3 -m coordination.context_contract --task development --phase plan --validate-only` is failing.
+- **Derived Manifest Count Rule (§12.5):** The rejected run's `RUN-MANIFEST.json` had `116` entries (`115` artifacts + manifest). A remediated run emits `46` scenarios × (`commands/<id>.json` + `traces/<id>.jsonl` + `state-hashes/<id>.json`) = `138` per-scenario files plus `state-hashes/scenario_hashes.json`, `results/SCENARIO-RESULTS.jsonl`, and top-level bundle/review artifacts (including `INDEPENDENT-REVIEW.md`, `INDEPENDENT-REVIEW.json`, and `REVIEW-INVOCATION.json`). The manifest count must be derived mechanically from the run directory, never copied from the rejected run.
 - **First Execution Wave (Immediate `READY` Tasks):**
   - `TASK-001` (`coordination/full_game_simulator.py`)
   - `TASK-003` (`coordination/evidence_pipeline.py`, `coordination/scenario_inputs.py`)

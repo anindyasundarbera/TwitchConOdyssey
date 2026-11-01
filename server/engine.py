@@ -2,11 +2,109 @@
 import copy
 import hashlib
 from fractions import Fraction
+from typing import Any, Dict, List, Optional
+from coordination.canonical_commands import make_command, validate_command
+from coordination.content_cache import canonical_hash
+from coordination.full_game_simulator import (
+    DISTRICTS as SDC_DISTRICTS,
+    FullGameSimulator,
+    HZ,
+    MATCH_DEADLINE_TICKS,
+    PLANNING_TICKS,
+    RESOLUTION_TICKS,
+    REWARD_TICKS,
+    TURN_TICKS,
+    evaluate_independent_oracles,
+    replay_command_stream,
+)
+from coordination.state_transport import apply_diff, state_diff
 from schemas.validate import contract
 ACTIONS = ('shield', 'patch', 'boost', 'sabotage')
 SQUADS = ('Neon Foxes', 'Bay Phantoms', 'Golden Glitches', 'Pixel Pirates')
 DISTRICTS = ('Little Italy / North Embarcadero', 'Embarcadero Waterfront / Marina',
              'Gaslamp Quarter', 'San Diego Convention Center', 'Fictional Main Stage')
+if DISTRICTS != tuple(d["name"] for d in SDC_DISTRICTS):
+    raise RuntimeError("DISTRICTS out of sync with coordination.full_game_simulator.DISTRICTS")
+DISTRICTS = tuple(d["name"] for d in SDC_DISTRICTS)
+
+
+def create_s1_simulator(
+    seed: int = 42,
+    initial_lane: int = 1,
+    **kwargs: Any,
+) -> FullGameSimulator:
+    """Construct an authoritative S1 20 Hz simulator instance backed by the Shared Determinism Core."""
+    return FullGameSimulator(seed=seed, initial_lane=initial_lane, **kwargs)
+
+
+def verify_s1_replay(
+    seed: int,
+    initial_lane: int,
+    initial_roster: List[str],
+    command_log: List[Dict[str, Any]],
+    steps_to_run: Any,
+    **kwargs: Any,
+) -> Dict[str, Any]:
+    """Deterministically replay and verify an S1 command stream via the Shared Determinism Core."""
+    return replay_command_stream(
+        seed=seed,
+        initial_lane=initial_lane,
+        initial_roster=initial_roster,
+        command_log=command_log,
+        steps_to_run=steps_to_run,
+        **kwargs,
+    )
+
+
+class S1EngineAdapter:
+    """Unified S1 authoritative runtime engine adapter wrapping FullGameSimulator."""
+
+    def __init__(
+        self,
+        seed: int = 42,
+        initial_lane: int = 1,
+        *,
+        initial_roster: Optional[List[str]] = None,
+        **kwargs: Any,
+    ):
+        self.simulator = create_s1_simulator(
+            seed=seed,
+            initial_lane=initial_lane,
+            initial_roster=initial_roster,
+            **kwargs,
+        )
+
+    @property
+    def tick(self) -> int:
+        return self.simulator.tick
+
+    @property
+    def turn(self) -> int:
+        return self.simulator.turn
+
+    @property
+    def phase(self) -> str:
+        return self.simulator.phase
+
+    @property
+    def status(self) -> str:
+        return self.simulator.status
+
+    @property
+    def pool(self) -> int:
+        return self.simulator.pool
+
+    def submit_command(self, cmd: Dict[str, Any]) -> str:
+        return self.simulator.submit_command(cmd)
+
+    def step(self) -> None:
+        self.simulator.step()
+
+    def snapshot(self) -> Dict[str, Any]:
+        return self.simulator.get_canonical_state()
+
+    def state_hash(self) -> str:
+        return canonical_hash(self.simulator.get_canonical_state())
 
 def cohort(viewer, k):
     return int.from_bytes(hashlib.sha256(viewer.encode()).digest()[:8], 'big') % k

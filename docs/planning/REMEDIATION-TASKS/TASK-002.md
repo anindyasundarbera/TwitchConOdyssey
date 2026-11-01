@@ -3,7 +3,8 @@
 ## Task Identity
 - **Task ID:** `TASK-002`
 - **Title:** Dual-Consumer Runtime Wiring: Import SDC Primitives into Shipping Game Engine
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
 - **Planning Status:** `PLANNED`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `MEDIUM` (Must preserve legacy `Engine` interface compatibility while sharing SDC primitives and keeping gameplay gate closed)

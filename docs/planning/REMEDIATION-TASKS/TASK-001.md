@@ -3,7 +3,9 @@
 ## Task Identity
 - **Task ID:** `TASK-001`
 - **Title:** SDC Simulator Core: Fixture Hype Isolation, State-Diff Trace Emission & D-06/D-07/Booth Mechanics
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
+- **Work Mode (`B-2` Reconciled):** Converge-existing-to-contract (`coordination/full_game_simulator.py` exists at 562 lines, SHA-256 `0badf1347ccedb7592fd582586c95331c7b723acb2b42842a5886302f711fc02`; diff-against-contract adds `synthetic_fixture_pool` isolation, `state_diff` trace deltas, `D-06` failover/recover, `D-07` hotfix/rollback, `execute_frozen_scenario`, `replay_command_stream`, `evaluate_independent_oracles`).
 - **Planning Status:** `READY`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `HIGH` (Evidence-integrity & core state-machine invariants)

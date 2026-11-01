@@ -65,7 +65,7 @@ class ContextContractTests(unittest.TestCase):
             self.assertIn(item["source_path"], packet["required_paths"])
             self.assertEqual(item["evidence_origin"], "project_design_inference")
         self.assertEqual([item["id"] for item in packet["unresolved_decisions"]],
-                         ["failover_and_hotfix_trust"])
+                         ["live_submission_external_capture"])
         for item in packet["directives"]:
             self.assertEqual(item["wording"], "normalized")
             self.assertIsNone(item["exact_user_wording"])
@@ -103,35 +103,51 @@ class ContextContractTests(unittest.TestCase):
         packet = self.compile("complex_coding_debugging")
         decisions = {item["id"]: item for item in packet["selected_decisions"]}
         expected = {
-            "D-01": ("planning, resolution and reward until terminal state",),
+            "D-01": ("planning, resolution and reward until terminal state",
+                     "3 discrete lanes (0, 1, 2)",
+                     "edge clamping and in-flight transition lockout return rejected",
+                     "|x - 1.0| < 0.4"),
             "D-02": ("half-open [0,15.000s)", "entire [15,20) interval",
-                     "no hazard, warning or increment", "committed hazard ID"),
+                     "no hazard, warning or increment", "committed hazard ID",
+                     "100/88 units/s"),
             "D-03": ("half-open planning interval [0,20)", "committed hazard ID"),
             "D-04": ("no interim payout", "exactly one final settlement",
                      "immediately ends active simulation"),
             "D-05": ("exactly 5.0s reward", "never turn 4",
                      "deadline first, phase-close, pause request",
                      "clear_lane removal, collision adjudication, delivery detection, one final settlement",
-                     "Pause cannot suspend a reached deadline", "planning t=15 for hazards, t=20"),
+                     "Pause cannot suspend a reached deadline", "planning t=15 for hazards, t=20",
+                     "35.0% (twitch_booth)", "60.0% (codex_booth)",
+                     "80.0% (aws_booth)", "100.0% (fictional_main_stage)"),
         }
         for ident, phrases in expected.items():
             for phrase in phrases:
                 self.assertIn(phrase, decisions[ident]["rule"])
             self.assertEqual(decisions[ident]["status"], contract.SELECTED_STATUS)
-        self.assertEqual(packet["ledger_revision"], 7)
+        self.assertEqual(packet["ledger_revision"], 9)
         self.assertFalse(packet["gate"]["gameplay_enabled"])
         for name in ("docs/planning/S1-ASTRA-REVIEW.md",
-                     "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md"):
+                     "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md",
+                     "docs/planning/DECISIONS.md"):
             self.assertEqual(packet["required_paths"][name],
                              bytes_hash((self.root / name).read_bytes()))
-        history = [item for item in self.policy["superseded_decisions"]
-                   if item.get("superseded_in_revision") == 7]
-        self.assertEqual({item["superseded_by"] for item in history}, contract.DECISION_IDS)
-        for item in history:
+        history_r7 = [item for item in self.policy["superseded_decisions"]
+                      if item.get("superseded_in_revision") == 7]
+        self.assertEqual({item["superseded_by"] for item in history_r7}, contract.DECISION_IDS)
+        for item in history_r7:
             self.assertEqual(item["status"], "superseded")
             self.assertEqual(item["prior_status"], contract.SELECTED_STATUS)
             self.assertEqual(item["prior_source_sha256"],
                              "d5216ff1c73f08153003f38077f67c59813b52b05e27d1a89a937c0636117266")
+        history_r8 = [item for item in self.policy["superseded_decisions"]
+                      if item.get("superseded_in_revision") == 8
+                      and item.get("superseded_by") in contract.DECISION_IDS]
+        self.assertEqual({item["superseded_by"] for item in history_r8}, contract.DECISION_IDS)
+        for item in history_r8:
+            self.assertEqual(item["status"], "superseded")
+            self.assertEqual(item["prior_status"], contract.SELECTED_STATUS)
+            self.assertEqual(item["prior_source_sha256"],
+                             "a8e3304309fd81eb795f5b7e5b609b66a65f5a3dae4f32ef0c4ded369049d2a4")
         self.assertNotIn("superseded_decisions", packet)
 
     def test_bounded_subagents_is_mandatory_active_and_emitted(self):

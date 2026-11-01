@@ -3,7 +3,10 @@
 ## Task Identity
 - **Task ID:** `TASK-010`
 - **Title:** Final Acceptance Audit, Preserved-Run Non-Modification Proof & Remediation State Closure
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
+- **Hash Cascade Gate (§5.1 / §12.3):** Because `TASK-010` writes `docs/planning/STATUS.md` a second time (after `TASK-005`), `TASK-010` must re-derive the SHA-256 hash cascade in `config/directive-policy.json` (`required_paths["docs/planning/STATUS.md"]`) and verify `python3 -m coordination.context_contract --task development --phase plan --validate-only` and `--task planner_orchestrator --phase plan --validate-only` exit 0.
+- **Derived Manifest Count (§12.5):** Verify that `<NEW_RUN_ID>/RUN-MANIFEST.json` entry count is derived mechanically from all files present in `<NEW_RUN_ID>/` (never hardcoded to the rejected run's 116 count).
 - **Planning Status:** `PLANNED`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `MEDIUM` (Final system-level acceptance gate before handoff/submission)

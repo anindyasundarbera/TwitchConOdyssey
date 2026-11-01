@@ -164,19 +164,58 @@
   ],
   "open_decisions": [
     {
+      "id": "live_submission_external_capture",
+      "decision": "Live external Twitch channel integration, rendered browser/mobile viewport capture and 3-minute public demo video recording remain deferred until separate live-submission authorization.",
+      "needed_before": "before_live_submission",
+      "gate": "live_submission_gate"
+    }
+  ],
+  "delegated_remediation_decisions": [
+    {
       "id": "D-06",
-      "decision": "Failover owner, pending-command/reward commit boundary, replay identity and health/state recovery acceptance.",
-      "needed_before": "resilience simulation"
+      "decision_id": "DECISION-01",
+      "contract": "failover_contract",
+      "status": "delegated_for_s1_remediation_provisional",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/DECISIONS.md",
+      "source_locator": "DECISION-01",
+      "rule": "Stage-operator-confirmed failover (operator.failover) strictly at phase boundaries (turn_tick in {0, 400, 500}); mid-phase takeover returns rejected; uncommitted queue commands discarded without rollover while committed [0,15s) hazard/bounty state is preserved at turn_tick == 400; offline fixture commands carry provenance='fixture' and execution_mode='offline_fixture'; operator.recover requires passing health check and exact match of (tick, turn, phase, state_hash)."
     },
     {
       "id": "D-07",
-      "decision": "Hotfix approver, permitted DSL, trusted signer/base/version/expiry rules and activation/rollback boundary.",
-      "needed_before": "hotfix execution"
+      "decision_id": "DECISION-02",
+      "contract": "hotfix_contract",
+      "status": "delegated_for_s1_remediation_provisional",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/DECISIONS.md",
+      "source_locator": "DECISION-02",
+      "rule": "Dual-gated booth.hotfix manifest (CODEX_BOOTH_TRUSTED_V1 signature + operator_approved=True) restricted to flat 2-key numeric tuning allowlist {'slowdown_fraction', 'slowdown_duration_ticks'} (slowdown_fraction in [0.05, 0.20], slowdown_duration_ticks in [1, 40]), bound to monotonic patch_version, base_plan_revision, and expiry_tick >= next_turn_start_tick; stages in pending_hotfix and activates strictly at turn boundary (turn_tick == 0) with previous_hotfix_rules snapshot and atomic rollback (operator.rollback_hotfix)."
     },
     {
       "id": "D-08",
-      "decision": "Actual Twitch participation path, live demonstration evidence and brand/audio permissions.",
-      "needed_before": "submission readiness"
+      "decision_id": "DECISION-03",
+      "contract": "submission_and_coverage_honesty",
+      "status": "delegated_for_s1_remediation_provisional",
+      "gate": "before_gameplay",
+      "live_submission_gate": "before_live_submission",
+      "source_path": "docs/planning/DECISIONS.md",
+      "source_locator": "DECISION-03",
+      "rule": "Separate simulation_and_plan_ready from live_submission_ready (submission_ready: false in headless simulation); label all booths as fictional non-sponsor diegetic metaphors (INV-08); use synthesized opt-in Web Audio only; derive unrendered visual/acoustic/live-capture features (FEAT-14-READABILITY-AND-HUD and unrendered sub-claims of FEAT-12, FEAT-13, FEAT-15) mechanically as not_observed."
+    },
+    {
+      "id": "D-09",
+      "decision_id": "DECISION-04",
+      "issue_ids": [
+        "ISSUE-SIM-01",
+        "ISSUE-SIM-02",
+        "ISSUE-SIM-03"
+      ],
+      "contract": "s1_geometry_speed_and_booth_waypoints",
+      "status": "delegated_for_s1_remediation_provisional",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/DECISIONS.md",
+      "source_locator": "DECISION-04",
+      "rule": "Bind discrete lanes 0, 1, 2 with 0.5s (10-tick at 20Hz) linear interpolation, |x - 1.0| < 0.4 collision overlap, edge clamping rejected, and in-flight transition lockout rejected (ISSUE-SIM-01); 100.0-unit 5-segment route ([0,25), [25,50), [50,75), [75,95), [95,100]) with nominal free speed 100/88 units/s for 88.0s nominal and 89.2s max-collision completion < 90.0s deadline (ISSUE-SIM-02); and diegetic booth waypoints at 35.0% (twitch_booth), 60.0% (codex_booth), 80.0% (aws_booth), and 100.0% (fictional_main_stage) (ISSUE-SIM-03)."
     }
   ],
   "rehearsal": {
@@ -223,17 +262,19 @@
     }
   ],
   "revision": {
-    "number": 4,
-    "baseline_sha256": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
-    "basis": "Bounded primary-source research and selected S1 design inferences; historical critiques are not runtime evidence",
-    "approved_change": "Resolve exactly the three S1 REVISE findings as selected/unverified design decisions; preserve other selected values and closed gameplay gate",
+    "number": 5,
+    "baseline_sha256": "1b43be51add9d6c5e1cc2b6378e66a7f48fb76985435693b3dcf303ad6234937",
+    "baseline_markdown_sha256": "a6967a24601f259be027ed7fbebed5ad6e0784d4a7f7b7f6c0a2c3967e47e6ed",
+    "basis": "Bounded primary-source research, selected S1 design inferences, and delegated remediation decisions recorded in docs/planning/DECISIONS.md",
+    "approved_change": "Synchronize Revision 5 deterministic clarifications (ISSUE-SIM-01 steering lockout/clamping, ISSUE-SIM-02 nominal speed 100/88 units/s) and delegated remediation decisions (DECISION-01..04: D-06 phase-boundary failover, D-07 2-key signed turn-boundary hotfix, D-08 simulation-vs-live submission readiness split, D-09 / ISSUE-SIM-03 diegetic booth waypoints at 35.0/60.0/80.0/100.0) bound to docs/planning/DECISIONS.md",
     "astra_reviewed_version": 1,
     "v2_gameplay_tested": false,
     "changelog": [
       "Revision 1 restored v1 review omissions and separated authority/evidence gates without selecting mechanics.",
       "Revision 2 records five partial user proposals, explicit open selections and retired legacy bounty formulas; no new runtime or review evidence.",
       "Revision 3 selects the exact S1 profile and separates selected decisions from later unresolved gates; no gameplay or implementation verification.",
-      "Revision 4 closes the three S1 review ambiguities: exact reward timeline/single terminal settlement, total boundary/effect priority, and pre-t=15 hazard commitment with complete warning; no new Astra verdict or gameplay evidence."
+      "Revision 4 closes the three S1 review ambiguities: exact reward timeline/single terminal settlement, total boundary/effect priority, and pre-t=15 hazard commitment with complete warning; no new Astra verdict or gameplay evidence.",
+      "Revision 5 synchronizes ISSUE-SIM-01 (discrete lanes 0, 1, 2, 0.5s/10-tick linear interpolation, |x - 1.0| < 0.4 collision overlap, edge clamping rejected, in-flight transition lockout rejected), ISSUE-SIM-02 (100.0-unit 5-segment route, nominal free speed 100/88 units/s for 88.0s nominal and 89.2s max-collision completion < 90.0s deadline), ISSUE-SIM-03 / DECISION-04 (diegetic booth waypoints at 35.0% twitch_booth, 60.0% codex_booth, 80.0% aws_booth, 100.0% fictional_main_stage), and delegated decisions DECISION-01..03 (D-06, D-07, D-08) bound to docs/planning/DECISIONS.md."
     ]
   },
   "authority": {
@@ -355,7 +396,7 @@
       "gate": "before_gameplay",
       "decision": "player_agency selected for a later S1 simulation; unverified.",
       "selected_constraints": [
-        "Auto-forward; 3 lanes; remappable digital left/right, initially arrows and gamepad D-pad. One press requests one adjacent-lane transition over 0.5s; no held repeat; same-tick opposites cancel.",
+        "Auto-forward; 3 discrete lanes (0, 1, 2); remappable digital left/right, initially arrows and gamepad D-pad. One press requests one adjacent-lane transition over 0.5s (10-tick at 20Hz linear interpolation, lateral collision overlap |x - 1.0| < 0.4); edge clamping and in-flight transition lockout return rejected; no held repeat; same-tick opposites cancel.",
         "Auto-forward and steering remain active through planning, resolution and reward until terminal state, subject to pause; only crowd/counter input locks. No streamer counter confirmation/override; no valid crowd result means abstain.",
         "HUD: one progress meter, hazard timer, one plain-language action/consequence preview; no high-velocity chat reading. INV-01 reserves position, physics and collision to the deterministic engine."
       ],
@@ -366,7 +407,17 @@
       "parameters": {
         "auto_forward": true,
         "lanes": 3,
+        "discrete_lanes": [
+          0,
+          1,
+          2
+        ],
         "transition_seconds": 0.5,
+        "transition_ticks": 10,
+        "lateral_interpolation": "linear",
+        "collision_overlap_half_width": 0.4,
+        "transition_lockout": "rejected",
+        "edge_clamping": "rejected",
         "lane_delta_per_press": 1,
         "held_repeat": false,
         "same_tick_opposites": "cancel",
@@ -395,7 +446,7 @@
       "decision": "survival_contract selected for a later S1 simulation; unverified.",
       "selected_constraints": [
         "One localized Little Italy center-lane obstacle and clear_lane; maximum 1 obstacle/turn and 3/match; no overlap. Hazard proposal/admission is half-open [0,15.000s); one accepted human-origin hazard committed before t=15 creates the fixed center-lane warning for the entire [15,20) interval and one deduplicated bounty increment. Warning/counter/increment bind to committed hazard ID. Proposal/model result at or after t=15 expires for that turn; no backdating or rollover. No accepted hazard by cutoff means no hazard, warning or increment. Active first 3s resolution.",
-        "Collision once/obstacle: 20% forward-speed reduction for 2s; zero HP damage/stun/steering loss/displacement. No stacking, refresh or residual. Caps: 2s slowdown/turn, 6s/match; equivalent free-speed travel loss at most 0.4s/turn and 1.2s/match.",
+        "Collision once/obstacle: 20% forward-speed reduction for 2s; zero HP damage/stun/steering loss/displacement. No stacking, refresh or residual. Caps: 2s slowdown/turn, 6s/match; equivalent free-speed travel loss at most 0.4s/turn and 1.2s/match over the 100.0-unit 5-segment route ([0,25), [25,50), [50,75), [75,95), [95,100]) at nominal speed 100/88 units/s (88.0s nominal, 89.2s with max 3 collisions < 90.0s deadline).",
         "clear_lane removes before collision; missing quorum uses bounded uncountered branch. No HP/death/respawn/checkpoints. INV-02 cumulative harm limits remain mandatory; later fixtures must establish reachability from every admitted state.",
         "Wipe means not delivered strictly before 90s active deadline; no automatic retries or carried state/pool. A new explicit match resets all state."
       ],
@@ -425,6 +476,10 @@
         "residual": false,
         "max_slowdown_seconds_per_turn": 2,
         "max_slowdown_seconds_per_match": 6,
+        "route_distance_units": 100.0,
+        "nominal_route_seconds": 88,
+        "nominal_free_speed_units_per_sec": "100/88",
+        "max_collision_completion_seconds": 89.2,
         "clear_lane_before_collision": true,
         "missing_quorum": "bounded_uncountered",
         "hp_death_respawn_checkpoints": false,
@@ -568,7 +623,7 @@
       "gate": "before_gameplay",
       "decision": "clock_contract selected for a later S1 simulation; unverified.",
       "selected_constraints": [
-        "90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 20Hz authoritative target, not measured runtime. No real-world deadline claim.",
+        "90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 100.0-unit route at nominal free speed 100/88 units/s (88.0s nominal, 89.2s with max 3 collisions); diegetic booth waypoints at 35.0% (twitch_booth), 60.0% (codex_booth), 80.0% (aws_booth), and 100.0% (fictional_main_stage). 20Hz authoritative target, not measured runtime. No real-world deadline claim.",
         "Monotonic host clock, integer nanoseconds, authoritative sequence; replay uses logical time/sequence. Planning half-open: receipt exactly t=20 expires. Zero post-cutoff grace; client timestamps cannot backdate.",
         "Equal-time ordering: deadline first, phase-close, pause request, authoritative sequence-ordered commands, effects/settlement. Pause cannot suspend a reached deadline. Admitted effects: clear_lane removal, collision adjudication, delivery detection, one final settlement. Same-time pre-deadline collision is recorded before delivery and halves settlement once. Delivery strictly precedes deadline; equality wipes for zero settlement.",
         "Model timeout min(dispatch+2s, applicable admission close): planning t=15 for hazards, t=20 for general input/counter votes. No retry; cutoff/late results expire without backdating, rollover or tick blocking. Local validation remains required; statuses applied/expired/rejected/duplicate.",
@@ -586,6 +641,69 @@
         "reward_approximate": false,
         "max_turns": 3,
         "authoritative_hz_target": 20,
+        "route_distance_units": 100.0,
+        "nominal_route_seconds": 88,
+        "nominal_free_speed_units_per_sec": "100/88",
+        "max_collision_completion_seconds": 89.2,
+        "district_progress_ranges": [
+          {
+            "id": "little_italy_north_embarcadero",
+            "range": [
+              0,
+              25
+            ]
+          },
+          {
+            "id": "embarcadero_waterfront_marina",
+            "range": [
+              25,
+              50
+            ]
+          },
+          {
+            "id": "gaslamp_quarter",
+            "range": [
+              50,
+              75
+            ]
+          },
+          {
+            "id": "san_diego_convention_center",
+            "range": [
+              75,
+              95
+            ]
+          },
+          {
+            "id": "fictional_main_stage",
+            "range": [
+              95,
+              100
+            ]
+          }
+        ],
+        "booth_waypoints": [
+          {
+            "id": "twitch_booth",
+            "progress": 35.0,
+            "district_id": "embarcadero_waterfront_marina"
+          },
+          {
+            "id": "codex_booth",
+            "progress": 60.0,
+            "district_id": "gaslamp_quarter"
+          },
+          {
+            "id": "aws_booth",
+            "progress": 80.0,
+            "district_id": "san_diego_convention_center"
+          },
+          {
+            "id": "fictional_main_stage",
+            "progress": 100.0,
+            "district_id": "fictional_main_stage"
+          }
+        ],
         "clock": "single_monotonic_host_integer_nanoseconds",
         "replay_clock": "recorded_logical_time_and_sequence",
         "planning_interval": "half_open",

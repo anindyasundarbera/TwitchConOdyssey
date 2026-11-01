@@ -3,7 +3,9 @@
 ## Task Identity
 - **Task ID:** `TASK-003`
 - **Title:** SDC Evidence Pipeline Primitives: Exclusive Run Root, Derived Coverage, Corpus Binding & Computed Readiness
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
+- **Work Mode (`B-2` / `B-3` Reconciled):** Greenfield creation of `coordination/evidence_pipeline.py` (`B-3`) + converge-existing-to-contract extension of `coordination/scenario_inputs.py` (`B-2`, exists at 74 lines, SHA-256 `1cf6a89939e3927d1b4aafe2ffc999aa3d5089339cfb496ad1510418a0abb9ba`, adding `build_corpus_manifest`).
 - **Planning Status:** `READY`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `CRITICAL` (Directly governs `AUDIT-01`, `AUDIT-04`, `AUDIT-07`, `AUDIT-08`, `AUDIT-09` anti-forgery gates)

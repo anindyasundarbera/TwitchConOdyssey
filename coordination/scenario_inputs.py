@@ -1,11 +1,12 @@
 """Seeded reusable viewer-message fixtures; never live viewers or gameplay."""
-from .content_cache import canonical_hash, detached, validate_json
+from .content_cache import bytes_hash, canonical_hash, detached, require_hash, validate_json
 
 _GENERATOR_ID = "viewer-fixture-v1"
 _GENERATOR_VERSION = 1
 _GENERATOR_SELECTION = "sha256(canonical-v1([seed,sequence])) modulo template count"
 _GENERATOR_CLOCK = "start_tick + sequence * tick_stride"
 _GENERATOR_ACTOR = "fixture-viewer-{sequence}"
+_GENERATOR_SOURCE_PATH = "coordination/scenario_inputs.py"
 
 
 def _generator_spec():
@@ -73,3 +74,60 @@ def validate_corpus(corpus):
     if canonical_hash(corpus) != canonical_hash(expected):
         raise ValueError("Viewer corpus does not match its bound fixture recipe")
     return expected
+
+
+def build_corpus_manifest(corpus, *, generator_source_path=_GENERATOR_SOURCE_PATH,
+                          generator_source_sha256=None):
+    """Validate corpus and return a content-addressed manifest with 64-hex SHA-256 digests."""
+    if type(corpus) is not dict:
+        raise ValueError("Corpus must be a dict")
+    if "corpus_hash" in corpus:
+        require_hash(corpus["corpus_hash"])
+    if "generator_hash" in corpus:
+        require_hash(corpus["generator_hash"])
+    if "template_hash" in corpus:
+        require_hash(corpus["template_hash"])
+    validated = validate_corpus(corpus)
+    if type(generator_source_path) is not str or not generator_source_path.strip():
+        raise ValueError("Generator source path must be a non-empty string")
+    if generator_source_sha256 is None:
+        with open(__file__, "rb") as handle:
+            generator_source_sha256 = bytes_hash(handle.read())
+    else:
+        require_hash(generator_source_sha256)
+    seed = validated["seed"]
+    count = validated["count"]
+    start_tick = validated["start_tick"]
+    tick_stride = validated["tick_stride"]
+    if (validated["templates"] == list(DEFAULT_TEMPLATES)
+            and start_tick == 0 and tick_stride == 1):
+        recipe = (
+            "from coordination.scenario_inputs import generate_viewer_corpus; "
+            f"generate_viewer_corpus(seed={seed}, count={count})"
+        )
+    else:
+        recipe = (
+            "from coordination.scenario_inputs import generate_viewer_corpus; "
+            f"generate_viewer_corpus(seed={seed}, count={count}, "
+            f"templates={validated['templates']!r}, start_tick={start_tick}, "
+            f"tick_stride={tick_stride})"
+        )
+    manifest = {
+        "schema_version": 1,
+        "provenance": "generated_fixture",
+        "generator_id": _GENERATOR_ID,
+        "generator_version": _GENERATOR_VERSION,
+        "generator_source_path": generator_source_path,
+        "generator_source_sha256": require_hash(generator_source_sha256),
+        "generator_spec_sha256": require_hash(validated["generator_hash"]),
+        "template_sha256": require_hash(validated["template_hash"]),
+        "seed": seed,
+        "count": count,
+        "start_tick": start_tick,
+        "tick_stride": tick_stride,
+        "sha256": require_hash(validated["corpus_hash"]),
+        "regeneration_recipe": recipe,
+        "verified_regeneration_match": True,
+    }
+    return detached(manifest)
+

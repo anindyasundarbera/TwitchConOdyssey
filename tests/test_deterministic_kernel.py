@@ -422,5 +422,99 @@ class ImportBoundaryTests(unittest.TestCase):
                     self.assertNotEqual(node.func.id, "__import__", name)
 
 
+class DualConsumerSdcBindingTests(unittest.TestCase):
+    def test_server_engine_imports_and_exposes_sdc_primitives(self):
+        import coordination.full_game_simulator as fgs
+        import server.engine as engine
+
+        self.assertIs(engine.FullGameSimulator, fgs.FullGameSimulator)
+        self.assertIs(engine.replay_command_stream, fgs.replay_command_stream)
+        self.assertIs(engine.evaluate_independent_oracles, fgs.evaluate_independent_oracles)
+        self.assertEqual(engine.HZ, fgs.HZ)
+        self.assertEqual(engine.PLANNING_TICKS, fgs.PLANNING_TICKS)
+        self.assertEqual(engine.RESOLUTION_TICKS, fgs.RESOLUTION_TICKS)
+        self.assertEqual(engine.REWARD_TICKS, fgs.REWARD_TICKS)
+        self.assertEqual(engine.TURN_TICKS, fgs.TURN_TICKS)
+        self.assertEqual(engine.MATCH_DEADLINE_TICKS, fgs.MATCH_DEADLINE_TICKS)
+        self.assertIs(engine.make_command, make_command)
+        self.assertIs(engine.validate_command, validate_command)
+        self.assertIs(engine.canonical_hash, canonical_hash)
+        self.assertIs(engine.state_diff, state_diff)
+        self.assertIs(engine.apply_diff, apply_diff)
+        self.assertEqual(engine.DISTRICTS, tuple(d["name"] for d in fgs.DISTRICTS))
+
+        # Verify legacy Engine construction and snapshot compatibility remain intact
+        legacy = engine.Engine(k=4)
+        snap = legacy.snapshot()
+        self.assertEqual(snap["tick"], 0)
+        self.assertEqual(snap["district"], engine.DISTRICTS[0])
+
+        # Verify S1EngineAdapter wraps FullGameSimulator cleanly
+        adapter = engine.S1EngineAdapter(seed=42, initial_lane=1, initial_roster=["viewer_a", "viewer_b"])
+        self.assertIsInstance(adapter.simulator, fgs.FullGameSimulator)
+        self.assertEqual(adapter.tick, 0)
+        self.assertEqual(adapter.phase, "planning")
+        self.assertEqual(adapter.status, "racing")
+        self.assertEqual(adapter.state_hash(), canonical_hash(adapter.snapshot()))
+
+    def test_negative_fixture_and_bot_hazard_isolation_and_tampered_replay_rejection(self):
+        import server.engine as engine
+
+        sim = engine.create_s1_simulator(seed=42, initial_lane=1, initial_roster=["acct_1", "acct_2"])
+        bot_cmd = engine.make_command(
+            "hazard.propose", "bot_actor", "bot", 0, 1,
+            {"hazard_id": "haz_bot_1", "kind": "blocked_demo_lane", "lane": 1},
+        )
+        self.assertEqual(sim.submit_command(bot_cmd), "rejected")
+        self.assertEqual(sim.pool, 0)
+        self.assertEqual(sim.synthetic_fixture_pool, 0)
+
+        fixture_cmd = engine.make_command(
+            "hazard.propose", "fixture_actor", "fixture", 1, 2,
+            {"hazard_id": "haz_fix_1", "kind": "blocked_demo_lane", "lane": 1},
+        )
+        self.assertEqual(sim.submit_command(fixture_cmd), "applied")
+        self.assertEqual(sim.pool, 0)
+        self.assertEqual(sim.synthetic_fixture_pool, 20)
+
+        sim.step()
+        sim.finalize_trace()
+        expected_hash = engine.canonical_hash(sim.get_canonical_state())
+        replayed = engine.verify_s1_replay(
+            seed=42,
+            initial_lane=1,
+            initial_roster=["acct_1", "acct_2"],
+            command_log=sim.command_history,
+            steps_to_run=1,
+            expected_final_state_hash=expected_hash,
+        )
+        self.assertEqual(replayed["final_state_hash"], expected_hash)
+        self.assertEqual(replayed["pool"], 0)
+        self.assertEqual(replayed["synthetic_fixture_pool"], 20)
+
+        # Negative test: tampered expected_final_state_hash raises ValueError
+        with self.assertRaises(ValueError):
+            engine.verify_s1_replay(
+                seed=42,
+                initial_lane=1,
+                initial_roster=["acct_1", "acct_2"],
+                command_log=sim.command_history,
+                steps_to_run=1,
+                expected_final_state_hash="0" * 64,
+            )
+
+        # Negative test: tampered command log entry raises ValueError
+        tampered_log = copy.deepcopy(sim.command_history)
+        tampered_log[1]["state_hash"] = "f" * 64
+        with self.assertRaises(ValueError):
+            engine.verify_s1_replay(
+                seed=42,
+                initial_lane=1,
+                initial_roster=["acct_1", "acct_2"],
+                command_log=tampered_log,
+                steps_to_run=1,
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

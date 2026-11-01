@@ -3,7 +3,8 @@
 ## Task Identity
 - **Task ID:** `TASK-005`
 - **Title:** Authoritative Revision 5 Plan, Context, Directive Ledger & Static Rule Synchronization
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
 - **Planning Status:** `READY`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `HIGH` (Touches pinned required sources in `config/directive-policy.json` and static test contracts in `tests/test_gameplan_rules.py` and `tests/test_context_contract.py`)

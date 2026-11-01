@@ -27,7 +27,18 @@ Supersedes: the checkpoint's "do not rerun without new explicit authorization" c
 - **Current Verdict (verbatim):** `Current verdict: **REJECT READY; evidence pipeline requires remediation before development**`
 - **Audit Document Git Blob Hash (`git hash-object`):** `7e51ed746e19fd21dc9c4333e7187c1165e5d9fc`
 - **Audit Document SHA-256 Digest:** `adcc2692789d29aae24b35acb522ea494c96748c5a20a04605461dcc52f3a798`
-- **Git Repository & `HEAD` State:** Branch `master` has no commits yet (`git rev-parse HEAD` reports unborn `HEAD` with staged/untracked working tree; recorded in `EVIDENCE.md:7`). Exact file SHA-256 digests are bound below in §4.
+- **Git Repository & `HEAD` State (Protocol §3.1 Baseline Commit Gate Resolved):**
+  - **Branch:** `main` (reconciled from `master`; Finding `B-1`).
+  - **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d`
+  - **Baseline Tag:** `plan-baseline/remediation-v2.0` (`baseline: remediation plan v2.0 (rev 5 planning set, pre-construction)`)
+  - Exact file SHA-256 digests are bound below in §4.
+- **Bootstrap Reconciliation Findings (`B-1` .. `B-4`):**
+  - **`B-1` (Branch & Baseline Gate):** Branch is `main`; prior unborn `HEAD` resolved via Protocol §3.1 Baseline Commit Gate (`2bb0b538bcfed216590ec49039e9972c5e363f0d`, tagged `plan-baseline/remediation-v2.0`).
+  - **`B-2` (Converge-Existing-to-Contract Scope):** `coordination/full_game_simulator.py` (562 lines), `coordination/scenario_inputs.py` (74 lines), and `coordination/run_full_game_simulation.py` (1,934 lines) already exist on disk; `TASK-001`, `TASK-003` (`scenario_inputs.py`), and `TASK-004` are converge-existing-to-contract tasks rather than greenfield creation.
+  - **`B-3` (Greenfield Module):** `coordination/evidence_pipeline.py` is absent at baseline and created greenfield in `TASK-003`.
+  - **`B-4` (Read-Only Tripwire Invariant):** `artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/` (`116` files, sorted tree SHA-256 `411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d`) is re-verified pre and post every wave boundary.
+- **Wave 6 / `TASK-009` Reviewer Authorization Citation:**
+  - `config/directive-policy.json` active directive `remediation_rerun_and_decision_delegation` (lines 499–531, provenance `docs/planning/SIMULATION-EVIDENCE-AUDIT.md` locator `"Required next action"` step 9 line 181: *"Freeze the new evidence bundle, then invoke one genuine Astra/high independent review through the configured agent boundary"*), together with `tasks.plan_review` (lines 85–88), `model_allocation` (line 289), `bounded_subagents` (line 313), and `config/model-policy.json` (`principal_review` -> `provider: "codex_subagent", model: "gpt-6-astra", reasoning_effort: "high"`), explicitly routes `TASK-009` through the local `codex_subagent` (`invoke_subagent`) boundary while keeping `live_model_calls_authorized: false` (`model_calls: 0, provider_calls: 0` in Stage 1 offline simulation; zero external network/OpenAI API calls).
 - **Preserved Rejected Evidence Directory (Read-Only Baseline):**
   - Path: `artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/`
   - File Count: `116` files (`115` audited artifacts + `RUN-MANIFEST.json`)

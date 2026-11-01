@@ -4,7 +4,7 @@
 
 - **Planning Start Timestamp:** `2026-11-01T17:36:28+05:30` (IST, UTC+05:30)
 - **Plan Completion Timestamp:** `2026-11-01T18:00:00+05:30`
-- **Same-Day Hard Cutoff:** `2026-11-01T23:59:00+05:30` (`359` minutes remaining from `18:00:00+05:30`)
+- **Same-Day Hard Cutoff:** `2026-11-01T23:59:00+05:30` (`360` minutes gross window from `18:00:00+05:30`; `270` minutes net execution ceiling against `240` minutes critical path, leaving `30` minutes net buffer and `120` minutes gross buffer).
 - **Hackathon Submission Window (Tomorrow):** `2026-11-02` (`21:00 UTC` / `2026-11-03T02:30:00+05:30` earliest FAQ cutoff; `22:00 UTC` / `03:30:00+05:30` Rules cutoff per [`docs/research-2026-11-01/HACKATHON.md`](../research-2026-11-01/HACKATHON.md)).
 - **Hard Code & Behavior Freeze Point:** `2026-11-01T21:00:00+05:30` (`180` minutes from `18:00:00+05:30`, reserving `179` minutes — **49.8% of remaining today budget** — exclusively for fresh simulation execution, independent Astra review, repair buffer, packaging, and final acceptance verification).
 

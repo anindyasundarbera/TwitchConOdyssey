@@ -3,7 +3,9 @@
 ## Task Identity
 - **Task ID:** `TASK-008`
 - **Title:** Authorized Fresh Simulation Run (Stage 1: Pre-Review Bundle Generation & Freeze)
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
+- **Offline Execution Mandate (§8):** Strictly offline (`model_calls: 0`, `provider_calls: 0`).
 - **Planning Status:** `PLANNED`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `HIGH` (Generates the immutable evidence bundle under a new unique run root)

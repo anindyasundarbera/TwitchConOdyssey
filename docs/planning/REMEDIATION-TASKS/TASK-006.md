@@ -3,7 +3,8 @@
 ## Task Identity
 - **Task ID:** `TASK-006`
 - **Title:** Comprehensive Positive & Anti-Forgery Negative Test Suite (`tests/test_full_game_simulation.py`)
-- **Contract Version:** `1.0.0`
+- **Contract Version:** `2.0.0`
+- **Baseline Commit SHA (`BASELINE_SHA`):** `2bb0b538bcfed216590ec49039e9972c5e363f0d` (`plan-baseline/remediation-v2.0`, branch `main`)
 - **Planning Status:** `PLANNED`
 - **Ship Criticality:** `MUST_SHIP`
 - **Risk Classification:** `HIGH` (Enforces the §12 Anti-Forgery Requirement and Checkpoint Step 6 across `AUDIT-01..09`)
