@@ -67,9 +67,13 @@ class ContextContractTests(unittest.TestCase):
         self.assertEqual([item["id"] for item in packet["unresolved_decisions"]],
                          ["live_submission_external_capture"])
         for item in packet["directives"]:
-            self.assertEqual(item["wording"], "normalized")
-            self.assertIsNone(item["exact_user_wording"])
-            self.assertEqual(item["wording_availability"], "unavailable")
+            if item["wording"] == "exact":
+                self.assertTrue(item["exact_user_wording"])
+                self.assertEqual(item["wording_availability"], "recorded_verbatim")
+            else:
+                self.assertEqual(item["wording"], "normalized")
+                self.assertIsNone(item["exact_user_wording"])
+                self.assertEqual(item["wording_availability"], "unavailable")
 
     def test_selected_decisions_reject_missing_duplicate_cross_list_and_invalid_fields(self):
         baseline = copy.deepcopy(self.policy)
@@ -124,7 +128,7 @@ class ContextContractTests(unittest.TestCase):
             for phrase in phrases:
                 self.assertIn(phrase, decisions[ident]["rule"])
             self.assertEqual(decisions[ident]["status"], contract.SELECTED_STATUS)
-        self.assertEqual(packet["ledger_revision"], 10)
+        self.assertEqual(packet["ledger_revision"], 12)
         self.assertFalse(packet["gate"]["gameplay_enabled"])
         for name in ("docs/planning/S1-ASTRA-REVIEW.md",
                      "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md",

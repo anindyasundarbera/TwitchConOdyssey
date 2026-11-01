@@ -113,10 +113,128 @@ class S1EngineAdapter:
     def state_hash(self) -> str:
         return canonical_hash(self.simulator.get_canonical_state())
 
+
+class AuthoritativeGame:
+    """Product-facing authoritative S1 gameplay boundary (TASK-006 / INV-01).
+
+    Single authority: the wrapped Shared Determinism Core simulator owns every
+    physics and mutable-state transition. Callers may only submit canonical
+    command envelopes, advance the fixed 20 Hz tick, and read detached
+    snapshots/telemetry views. Presentation, fixtures, bots, models and
+    telemetry get no mutable engine handle and cannot mutate gameplay state.
+    No network, provider, filesystem or wall-clock I/O is reachable here.
+    """
+
+    __slots__ = ("_simulator",)
+
+    def __init__(
+        self,
+        seed: int = 42,
+        initial_lane: int = 1,
+        *,
+        initial_roster: Optional[List[str]] = None,
+        **kwargs: Any,
+    ):
+        self._simulator = create_s1_simulator(
+            seed=seed,
+            initial_lane=initial_lane,
+            initial_roster=initial_roster,
+            **kwargs,
+        )
+
+    @property
+    def tick(self) -> int:
+        return self._simulator.tick
+
+    @property
+    def turn(self) -> int:
+        return self._simulator.turn
+
+    @property
+    def phase(self) -> str:
+        return self._simulator.phase
+
+    @property
+    def status(self) -> str:
+        return self._simulator.status
+
+    @property
+    def pool(self) -> int:
+        return self._simulator.pool
+
+    @property
+    def is_paused(self) -> bool:
+        return self._simulator.is_paused
+
+    @property
+    def settlement(self) -> Optional[Dict[str, Any]]:
+        value = self._simulator.terminal_settlement
+        return copy.deepcopy(value) if value is not None else None
+
+    @property
+    def hotfix_rules(self) -> Dict[str, Any]:
+        return copy.deepcopy(self._simulator.hotfix_rules)
+
+    @property
+    def applied_hotfix_version(self) -> int:
+        return self._simulator.applied_hotfix_version
+
+    def submit(self, command: Dict[str, Any]) -> str:
+        """Submit one canonical command envelope; returns applied/expired/rejected/duplicate."""
+        return self._simulator.submit_command(command)
+
+    def step(self) -> None:
+        """Advance exactly one authoritative 20 Hz logical tick."""
+        self._simulator.step()
+
+    def pause(self, paused: bool = True) -> str:
+        """Apply or release the operator pause through the canonical command path."""
+        if type(paused) is not bool:
+            raise ValueError("pause state must be a boolean")
+        command = make_command(
+            "operator.pause", "stage_operator", "human",
+            self._simulator.tick, self._simulator.tick, {"state": paused},
+        )
+        return self.submit(command)
+
+    def snapshot(self) -> Dict[str, Any]:
+        """Return a detached canonical state dictionary (safe to serialize/mutate)."""
+        return copy.deepcopy(self._simulator.get_canonical_state())
+
+    def state_hash(self) -> str:
+        return canonical_hash(self._simulator.get_canonical_state())
+
+    def finalize(self) -> Dict[str, Any]:
+        return self._simulator.finalize_trace()
+
+    @staticmethod
+    def verify_replay(
+        seed: int,
+        initial_lane: int,
+        initial_roster: List[str],
+        command_log: List[Dict[str, Any]],
+        steps_to_run: Any,
+        **kwargs: Any,
+    ) -> Dict[str, Any]:
+        return verify_s1_replay(
+            seed=seed,
+            initial_lane=initial_lane,
+            initial_roster=initial_roster,
+            command_log=command_log,
+            steps_to_run=steps_to_run,
+            **kwargs,
+        )
+
+
 def cohort(viewer, k):
     return int.from_bytes(hashlib.sha256(viewer.encode()).digest()[:8], 'big') % k
 
 class Engine:
+    """Legacy demo engine (non-authoritative; kept for demo/replay compatibility).
+
+    Product gameplay authority is `AuthoritativeGame`; presentation adapters
+    must use that boundary and never mutate engine internals directly.
+    """
     def __init__(self, k=4):
         if not 1 <= k <= 16:
             raise ValueError('K must be 1..16')

@@ -52,3 +52,20 @@ Closure may not be declared over open items.
 - **B-DELIVERY-TEXT:** the delivery-report text containing the wrong commit hash is
   external to the repo (string absent from all committed artifacts); correction is a
   new ledger artifact, not an edit.
+
+## F. Wave state — 2026-11-02 (gameplay handoff)
+
+- **G-A RECORDED:** directive `gameplay_development_authorization_20261102`,
+  exact user wording `authorised`, bounded W3–W7 scope; scope record
+  `docs/planning/development-closure-20261102/06_G-A-AUTHORIZATION-20261102.md`;
+  ledger revision 11 (no gate boolean change).
+- **G-C CLEARED:** codebase-memory index project
+  `home-anindyasundar-bera-Projects-hackathon-TwitchConOdyssey` status `ready`
+  (23,353 nodes / 25,796 edges); `codebase-memory-mcp` registered in OpenCode MCP
+  config. **B-CM no longer blocks path assignment.**
+- **G-B:** required per task; W3 (TASK-006) compiles its own fresh packet before
+  any code edit.
+- **Gate posture unchanged:** `gameplay_enabled: false` (compiler structural rule),
+  `automatic_phase_advance: false`, `submission_ready: false`;
+  `live_submission_external_capture` unresolved; TASK-011 terminal after W3–W7
+  completion evidence.
