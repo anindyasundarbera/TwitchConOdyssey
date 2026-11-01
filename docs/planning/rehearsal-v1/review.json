@@ -1,0 +1,85 @@
+{
+  "role": "review",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "model": "gpt-6-astra",
+  "findings": [
+    {
+      "id": "AST-01",
+      "severity": "high",
+      "scenario": "The moving streamer reaches the obstruction before the viewer counter resolves.",
+      "gap": "The proposed loop has no defined actionable decision, activation order, collision consequence or movement policy outside planning.",
+      "recommendation": "Specify a paper timeline connecting readable warning, streamer choice, counter eligibility, activation and recovery. Have the user select controls and consequences; preserve continuous planning movement."
+    },
+    {
+      "id": "AST-02",
+      "severity": "high",
+      "scenario": "Unequal squads receive different bot backfill while viewers reconnect or switch submission channels.",
+      "gap": "One influence per viewer does not establish cohort fairness, stable eligibility, deduplication or defensive balancing.",
+      "recommendation": "Define identity and per-turn eligibility snapshots across channels; restore bounded cohort weighting and defensive balancing. Present weighting, K, denominator, bot voting and tie policies for human selection."
+    },
+    {
+      "id": "AST-03",
+      "severity": "high",
+      "scenario": "Bot-generated danger increases bounty collected by human survivors.",
+      "gap": "JSON prohibits bots earning rewards but omits the stronger prohibition on bot-created farmable bounty; Markdown only implies human provenance.",
+      "recommendation": "Explicitly exclude bots and fixture events from human bounty creation and allocation, retaining immutable contribution provenance through recovery. Leave bounty amounts and reward splits for human choice."
+    },
+    {
+      "id": "AST-04",
+      "severity": "critical",
+      "scenario": "Repeated individually bounded obstructions combine into indefinite control denial or escalating damage.",
+      "gap": "No permanent control loss and no unavoidable death omit the original explicit bans on stun-lock and unbounded damage, including cumulative effects.",
+      "recommendation": "Restore both hard prohibitions and specify enforceable aggregate duration, placement, overlap and damage limits with a viable recovery path. Numeric balance values require selection before simulation."
+    },
+    {
+      "id": "AST-05",
+      "severity": "high",
+      "scenario": "A timely chat message produces a model proposal after closure while the delivery deadline expires.",
+      "gap": "Phase durations do not define authoritative receipt versus completion cutoffs, deadline clock, suspension semantics or asynchronous processing.",
+      "recommendation": "Specify monotonic phase/match clocks, expiry ordering and pause policy. Require asynchronous bounded model work, local revalidation, explicit late rejection and no silent next-turn rollover; never wait for inference in the game loop."
+    },
+    {
+      "id": "AST-06",
+      "severity": "high",
+      "scenario": "Provider failure occurs during reward commitment, followed by offline operation and live recovery.",
+      "gap": "An offline fixture alone does not specify continuity, ownership or duplicate-effect prevention.",
+      "recommendation": "Define canonical commands, deterministic time/seed, safe-boundary single-writer handover, durable accepted-command/reward records, uninterrupted rendering/simulation and health/state comparison before recovery. Keep fixture provenance visibly separate."
+    },
+    {
+      "id": "AST-07",
+      "severity": "high",
+      "scenario": "A staged bullet-time sequence presents a replay as a live model decision.",
+      "gap": "The baseline omits the original three-minute demo target and actual sanitized message, recorded tool-call, measured latency, validation and execution evidence requirements.",
+      "recommendation": "Restore the demo evidence contract with persistent live/fixture/replay labels and distinct model, Codex and engine stages. Unmeasured timings or unexecuted integrations must remain explicitly illustrative."
+    },
+    {
+      "id": "AST-08",
+      "severity": "high",
+      "scenario": "A character or attacker review agent is interpreted as an autonomous gameplay controller.",
+      "gap": "Rehearsal perspectives, human actors, avatar state and runtime AI services are conflated.",
+      "recommendation": "Create an authority table separating streamer navigation, viewer proposals, engine-owned character state, bounded red-team actions, operator controls and advisory AI. Do not infer autonomous character or attacker deployment from role critiques."
+    },
+    {
+      "id": "AST-09",
+      "severity": "medium",
+      "scenario": "A selected model or passing mock executor is reported as a working gameplay integration.",
+      "gap": "Routing documentation distinguishes selection from inference, but the product plan lacks an equivalent evidence boundary.",
+      "recommendation": "Carry task/provider/model/effort, policy and content hashes through a reusable injected-executor boundary. Preserve separate labels for selection, actual critique, mocked transport and observed gameplay; retain disabled providers, explicit budgets and no silent fallback."
+    },
+    {
+      "id": "AST-10",
+      "severity": "high",
+      "scenario": "A valid data-only hotfix changes safety limits or replays an obsolete manifest.",
+      "gap": "Prohibiting executable hot-loading alone does not preserve game authority or establish trusted activation.",
+      "recommendation": "Specify approver authority, authenticated artifact/base/version binding, bounded DSL capabilities and atomic boundary activation. Revalidate hard safety invariants independently of model output; adopt the security review's anti-replay and recovery contracts."
+    },
+    {
+      "id": "AST-11",
+      "severity": "high",
+      "scenario": "Passing PRODUCT's credential-free mock MVP criteria is presented as submission readiness.",
+      "gap": "Local fixture acceptance does not satisfy the actual Twitch connection and Codex evidence requirements recorded in hackathon research.",
+      "recommendation": "Separate offline-slice and submission gates. The latter needs evidenced Twitch operation, actual Codex work/session provenance and the required demo; obtain separate implementation/publication authorization. This does not require paid model inference."
+    }
+  ],
+  "runtime_executed": false
+}

@@ -1,0 +1,351 @@
+{
+  "mode": "plan",
+  "runtime_executed": false,
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "context": [
+    {
+      "path": "docs/planning/CONTEXT.md",
+      "sha256": "ab0ea34c80b44a2d1c0117d0f819d5af9eefa78c4550863ef99b884a456653ca"
+    }
+  ],
+  "scripted_checks": {
+    "evidence_origin": "scripted_validation",
+    "checks": [
+      "sanitized plan/context hash bindings",
+      "role schema",
+      "model policy decisions"
+    ]
+  },
+  "agent_reviews": {
+    "evidence_origin": "submitted_agent_review_json_mechanically_rebound",
+    "authentication": "caller-supplied; identity not independently verified",
+    "expected_providers": {
+      "streamer": "codex_subagent",
+      "viewer": "codex_subagent",
+      "character": "codex_subagent",
+      "attacker": "codex_subagent",
+      "stage_operator": "codex_subagent",
+      "security": "codex_subagent",
+      "review": "codex_subagent"
+    },
+    "canonical_result_hashes": {
+      "streamer": "e089c39186625f0526dd497ea546e428ce67d7ef2bc19039ee96f114d649f5c6",
+      "viewer": "71cb26370260f6ed948fd2b53987ceef0696577599a1159cc2265c09d6c8cafd",
+      "character": "5a8bb8e2075269be50461035c9b6557f67f5794d20deda4e6c6a009a27cde7e8",
+      "attacker": "646c8a4a3bec0671ae955af777a3560fd86f361037261b044a0b24bf1505c13d",
+      "stage_operator": "3f3d8e6d368d8ad88f8926368b570b2d3a470e26e2a696aaad5c16f58750cba0",
+      "security": "708522508721898375e598f9fe9fb8fd36aa56d7fdcb3951c55e24ccd549e1c4",
+      "review": "a386ae14630fade0928c8c488411280887325aaf30832ab3ce2d514dc4fdc000"
+    },
+    "results": [
+      {
+        "role": "streamer",
+        "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+        "model": "gpt-6-luna",
+        "findings": [
+          {
+            "id": "ST-01",
+            "severity": "high",
+            "scenario": "While steering during planning, a lane hazard appears and viewers propose clear_lane.",
+            "gap": "No status contract covers hazard timing, route progress, action eligibility, or cost.",
+            "recommendation": "Show route and hazard timers plus one action preview; provide a counter/abstain control that requires no chat reading."
+          },
+          {
+            "id": "ST-02",
+            "severity": "high",
+            "scenario": "Viewers favor clearing the lane while the streamer steers toward the deadline.",
+            "gap": "Streamer veto, confirmation, override, and movement interruption are undefined.",
+            "recommendation": "Set streamer authority, confirmation rules, movement interaction, and a safe no-response default before resolution."
+          },
+          {
+            "id": "ST-03",
+            "severity": "medium",
+            "scenario": "The streamer monitors proposals and a deadline through repeated 20/5/5 cycles.",
+            "gap": "Information priority and consequences are unspecified, risking chat-driven cognitive overload.",
+            "recommendation": "Prioritize one legal action and plain-language consequence, collapse raw chat, and keep abstention available."
+          }
+        ],
+        "runtime_executed": false
+      },
+      {
+        "role": "viewer",
+        "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+        "model": "gpt-6-luna",
+        "findings": [
+          {
+            "id": "VW-01",
+            "severity": "high",
+            "scenario": "A viewer on a phone submits clear_lane as the 20-second planning window closes over a slow or unstable connection.",
+            "gap": "The plan says late input is rejected and duplicates are idempotent, but defines no authoritative receipt time, acknowledgment, retry behavior, or visible rejection reason.",
+            "recommendation": "Define server-receipt phase cutoffs and idempotency keys; return a mobile-readable pending/accepted/rejected status with a reason, and never make retries create extra influence."
+          },
+          {
+            "id": "VW-02",
+            "severity": "high",
+            "scenario": "An anonymous viewer refreshes or switches devices and submits again during the same turn.",
+            "gap": "“Eligible viewer” and one-influence-per-viewer lack an identity/session boundary, while identity and privacy expectations are unspecified.",
+            "recommendation": "Define a privacy-preserving per-turn pseudonymous identity and reset rule, what anonymous participation permits, and how duplicate sessions are handled without exposing account identity."
+          },
+          {
+            "id": "VW-03",
+            "severity": "high",
+            "scenario": "A large audience exceeds configurable K, or a small cohort needs bot backfill, while viewers use chat or a touch control.",
+            "gap": "Cohort selection, tie handling, fairness across turns, and accessible mobile action feedback remain open; visibility of bots alone does not explain whose input counted.",
+            "recommendation": "Publish a deterministic, auditable N-to-K selection and rotation rule, distinguish human and bot influence, and provide touch-sized controls plus a clear counted/not-counted receipt."
+          }
+        ],
+        "runtime_executed": false
+      },
+      {
+        "role": "character",
+        "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+        "model": "gpt-6-luna",
+        "findings": [
+          {
+            "id": "CH-01",
+            "severity": "high",
+            "scenario": "Continuous movement reaches the blocked lane and clear_lane loses or is unavailable.",
+            "gap": "Collision response and hazard duration are open, allowing an indefinite stop or undefined penalty.",
+            "recommendation": "Define collision effects, hazard expiry, and bounded recovery. Keep physics deterministic and local; the character is not a model driving physics."
+          },
+          {
+            "id": "CH-02",
+            "severity": "high",
+            "scenario": "A near-deadline collision causes a wipe with route stages remaining.",
+            "gap": "Wipe, checkpoint, recovery, and continuation rules provide no defined return path.",
+            "recommendation": "Define wipe triggers, respawn, recovery costs, and who ends the match; preserve no-permanent-control-loss and no-unavoidable-death limits."
+          },
+          {
+            "id": "CH-03",
+            "severity": "high",
+            "scenario": "A proposal arrives at cutoff as movement collides with the hazard.",
+            "gap": "Clock authority, event order, and boundary state are unspecified.",
+            "recommendation": "Define a monotonic clock, receipt cutoff, and deterministic boundary snapshot for both modes; model output cannot advance the character."
+          }
+        ],
+        "runtime_executed": false
+      },
+      {
+        "role": "attacker",
+        "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+        "model": "gpt-6-luna",
+        "findings": [
+          {
+            "id": "ATT-01",
+            "severity": "high",
+            "scenario": "A participant creates or controls many anonymous/pseudonymous accounts and submits once through each, multiplying influence despite the per-viewer limit.",
+            "gap": "Eligible-viewer identity, admission, and account-to-influence binding are unspecified; N-to-K does not itself constrain Sybils.",
+            "recommendation": "Bind one influence unit to a privacy-preserving authenticated platform subject per turn; set admission and aggregate caps, and keep bot identities separate."
+          },
+          {
+            "id": "ATT-02",
+            "severity": "high",
+            "scenario": "A coordinated group shards submissions across cohorts or manipulates the eligible denominator while K or tie rules are configurable, steering normalization without exceeding any one cohort's apparent cap.",
+            "gap": "Cohort assignment, roster timing, normalization denominator, quorum, and tie handling are unresolved.",
+            "recommendation": "Freeze eligible roster and cohort assignments before each turn; specify denominator, minimum participation, per-cohort caps, and deterministic tie handling."
+          },
+          {
+            "id": "ATT-03",
+            "severity": "high",
+            "scenario": "A bot-heavy group repeatedly backfills participation or induces wipe/survival outcomes that create or enlarge a simulated bounty, then routes value to an attacker-controlled eligible viewer.",
+            "gap": "Bot rewards are prohibited, but bounty provenance, creation authority, trigger accounting, and bot influence on bounty adjustments remain open.",
+            "recommendation": "Require explicit human authorization and traceable source for each bounty; exclude bots from funding, eligibility, and payout, and cap adjustments across retries and wipes."
+          },
+          {
+            "id": "ATT-04",
+            "severity": "high",
+            "scenario": "The attacker reapplies the bounded hazard on successive turns, consuming every counter window and leaving no practical recovery before the deadline.",
+            "gap": "No permanent control loss or unavoidable death is stated, but frequency, cumulative pressure, cooldown, and guaranteed recovery are not defined.",
+            "recommendation": "Set per-phase and match-wide pressure caps, cooldowns, non-stacking effects, and a guaranteed recovery or counter window independent of viewer turnout."
+          },
+          {
+            "id": "ATT-05",
+            "severity": "high",
+            "scenario": "A late chat message contains instructions aimed at the language model to propose an out-of-phase or stronger action; it is mistaken for control text rather than untrusted viewer content.",
+            "gap": "Natural language is only a proposal and local validation is required, but the prompt/data boundary and strict action mapping are not specified.",
+            "recommendation": "Treat chat as untrusted data, never as instructions; map it only to an enumerated action schema and enforce phase, eligibility, and effect bounds locally after model output."
+          },
+          {
+            "id": "ATT-06",
+            "severity": "high",
+            "scenario": "A reconnect or offline replay resubmits a previously accepted event under a new request and applies its influence twice, possibly in a later turn.",
+            "gap": "Duplicate and late input should be rejected/idempotent, but durable deduplication scope and session/turn binding are unspecified.",
+            "recommendation": "Use stable event IDs with durable deduplication bound to session and turn; reject stale sequence numbers and ensure replay cannot mint a new eligible event."
+          }
+        ],
+        "runtime_executed": false
+      },
+      {
+        "role": "stage_operator",
+        "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+        "model": "gpt-6-luna",
+        "findings": [
+          {
+            "id": "OP-01",
+            "severity": "high",
+            "scenario": "The provider or network fails during a presentation, then recovers with queued submissions.",
+            "gap": "Offline fixture is promised, but failover, stale-input, and recovery rules are absent.",
+            "recommendation": "Define health signals and offline controls; discard or revalidate queued actions and document safe recovery/rollback."
+          },
+          {
+            "id": "OP-02",
+            "severity": "high",
+            "scenario": "The stage presents a plan rehearsal, fixture, replay, or match as evidence.",
+            "gap": "No provenance labels distinguish critique, fixture events, simulated bounty, and observed outcomes.",
+            "recommendation": "Label source and mode on views/exports, mark bounty simulated with no payout, and preserve event IDs and phase times."
+          },
+          {
+            "id": "OP-03",
+            "severity": "high",
+            "scenario": "Audience reads fictional Twitch or IVS concepts as integrations or sponsorship.",
+            "gap": "Stage copy, brand assets, and data disclosures are unspecified.",
+            "recommendation": "Label concepts simulated, use only approved assets, and disclose no affiliation or live platform data."
+          },
+          {
+            "id": "OP-04",
+            "severity": "medium",
+            "scenario": "A route or service delay threatens the event deadline during the 20/5/5 loop.",
+            "gap": "There is no show runbook, hard-stop policy, or mode-switch authority.",
+            "recommendation": "Set the demo budget, cue/hold/restart controls, and labeled offline fallback so the show ends on time without implying success."
+          }
+        ],
+        "runtime_executed": false
+      },
+      {
+        "role": "security",
+        "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+        "model": "gpt-6.1-sol",
+        "findings": [
+          {
+            "id": "SEC-01",
+            "severity": "high",
+            "scenario": "A viewer submits through chat and buttons, reconnects, then replays a prior-turn command.",
+            "gap": "Eligibility identity, cross-channel deduplication and idempotency retention are undefined.",
+            "recommendation": "Bind server-issued identity, match, turn and action ID; atomically consume one influence unit across channels and reject stale epochs. Specify reconnect and retention rules."
+          },
+          {
+            "id": "SEC-02",
+            "severity": "high",
+            "scenario": "Chat instructs the model to grant authority; its otherwise valid proposal arrives after resolution starts.",
+            "gap": "Schema validation alone does not bind proposal authority, deadline or original intent.",
+            "recommendation": "Treat chat as untrusted data; allowlist commands and arguments, bind proposals to immutable viewer/turn provenance, enforce server arrival deadlines and discard late completions without transferring influence."
+          },
+          {
+            "id": "SEC-03",
+            "severity": "high",
+            "scenario": "An operator receives a modified or replayed data-only hotfix manifest.",
+            "gap": "Trusted approver, artifact authenticity and anti-rollback contracts are unspecified.",
+            "recommendation": "Require explicit approval, pinned artifact hash and authenticated signer; bind version, base-state/rules hash and expiry. Reject unknown DSL capabilities and activate atomically at a declared boundary."
+          },
+          {
+            "id": "SEC-04",
+            "severity": "high",
+            "scenario": "Bot backfill is relabeled human during reconnect or recovery and contributes bounty.",
+            "gap": "Visible bot labels do not establish durable reward provenance.",
+            "recommendation": "Persist immutable actor origin and eligibility snapshots in an authoritative contribution ledger; exclude synthetic events from bounty creation and reward allocation, including after recovery."
+          },
+          {
+            "id": "SEC-05",
+            "severity": "high",
+            "scenario": "Offline failover occurs while an action or reward is committed; recovery replays it.",
+            "gap": "Atomic handover, single-writer authority and reconciliation rules are absent.",
+            "recommendation": "Specify epoch fencing, checkpoint plus accepted-command ledger, atomic mode switch and exactly-once effect/reward application. Freeze ambiguous commits for reconciliation; label fixture/live provenance separately."
+          }
+        ],
+        "runtime_executed": false
+      },
+      {
+        "role": "review",
+        "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+        "model": "gpt-6-astra",
+        "findings": [
+          {
+            "id": "AST-01",
+            "severity": "high",
+            "scenario": "The moving streamer reaches the obstruction before the viewer counter resolves.",
+            "gap": "The proposed loop has no defined actionable decision, activation order, collision consequence or movement policy outside planning.",
+            "recommendation": "Specify a paper timeline connecting readable warning, streamer choice, counter eligibility, activation and recovery. Have the user select controls and consequences; preserve continuous planning movement."
+          },
+          {
+            "id": "AST-02",
+            "severity": "high",
+            "scenario": "Unequal squads receive different bot backfill while viewers reconnect or switch submission channels.",
+            "gap": "One influence per viewer does not establish cohort fairness, stable eligibility, deduplication or defensive balancing.",
+            "recommendation": "Define identity and per-turn eligibility snapshots across channels; restore bounded cohort weighting and defensive balancing. Present weighting, K, denominator, bot voting and tie policies for human selection."
+          },
+          {
+            "id": "AST-03",
+            "severity": "high",
+            "scenario": "Bot-generated danger increases bounty collected by human survivors.",
+            "gap": "JSON prohibits bots earning rewards but omits the stronger prohibition on bot-created farmable bounty; Markdown only implies human provenance.",
+            "recommendation": "Explicitly exclude bots and fixture events from human bounty creation and allocation, retaining immutable contribution provenance through recovery. Leave bounty amounts and reward splits for human choice."
+          },
+          {
+            "id": "AST-04",
+            "severity": "critical",
+            "scenario": "Repeated individually bounded obstructions combine into indefinite control denial or escalating damage.",
+            "gap": "No permanent control loss and no unavoidable death omit the original explicit bans on stun-lock and unbounded damage, including cumulative effects.",
+            "recommendation": "Restore both hard prohibitions and specify enforceable aggregate duration, placement, overlap and damage limits with a viable recovery path. Numeric balance values require selection before simulation."
+          },
+          {
+            "id": "AST-05",
+            "severity": "high",
+            "scenario": "A timely chat message produces a model proposal after closure while the delivery deadline expires.",
+            "gap": "Phase durations do not define authoritative receipt versus completion cutoffs, deadline clock, suspension semantics or asynchronous processing.",
+            "recommendation": "Specify monotonic phase/match clocks, expiry ordering and pause policy. Require asynchronous bounded model work, local revalidation, explicit late rejection and no silent next-turn rollover; never wait for inference in the game loop."
+          },
+          {
+            "id": "AST-06",
+            "severity": "high",
+            "scenario": "Provider failure occurs during reward commitment, followed by offline operation and live recovery.",
+            "gap": "An offline fixture alone does not specify continuity, ownership or duplicate-effect prevention.",
+            "recommendation": "Define canonical commands, deterministic time/seed, safe-boundary single-writer handover, durable accepted-command/reward records, uninterrupted rendering/simulation and health/state comparison before recovery. Keep fixture provenance visibly separate."
+          },
+          {
+            "id": "AST-07",
+            "severity": "high",
+            "scenario": "A staged bullet-time sequence presents a replay as a live model decision.",
+            "gap": "The baseline omits the original three-minute demo target and actual sanitized message, recorded tool-call, measured latency, validation and execution evidence requirements.",
+            "recommendation": "Restore the demo evidence contract with persistent live/fixture/replay labels and distinct model, Codex and engine stages. Unmeasured timings or unexecuted integrations must remain explicitly illustrative."
+          },
+          {
+            "id": "AST-08",
+            "severity": "high",
+            "scenario": "A character or attacker review agent is interpreted as an autonomous gameplay controller.",
+            "gap": "Rehearsal perspectives, human actors, avatar state and runtime AI services are conflated.",
+            "recommendation": "Create an authority table separating streamer navigation, viewer proposals, engine-owned character state, bounded red-team actions, operator controls and advisory AI. Do not infer autonomous character or attacker deployment from role critiques."
+          },
+          {
+            "id": "AST-09",
+            "severity": "medium",
+            "scenario": "A selected model or passing mock executor is reported as a working gameplay integration.",
+            "gap": "Routing documentation distinguishes selection from inference, but the product plan lacks an equivalent evidence boundary.",
+            "recommendation": "Carry task/provider/model/effort, policy and content hashes through a reusable injected-executor boundary. Preserve separate labels for selection, actual critique, mocked transport and observed gameplay; retain disabled providers, explicit budgets and no silent fallback."
+          },
+          {
+            "id": "AST-10",
+            "severity": "high",
+            "scenario": "A valid data-only hotfix changes safety limits or replays an obsolete manifest.",
+            "gap": "Prohibiting executable hot-loading alone does not preserve game authority or establish trusted activation.",
+            "recommendation": "Specify approver authority, authenticated artifact/base/version binding, bounded DSL capabilities and atomic boundary activation. Revalidate hard safety invariants independently of model output; adopt the security review's anti-replay and recovery contracts."
+          },
+          {
+            "id": "AST-11",
+            "severity": "high",
+            "scenario": "Passing PRODUCT's credential-free mock MVP criteria is presented as submission readiness.",
+            "gap": "Local fixture acceptance does not satisfy the actual Twitch connection and Codex evidence requirements recorded in hackathon research.",
+            "recommendation": "Separate offline-slice and submission gates. The latter needs evidenced Twitch operation, actual Codex work/session provenance and the required demo; obtain separate implementation/publication authorization. This does not require paid model inference."
+          }
+        ],
+        "runtime_executed": false
+      }
+    ]
+  },
+  "limitation": "Document review only; no gameplay or runtime behavior verified; stored location terms were mechanically sanitized without fresh agent review",
+  "redaction_provenance": {
+    "date": "2026-11-01",
+    "operation": "mechanical location-term sanitization and hash rebinding",
+    "fresh_agent_review": false,
+    "original_bytes_preserved": false
+  }
+}

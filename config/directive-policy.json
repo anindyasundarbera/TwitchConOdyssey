@@ -1,0 +1,717 @@
+{
+  "schema_version": 1,
+  "revision": 7,
+  "current_phase": "plan",
+  "allowed_phases": [
+    "plan"
+  ],
+  "instruction_prefix": "Read these selected directives and gate before dependent work. Follow the latest explicit user instruction; report conflicts. Use only assigned paths, compact context and the configured route. Compilation grants no new authorization.",
+  "precedence": [
+    "latest_explicit_user_instruction_and_phase_authorization",
+    "active_directive_ledger_and_current_STATUS",
+    "current_proposed_plan_and_context",
+    "historical_research_rehearsal_and_agent_opinion"
+  ],
+  "gate": {
+    "gameplay_enabled": false,
+    "automatic_phase_advance": false,
+    "rule": "S1 plan selection, evidence synthesis and bounded static context-framework checks are authorized. D-01..D-05 are selected for later S1 simulation as unverified; gameplay remains disabled until separate later explicit user authorization."
+  },
+  "forbidden_tasks": [
+    "gameplay_actor",
+    "chat_action"
+  ],
+  "forbidden_actions": [
+    "server.app",
+    "server.replay",
+    "gameplay tests",
+    "browser gameplay",
+    "harness.run",
+    "automatic phase advance",
+    "automatic retry/escalation/provider change/silent fallback",
+    "runtime migration",
+    "deployment/publication/platform provisioning/provider setup/live calls",
+    "frozen v1/context/rehearsal edits"
+  ],
+  "conflicts": [],
+  "common_directive_ids": [
+    "setting_san_diego",
+    "fresh_packets",
+    "context_reuse",
+    "scripted_actors",
+    "model_allocation",
+    "bounded_subagents",
+    "manual_escalation",
+    "packet_limits",
+    "gameplay_gate",
+    "evidence_independence",
+    "frozen_artifacts",
+    "precedence",
+    "remediation_rerun_and_decision_delegation"
+  ],
+  "tasks": {
+    "complex_coding_debugging": {
+      "routing_task": "complex_coding_debugging",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    },
+    "development": {
+      "routing_task": "development",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    },
+    "everyday_writing_summarization": {
+      "routing_task": "everyday_writing_summarization",
+      "directive_ids": []
+    },
+    "extraction_classification": {
+      "routing_task": "extraction_classification",
+      "directive_ids": []
+    },
+    "hardest_end_to_end_ambiguous": {
+      "routing_task": "hardest_end_to_end_ambiguous",
+      "directive_ids": []
+    },
+    "plan_attacker": {
+      "routing_task": "plan_attacker",
+      "directive_ids": []
+    },
+    "plan_character": {
+      "routing_task": "plan_character",
+      "directive_ids": []
+    },
+    "plan_review": {
+      "routing_task": "plan_review",
+      "directive_ids": []
+    },
+    "plan_security": {
+      "routing_task": "plan_security",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    },
+    "plan_stage_operator": {
+      "routing_task": "plan_stage_operator",
+      "directive_ids": []
+    },
+    "plan_streamer": {
+      "routing_task": "plan_streamer",
+      "directive_ids": []
+    },
+    "plan_viewer": {
+      "routing_task": "plan_viewer",
+      "directive_ids": []
+    },
+    "planner_orchestrator": {
+      "routing_task": "planner_orchestrator",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    },
+    "research_synthesis_long_doc": {
+      "routing_task": "research_synthesis_long_doc",
+      "directive_ids": []
+    },
+    "route_mapping": {
+      "routing_task": "route_mapping",
+      "directive_ids": []
+    },
+    "routing_triage_batch": {
+      "routing_task": "routing_triage_batch",
+      "directive_ids": []
+    },
+    "visual_interpretation_forms_low": {
+      "routing_task": "visual_interpretation_forms_low",
+      "directive_ids": []
+    },
+    "visual_interpretation_forms_medium": {
+      "routing_task": "visual_interpretation_forms_medium",
+      "directive_ids": []
+    },
+    "simulation_preparation": {
+      "routing_task": "development",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    }
+  },
+  "required_paths": {
+    "AGENTS.md": "4b7b04be8b6c14b2744c5f2f74638bd6a95081b60f7b11cd169a6c26ef351b6a",
+    "config/model-policy.json": "7cfe130f28ff0c02f270320560e4a27cb6ca99edd88d39fbf8afe7127e6a289d",
+    "coordination/content_cache.py": "c70694c893540d80a50498a0ba700a7a9599cdc7290524c5a98e63004be12a95",
+    "coordination/context_contract.py": "6998844f22691df022a3f76cae155b818a83aa398e4e2eef278e600b69dc0c5f",
+    "coordination/model_router.py": "41394c38bb981448e88cefbe41c444f6d0cc4b5500570f9b4a5301bb85344317",
+    "docs/planning/CONTEXT-RETENTION-RESEARCH.md": "cf6eb23e1010b86caf172d6915c221bb80053178bd15bd24bfc332ea236fd7c3",
+    "docs/planning/CONTEXT-v2.md": "83be7ce8097c6400fb7b16d1a19dc2441f192cf2e39af5774c5e6901fd425c7e",
+    "docs/planning/GAMEPLAN-v2.md": "a6967a24601f259be027ed7fbebed5ad6e0784d4a7f7b7f6c0a2c3967e47e6ed",
+    "docs/planning/DECISIONS.md": "639bebcaba808e75697641fd5810b7f2e7e130f4bf4b63eb690259892fcf81f1",
+    "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md": "4cf48c7fcc2492529b2b7b13c68cce251c7a6356453aa5582c37499cd8bf15a3",
+    "docs/planning/S1-ASTRA-REVIEW.md": "29280f55a0d69fd4f8cb06d70f22e7daa23cf0d511c1e0b8eb8a82614c71e530",
+    "docs/planning/S1-SIMULATION-PROFILE.md": "a8e3304309fd81eb795f5b7e5b609b66a65f5a3dae4f32ef0c4ded369049d2a4",
+    "docs/planning/SIMULATION-EVIDENCE-AUDIT.md": "adcc2692789d29aae24b35acb522ea494c96748c5a20a04605461dcc52f3a798",
+    "docs/planning/STATUS.md": "8f7ef0698e937a2fd97652c62943889dccead8c7802222749049fac889a9f476",
+    "docs/planning/USER-DIRECTIVE-AUDIT.md": "c3c7739de09e15c9000eade99160a27736267d6fac8041b5eccb1534124cf3f5",
+    "docs/planning/gameplan-v2.json": "1b43be51add9d6c5e1cc2b6378e66a7f48fb76985435693b3dcf303ad6234937",
+    "docs/planning/research/S1-PLATFORM-EVIDENCE.md": "3bc1910f2d55d9cc1b26c6c7644ad759c48e28c32d11e462dfac966b3b23a4d6",
+    "docs/planning/research/S1-SYSTEMS-EVIDENCE.md": "b727a60099d9fd3a11809f0e24d1c989d6f87bf5a5ad185f041ababd37ac128c",
+    "tests/test_context_contract.py": "9e267eaa11d54871fa8d891d41631b3b0514f0ee3ac3d8161044985af3ababe4",
+    "tests/test_gameplan_rules.py": "85006bd0741f1ff876febdaea0a2b300a6563dd9beb690e1993b9148ebf68925"
+  },
+  "directives": [
+    {
+      "id": "setting_previous_city",
+      "status": "superseded",
+      "scope": [
+        "plan"
+      ],
+      "topic": "setting",
+      "rule": "An earlier city concept was removed from repository text at the user's explicit request; retain only this generic supersession record.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Superseded decisions and implementation status",
+          "source_kind": "project_record"
+        }
+      ],
+      "superseded_by": "setting_san_diego"
+    },
+    {
+      "id": "setting_san_diego",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "setting",
+      "rule": "San Diego is the sole retained city setting. Active runtime district names, visible map labels, city copy and current demo documentation use San Diego. The compressed route geometry and gameplay remain unverified.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Active directives / Setting",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/STATUS.md",
+          "locator": "Approved by the user",
+          "source_kind": "project_record"
+        }
+      ],
+      "supersedes": [
+        "setting_previous_city"
+      ]
+    },
+    {
+      "id": "fresh_packets",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "context_packets",
+      "rule": "Use a fresh compact task packet with stable instructions, explicit ownership, repository-relative paths and SHA-256 bindings. Load relevant files on demand; never copy the full conversation, prior agent transcripts or broad histories. Return at most 250 words plus owned artifact paths.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Token and context economy",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/CONTEXT-RETENTION-RESEARCH.md",
+          "locator": "Minimal project design",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "context_reuse",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "context_transport",
+      "rule": "Transport state diffs/summaries rather than full event histories. Reuse unchanged plan/policy/result hashes and stable prefixes. Group compatible perspectives in one bounded call when independence is not required.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Token and context economy",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "config/model-policy.json",
+          "locator": "token_saving_strategy",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "scripted_actors",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "simulation_efficiency",
+      "rule": "Use deterministic scripts, never LLM load actors, for mass gameplay actors. Generate viewer-message corpora once and reuse by seed and SHA-256. LLMs may critique compact results only. This strategy does not authorize gameplay.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Simulation efficiency",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/CONTEXT-v2.md",
+          "locator": "Future scale simulation",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "model_allocation",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "model_routing",
+      "rule": "Use the cheapest reliable configured provider/model/effort for the acceptance check: Luna for narrow high-volume tasks; Terra for scoped writing, visual and stakeholder work; Sol for technical ambiguity, orchestration, coding and synthesis; Astra once at the hardest/final gate. Bind the actual executor settings to the routing decision. Selection is not inference; catalog presence is not account access.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Delegation",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "config/model-policy.json",
+          "locator": "profiles and tasks",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "bounded_subagents",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "bounded_delegation",
+      "rule": "Delegate independent, bounded background research or development to subagents when appropriate. Use the configured task model and effort; provide explicit owned files, acceptance criteria and a fresh compact compiler packet. Keep noisy work out of the main session and return a short summary plus owned artifact paths. Delegation must remain bounded and deliberate, never automatic or open-ended.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Active exact or normalized user directives / Delegation",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "config/model-policy.json",
+          "locator": "subagent_mapping, tasks and token_saving_strategy",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "manual_escalation",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "retry_escalation",
+      "rule": "No automatic retry, escalation, provider change or silent model fallback. One executor call per invocation; propagate failure. Only a human may escalate after two failed acceptance checks, one tier Luna -> Terra -> Sol -> Astra, never skip; stop after two failures at Astra. The legacy literal max 2 retries per tier means failed acceptance checks, not automatic retries.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Contradictions and authoritative precedence / 1",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "config/model-policy.json",
+          "locator": "retry_policy and escalation_policy",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "packet_limits",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "context_budgets",
+      "rule": "Packet caps: Luna 24000 characters, Terra 24000, Sol 32000, Astra 40000; reject oversized packets. Agent returns are at most 250 words plus owned artifact paths. Executor output-token support is separate; budgets do not measure dollar spend.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/CONTEXT-v2.md",
+          "locator": "Future scale simulation",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "config/model-policy.json",
+          "locator": "profiles and return_limit_words",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "gameplay_gate",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "phase_authorization",
+      "rule": "Current work includes S1 plan selection, evidence synthesis and bounded plan/routing/rehearsal/data-preparation/context-framework checks. D-01..D-05 are selected_for_s1_simulation_unverified, not runtime evidence or gameplay authorization. Gameplay remains disabled until separate later explicit user authorization. Do not run server.app, server.replay, gameplay tests, browser gameplay or harness.run. No automatic phase advance; configuration booleans and task labels cannot override the user gate.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/STATUS.md",
+          "locator": "Approved by the user; Explicitly deferred; Durable context handoff",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "AGENTS.md",
+          "locator": "Gameplay remains disabled",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "evidence_independence",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "evidence",
+      "rule": "Distinguish scripted checks, actual agent critiques, mocked transports and observed gameplay. Plans, agent opinions, configured access and hashes are not live-service evidence. Record source links and observed checks; do not claim execution, latency, service operation or deployment without observation. Keep game authority independent of model/service I/O. External APIs need explicit configured providers; never print credentials or autoload unrelated home credentials.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Evidence discipline",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "AGENTS.md",
+          "locator": "Code discovery and evidence",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "frozen_artifacts",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "artifact_preservation",
+      "rule": "Preserve historical artifact meaning and hash consistency. The user explicitly authorized a one-time location-term sanitization; record that redaction and rebind dependent hashes without implying fresh agent review. Further historical edits require explicit approval and historical material grants no standing authorization.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/STATUS.md",
+          "locator": "Context entry points",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "AGENTS.md",
+          "locator": "Preserve frozen v1/context/rehearsal artifacts",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "precedence",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "instruction_precedence",
+      "rule": "Latest explicit user instruction/phase authorization outranks active directive ledger/current STATUS, then current plan/context, then historical research, rehearsal and agent opinion. Report conflicts and fail closed. Selected S1 design choices remain unverified and cannot override a gameplay gate; unselected proposals are not defaults.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "AGENTS.md",
+          "locator": "Directive precedence",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Contradictions and authoritative precedence / 3",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "code_workflow",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "code_ownership",
+      "rule": "Use codebase-memory tools first for code discovery; project home-anindyasundar-bera-Projects-hackathon-TwitchConOdyssey. Read files before editing, own only assigned paths and preserve others edits. S1 design choices may be recorded as selected/unverified; this framework authorizes no runtime mechanics execution or migration.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "AGENTS.md",
+          "locator": "Code discovery and evidence",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/STATUS.md",
+          "locator": "Explicitly deferred",
+          "source_kind": "project_record"
+        }
+      ]
+    },
+    {
+      "id": "remediation_rerun_and_decision_delegation",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "remediation_authorization",
+      "rule": "AUTHORIZATION: rerun + decision delegation. Granted by requester (direct instruction) at 2026-11-01T17:36:28+05:30. Scope: one or more fresh simulation runs under new, non-existing run roots; and resolution of D-06, D-07, D-08, booth placement and other blocking product choices by recorded decision in docs/planning/DECISIONS.md. Explicitly excluded: modification of the rejected run (artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/); product development; gameplay execution beyond the authorized simulation; publication. Supersedes the checkpoint's 'do not rerun without new explicit authorization' clause.",
+      "wording": "normalized",
+      "exact_user_wording": null,
+      "wording_availability": "unavailable",
+      "provenance": [
+        {
+          "path": "docs/planning/STATUS.md",
+          "locator": "Approved by the user in the current turn",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/USER-DIRECTIVE-AUDIT.md",
+          "locator": "Active exact or normalized user directives",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/SIMULATION-EVIDENCE-AUDIT.md",
+          "locator": "Required next action",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/DECISIONS.md",
+          "locator": "Delegated Remediation & Product Decisions",
+          "source_kind": "project_record"
+        }
+      ]
+    }
+  ],
+  "unresolved_decisions": [
+    {
+      "id": "failover_and_hotfix_trust",
+      "status": "unresolved",
+      "rule": "Failover authority and data-only hotfix signing/trust/activation design.",
+      "gate": "before_later_tests",
+      "source_path": "docs/planning/CONTEXT-v2.md"
+    }
+  ],
+  "superseded_decisions": [
+    {
+      "id": "player_agency",
+      "status": "superseded",
+      "rule": "User-proposed partially specified framework (not verified behavior): retain the unstructured-scale thesis; 20s planning has continuous movement and active steering without audience freezes; 5s resolution locks input while engine resolves chosen crowd counter versus active lane hazard and streamer navigates consequence; approximately 5s reward displays bounty settlement/aftermath. HUD: one route progress meter, hazard timer, single plain-language action/consequence preview; no high-velocity chat reading to react. INV-01: deterministic engine alone owns avatar position/physics/collisions; AI/crowd advisory only. OPEN: keyboard/gamepad steering versus lane shifts; manual counter/confirmation override/abstain default during resolution. All open selections need human approval; gameplay remains disabled.",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/CONTEXT-v2.md",
+      "prior_status": "unresolved",
+      "superseded_by": "D-01",
+      "superseded_in_revision": 6
+    },
+    {
+      "id": "survival_contract",
+      "status": "superseded",
+      "rule": "User-proposed partially specified framework (not verified behavior): INV-02 bans permanent control loss, repeated stun-lock, unavoidable death and unbounded damage including cumulative/chained effects. First slice: one localized Little Italy lane obstacle plus clear_lane viewer counter. Require per-phase/match-wide pressure caps; low participation/failed counter yields bounded slowdown or recoverable integrity/HP loss, never instant permanent soft-lock. OPEN: duration/density/placement/overlap/cooldowns/damage curve and numerical caps/recovery limits; wipe by HP versus route clock; respawn/checkpoint penalties and retry/continuation. All open selections need human approval; gameplay remains disabled.",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/CONTEXT-v2.md",
+      "prior_status": "unresolved",
+      "superseded_by": "D-02",
+      "superseded_in_revision": 6
+    },
+    {
+      "id": "audience_fairness",
+      "status": "superseded",
+      "rule": "User-proposed partially specified framework (not verified behavior): INV-04 allows at most one influence unit per eligible human per 20s turn, atomically deduplicated across chat/button. Configurable N-to-K squads use bounded weighting and defensive normalization preventing coordinated minority hijack. INV-03: visible labeled bot backfill, no human impersonation, bounty creation or pool inflation. OPEN: pseudonymous token versus authenticated platform subject/eligibility enforcement; K, quorum, deterministic tie-break, replacement, cohort roster/join/leave and weighting/normalization specifics. Human-level eligibility is a target, not proven identity assurance. All open selections need human approval; gameplay remains disabled.",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/CONTEXT-v2.md",
+      "prior_status": "unresolved",
+      "superseded_by": "D-03",
+      "superseded_in_revision": 6
+    },
+    {
+      "id": "reward_contract",
+      "status": "superseded",
+      "rule": "User-proposed partially specified framework (not verified behavior): fictional score/credits only, no money/crypto/payout. Only accepted human-created in-game danger grows bounty; fixtures/bots permanently excluded from creating/inflating it. Survival/delivery unlocks streamer/participating-audience split; wipe/collision/build-drop heavily reduces or withholds settlement. OPEN: base pool, peril multiplier, retry ceiling, split and numerical attribution/cap/settlement/allocation rules. Legacy 100+25/voter formulas are retired, never selected rules. All open selections need human approval; gameplay remains disabled.",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/CONTEXT-v2.md",
+      "prior_status": "unresolved",
+      "superseded_by": "D-04",
+      "superseded_in_revision": 6
+    },
+    {
+      "id": "clock_contract",
+      "status": "superseded",
+      "rule": "User-proposed partially specified framework (not verified behavior): 20s planning -> 5s locked resolution -> approximately 5s reward. Eligibility uses authoritative server receipt before planning closes; async AI returned after t=20 is discarded without tick blocking or rollover. Client statuses: applied/expired/rejected/duplicate. Single monotonic host clock; current Odyssey target runtime 20 Hz is not verified timing evidence. Pause freezes simulation, rejects commands received while paused and permits no catch-up burst. OPEN: total match deadline to San Diego Convention Center fictional Main Stage; exact pause/timeout/network-jitter grace and boundary/expiry semantics. All open selections need human approval; gameplay remains disabled.",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/CONTEXT-v2.md",
+      "prior_status": "unresolved",
+      "superseded_by": "D-05",
+      "superseded_in_revision": 6
+    },
+    {
+      "id": "D-01_ledger_revision_6",
+      "contract": "player_agency",
+      "status": "superseded",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-01",
+      "evidence_origin": "project_design_inference",
+      "rule": "Auto-forward; 3 lanes; remappable digital left/right, initially arrows and gamepad D-pad. One press requests one adjacent-lane transition over 0.5s; no held repeat; same-tick opposites cancel. Steering remains active through planning and resolution; only crowd/counter input locks. No streamer counter confirmation/override; no valid crowd result means abstain. HUD: one progress meter, hazard timer, one plain-language action/consequence preview; no high-velocity chat reading. INV-01 reserves position, physics and collision to the deterministic engine.",
+      "prior_status": "selected_for_s1_simulation_unverified",
+      "superseded_by": "D-01",
+      "superseded_in_revision": 7,
+      "prior_source_sha256": "d5216ff1c73f08153003f38077f67c59813b52b05e27d1a89a937c0636117266"
+    },
+    {
+      "id": "D-02_ledger_revision_6",
+      "contract": "survival_contract",
+      "status": "superseded",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-02",
+      "evidence_origin": "project_design_inference",
+      "rule": "One localized Little Italy center-lane obstacle and clear_lane; maximum 1 obstacle/turn and 3/match; no overlap. Warning final 5s planning; active first 3s resolution. Collision once/obstacle: 20% forward-speed reduction for 2s; zero HP damage/stun/steering loss/displacement. No stacking, refresh or residual. Caps: 2s slowdown/turn, 6s/match; equivalent free-speed travel loss at most 0.4s/turn and 1.2s/match. clear_lane removes before collision; missing quorum uses bounded uncountered branch. No HP/death/respawn/checkpoints. INV-02 cumulative harm limits remain mandatory; later fixtures must establish reachability from every admitted state. Wipe means not delivered strictly before 90s active deadline; no automatic retries or carried state/pool. A new explicit match resets all state.",
+      "prior_status": "selected_for_s1_simulation_unverified",
+      "superseded_by": "D-02",
+      "superseded_in_revision": 7,
+      "prior_source_sha256": "d5216ff1c73f08153003f38077f67c59813b52b05e27d1a89a937c0636117266"
+    },
+    {
+      "id": "D-03_ledger_revision_6",
+      "contract": "audience_fairness",
+      "status": "superseded",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-03",
+      "evidence_origin": "project_design_inference",
+      "rule": "Live eligibility requires authenticated platform subject at account level with linked chat/button identity; reject unlinked input. This is not one-human proof. Offline actors are labeled fixtures. Freeze eligible roster at planning start; joins/leaves next turn; reconnect retains identity/influence. S1 K=2: stable-sort subjects then alternate assignment; squads display groupings, not equal electoral blocks. Each eligible subject weight 1, max 1 influence/turn across channels. First valid receipt wins atomically; zero replacements. Transport dedupe is separate. clear_lane requires ceil(0.60*N) frozen-roster votes and at least 1 eligible vote; otherwise abstain, which wins ties. Bots have weight/quorum/vote/bounty contribution 0 and remain labeled. Account-level quota does not prove human-level fairness or prevent Sybils.",
+      "prior_status": "selected_for_s1_simulation_unverified",
+      "superseded_by": "D-03",
+      "superseded_in_revision": 7,
+      "prior_source_sha256": "d5216ff1c73f08153003f38077f67c59813b52b05e27d1a89a937c0636117266"
+    },
+    {
+      "id": "D-04_ledger_revision_6",
+      "contract": "reward_contract",
+      "status": "superseded",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-04",
+      "evidence_origin": "project_design_inference",
+      "rule": "Fictional Hype only. Pool starts 0; each distinct accepted human-origin hazard adds 20, max 1 increment/turn, cap 60, multiplier 1. Counter/avoidance preserves increment; harm adds no bonus. Delivery settles 50/50 streamer/audience; any collision halves total once before splitting; wipe/build-drop settles 0. Audience eligibility: at least 1 accepted counter vote that match, even if aggregate quorum fails; danger creation alone earns none. Equal exact rational audience shares; no rounding redistribution; absent audience share withheld without carry. Bots/fixtures add and earn 0; fixture arithmetic is synthetic only. Residual safe-danger farming risk remains; caps do not prove grief resistance.",
+      "prior_status": "selected_for_s1_simulation_unverified",
+      "superseded_by": "D-04",
+      "superseded_in_revision": 7,
+      "prior_source_sha256": "d5216ff1c73f08153003f38077f67c59813b52b05e27d1a89a937c0636117266"
+    },
+    {
+      "id": "D-05_ledger_revision_6",
+      "contract": "clock_contract",
+      "status": "superseded",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-05",
+      "evidence_origin": "project_design_inference",
+      "rule": "90s active match; 20s planning/5s resolution/~5s reward, max 3 turns; 20Hz authoritative target, not measured runtime. No real-world deadline claim. Monotonic host clock, integer nanoseconds, authoritative sequence; replay uses logical time/sequence. Planning half-open: receipt exactly t=20 expires. Zero post-cutoff grace; client timestamps cannot backdate. Equal-time ordering: pause/deadline/phase-close boundaries, sequence-ordered commands, effects/settlement. clear_lane precedes collision. Delivery strictly precedes deadline; equality wipes. Model timeout min(dispatch+2s, planning close), no retry; cutoff/late results discarded with no rollover or tick blocking. Local validation remains required; statuses applied/expired/rejected/duplicate. Pause freezes all simulation clocks/effects, rejects commands, invalidates pending model work; resume anchor reset, no catch-up.",
+      "prior_status": "selected_for_s1_simulation_unverified",
+      "superseded_by": "D-05",
+      "superseded_in_revision": 7,
+      "prior_source_sha256": "d5216ff1c73f08153003f38077f67c59813b52b05e27d1a89a937c0636117266"
+    }
+  ],
+  "selected_decisions": [
+    {
+      "id": "D-01",
+      "contract": "player_agency",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-01",
+      "evidence_origin": "project_design_inference",
+      "rule": "Auto-forward; 3 lanes; remappable digital left/right, initially arrows and gamepad D-pad. One press requests one adjacent-lane transition over 0.5s; no held repeat; same-tick opposites cancel. Auto-forward and steering remain active through planning, resolution and reward until terminal state, subject to pause; only crowd/counter input locks. No streamer counter confirmation/override; no valid crowd result means abstain. HUD: one progress meter, hazard timer, one plain-language action/consequence preview; no high-velocity chat reading. INV-01 reserves position, physics and collision to the deterministic engine."
+    },
+    {
+      "id": "D-02",
+      "contract": "survival_contract",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-02",
+      "evidence_origin": "project_design_inference",
+      "rule": "One localized Little Italy center-lane obstacle and clear_lane; maximum 1 obstacle/turn and 3/match; no overlap. Hazard proposal/admission is half-open [0,15.000s); one accepted human-origin hazard committed before t=15 creates the fixed center-lane warning for the entire [15,20) interval and one deduplicated bounty increment. Warning/counter/increment bind to committed hazard ID. Proposal/model result at or after t=15 expires for that turn; no backdating or rollover. No accepted hazard by cutoff means no hazard, warning or increment. Active first 3s resolution. Collision once/obstacle: 20% forward-speed reduction for 2s; zero HP damage/stun/steering loss/displacement. No stacking, refresh or residual. Caps: 2s slowdown/turn, 6s/match; equivalent free-speed travel loss at most 0.4s/turn and 1.2s/match. clear_lane removes before collision; missing quorum uses bounded uncountered branch. No HP/death/respawn/checkpoints. INV-02 cumulative harm limits remain mandatory; later fixtures must establish reachability from every admitted state. Wipe means not delivered strictly before 90s active deadline; no automatic retries or carried state/pool. A new explicit match resets all state."
+    },
+    {
+      "id": "D-03",
+      "contract": "audience_fairness",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-03",
+      "evidence_origin": "project_design_inference",
+      "rule": "Live eligibility requires authenticated platform subject at account level with linked chat/button identity; reject unlinked input. This is not one-human proof. Offline actors are labeled fixtures. Freeze eligible roster at planning start; joins/leaves next turn; reconnect retains identity/influence. S1 K=2: stable-sort subjects then alternate assignment; squads display groupings, not equal electoral blocks. Each eligible subject weight 1, max 1 influence/turn across channels. First valid receipt wins atomically; zero replacements. Transport dedupe is separate. clear_lane requires ceil(0.60*N) frozen-roster votes and at least 1 eligible vote; otherwise abstain, which wins ties. Bots have weight/quorum/vote/bounty contribution 0 and remain labeled. Account-level quota does not prove human-level fairness or prevent Sybils. Counter votes remain open in the half-open planning interval [0,20), bound to the committed hazard ID; general input cutoff remains t=20."
+    },
+    {
+      "id": "D-04",
+      "contract": "reward_contract",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-04",
+      "evidence_origin": "project_design_inference",
+      "rule": "Fictional Hype only. Pool starts 0; each distinct accepted human-origin hazard committed before planning t=15 adds 20, max 1 increment/turn, cap 60, multiplier 1. Deduplicate by committed hazard ID; no committed hazard means no increment. Counter/avoidance preserves increment; harm adds no bonus. Reward displays outcome/pending pool only; no interim payout. Delivery performs exactly one final settlement, 50/50 streamer/audience, and immediately ends active simulation; any collision, including same-time pre-deadline collision, halves total once before splitting. Wipe/deadline/build-drop settles 0. Audience eligibility: at least 1 accepted counter vote that match, even if aggregate quorum fails; danger creation alone earns none. Equal exact rational audience shares; no rounding redistribution; absent audience share withheld without carry. Bots/fixtures add and earn 0; fixture arithmetic is synthetic only. Residual safe-danger farming risk remains; caps do not prove grief resistance."
+    },
+    {
+      "id": "D-05",
+      "contract": "clock_contract",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-05",
+      "evidence_origin": "project_design_inference",
+      "rule": "90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 20Hz authoritative target, not measured runtime. No real-world deadline claim. Monotonic host clock, integer nanoseconds, authoritative sequence; replay uses logical time/sequence. Planning half-open: receipt exactly t=20 expires. Zero post-cutoff grace; client timestamps cannot backdate. Equal-time ordering: deadline first, phase-close, pause request, authoritative sequence-ordered commands, effects/settlement. Pause cannot suspend a reached deadline. Admitted effects: clear_lane removal, collision adjudication, delivery detection, one final settlement. Same-time pre-deadline collision is recorded before delivery and halves settlement once. Delivery strictly precedes deadline; equality wipes for zero settlement. Model timeout min(dispatch+2s, applicable admission close): planning t=15 for hazards, t=20 for general input/counter votes. No retry; cutoff/late results expire without backdating, rollover or tick blocking. Local validation remains required; statuses applied/expired/rejected/duplicate. Pause freezes all simulation clocks/effects, rejects commands, invalidates pending model work; resume anchor reset, no catch-up."
+    }
+  ],
+  "revision_note": "S1 evidence-remediation rerun grant and decision delegation recorded (AUDIT-01..09 baseline bound); gameplay gate remains closed beyond authorized deterministic simulation."
+}

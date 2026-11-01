@@ -1,0 +1,226 @@
+[
+  {
+    "feature_id": "FEAT-01-SAN-DIEGO-ROUTE",
+    "name": "Complete Stylized San Diego Journey",
+    "category": "route_and_world",
+    "source_paths": [
+      "docs/planning/SAN-DIEGO-ROUTE.md",
+      "docs/planning/GAMEPLAN-v2.md"
+    ],
+    "status": "passed",
+    "authority_owner": "engine",
+    "simulation_method": "deterministic_progress_and_district_mapping",
+    "oracle": "avatar traverses Little Italy, Waterfront, Gaslamp, Convention Center, Main Stage strictly in order",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-02-STREAMER-CONTROL",
+    "name": "Auto-Forward Three-Lane Streamer Control",
+    "category": "controls",
+    "source_paths": [
+      "docs/planning/S1-SIMULATION-PROFILE.md#D-01",
+      "docs/planning/GAMEPLAN-v2.md#D-01"
+    ],
+    "status": "passed",
+    "authority_owner": "streamer_input_to_engine",
+    "simulation_method": "fixed_step_linear_interpolation",
+    "oracle": "3 lanes, 0.5s transition, edge clamping, opposite cancel, active through plan/res/reward, no confirmation/override",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-03-CADENCE-AND-CLOCK",
+    "name": "Cadence, Active Deadline, and Cutoff Ordering",
+    "category": "clock_and_lifecycle",
+    "source_paths": [
+      "docs/planning/S1-SIMULATION-PROFILE.md#D-05",
+      "docs/planning/GAMEPLAN-v2.md#D-05"
+    ],
+    "status": "passed",
+    "authority_owner": "engine_clock",
+    "simulation_method": "integer_tick_monotonic_schedule",
+    "oracle": "20s plan, 5s res, exactly 5.0s reward, 90s deadline, total ordering: deadline->close->pause->commands->effects",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-04-AUDIENCE-ACCOUNTING",
+    "name": "Audience Ingestion, Account Linking, and Quorum",
+    "category": "audience_and_fairness",
+    "source_paths": [
+      "docs/planning/S1-SIMULATION-PROFILE.md#D-03",
+      "docs/planning/GAMEPLAN-v2.md#D-03"
+    ],
+    "status": "passed",
+    "authority_owner": "audience_ledger",
+    "simulation_method": "atomic_first_receipt_and_frozen_roster",
+    "oracle": "account-level linking, max 1 influence/turn across channels, K=2 squads, ceil(0.60*N) quorum, ties=abstain, bot=0",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-05-HAZARD-AND-SURVIVAL",
+    "name": "Human-Origin Hazard Commitment and Survival Contract",
+    "category": "hazards_and_safety",
+    "source_paths": [
+      "docs/planning/S1-SIMULATION-PROFILE.md#D-02",
+      "docs/planning/GAMEPLAN-v2.md#D-02"
+    ],
+    "status": "passed",
+    "authority_owner": "engine_hazard_adjudicator",
+    "simulation_method": "half_open_admission_and_collision_bounding",
+    "oracle": "commit < t=15s, warning [15,20s), clear_lane removes before collision, 20% slowdown for 2s, 0 HP/stun, cap 6s/match",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-06-FICTIONAL-HYPE-REWARD",
+    "name": "Fictional Hype Creation, Halving, and Terminal Settlement",
+    "category": "rewards_and_economy",
+    "source_paths": [
+      "docs/planning/S1-SIMULATION-PROFILE.md#D-04",
+      "docs/planning/GAMEPLAN-v2.md#D-04"
+    ],
+    "status": "passed",
+    "authority_owner": "reward_settler",
+    "simulation_method": "exact_rational_fraction_arithmetic",
+    "oracle": "0 start, +20/accepted hazard < t=15, cap 60, single collision halves total once, wipe settles 0, exact rational shares",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-07-OPENAI-CHAT-TO-ACTION",
+    "name": "OpenAI Chat-to-Action Validation and Asynchronous Fallback",
+    "category": "ai_integration",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "config/model-policy.json"
+    ],
+    "status": "passed",
+    "authority_owner": "adapter_and_local_validator",
+    "simulation_method": "fixture_schedule_and_schema_validator",
+    "oracle": "strict schemas, local revalidation, timeout min(dispatch+2s, cutoff), late discard, deterministic fallback",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-08-CODEX-LIVE-HOTFIX",
+    "name": "Codex Live Hotfix Booth Data-Only Patching",
+    "category": "booths_and_tooling",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/CONTEXT-v2.md"
+    ],
+    "status": "passed",
+    "authority_owner": "hotfix_verifier",
+    "simulation_method": "turn_boundary_patch_adjudication",
+    "oracle": "data/rules only, signature verification, turn-boundary activation, cannot relax safety invariants, rollback on failure",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-09-TWITCH-BOOTH",
+    "name": "Twitch Booth Moderation-Forcefield Fiction",
+    "category": "booths_and_tooling",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/gameplan-v2.json"
+    ],
+    "status": "passed",
+    "authority_owner": "diegetic_booth_manager",
+    "simulation_method": "waypoint_trigger_and_hazard_conversion",
+    "oracle": "converts in-game obstacles to Hype without punishing viewers, clearly labeled fiction",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-10-AWS-IVS-BOOTH",
+    "name": "AWS / Amazon IVS Booth Scale-Boost Fiction",
+    "category": "booths_and_tooling",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/research/S1-PLATFORM-EVIDENCE.md"
+    ],
+    "status": "passed",
+    "authority_owner": "diegetic_booth_manager",
+    "simulation_method": "speed_lane_acceleration_and_offline_fallback",
+    "oracle": "+10% speed boost for 2s, graceful fallback when offline, no unsupported sponsorship claims",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-11-OFFLINE-FIXTURE-DRIVER",
+    "name": "Offline Fixture Driver, Equivalence, and Recovery",
+    "category": "resilience_and_failover",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "coordination/canonical_commands.py"
+    ],
+    "status": "passed",
+    "authority_owner": "engine_transport_layer",
+    "simulation_method": "replay_verification_and_state_hash_comparison",
+    "oracle": "live-fixture and offline-fixture produce identical state hashes; safe boundary failover",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-12-BULLET-TIME-PRESENTATION",
+    "name": "Bullet-Time Matrix Freeze Presentation Alignment",
+    "category": "presentation_and_demo",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/S1-SIMULATION-PROFILE.md"
+    ],
+    "status": "passed",
+    "authority_owner": "presentation_layer",
+    "simulation_method": "client_interpolation_against_authoritative_ticks",
+    "oracle": "presentation slowdown without stopping authoritative 20 Hz loop or extending real 90s deadline",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-13-ADAPTIVE-AUDIO",
+    "name": "Adaptive Audio State Machine and Telemetry Cues",
+    "category": "audio_and_feedback",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/planning/gameplan-v2.json"
+    ],
+    "status": "passed",
+    "authority_owner": "audio_state_machine",
+    "simulation_method": "discrete_state_transitions_on_engine_events",
+    "oracle": "states: crisis, bullet_time, solution, victory, wipe; telemetry cues priority; permission gates",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-14-READABILITY-AND-HUD",
+    "name": "Broadcast and Mobile Readability Architecture",
+    "category": "ui_and_broadcast",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md#D-01",
+      "docs/planning/S1-SIMULATION-PROFILE.md#D-01"
+    ],
+    "status": "passed",
+    "authority_owner": "hud_formatter",
+    "simulation_method": "minimal_telemetry_hud_projection",
+    "oracle": "one progress meter, hazard timer, single action preview, causal clarity under compressed video",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-15-PUBLIC-DEMO-TIMELINE",
+    "name": "Three-Minute Public Demo Narrative and Claim Verification",
+    "category": "presentation_and_demo",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "docs/research-2026-11-01/PROJECT-CONTEXT.md"
+    ],
+    "status": "passed",
+    "authority_owner": "demo_director",
+    "simulation_method": "timed_scenario_execution",
+    "oracle": "three-minute demo narrative, verified fixture labels, truthful CTA claims",
+    "coverage_state": "covered"
+  },
+  {
+    "feature_id": "FEAT-16-SECURITY-AND-PROVENANCE",
+    "name": "Security, Privacy, Provenance, and Authoritative Writer",
+    "category": "architecture_and_security",
+    "source_paths": [
+      "docs/planning/GAMEPLAN-v2.md",
+      "coordination/canonical_commands.py"
+    ],
+    "status": "passed",
+    "authority_owner": "security_perimeter",
+    "simulation_method": "envelope_validation_and_size_capping",
+    "oracle": "single authoritative writer, detached envelopes, explicit human/bot/fixture provenance, no client physics",
+    "coverage_state": "covered"
+  }
+]

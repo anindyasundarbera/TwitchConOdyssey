@@ -1,0 +1,19 @@
+{
+  "ready": true,
+  "candidate_plan_revision": 5,
+  "candidate_plan_hash": "rev5-candidate-bound",
+  "blocking_issues_count": 0,
+  "unresolved_human_decisions": [
+    "D-06",
+    "D-07",
+    "D-08"
+  ],
+  "review_verdict": "READY",
+  "required_work_packages_order": [
+    "WP-01-core-engine-implementation",
+    "WP-02-hud-and-mobile-presentation",
+    "WP-03-twitch-extension-linking",
+    "WP-04-codex-booth-telemetry",
+    "WP-05-submission-demo-pipeline"
+  ]
+}

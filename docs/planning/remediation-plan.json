@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "plan_title": "TwitchCon Odyssey Same-Day Deterministic Evidence-Pipeline Remediation Plan",
+  "recorded_at": "2026-11-01T17:36:28+05:30",
+  "why_separate_manifest": "docs/planning/gameplan-v2.json is strictly bound to game-design schema assertions in tests/test_gameplan_rules.py; storing the task execution manifest in docs/planning/remediation-plan.json preserves gameplan-v2.json schema purity while providing the complete machine-readable task graph.",
+  "checkpoint_binding": {
+    "audit_path": "docs/planning/SIMULATION-EVIDENCE-AUDIT.md",
+    "recorded_date": "2026-11-01",
+    "current_verdict": "REJECT READY; evidence pipeline requires remediation before development",
+    "audit_git_blob_sha1": "7e51ed746e19fd21dc9c4333e7187c1165e5d9fc",
+    "audit_file_sha256": "adcc2692789d29aae24b35acb522ea494c96748c5a20a04605461dcc52f3a798",
+    "preserved_rejected_run_root": "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/",
+    "preserved_rejected_run_manifest_sha256": "bf34da0ef4764dfd86857aafa3ea9f864cfb98a34f7dadf0af7cad07f1904cf6",
+    "preserved_rejected_run_tree_sha256": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d",
+    "preserved_rejected_run_file_count": 116
+  },
+  "authorization_record": {
+    "granted_by": "requester (direct instruction)",
+    "granted_at": "2026-11-01T17:36:28+05:30",
+    "directive_ledger_path": "config/directive-policy.json",
+    "directive_id": "remediation_rerun_and_decision_delegation",
+    "scope": "one or more fresh simulation runs under new, non-existing run roots; and resolution of D-06, D-07, D-08, booth placement and other blocking product choices by recorded decision.",
+    "explicitly_excluded": [
+      "modification of the rejected run (artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/)",
+      "product development",
+      "gameplay execution beyond the authorized simulation",
+      "publication"
+    ]
+  },
+  "deadline_and_freeze": {
+    "timezone": "Asia/Kolkata (+05:30)",
+    "planning_completed_at": "2026-11-01T18:00:00+05:30",
+    "hard_freeze_point": "2026-11-01T21:00:00+05:30",
+    "same_day_cutoff": "2026-11-01T23:59:00+05:30",
+    "submission_deadline_earliest_utc": "2026-11-02T21:00:00Z"
+  },
+  "delegated_decisions": [
+    {
+      "id": "DECISION-01",
+      "plan_decision_id": "D-06",
+      "title": "Failover Authority, Commit Boundary, Replay Identity, and Recovery Acceptance",
+      "record_path": "docs/planning/DECISIONS.md#decision-01-d-06--failover-authority-commit-boundary-replay-identity-and-recovery-acceptance",
+      "status": "DELEGATED_ACCEPTED",
+      "provisional": true,
+      "escalate_in_final_report": true,
+      "reversal_cost_sessions": 1
+    },
+    {
+      "id": "DECISION-02",
+      "plan_decision_id": "D-07",
+      "title": "Data-Only Hotfix Trust, Permitted DSL, Signer/Version Rules, and Rollback Boundary",
+      "record_path": "docs/planning/DECISIONS.md#decision-02-d-07--data-only-hotfix-trust-permitted-dsl-signerversion-rules-and-rollback-boundary",
+      "status": "DELEGATED_ACCEPTED",
+      "provisional": true,
+      "escalate_in_final_report": true,
+      "reversal_cost_sessions": 1
+    },
+    {
+      "id": "DECISION-03",
+      "plan_decision_id": "D-08",
+      "title": "Submission Readiness & Live Demonstration Scope Separation",
+      "record_path": "docs/planning/DECISIONS.md#decision-03-d-08--submission-readiness--live-demonstration-scope-separation",
+      "status": "DELEGATED_ACCEPTED",
+      "provisional": true,
+      "escalate_in_final_report": true,
+      "reversal_cost_sessions": 1
+    },
+    {
+      "id": "DECISION-04",
+      "plan_decision_id": "D-09",
+      "title": "Diegetic Booth Placement, Steering Transition Lockout/Clamping, and Nominal Route-Speed Calibration",
+      "record_path": "docs/planning/DECISIONS.md#decision-04-d-09--audit-06--diegetic-booth-placement-steering-transition-lockoutclamping-and-nominal-route-speed-calibration-revision-5-synchronization",
+      "status": "DELEGATED_ACCEPTED",
+      "provisional": true,
+      "escalate_in_final_report": true,
+      "reversal_cost_sessions": 1
+    }
+  ],
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "SDC Simulator Core: Fixture Hype Isolation, State-Diff Trace Emission & D-06/D-07/Booth Mechanics",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-001.md",
+      "contract_version": "1.0.0",
+      "status": "READY",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": ["AUDIT-02", "AUDIT-03", "AUDIT-05", "AUDIT-06"],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-04"],
+      "hard_dependencies": ["DECISION-01", "DECISION-02", "DECISION-04"],
+      "integration_dependencies": [
+        "coordination/canonical_commands.py",
+        "coordination/content_cache.py",
+        "coordination/state_transport.py"
+      ],
+      "soft_dependencies": [],
+      "write_scope": ["coordination/full_game_simulator.py"],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**",
+        "coordination/canonical_commands.py",
+        "coordination/content_cache.py",
+        "coordination/state_transport.py"
+      ],
+      "shared_resources": ["coordination/full_game_simulator.py"],
+      "parallelization": "PARALLEL_WITH_ISOLATION",
+      "risk": "HIGH",
+      "amortization": "NET_NEGATIVE",
+      "game_consumers": ["server/engine.py"],
+      "evidence_consumers": [
+        "coordination/run_full_game_simulation.py",
+        "tests/test_full_game_simulation.py"
+      ],
+      "review_requirements": ["correctness_review", "determinism_and_negative_oracle_check"],
+      "verification": "python3 -m unittest tests.test_deterministic_kernel -v",
+      "estimated_sessions": 1.0,
+      "blocks_freeze": true,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-002",
+      "title": "Dual-Consumer Runtime Wiring: Import SDC Primitives into Shipping Game Engine",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-002.md",
+      "contract_version": "1.0.0",
+      "status": "PLANNED",
+      "priority": "P1",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": ["AUDIT-02", "AUDIT-03", "AUDIT-05"],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-04"],
+      "hard_dependencies": ["TASK-001"],
+      "integration_dependencies": [
+        "coordination/full_game_simulator.py",
+        "coordination/canonical_commands.py",
+        "coordination/state_transport.py"
+      ],
+      "soft_dependencies": [],
+      "write_scope": [
+        "server/engine.py",
+        "tests/test_deterministic_kernel.py"
+      ],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**",
+        "server/app.py",
+        "server/replay.py",
+        "harness/run.py"
+      ],
+      "shared_resources": ["server/engine.py"],
+      "parallelization": "SERIAL_REQUIRED",
+      "risk": "MEDIUM",
+      "amortization": "NET_NEGATIVE",
+      "game_consumers": ["server/engine.py", "server/replay.py"],
+      "evidence_consumers": ["tests/test_deterministic_kernel.py", "tests/test_city_setting.py"],
+      "review_requirements": ["integration_review", "dual_consumer_identity_check"],
+      "verification": "python3 -m unittest tests.test_deterministic_kernel tests.test_city_setting -v",
+      "estimated_sessions": 1.0,
+      "blocks_freeze": true,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-003",
+      "title": "SDC Evidence Pipeline Primitives: Exclusive Run Root, Derived Coverage, Corpus Binding & Computed Readiness",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-003.md",
+      "contract_version": "1.0.0",
+      "status": "READY",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": ["AUDIT-01", "AUDIT-04", "AUDIT-07", "AUDIT-08", "AUDIT-09"],
+      "decision_ids": ["DECISION-03"],
+      "hard_dependencies": ["DECISION-03"],
+      "integration_dependencies": [
+        "coordination/content_cache.py",
+        "coordination/scenario_inputs.py"
+      ],
+      "soft_dependencies": ["TASK-001"],
+      "write_scope": [
+        "coordination/scenario_inputs.py",
+        "coordination/evidence_pipeline.py"
+      ],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**",
+        "config/directive-policy.json",
+        "coordination/context_contract.py"
+      ],
+      "shared_resources": ["coordination/evidence_pipeline.py", "coordination/scenario_inputs.py"],
+      "parallelization": "PARALLEL_WITH_ISOLATION",
+      "risk": "CRITICAL",
+      "amortization": "NET_NEGATIVE",
+      "game_consumers": ["server/app.py", "storage/store.py"],
+      "evidence_consumers": [
+        "coordination/run_full_game_simulation.py",
+        "tests/test_full_game_simulation.py"
+      ],
+      "review_requirements": ["security_review", "anti_forgery_review"],
+      "verification": "python3 -m unittest tests.test_deterministic_kernel -v",
+      "estimated_sessions": 1.0,
+      "blocks_freeze": true,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-004",
+      "title": "Simulation Orchestrator Refactor: Pre-Execution Frozen Matrix, 46 Substantive Traces & Two-Stage CLI",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-004.md",
+      "contract_version": "1.0.0",
+      "status": "PLANNED",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": [
+        "AUDIT-01",
+        "AUDIT-02",
+        "AUDIT-03",
+        "AUDIT-04",
+        "AUDIT-05",
+        "AUDIT-07",
+        "AUDIT-08",
+        "AUDIT-09"
+      ],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "hard_dependencies": ["TASK-001", "TASK-003"],
+      "integration_dependencies": [
+        "coordination/full_game_simulator.py",
+        "coordination/evidence_pipeline.py",
+        "coordination/scenario_inputs.py"
+      ],
+      "soft_dependencies": ["TASK-005"],
+      "write_scope": ["coordination/run_full_game_simulation.py"],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**"
+      ],
+      "shared_resources": ["coordination/run_full_game_simulation.py"],
+      "parallelization": "SERIAL_REQUIRED",
+      "risk": "CRITICAL",
+      "amortization": "NET_NEGATIVE",
+      "game_consumers": ["server/replay.py"],
+      "evidence_consumers": [
+        "coordination/run_full_game_simulation.py",
+        "tests/test_full_game_simulation.py"
+      ],
+      "review_requirements": ["correctness_review", "anti_forgery_review", "reproducibility_review"],
+      "verification": "python3 -m unittest tests.test_full_game_simulation -v",
+      "estimated_sessions": 1.0,
+      "blocks_freeze": true,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-005",
+      "title": "Authoritative Revision 5 Plan, Context, Directive Ledger & Static Rule Synchronization",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-005.md",
+      "contract_version": "1.0.0",
+      "status": "READY",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": ["AUDIT-06", "AUDIT-07"],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "hard_dependencies": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "integration_dependencies": ["coordination/context_contract.py"],
+      "soft_dependencies": [],
+      "write_scope": [
+        "docs/planning/GAMEPLAN-v2.md",
+        "docs/planning/gameplan-v2.json",
+        "docs/planning/S1-SIMULATION-PROFILE.md",
+        "docs/planning/CONTEXT-v2.md",
+        "docs/planning/STATUS.md",
+        "docs/planning/USER-DIRECTIVE-AUDIT.md",
+        "config/directive-policy.json",
+        "tests/test_gameplan_rules.py",
+        "tests/test_context_contract.py"
+      ],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**",
+        "docs/planning/S1-ASTRA-REVIEW.md",
+        "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md"
+      ],
+      "shared_resources": ["config/directive-policy.json", "docs/planning/GAMEPLAN-v2.md"],
+      "parallelization": "PARALLEL_WITH_ISOLATION",
+      "risk": "HIGH",
+      "amortization": "NET_NEUTRAL",
+      "game_consumers": ["server/engine.py"],
+      "evidence_consumers": [
+        "coordination/context_contract.py",
+        "coordination/run_full_game_simulation.py",
+        "tests/test_gameplan_rules.py",
+        "tests/test_context_contract.py"
+      ],
+      "review_requirements": ["governance_review", "hash_binding_check"],
+      "verification": "python3 -m coordination.context_contract --task development --phase plan --validate-only && python3 -m unittest tests.test_gameplan_rules tests.test_context_contract tests.test_city_setting -v",
+      "estimated_sessions": 1.0,
+      "blocks_freeze": true,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-006",
+      "title": "Comprehensive Positive & Anti-Forgery Negative Test Suite (tests/test_full_game_simulation.py)",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-006.md",
+      "contract_version": "1.0.0",
+      "status": "PLANNED",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": [
+        "AUDIT-01",
+        "AUDIT-02",
+        "AUDIT-03",
+        "AUDIT-04",
+        "AUDIT-05",
+        "AUDIT-06",
+        "AUDIT-07",
+        "AUDIT-08",
+        "AUDIT-09"
+      ],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "hard_dependencies": ["TASK-001", "TASK-002", "TASK-003", "TASK-004", "TASK-005"],
+      "integration_dependencies": [
+        "coordination/full_game_simulator.py",
+        "coordination/evidence_pipeline.py",
+        "coordination/run_full_game_simulation.py"
+      ],
+      "soft_dependencies": [],
+      "write_scope": ["tests/test_full_game_simulation.py"],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**"
+      ],
+      "shared_resources": ["tests/test_full_game_simulation.py"],
+      "parallelization": "SERIAL_REQUIRED",
+      "risk": "HIGH",
+      "amortization": "NET_NEUTRAL",
+      "game_consumers": ["server/engine.py"],
+      "evidence_consumers": ["tests/test_full_game_simulation.py"],
+      "review_requirements": ["test_reliability_review", "anti_forgery_negative_test_check"],
+      "verification": "python3 -m unittest tests.test_full_game_simulation tests.test_gameplan_rules tests.test_context_contract tests.test_city_setting tests.test_deterministic_kernel tests.test_model_router tests.test_plan_rehearsal -v",
+      "estimated_sessions": 1.0,
+      "blocks_freeze": true,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-007",
+      "title": "Pre-Rerun Directive Ledger Binding & Context-Contract Verification Gate",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-007.md",
+      "contract_version": "1.0.0",
+      "status": "PLANNED",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": ["AUDIT-06", "AUDIT-09"],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "hard_dependencies": ["TASK-006"],
+      "integration_dependencies": ["config/directive-policy.json", "coordination/context_contract.py"],
+      "soft_dependencies": [],
+      "write_scope": ["config/directive-policy.json"],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**"
+      ],
+      "shared_resources": ["config/directive-policy.json"],
+      "parallelization": "SERIAL_REQUIRED",
+      "risk": "MEDIUM",
+      "amortization": "NET_NEUTRAL",
+      "game_consumers": [],
+      "evidence_consumers": ["coordination/context_contract.py", "coordination/run_full_game_simulation.py"],
+      "review_requirements": ["integration_review", "freeze_gate_check"],
+      "verification": "python3 -m coordination.context_contract --task simulation_preparation --phase plan --validate-only && python3 -m coordination.context_contract --task plan_review --phase plan --validate-only",
+      "estimated_sessions": 0.5,
+      "blocks_freeze": true,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-008",
+      "title": "Authorized Fresh Simulation Run (Stage 1: Pre-Review Bundle Generation & Freeze)",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-008.md",
+      "contract_version": "1.0.0",
+      "status": "PLANNED",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": ["AUDIT-02", "AUDIT-03", "AUDIT-04", "AUDIT-05", "AUDIT-06", "AUDIT-08", "AUDIT-09"],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "hard_dependencies": ["TASK-007"],
+      "integration_dependencies": [
+        "coordination/run_full_game_simulation.py",
+        "coordination/evidence_pipeline.py",
+        "coordination/full_game_simulator.py"
+      ],
+      "soft_dependencies": [],
+      "write_scope": ["artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/**"],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**"
+      ],
+      "shared_resources": ["artifacts/simulations/full-game/"],
+      "parallelization": "SERIAL_REQUIRED",
+      "risk": "HIGH",
+      "amortization": "NET_NEUTRAL",
+      "game_consumers": [],
+      "evidence_consumers": ["artifacts/simulations/full-game/<NEW_RUN_ID>/REVIEW-PACKET.md"],
+      "review_requirements": ["reproducibility_review", "pre_review_freeze_check"],
+      "verification": "python3 -m coordination.run_full_game_simulation --stage simulate --authorize AUTHORIZE_COMPLETE_GAME_SIMULATION=true",
+      "estimated_sessions": 0.5,
+      "blocks_freeze": false,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-009",
+      "title": "Genuine Independent Review Invocation via Configured Agent Boundary & Bundle Finalization",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-009.md",
+      "contract_version": "1.0.0",
+      "status": "PLANNED",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": ["AUDIT-01", "AUDIT-07", "AUDIT-09"],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "hard_dependencies": ["TASK-008"],
+      "integration_dependencies": [
+        "coordination/context_contract.py",
+        "coordination/model_router.py",
+        "coordination/run_full_game_simulation.py"
+      ],
+      "soft_dependencies": [],
+      "write_scope": [
+        "artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/INDEPENDENT-REVIEW.md",
+        "artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/REVIEW-INVOCATION.json",
+        "artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/MODEL-USAGE.json",
+        "artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/DEVELOPMENT-READINESS.json",
+        "artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/README.md",
+        "artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/RUN-MANIFEST.json"
+      ],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**"
+      ],
+      "shared_resources": ["artifacts/simulations/full-game/<NEW_RUN_ID>/"],
+      "parallelization": "SERIAL_REQUIRED",
+      "risk": "CRITICAL",
+      "amortization": "NET_NEUTRAL",
+      "game_consumers": [],
+      "evidence_consumers": ["artifacts/simulations/full-game/<NEW_RUN_ID>/RUN-MANIFEST.json"],
+      "review_requirements": ["independent_astra_review_gate", "manifest_seal_verification"],
+      "verification": "python3 -m coordination.run_full_game_simulation --stage finalize --run-id <NEW_RUN_ID> && python3 -m unittest tests.test_full_game_simulation -v",
+      "estimated_sessions": 1.0,
+      "blocks_freeze": false,
+      "blocked_by": []
+    },
+    {
+      "id": "TASK-010",
+      "title": "Final Acceptance Audit, Preserved-Run Non-Modification Proof & Remediation State Closure",
+      "contract_path": "docs/planning/REMEDIATION-TASKS/TASK-010.md",
+      "contract_version": "1.0.0",
+      "status": "PLANNED",
+      "priority": "P0",
+      "ship_criticality": "MUST_SHIP",
+      "audit_ids": [
+        "AUDIT-01",
+        "AUDIT-02",
+        "AUDIT-03",
+        "AUDIT-04",
+        "AUDIT-05",
+        "AUDIT-06",
+        "AUDIT-07",
+        "AUDIT-08",
+        "AUDIT-09"
+      ],
+      "decision_ids": ["DECISION-01", "DECISION-02", "DECISION-03", "DECISION-04"],
+      "hard_dependencies": ["TASK-009"],
+      "integration_dependencies": [
+        "docs/planning/REMEDIATION-STATE.md",
+        "docs/planning/STATUS.md",
+        "config/directive-policy.json"
+      ],
+      "soft_dependencies": [],
+      "write_scope": [
+        "docs/planning/REMEDIATION-STATE.md",
+        "docs/planning/STATUS.md",
+        "config/directive-policy.json"
+      ],
+      "protected_scope": [
+        "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043/**",
+        "artifacts/simulations/full-game/full-game-<NEW_UTC>-<NEW_FIRST8>/**"
+      ],
+      "shared_resources": ["config/directive-policy.json", "docs/planning/STATUS.md"],
+      "parallelization": "SERIAL_REQUIRED",
+      "risk": "MEDIUM",
+      "amortization": "NET_NEUTRAL",
+      "game_consumers": [],
+      "evidence_consumers": ["docs/planning/REMEDIATION-STATE.md", "docs/planning/STATUS.md"],
+      "review_requirements": ["system_acceptance_verification"],
+      "verification": "python3 -m coordination.context_contract --task planner_orchestrator --phase plan --validate-only && python3 -m unittest tests.test_full_game_simulation tests.test_gameplan_rules tests.test_context_contract tests.test_city_setting tests.test_deterministic_kernel tests.test_model_router tests.test_plan_rehearsal -v",
+      "estimated_sessions": 0.5,
+      "blocks_freeze": false,
+      "blocked_by": []
+    }
+  ]
+}

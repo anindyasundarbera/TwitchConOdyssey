@@ -1,0 +1,177 @@
+[
+  {
+    "cmd": {
+      "actor_id": "user_0",
+      "command_id": "2db9e0ce3c359e46098745d070392221f5314bdcbc62306531e3d79aeec80c4a",
+      "kind": "hazard.propose",
+      "logical_tick": 100,
+      "payload": {
+        "hazard_id": "haz_t1",
+        "lane": 1
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 1
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "streamer",
+      "command_id": "388e4bb616b79dfff3d9171359e27b6e35f83b66c74e56380b57356c8f8f4eea",
+      "kind": "streamer.steer",
+      "logical_tick": 200,
+      "payload": {
+        "direction": "left"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 2
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_1",
+      "command_id": "9f2ceed0ec9fbb6d5bd9fb942ad4e0d57c0351c1e9cb968fde5038a7183a5918",
+      "kind": "hazard.propose",
+      "logical_tick": 700,
+      "payload": {
+        "hazard_id": "haz_t2",
+        "lane": 1
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 3
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_0",
+      "command_id": "d5ca0216e49d28a27cd1f462413ae9d42b4c283299f6edc795cb9c66ce52879b",
+      "kind": "viewer.counter",
+      "logical_tick": 750,
+      "payload": {
+        "counter": "clear_lane",
+        "hazard_id": "haz_t2"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 4
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_1",
+      "command_id": "87e1ddb01377101f2d6780be5efa66f240394db72fe02899bae540dd7908180d",
+      "kind": "viewer.counter",
+      "logical_tick": 751,
+      "payload": {
+        "counter": "clear_lane",
+        "hazard_id": "haz_t2"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 5
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_2",
+      "command_id": "44e804d24983007028522a91bba48f8fcce82e7a154a22f6b1590c8e66c2af3b",
+      "kind": "viewer.counter",
+      "logical_tick": 752,
+      "payload": {
+        "counter": "clear_lane",
+        "hazard_id": "haz_t2"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 6
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_3",
+      "command_id": "e60966e6e485a8899d13679a2ace46c179185bc8d3785a9722c186f4a0f9be34",
+      "kind": "viewer.counter",
+      "logical_tick": 753,
+      "payload": {
+        "counter": "clear_lane",
+        "hazard_id": "haz_t2"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 7
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_4",
+      "command_id": "59b415e0d4dbc54c980282f0ac8b335c72a0606541374bca80082e62fa2bba6e",
+      "kind": "viewer.counter",
+      "logical_tick": 754,
+      "payload": {
+        "counter": "clear_lane",
+        "hazard_id": "haz_t2"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 8
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_5",
+      "command_id": "ba53e5a45c55cd70fe4b5b63480b86a9c6516685ffac8283e87d7693a740fab1",
+      "kind": "viewer.counter",
+      "logical_tick": 755,
+      "payload": {
+        "counter": "clear_lane",
+        "hazard_id": "haz_t2"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 9
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_6",
+      "command_id": "cbaed8a891d9fdc72f50bc706586c008ad3505aa3cb1a584f261eb032af71b06",
+      "kind": "viewer.counter",
+      "logical_tick": 756,
+      "payload": {
+        "counter": "clear_lane",
+        "hazard_id": "haz_t2"
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 10
+    },
+    "status": "applied"
+  },
+  {
+    "cmd": {
+      "actor_id": "user_2",
+      "command_id": "9b0e30dc4df8f3cc50d36356b4b8b4c17f72006a915ed5ee1423f4f3c1a0830c",
+      "kind": "hazard.propose",
+      "logical_tick": 1300,
+      "payload": {
+        "hazard_id": "haz_t3",
+        "lane": 1
+      },
+      "provenance": "human",
+      "schema_version": 1,
+      "sequence": 20
+    },
+    "status": "applied"
+  }
+]

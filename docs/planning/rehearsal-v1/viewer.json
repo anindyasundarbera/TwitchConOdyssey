@@ -1,0 +1,29 @@
+{
+  "role": "viewer",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "model": "gpt-6-luna",
+  "findings": [
+    {
+      "id": "VW-01",
+      "severity": "high",
+      "scenario": "A viewer on a phone submits clear_lane as the 20-second planning window closes over a slow or unstable connection.",
+      "gap": "The plan says late input is rejected and duplicates are idempotent, but defines no authoritative receipt time, acknowledgment, retry behavior, or visible rejection reason.",
+      "recommendation": "Define server-receipt phase cutoffs and idempotency keys; return a mobile-readable pending/accepted/rejected status with a reason, and never make retries create extra influence."
+    },
+    {
+      "id": "VW-02",
+      "severity": "high",
+      "scenario": "An anonymous viewer refreshes or switches devices and submits again during the same turn.",
+      "gap": "“Eligible viewer” and one-influence-per-viewer lack an identity/session boundary, while identity and privacy expectations are unspecified.",
+      "recommendation": "Define a privacy-preserving per-turn pseudonymous identity and reset rule, what anonymous participation permits, and how duplicate sessions are handled without exposing account identity."
+    },
+    {
+      "id": "VW-03",
+      "severity": "high",
+      "scenario": "A large audience exceeds configurable K, or a small cohort needs bot backfill, while viewers use chat or a touch control.",
+      "gap": "Cohort selection, tie handling, fairness across turns, and accessible mobile action feedback remain open; visibility of bots alone does not explain whose input counted.",
+      "recommendation": "Publish a deterministic, auditable N-to-K selection and rotation rule, distinguish human and bot influence, and provide touch-sized controls plus a clear counted/not-counted receipt."
+    }
+  ],
+  "runtime_executed": false
+}

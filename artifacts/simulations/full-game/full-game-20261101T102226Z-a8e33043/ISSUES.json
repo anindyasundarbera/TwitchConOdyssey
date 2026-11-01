@@ -1,0 +1,82 @@
+[
+  {
+    "issue_id": "ISSUE-SIM-01",
+    "severity": "S2",
+    "affected_features": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "affected_scenarios": [
+      "SCEN-CTRL-03",
+      "SCEN-CTRL-04"
+    ],
+    "affected_invariants": [
+      "INV-COMMAND-VAL"
+    ],
+    "category": "plan",
+    "root_cause": "plan",
+    "root_cause_confidence": "high",
+    "title": "Unspecified edge-clamping and transition lockout during 0.5s steering shift",
+    "expected_behavior": "Input during active transition is rejected; edge movement clamped without wrapping",
+    "observed_behavior": "Baseline plan did not specify whether steering requests during an in-flight 0.5s transition queue, overwrite, or reject",
+    "evidence_paths": [
+      "coordination/full_game_simulator.py",
+      "docs/planning/GAMEPLAN-v2.md"
+    ],
+    "evidence_hashes": {
+      "coordination/full_game_simulator.py": "0badf1347ccedb7592fd582586c95331c7b723acb2b42842a5886302f711fc02"
+    },
+    "deterministic_reproduction_command": "python3 -m unittest tests.test_full_game_simulation -v",
+    "alternatives_considered": [
+      "Input queueing during active transition",
+      "Wrap-around lane movement"
+    ],
+    "blocks_simulation_validity": false,
+    "blocks_report_review": false,
+    "blocks_development": true,
+    "proposed_remediation": "Clarify as deterministic rule: inputs during an active 10-tick transition are rejected; edge moves fail closed",
+    "remediation_owner": "Principal Simulation Orchestrator",
+    "status": "closed",
+    "resolution_hash": "deterministic_clarification_bound"
+  },
+  {
+    "issue_id": "ISSUE-SIM-02",
+    "severity": "S2",
+    "affected_features": [
+      "FEAT-01-SAN-DIEGO-ROUTE"
+    ],
+    "affected_scenarios": [
+      "SCEN-E2E-01",
+      "SCEN-E2E-03",
+      "SCEN-CTRL-08"
+    ],
+    "affected_invariants": [
+      "INV-MAX-TURNS",
+      "INV-EFFECT-ORDER"
+    ],
+    "category": "plan",
+    "root_cause": "plan",
+    "root_cause_confidence": "high",
+    "title": "Missing free speed / progress calibration relative to 90s deadline",
+    "expected_behavior": "Streamer at nominal speed reaches finish before 90s active deadline even with max 3 collisions (1.2s delay)",
+    "observed_behavior": "Baseline plan left nominal speed unspecified, risking inadvertent wipe on full-clear runs",
+    "evidence_paths": [
+      "coordination/full_game_simulator.py",
+      "docs/planning/GAMEPLAN-v2.md"
+    ],
+    "evidence_hashes": {
+      "coordination/full_game_simulator.py": "0badf1347ccedb7592fd582586c95331c7b723acb2b42842a5886302f711fc02"
+    },
+    "deterministic_reproduction_command": "python3 -m unittest tests.test_full_game_simulation -v",
+    "alternatives_considered": [
+      "Dynamic route distance shortening",
+      "Extending active deadline grace period"
+    ],
+    "blocks_simulation_validity": false,
+    "blocks_report_review": false,
+    "blocks_development": true,
+    "proposed_remediation": "Calibrate base speed to 100 distance units in 88.0s nominal (~1.1364 units/s), guaranteeing completion with 0.8s margin",
+    "remediation_owner": "Principal Simulation Orchestrator",
+    "status": "closed",
+    "resolution_hash": "deterministic_clarification_bound"
+  }
+]

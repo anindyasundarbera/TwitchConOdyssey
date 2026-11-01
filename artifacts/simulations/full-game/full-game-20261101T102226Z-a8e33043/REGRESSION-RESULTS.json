@@ -1,0 +1,9 @@
+{
+  "regression_verdict": "passed",
+  "scenarios_executed": 46,
+  "scenarios_passed": 46,
+  "scenarios_failed": 0,
+  "invariants_passed": 18,
+  "invariants_failed": 0,
+  "golden_replay_verified": true
+}

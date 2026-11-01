@@ -1,0 +1,36 @@
+{
+  "role": "stage_operator",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "model": "gpt-6-luna",
+  "findings": [
+    {
+      "id": "OP-01",
+      "severity": "high",
+      "scenario": "The provider or network fails during a presentation, then recovers with queued submissions.",
+      "gap": "Offline fixture is promised, but failover, stale-input, and recovery rules are absent.",
+      "recommendation": "Define health signals and offline controls; discard or revalidate queued actions and document safe recovery/rollback."
+    },
+    {
+      "id": "OP-02",
+      "severity": "high",
+      "scenario": "The stage presents a plan rehearsal, fixture, replay, or match as evidence.",
+      "gap": "No provenance labels distinguish critique, fixture events, simulated bounty, and observed outcomes.",
+      "recommendation": "Label source and mode on views/exports, mark bounty simulated with no payout, and preserve event IDs and phase times."
+    },
+    {
+      "id": "OP-03",
+      "severity": "high",
+      "scenario": "Audience reads fictional Twitch or IVS concepts as integrations or sponsorship.",
+      "gap": "Stage copy, brand assets, and data disclosures are unspecified.",
+      "recommendation": "Label concepts simulated, use only approved assets, and disclose no affiliation or live platform data."
+    },
+    {
+      "id": "OP-04",
+      "severity": "medium",
+      "scenario": "A route or service delay threatens the event deadline during the 20/5/5 loop.",
+      "gap": "There is no show runbook, hard-stop policy, or mode-switch authority.",
+      "recommendation": "Set the demo budget, cue/hold/restart controls, and labeled offline fallback so the show ends on time without implying success."
+    }
+  ],
+  "runtime_executed": false
+}

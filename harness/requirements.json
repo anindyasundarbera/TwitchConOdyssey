@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "requirements": [
+    {
+      "id": "R01",
+      "description": "20 Hz phase clock and stale action authority",
+      "tests": [
+        "GameTests.test_phase_clock",
+        "APITests.test_slow_provider_does_not_block_clock"
+      ],
+      "threshold": "400 planning ticks; 100 action ticks; max pure tick <50ms; 9\u201313 ticks during 550ms slow provider"
+    },
+    {
+      "id": "R02",
+      "description": "Fractional cohorts and bot balancing",
+      "tests": [
+        "GameTests.test_fractional_budget_replacement_and_cohorts",
+        "GameTests.test_bots_counter_damage"
+      ],
+      "threshold": "1000 viewers partitioned; squad budget sum=1; empty squads counter damage"
+    },
+    {
+      "id": "R03",
+      "description": "Strict chat action pipeline",
+      "tests": [
+        "GameTests.test_authoritative_rejection",
+        "GameTests.test_adversarial_chat",
+        "GameTests.test_live_adapter_strict_request_and_validation"
+      ],
+      "threshold": "all invalid/adversarial fixtures rejected; valid compound action accepted"
+    },
+    {
+      "id": "R04",
+      "description": "Offline deterministic delivery",
+      "tests": [
+        "GameTests.test_replay_network_independence"
+      ],
+      "threshold": "two identical digests; pinned digest; delivered at tick 1933 with sockets forbidden"
+    },
+    {
+      "id": "R05",
+      "description": "Canvas game and adaptive telemetry UI",
+      "tests": [
+        "tests/browser_e2e.py"
+      ],
+      "threshold": "buttons submit; phase resolves; bullet freeze; sound toggles; delivered overlay; mobile no overflow; zero console errors"
+    },
+    {
+      "id": "R06",
+      "description": "Append-only persistence and replay",
+      "tests": [
+        "GameTests.test_storage_journal_and_snapshot",
+        "GameTests.test_journal_replay"
+      ],
+      "threshold": "reject event update/delete; snapshot round trip; accepted-event replay gameplay identical"
+    },
+    {
+      "id": "R07",
+      "description": "Evidence-driven task/context/checkpoint loop",
+      "tests": [
+        "controls",
+        "architecture",
+        "HarnessTests"
+      ],
+      "threshold": "all references valid; failed evaluation becomes task and context; checkpoint hashes recorded"
+    },
+    {
+      "id": "R08",
+      "description": "Mock startup and browser contract",
+      "tests": [
+        "APITests.test_mock_startup_to_vote",
+        "tests/browser_e2e.py"
+      ],
+      "threshold": "real HTTP startup + full fixture browser delivery required; blocked checks fail gate"
+    }
+  ]
+}

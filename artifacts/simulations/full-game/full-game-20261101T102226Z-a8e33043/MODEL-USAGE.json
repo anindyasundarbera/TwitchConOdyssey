@@ -1,0 +1,22 @@
+[
+  {
+    "agent_role": "Simulation Orchestrator",
+    "model": "deterministic_kernel",
+    "reasoning_effort": "none",
+    "packet_characters": 0,
+    "packet_hash": "none",
+    "purpose": "Authoritative fixed-step simulation execution",
+    "output_artifact": "results/SCENARIO-RESULTS.jsonl",
+    "status": "completed"
+  },
+  {
+    "agent_role": "Principal Systems Reviewer",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "packet_characters": 1055,
+    "packet_hash": "cee9694562bd5995d6064b03a570c9cf0a7d022672de348f597f0758fd8f1ebd",
+    "purpose": "Independent version-bound review gate",
+    "output_artifact": "INDEPENDENT-REVIEW.md",
+    "status": "completed"
+  }
+]

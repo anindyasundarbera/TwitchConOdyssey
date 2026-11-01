@@ -1,0 +1,32 @@
+[
+  {
+    "claim": "San Diego route sequence",
+    "status": "planned",
+    "basis": "Stylized geographic anchors in SAN-DIEGO-ROUTE.md"
+  },
+  {
+    "claim": "90s active simulation deadline",
+    "status": "observed",
+    "basis": "Enforced by deterministic integer tick clock at tick 1800"
+  },
+  {
+    "claim": "Twitch Chat / Extension Participation",
+    "status": "fixture",
+    "basis": "Seeded synthetic viewer message corpora and offline envelopes"
+  },
+  {
+    "claim": "OpenAI Chat-to-Action schema validation",
+    "status": "observed",
+    "basis": "Deterministic schema validation and timeout cutoff enforcement"
+  },
+  {
+    "claim": "Twitch & AWS Booth moments",
+    "status": "planned",
+    "basis": "Diegetic game metaphors; not proof of live vendor sponsorship or integration"
+  },
+  {
+    "claim": "Bullet-Time presentation slowdown",
+    "status": "observed",
+    "basis": "Presentation slowdown decoupled from authoritative tick loop"
+  }
+]

@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1
+    },
+    "tick": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000000
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000000
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "action"
+      ]
+    },
+    "remaining": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 20
+    },
+    "progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "integrity": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "pool": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000000
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "racing",
+        "delivered",
+        "failed"
+      ]
+    },
+    "crisis": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "district": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "squads": {
+      "type": "array",
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "squad": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 15
+          },
+          "members": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000000
+          },
+          "bot": {
+            "type": "boolean"
+          },
+          "winner": {
+            "type": "string",
+            "enum": [
+              "shield",
+              "patch",
+              "boost",
+              "sabotage"
+            ]
+          },
+          "weights": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "shield": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "patch": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "boost": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "sabotage": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "shield",
+              "patch",
+              "boost",
+              "sabotage"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "squad",
+          "members",
+          "bot",
+          "winner",
+          "weights"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 16
+    },
+    "viewers": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000000
+    },
+    "votes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000000
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240
+      },
+      "maxItems": 16
+    },
+    "rewards": {
+      "type": "object"
+    },
+    "telemetry": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tick",
+          "kind"
+        ],
+        "properties": {
+          "tick": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000000
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          }
+        }
+      },
+      "maxItems": 40
+    },
+    "players": {
+      "type": "object"
+    },
+    "viewer_votes": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "version",
+    "tick",
+    "round",
+    "phase",
+    "remaining",
+    "progress",
+    "integrity",
+    "pool",
+    "status",
+    "crisis",
+    "district",
+    "squads",
+    "viewers",
+    "votes",
+    "effects",
+    "rewards",
+    "telemetry",
+    "players",
+    "viewer_votes"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "T01",
+      "objective": "Research choices and record product/architecture",
+      "status": "done",
+      "depends": [],
+      "requirements": [
+        "R01",
+        "R07"
+      ],
+      "validation": [
+        "python3 -m harness.run"
+      ]
+    },
+    {
+      "id": "T02",
+      "objective": "Build engine, cohorts, proposals and offline replay",
+      "status": "done",
+      "depends": [
+        "T01"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "validation": [
+        "python3 -m harness.run"
+      ]
+    },
+    {
+      "id": "T03",
+      "objective": "Build persistence and canvas client",
+      "status": "done",
+      "depends": [
+        "T02"
+      ],
+      "requirements": [
+        "R05",
+        "R06"
+      ],
+      "validation": [
+        "python3 -m harness.run"
+      ]
+    },
+    {
+      "id": "T04",
+      "objective": "Implement evidence harness and automatic evaluations",
+      "status": "done",
+      "depends": [
+        "T03"
+      ],
+      "requirements": [
+        "R07"
+      ],
+      "validation": [
+        "python3 -m harness.run"
+      ]
+    },
+    {
+      "id": "T05",
+      "objective": "Verify mock startup and full browser gameplay",
+      "status": "blocked",
+      "depends": [
+        "T04"
+      ],
+      "requirements": [
+        "R08"
+      ],
+      "validation": [
+        "python3 -m harness.run"
+      ]
+    },
+    {
+      "id": "FIX-controls",
+      "objective": "Resolve evaluation failure: controls",
+      "status": "todo",
+      "depends": [],
+      "requirements": [
+        "R07",
+        "R08"
+      ],
+      "validation": [
+        "python3 -m harness.run"
+      ]
+    },
+    {
+      "id": "FIX-browser_e2e",
+      "objective": "Resolve evaluation failure: browser_e2e",
+      "status": "blocked",
+      "depends": [],
+      "requirements": [
+        "R07",
+        "R08"
+      ],
+      "validation": [
+        "python3 -m harness.run"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "role": "character",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "model": "gpt-6-luna",
+  "findings": [
+    {
+      "id": "CH-01",
+      "severity": "high",
+      "scenario": "Continuous movement reaches the blocked lane and clear_lane loses or is unavailable.",
+      "gap": "Collision response and hazard duration are open, allowing an indefinite stop or undefined penalty.",
+      "recommendation": "Define collision effects, hazard expiry, and bounded recovery. Keep physics deterministic and local; the character is not a model driving physics."
+    },
+    {
+      "id": "CH-02",
+      "severity": "high",
+      "scenario": "A near-deadline collision causes a wipe with route stages remaining.",
+      "gap": "Wipe, checkpoint, recovery, and continuation rules provide no defined return path.",
+      "recommendation": "Define wipe triggers, respawn, recovery costs, and who ends the match; preserve no-permanent-control-loss and no-unavoidable-death limits."
+    },
+    {
+      "id": "CH-03",
+      "severity": "high",
+      "scenario": "A proposal arrives at cutoff as movement collides with the hazard.",
+      "gap": "Clock authority, event order, and boundary state are unspecified.",
+      "recommendation": "Define a monotonic clock, receipt cutoff, and deterministic boundary snapshot for both modes; model output cannot advance the character."
+    }
+  ],
+  "runtime_executed": false
+}

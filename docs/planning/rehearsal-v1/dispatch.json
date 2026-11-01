@@ -1,0 +1,69 @@
+{
+  "mode": "plan_only",
+  "gameplay_executed": false,
+  "execution_surface": "Codex collaboration tools; model selection from generated policy decisions",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "records": [
+    {
+      "role": "streamer",
+      "agent_task": "plan_stakeholder_rehearsal",
+      "requested_model": "gpt-6-luna",
+      "requested_reasoning_effort": "medium",
+      "policy_hash": "4f4f4afa90b21ed5bda61ae9a6f2592daf419cbe987d889d01a0108d50fc1076"
+    },
+    {
+      "role": "viewer",
+      "agent_task": "plan_stakeholder_rehearsal",
+      "requested_model": "gpt-6-luna",
+      "requested_reasoning_effort": "medium",
+      "policy_hash": "4f4f4afa90b21ed5bda61ae9a6f2592daf419cbe987d889d01a0108d50fc1076"
+    },
+    {
+      "role": "character",
+      "agent_task": "plan_stakeholder_rehearsal",
+      "requested_model": "gpt-6-luna",
+      "requested_reasoning_effort": "medium",
+      "policy_hash": "4f4f4afa90b21ed5bda61ae9a6f2592daf419cbe987d889d01a0108d50fc1076"
+    },
+    {
+      "role": "attacker",
+      "agent_task": "plan_adversary",
+      "requested_model": "gpt-6-luna",
+      "requested_reasoning_effort": "medium",
+      "policy_hash": "4f4f4afa90b21ed5bda61ae9a6f2592daf419cbe987d889d01a0108d50fc1076"
+    },
+    {
+      "role": "stage_operator",
+      "agent_task": "plan_stakeholder_rehearsal",
+      "requested_model": "gpt-6-luna",
+      "requested_reasoning_effort": "medium",
+      "policy_hash": "4f4f4afa90b21ed5bda61ae9a6f2592daf419cbe987d889d01a0108d50fc1076"
+    },
+    {
+      "role": "security",
+      "agent_task": "shared_routing_tools",
+      "requested_model": "gpt-6.1-sol",
+      "requested_reasoning_effort": "medium",
+      "policy_hash": "4f4f4afa90b21ed5bda61ae9a6f2592daf419cbe987d889d01a0108d50fc1076"
+    },
+    {
+      "role": "review",
+      "agent_task": "astra_principal_review",
+      "requested_model": "gpt-6-astra",
+      "requested_reasoning_effort": "high",
+      "policy_hash": "4f4f4afa90b21ed5bda61ae9a6f2592daf419cbe987d889d01a0108d50fc1076"
+    }
+  ],
+  "limitations": [
+    "Four stakeholder perspectives share one Luna agent; they are not four independent reviewers.",
+    "Requested model parameters are recorded; no API response model ID or dollar billing telemetry is available.",
+    "JSON schema/hash validation does not authenticate caller-supplied model identity or establish gameplay correctness.",
+    "Stored plan/context and packet bytes were mechanically sanitized and rebound; no role was rerun."
+  ],
+  "redaction_provenance": {
+    "date": "2026-11-01",
+    "operation": "mechanical location-term sanitization and hash rebinding",
+    "fresh_agent_review": false,
+    "original_bytes_preserved": false
+  }
+}

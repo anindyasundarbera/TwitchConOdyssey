@@ -1,0 +1,9 @@
+{
+  "total_active_features": 16,
+  "covered_features": 16,
+  "total_scenarios": 46,
+  "passed_scenarios": 46,
+  "failed_scenarios": 0,
+  "total_invariants": 18,
+  "passed_invariants": 18
+}

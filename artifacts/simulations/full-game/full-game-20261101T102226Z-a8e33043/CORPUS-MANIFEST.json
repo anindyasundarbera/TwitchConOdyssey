@@ -1,0 +1,8 @@
+{
+  "generator_id": "viewer-fixture-v1",
+  "generator_version": 1,
+  "seed": 42,
+  "count": 100000,
+  "sha256": "42-reused-corpus-100k",
+  "provenance": "generated_fixture"
+}

@@ -1,0 +1,23 @@
+{
+  "mode": "document_only",
+  "baseline_integrity": "mechanically sanitized and hash-rebound; not original bytes",
+  "roles_validated": 7,
+  "findings": 35,
+  "v2_static_checks": [
+    "JSON readable",
+    "San Diego plan retains gameplay gate",
+    "30-second target cadence",
+    "bounded next-review packet constructible",
+    "local Markdown links resolve"
+  ],
+  "v2_review_packet_chars": 14643,
+  "targeted_tooling_tests_passed": 10,
+  "gameplay_executed": false,
+  "v2_independent_review_performed": false,
+  "redaction_provenance": {
+    "date": "2026-11-01",
+    "operation": "mechanical location-term sanitization and hash rebinding",
+    "fresh_agent_review": false,
+    "original_bytes_preserved": false
+  }
+}

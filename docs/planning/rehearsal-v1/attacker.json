@@ -1,0 +1,50 @@
+{
+  "role": "attacker",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "model": "gpt-6-luna",
+  "findings": [
+    {
+      "id": "ATT-01",
+      "severity": "high",
+      "scenario": "A participant creates or controls many anonymous/pseudonymous accounts and submits once through each, multiplying influence despite the per-viewer limit.",
+      "gap": "Eligible-viewer identity, admission, and account-to-influence binding are unspecified; N-to-K does not itself constrain Sybils.",
+      "recommendation": "Bind one influence unit to a privacy-preserving authenticated platform subject per turn; set admission and aggregate caps, and keep bot identities separate."
+    },
+    {
+      "id": "ATT-02",
+      "severity": "high",
+      "scenario": "A coordinated group shards submissions across cohorts or manipulates the eligible denominator while K or tie rules are configurable, steering normalization without exceeding any one cohort's apparent cap.",
+      "gap": "Cohort assignment, roster timing, normalization denominator, quorum, and tie handling are unresolved.",
+      "recommendation": "Freeze eligible roster and cohort assignments before each turn; specify denominator, minimum participation, per-cohort caps, and deterministic tie handling."
+    },
+    {
+      "id": "ATT-03",
+      "severity": "high",
+      "scenario": "A bot-heavy group repeatedly backfills participation or induces wipe/survival outcomes that create or enlarge a simulated bounty, then routes value to an attacker-controlled eligible viewer.",
+      "gap": "Bot rewards are prohibited, but bounty provenance, creation authority, trigger accounting, and bot influence on bounty adjustments remain open.",
+      "recommendation": "Require explicit human authorization and traceable source for each bounty; exclude bots from funding, eligibility, and payout, and cap adjustments across retries and wipes."
+    },
+    {
+      "id": "ATT-04",
+      "severity": "high",
+      "scenario": "The attacker reapplies the bounded hazard on successive turns, consuming every counter window and leaving no practical recovery before the deadline.",
+      "gap": "No permanent control loss or unavoidable death is stated, but frequency, cumulative pressure, cooldown, and guaranteed recovery are not defined.",
+      "recommendation": "Set per-phase and match-wide pressure caps, cooldowns, non-stacking effects, and a guaranteed recovery or counter window independent of viewer turnout."
+    },
+    {
+      "id": "ATT-05",
+      "severity": "high",
+      "scenario": "A late chat message contains instructions aimed at the language model to propose an out-of-phase or stronger action; it is mistaken for control text rather than untrusted viewer content.",
+      "gap": "Natural language is only a proposal and local validation is required, but the prompt/data boundary and strict action mapping are not specified.",
+      "recommendation": "Treat chat as untrusted data, never as instructions; map it only to an enumerated action schema and enforce phase, eligibility, and effect bounds locally after model output."
+    },
+    {
+      "id": "ATT-06",
+      "severity": "high",
+      "scenario": "A reconnect or offline replay resubmits a previously accepted event under a new request and applies its influence twice, possibly in a later turn.",
+      "gap": "Duplicate and late input should be rejected/idempotent, but durable deduplication scope and session/turn binding are unspecified.",
+      "recommendation": "Use stable event IDs with durable deduplication bound to session and turn; reject stale sequence numbers and ensure replay cannot mint a new eligible event."
+    }
+  ],
+  "runtime_executed": false
+}

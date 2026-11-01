@@ -1,0 +1,8 @@
+{"tick": 400, "kind": "clear_lane_failed", "votes": 0, "threshold": 6}
+{"tick": 615, "kind": "booth_visited", "booth": "twitch_booth"}
+{"tick": 1000, "kind": "clear_lane_success", "votes": 7, "threshold": 6}
+{"tick": 1056, "kind": "booth_visited", "booth": "codex_booth"}
+{"tick": 1407, "kind": "booth_visited", "booth": "aws_booth"}
+{"tick": 1600, "kind": "clear_lane_failed", "votes": 0, "threshold": 6}
+{"tick": 1600, "kind": "collision", "lane": 1, "turn": 3}
+{"tick": 1767, "kind": "delivery_settlement", "settlement": {"status": "delivered", "tick": 1767, "total_hype": 30, "original_pool": 60, "collision_halved": true, "streamer_share": 15, "audience_share_total": 15, "audience_withheld": 0, "eligible_voters_count": 7, "per_voter_rational": "15/7", "settled_once": true}}

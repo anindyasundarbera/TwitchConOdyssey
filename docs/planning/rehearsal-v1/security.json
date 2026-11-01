@@ -1,0 +1,43 @@
+{
+  "role": "security",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "model": "gpt-6.1-sol",
+  "findings": [
+    {
+      "id": "SEC-01",
+      "severity": "high",
+      "scenario": "A viewer submits through chat and buttons, reconnects, then replays a prior-turn command.",
+      "gap": "Eligibility identity, cross-channel deduplication and idempotency retention are undefined.",
+      "recommendation": "Bind server-issued identity, match, turn and action ID; atomically consume one influence unit across channels and reject stale epochs. Specify reconnect and retention rules."
+    },
+    {
+      "id": "SEC-02",
+      "severity": "high",
+      "scenario": "Chat instructs the model to grant authority; its otherwise valid proposal arrives after resolution starts.",
+      "gap": "Schema validation alone does not bind proposal authority, deadline or original intent.",
+      "recommendation": "Treat chat as untrusted data; allowlist commands and arguments, bind proposals to immutable viewer/turn provenance, enforce server arrival deadlines and discard late completions without transferring influence."
+    },
+    {
+      "id": "SEC-03",
+      "severity": "high",
+      "scenario": "An operator receives a modified or replayed data-only hotfix manifest.",
+      "gap": "Trusted approver, artifact authenticity and anti-rollback contracts are unspecified.",
+      "recommendation": "Require explicit approval, pinned artifact hash and authenticated signer; bind version, base-state/rules hash and expiry. Reject unknown DSL capabilities and activate atomically at a declared boundary."
+    },
+    {
+      "id": "SEC-04",
+      "severity": "high",
+      "scenario": "Bot backfill is relabeled human during reconnect or recovery and contributes bounty.",
+      "gap": "Visible bot labels do not establish durable reward provenance.",
+      "recommendation": "Persist immutable actor origin and eligibility snapshots in an authoritative contribution ledger; exclude synthetic events from bounty creation and reward allocation, including after recovery."
+    },
+    {
+      "id": "SEC-05",
+      "severity": "high",
+      "scenario": "Offline failover occurs while an action or reward is committed; recovery replays it.",
+      "gap": "Atomic handover, single-writer authority and reconciliation rules are absent.",
+      "recommendation": "Specify epoch fencing, checkpoint plus accepted-command ledger, atomic mode switch and exactly-once effect/reward application. Freeze ambiguous commits for reconciliation; label fixture/live provenance separately."
+    }
+  ],
+  "runtime_executed": false
+}

@@ -1,0 +1,25 @@
+{
+  "objective": "Verify mock startup and full browser gameplay",
+  "requirements": [
+    "R08: Mock startup and browser contract"
+  ],
+  "interfaces": [
+    "schemas/action.json",
+    "schemas/telemetry.json",
+    "POST /api/chat",
+    "GET /api/state"
+  ],
+  "decisions": [
+    "Python stdlib + SQLite; no runtime downloads",
+    "Providers propose; engine validates; fixed 20/5 clock",
+    "Offline fixture cannot invoke live providers"
+  ],
+  "failures": [
+    "controls: missing BACKLOG.md",
+    "browser_e2e: yssey/tests/browser_e2e.py\", line 51, in <module>\n    if __name__=='__main__':main()\n                            ~~~~^^\n  File \"/home/anindyasundar-bera/Projects/hackathon/TwitchConOdyssey/tests/browser_e2e.py\", line 17, in main\n    http=ThreadingHTTPServer(('127.0.0.1',0),handler(rt))\n  File \"/usr/lib/python3.14/socketserver.py\", line 453, in __init__\n    self.socket = socket.socket(self.address_family,\n                  ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n                                self.socket_type)\n                                ^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/socket.py\", line 236, in __init__\n    _socket.socket.__init__(self, family, type, proto, fileno)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 1] Operation not permitted\n"
+  ],
+  "validation": [
+    "python3 -m harness.run"
+  ],
+  "provenance": "evals/latest.json; source SHA-256 ef9a15f8baa25fa5525c98aa6212ce37c236a06bada99950283f5c855d37246c"
+}

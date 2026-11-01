@@ -1,0 +1,1 @@
+{"name":"twitchcon-odyssey-client","private":true,"version":"0.1.0","scripts":{"start":"python3 -m server.app --offline-fixture fixtures/stage.jsonl","test":"python3 -m unittest discover -s tests -v","eval":"python3 -m harness.run"}}

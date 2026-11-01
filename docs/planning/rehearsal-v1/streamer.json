@@ -1,0 +1,29 @@
+{
+  "role": "streamer",
+  "plan_hash": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+  "model": "gpt-6-luna",
+  "findings": [
+    {
+      "id": "ST-01",
+      "severity": "high",
+      "scenario": "While steering during planning, a lane hazard appears and viewers propose clear_lane.",
+      "gap": "No status contract covers hazard timing, route progress, action eligibility, or cost.",
+      "recommendation": "Show route and hazard timers plus one action preview; provide a counter/abstain control that requires no chat reading."
+    },
+    {
+      "id": "ST-02",
+      "severity": "high",
+      "scenario": "Viewers favor clearing the lane while the streamer steers toward the deadline.",
+      "gap": "Streamer veto, confirmation, override, and movement interruption are undefined.",
+      "recommendation": "Set streamer authority, confirmation rules, movement interaction, and a safe no-response default before resolution."
+    },
+    {
+      "id": "ST-03",
+      "severity": "medium",
+      "scenario": "The streamer monitors proposals and a deadline through repeated 20/5/5 cycles.",
+      "gap": "Information priority and consequences are unspecified, risking chat-driven cognitive overload.",
+      "recommendation": "Prioritize one legal action and plain-language consequence, collapse raw chat, and keep abstention available."
+    }
+  ],
+  "runtime_executed": false
+}

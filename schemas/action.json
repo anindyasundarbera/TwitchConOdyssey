@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "choices": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "shield",
+          "patch",
+          "boost",
+          "sabotage"
+        ]
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "choices"
+  ],
+  "additionalProperties": false
+}

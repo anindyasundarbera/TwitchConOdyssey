@@ -1,0 +1,430 @@
+[
+  {
+    "scenario_id": "SCEN-E2E-01",
+    "category": "nominal_e2e",
+    "features": [
+      "FEAT-01-SAN-DIEGO-ROUTE",
+      "FEAT-02-STREAMER-CONTROL",
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-E2E-02",
+    "category": "nominal_e2e",
+    "features": [
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-05-HAZARD-AND-SURVIVAL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-E2E-03",
+    "category": "nominal_e2e",
+    "features": [
+      "FEAT-05-HAZARD-AND-SURVIVAL",
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-E2E-04",
+    "category": "nominal_e2e",
+    "features": [
+      "FEAT-08-CODEX-LIVE-HOTFIX",
+      "FEAT-09-TWITCH-BOOTH",
+      "FEAT-10-AWS-IVS-BOOTH",
+      "FEAT-13-ADAPTIVE-AUDIO"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-E2E-05",
+    "category": "nominal_e2e",
+    "features": [
+      "FEAT-15-PUBLIC-DEMO-TIMELINE",
+      "FEAT-13-ADAPTIVE-AUDIO"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-01",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-02",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-03",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-04",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-05",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-02-STREAMER-CONTROL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-06",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-05-HAZARD-AND-SURVIVAL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-07",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-05-HAZARD-AND-SURVIVAL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-08",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CTRL-09",
+    "category": "control_and_safety",
+    "features": [
+      "FEAT-05-HAZARD-AND-SURVIVAL",
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CLK-01",
+    "category": "phase_and_clock",
+    "features": [
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-05-HAZARD-AND-SURVIVAL"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CLK-02",
+    "category": "phase_and_clock",
+    "features": [
+      "FEAT-03-CADENCE-AND-CLOCK",
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CLK-03",
+    "category": "phase_and_clock",
+    "features": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CLK-04",
+    "category": "phase_and_clock",
+    "features": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CLK-05",
+    "category": "phase_and_clock",
+    "features": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-CLK-06",
+    "category": "phase_and_clock",
+    "features": [
+      "FEAT-03-CADENCE-AND-CLOCK"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-AUD-01",
+    "category": "audience_scale",
+    "features": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-AUD-02",
+    "category": "audience_scale",
+    "features": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-AUD-03",
+    "category": "audience_scale",
+    "features": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-AUD-04",
+    "category": "audience_scale",
+    "features": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-AUD-05",
+    "category": "audience_scale",
+    "features": [
+      "FEAT-04-AUDIENCE-ACCOUNTING"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-AUD-06",
+    "category": "audience_scale",
+    "features": [
+      "FEAT-04-AUDIENCE-ACCOUNTING",
+      "FEAT-16-SECURITY-AND-PROVENANCE"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-REW-01",
+    "category": "incentive_attacks",
+    "features": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-REW-02",
+    "category": "incentive_attacks",
+    "features": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-REW-03",
+    "category": "incentive_attacks",
+    "features": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-REW-04",
+    "category": "incentive_attacks",
+    "features": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-REW-05",
+    "category": "incentive_attacks",
+    "features": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-REW-06",
+    "category": "incentive_attacks",
+    "features": [
+      "FEAT-06-FICTIONAL-HYPE-REWARD"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-MDL-01",
+    "category": "model_failures",
+    "features": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-MDL-02",
+    "category": "model_failures",
+    "features": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION",
+      "FEAT-16-SECURITY-AND-PROVENANCE"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-MDL-03",
+    "category": "model_failures",
+    "features": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-MDL-04",
+    "category": "model_failures",
+    "features": [
+      "FEAT-07-OPENAI-CHAT-TO-ACTION"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-OFF-01",
+    "category": "offline_and_failover",
+    "features": [
+      "FEAT-11-OFFLINE-FIXTURE-DRIVER"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-OFF-02",
+    "category": "offline_and_failover",
+    "features": [
+      "FEAT-11-OFFLINE-FIXTURE-DRIVER"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-OFF-03",
+    "category": "offline_and_failover",
+    "features": [
+      "FEAT-11-OFFLINE-FIXTURE-DRIVER"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-HOT-01",
+    "category": "hotfix_and_booth",
+    "features": [
+      "FEAT-08-CODEX-LIVE-HOTFIX"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-HOT-02",
+    "category": "hotfix_and_booth",
+    "features": [
+      "FEAT-08-CODEX-LIVE-HOTFIX"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-HOT-03",
+    "category": "hotfix_and_booth",
+    "features": [
+      "FEAT-09-TWITCH-BOOTH"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-HOT-04",
+    "category": "hotfix_and_booth",
+    "features": [
+      "FEAT-10-AWS-IVS-BOOTH"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-PRS-01",
+    "category": "presentation_and_audio",
+    "features": [
+      "FEAT-12-BULLET-TIME-PRESENTATION"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-PRS-02",
+    "category": "presentation_and_audio",
+    "features": [
+      "FEAT-13-ADAPTIVE-AUDIO"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  },
+  {
+    "scenario_id": "SCEN-PRS-03",
+    "category": "presentation_and_audio",
+    "features": [
+      "FEAT-15-PUBLIC-DEMO-TIMELINE"
+    ],
+    "expected_oracle": "satisfies category specification without invariant violations",
+    "execution_mode": "deterministic_simulation"
+  }
+]

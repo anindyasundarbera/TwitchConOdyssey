@@ -1,0 +1,7 @@
+[project]
+name = "twitchcon-odyssey"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []
+[project.optional-dependencies]
+qa = ["jsonschema>=4.23,<5", "playwright>=1.48,<2"]

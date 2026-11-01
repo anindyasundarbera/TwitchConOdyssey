@@ -1,0 +1,643 @@
+{
+  "version": 2,
+  "status": "selected_for_s1_simulation_unverified",
+  "setting": {
+    "city": "San Diego, California",
+    "user_approved": true,
+    "map_style": "compressed stylized route; not a GIS or street-accurate map",
+    "runtime_city_status": "San Diego labels, map copy, and district names implemented; route geometry and gameplay unverified"
+  },
+  "authorization": {
+    "scope": "S1 decision selection, evidence synthesis and static context-framework checks only; separate explicit gameplay authorization required",
+    "gameplay_simulation_enabled": false,
+    "gameplay_execution_authorized": false,
+    "ticks_moves_or_state_transitions_simulated": false,
+    "external_credentials_or_live_services_used": false
+  },
+  "thesis": "The enemy is not chat or AI. The enemy is unstructured scale.",
+  "cadence": {
+    "planning_seconds": 20,
+    "resolution_seconds": 5,
+    "reward_seconds": 5,
+    "reward_seconds_approximate": false,
+    "movement_during_planning": "continuous movement and active steering; audience proposals do not freeze navigation",
+    "approval_note": "selected S1 design values, unverified; only crowd/counter input locks during resolution",
+    "reward_presentation_approximate": true,
+    "movement_during_reward": "auto-forward and active steering until terminal state, subject to pause; display outcome/pending pool only, no interim payout"
+  },
+  "route": [
+    {
+      "id": "little_italy_north_embarcadero",
+      "order": 1,
+      "type": "district",
+      "first_slice": true,
+      "official_basis": "City of San Diego places Little Italy near the North Embarcadero waterfront.",
+      "game_mapping": "fictional build-delivery start; exact streets and geometry are not specified"
+    },
+    {
+      "id": "embarcadero_waterfront_marina",
+      "order": 2,
+      "type": "waterfront_segment",
+      "first_slice": false,
+      "official_basis": "Convention Center visitor guide places the Embarcadero west of the venue and notes bay walks and parks.",
+      "game_mapping": "stylized waterfront connector; Marina label is a visual/game region, not a surveyed boundary"
+    },
+    {
+      "id": "gaslamp_quarter",
+      "order": 3,
+      "type": "district",
+      "first_slice": false,
+      "official_basis": "Convention Center visitor guide describes Gaslamp Quarter as just outside the venue.",
+      "game_mapping": "compressed urban route segment"
+    },
+    {
+      "id": "san_diego_convention_center",
+      "order": 4,
+      "type": "venue",
+      "first_slice": false,
+      "official_basis": "San Diego Convention Center visitor guide lists its address as 111 W Harbor Drive.",
+      "game_mapping": "destination venue; the Main Stage is fictional and has no asserted real floor/location"
+    },
+    {
+      "id": "fictional_main_stage",
+      "order": 5,
+      "type": "fictional_goal",
+      "first_slice": false,
+      "official_basis": null,
+      "game_mapping": "deliver the build before the deadline"
+    }
+  ],
+  "first_slice": {
+    "district_id": "little_italy_north_embarcadero",
+    "hazards": [
+      {
+        "id": "blocked_demo_lane",
+        "description": "one fictional demo-kit delivery lane obstruction"
+      }
+    ],
+    "counters": [
+      {
+        "id": "clear_lane",
+        "description": "one proposed viewer/team counter to clear the lane"
+      }
+    ],
+    "mechanical_values_locked": true,
+    "lock_scope": "selected S1 plan only; no runtime or gameplay authorization"
+  },
+  "roles": [
+    {
+      "id": "streamer",
+      "plan": "auto-forward, remappable digital adjacent-lane steering active during planning, resolution and reward until terminal state, subject to pause; no streamer counter confirmation/override"
+    },
+    {
+      "id": "viewer",
+      "plan": "submit one bounded action by button or short chat trigger; natural language only proposes actions",
+      "invariants": [
+        "Live eligibility requires authenticated platform subject at account level with linked chat/button identity; reject unlinked input. This is not one-human proof. Offline actors are labeled fixtures.",
+        "Each eligible subject weight 1, max 1 influence/turn across channels. First valid receipt wins atomically; zero replacements. Transport dedupe is separate.",
+        "clear_lane requires ceil(0.60*N) frozen-roster votes and at least 1 eligible vote; otherwise abstain, which wins ties. Bots have weight/quorum/vote/bounty contribution 0 and remain labeled. Account-level quota does not prove human-level fairness or prevent Sybils."
+      ]
+    },
+    {
+      "id": "character",
+      "plan": "engine-owned 3-lane movement and bounded once-per-obstacle slowdown under selected S1 rules"
+    },
+    {
+      "id": "attacker",
+      "plan": "apply only the single fictional bounded hazard in this slice",
+      "safety_bounds": [
+        "no real viewer targeting or punishment",
+        "no permanent control loss",
+        "no unavoidable death"
+      ]
+    },
+    {
+      "id": "stage_operator",
+      "plan": "observe phases, progress, validation, simulated bounty, and offline presentation",
+      "constraints": [
+        "Main Stage is fictional",
+        "no external credentials or live provider required"
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "id": "plan",
+      "duration_seconds": 20,
+      "movement": "continuous",
+      "review_targets": [
+        "valid viewer proposal",
+        "ambiguous or invalid chat",
+        "duplicate or late input",
+        "bounded attacker pressure",
+        "provider unavailable"
+      ]
+    },
+    {
+      "id": "resolution",
+      "duration_seconds": 5,
+      "expected_policy": "Only crowd/counter input locks; steering remains active. Resolve selected clear_lane before collision; missing valid crowd result means abstain. No manual counter confirmation/override.",
+      "crowd_counter_input_locked": true,
+      "streamer_steering_active": true
+    },
+    {
+      "id": "reward",
+      "duration_seconds": 5,
+      "duration_approximate": false,
+      "display_target": "outcome and pending fictional Hype pool only; no interim payout",
+      "formula_locked": true,
+      "lock_scope": "selected S1 plan only; unverified",
+      "presentation_duration_approximate": true,
+      "auto_forward_active": true,
+      "streamer_steering_active": true,
+      "settlement": false
+    }
+  ],
+  "pillars": [
+    "spectator participation and configurable N-to-K squads",
+    "collective simulated bounty; bots cannot create farmable bounty and never impersonate real viewers",
+    "AI chat-to-action proposals with local schema and game-rule validation",
+    "diagnostic Codex Booth using sanitized evidence, data/rules proposals, deterministic fixtures, and safe-boundary manifest activation; no executable hot-loading",
+    "fictional Twitch moderation-to-Hype and IVS congestion-to-speed-lane concepts; no real moderation or claimed sponsorship",
+    "credential-free deterministic offline fixture",
+    "opt-in adaptive synthesized or licensed audio"
+  ],
+  "open_decisions": [
+    {
+      "id": "D-06",
+      "decision": "Failover owner, pending-command/reward commit boundary, replay identity and health/state recovery acceptance.",
+      "needed_before": "resilience simulation"
+    },
+    {
+      "id": "D-07",
+      "decision": "Hotfix approver, permitted DSL, trusted signer/base/version/expiry rules and activation/rollback boundary.",
+      "needed_before": "hotfix execution"
+    },
+    {
+      "id": "D-08",
+      "decision": "Actual Twitch participation path, live demonstration evidence and brand/audio permissions.",
+      "needed_before": "submission readiness"
+    }
+  ],
+  "rehearsal": {
+    "type": "v2_proposed_after_v1_document_rehearsal_not_retested",
+    "expected_handling_to_review": [
+      "closed-phase input is rejected",
+      "ambiguous or invalid chat remains a proposal and is rejected locally",
+      "duplicate input is idempotent",
+      "attacker pressure stays within stated safety limits",
+      "provider unavailability does not block the offline plan"
+    ],
+    "not_performed": [
+      "ticks",
+      "moves",
+      "state transitions",
+      "gameplay runtime",
+      "live API calls"
+    ],
+    "v1_findings_report": "rehearsal-v1/report.json"
+  },
+  "acceptance": [
+    "one district, one hazard and one counter are explicit in the selected S1 profile",
+    "all five roles retain authority/safety boundaries",
+    "D-01 through D-05 are selected_for_s1_simulation_unverified with before_gameplay gate and bound source; absent from unresolved decisions",
+    "external evidence and project design inference are separate; all selected numerical values remain unverified",
+    "steering stays active during resolution; only crowd/counter input locks",
+    "account-level eligibility is not proof of one human; bots/fixtures never create or earn live Hype",
+    "legacy bounty formulas stay retired; exact rational settlement and residual safe-danger farming risk are explicit",
+    "no gameplay or runtime execution is authorized or reported as observed",
+    "reward is exactly 5.0 active seconds with active movement/steering, display-only reward phases and one terminal delivery settlement; turn 3 reaches deadline t=90, no turn 4",
+    "deadline, phase-close, pause request, sequence commands and admitted effect order are explicit; collision precedes pre-deadline delivery",
+    "hazards commit strictly before planning t=15, warning spans [15,20), warning/counter/bounty share committed hazard ID; counter/general cutoff remains t=20"
+  ],
+  "sources": [
+    {
+      "title": "Convention Center \u2014 Getting Here & Around",
+      "url": "https://www.visitsandiego.com/attendees/getting-here-around",
+      "checked": "2026-11-01"
+    },
+    {
+      "title": "City of San Diego \u2014 Little Italy",
+      "url": "https://www.sandiego.gov/citycouncil/cd3/communities/littleitaly",
+      "checked": "2026-11-01"
+    }
+  ],
+  "revision": {
+    "number": 4,
+    "baseline_sha256": "ee0627b31df7a43ea7c9daba47821a58c8e52e0bfdabd430702329b1685d21fa",
+    "basis": "Bounded primary-source research and selected S1 design inferences; historical critiques are not runtime evidence",
+    "approved_change": "Resolve exactly the three S1 REVISE findings as selected/unverified design decisions; preserve other selected values and closed gameplay gate",
+    "astra_reviewed_version": 1,
+    "v2_gameplay_tested": false,
+    "changelog": [
+      "Revision 1 restored v1 review omissions and separated authority/evidence gates without selecting mechanics.",
+      "Revision 2 records five partial user proposals, explicit open selections and retired legacy bounty formulas; no new runtime or review evidence.",
+      "Revision 3 selects the exact S1 profile and separates selected decisions from later unresolved gates; no gameplay or implementation verification.",
+      "Revision 4 closes the three S1 review ambiguities: exact reward timeline/single terminal settlement, total boundary/effect priority, and pre-t=15 hazard commitment with complete warning; no new Astra verdict or gameplay evidence."
+    ]
+  },
+  "authority": {
+    "streamer": "Auto-forward and remappable digital adjacent-lane steering active during planning, resolution and reward until terminal state, subject to pause; no manual counter confirmation/override",
+    "viewer": "Untrusted advisory input; authenticated linked account subject, one influence/turn across channels; not one-human proof",
+    "character": "Deterministic engine alone owns avatar position, physics and collisions",
+    "in_game_squad": "Bounded entity governed by engine rules",
+    "plan_red_team": "Adversarial document critic in this rehearsal; no deployed attack service",
+    "stage_operator": "Presentation and permitted mode controls, not arbitrary game-state mutation",
+    "model": "Advisory proposals only",
+    "codex": "Bounded diagnosis and data/rules patch proposals, never direct executable hot-loading"
+  },
+  "restored_requirements": [
+    {
+      "id": "INV-01",
+      "requirement": "The deterministic authoritative engine alone owns avatar position, physics, collisions and game-state mutation. AI/crowd actions are advisory only; providers cannot block simulation or rendering.",
+      "review_ids": [
+        "AST-05",
+        "SEC-02",
+        "CH-03"
+      ]
+    },
+    {
+      "id": "INV-02",
+      "requirement": "Ban permanent control loss, repeated stun-lock, unavoidable death and unbounded cumulative/chained harm. S1 selects one nonoverlapping center-lane obstacle/turn, max three/match, with once-only 20% slowdown for 2s and zero HP/stun/steering loss/displacement; no residual/stack/refresh. Reachability and enforcement remain unverified.",
+      "review_ids": [
+        "AST-04",
+        "ATT-04",
+        "CH-01"
+      ]
+    },
+    {
+      "id": "INV-03",
+      "requirement": "Bot backfill is visible and labeled. Bots never impersonate humans, create bounty or inflate the pool. Actor origin and contribution provenance remain distinguishable across reconnect and recovery.",
+      "review_ids": [
+        "AST-03",
+        "SEC-04",
+        "ATT-03"
+      ]
+    },
+    {
+      "id": "INV-04",
+      "requirement": "Human-level influence fairness remains an aspiration, not identity assurance. S1 enforces an account-level target: authenticated linked subject, one influence/turn atomically across chat/button, frozen roster, K=2 display groups, unit subject weights and ceil(0.60*N) clear_lane quorum with at least one vote. No claim that one account equals one human.",
+      "review_ids": [
+        "AST-02",
+        "ATT-01",
+        "ATT-02",
+        "VW-02",
+        "VW-03"
+      ]
+    },
+    {
+      "id": "INV-05",
+      "requirement": "Only crowd/counter input locks for resolution; auto-forward and streamer steering stay active through reward until terminal state, subject to pause. Half-open hazard admission closes at planning t=15 with full [15,20) committed-ID warning; counter/general receipt closes at t=20, zero grace. Model timeout min(dispatch+2s, applicable admission close), discard cutoff/late output without backdating, blocking or rollover. One monotonic ns clock/sequence; equal-time deadline, phase-close, pause request, sequence commands, then effects. Admitted effects: clear_lane, collision, delivery, one final settlement. Reached deadline cannot be paused. Exact 5s reward is display-only; turn 3 reaches t=90 deadline, never turn 4. Pause freezes clocks/effects, rejects input and invalidates model work; resume no catch-up. Selected, unverified.",
+      "review_ids": [
+        "AST-05",
+        "SEC-01",
+        "SEC-02",
+        "VW-01"
+      ]
+    },
+    {
+      "id": "INV-06",
+      "requirement": "Live and fixture drivers eventually emit canonical commands. Safe boundary failover, deterministic seeds/logical time, single authority, duplicate-effect prevention and health/state comparison precede live recovery.",
+      "review_ids": [
+        "AST-06",
+        "SEC-05",
+        "ATT-06",
+        "OP-01"
+      ]
+    },
+    {
+      "id": "INV-07",
+      "requirement": "Fixture/replay mode stays visible and synthetic or sanitized. Bots/fixtures create and earn zero live Hype. Fixture arithmetic cannot mint live participant progression or be presented as accepted human-created danger. Fictional Hype only, no money/crypto/payout; selected settlement follows D-04.",
+      "review_ids": [
+        "AST-03",
+        "AST-06",
+        "OP-02"
+      ]
+    },
+    {
+      "id": "INV-08",
+      "requirement": "The demo should be under three minutes per the reviewed event rules; judges need not watch longer. Distinguish actual sanitized viewer input, recorded API calls, measured latency, engine execution and Codex fixture evidence. Presentation slowdown cannot imply stopped authority or a real-world match deadline.",
+      "review_ids": [
+        "AST-07",
+        "OP-02",
+        "OP-03",
+        "OP-04"
+      ]
+    },
+    {
+      "id": "INV-09",
+      "requirement": "Hotfixes stay data-only or bounded rules DSL, tested independently and activated through validated manifests at turn boundaries. No patch may bypass hard safety invariants. Trust, approval and anti-replay policy require design before execution.",
+      "review_ids": [
+        "AST-10",
+        "SEC-03"
+      ]
+    },
+    {
+      "id": "INV-10",
+      "requirement": "Schema-valid proposals, selected models, injected mock executors and synthetic role critiques are distinct from observed integration/gameplay evidence.",
+      "review_ids": [
+        "AST-08",
+        "AST-09"
+      ]
+    }
+  ],
+  "acceptance_gates": {
+    "plan_rehearsal": "Version-bound role critiques, explicit provenance, open decisions, no gameplay execution; completed for v1 only.",
+    "offline_slice": "D-01..D-05 selected for S1 as unverified. Separate explicit bounded gameplay authorization, concrete initial-state/geometry/transition fixtures, reachability and deterministic expected outcomes are still required. No runtime migration or execution follows selection.",
+    "submission_readiness": "Separate evidenced Twitch operation, actual Codex development/session provenance, licensed assets and required public demo. Offline fixture acceptance is insufficient.",
+    "current_gameplay_authorization": false
+  },
+  "selected_decisions": [
+    {
+      "id": "D-01",
+      "contract": "player_agency",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "decision": "player_agency selected for a later S1 simulation; unverified.",
+      "selected_constraints": [
+        "Auto-forward; 3 lanes; remappable digital left/right, initially arrows and gamepad D-pad. One press requests one adjacent-lane transition over 0.5s; no held repeat; same-tick opposites cancel.",
+        "Auto-forward and steering remain active through planning, resolution and reward until terminal state, subject to pause; only crowd/counter input locks. No streamer counter confirmation/override; no valid crowd result means abstain.",
+        "HUD: one progress meter, hazard timer, one plain-language action/consequence preview; no high-velocity chat reading. INV-01 reserves position, physics and collision to the deterministic engine."
+      ],
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-01",
+      "evidence_origin": "project_design_inference",
+      "evidence_caveat": "Selected project design inference, not external validation, runtime evidence or gameplay authorization.",
+      "parameters": {
+        "auto_forward": true,
+        "lanes": 3,
+        "transition_seconds": 0.5,
+        "lane_delta_per_press": 1,
+        "held_repeat": false,
+        "same_tick_opposites": "cancel",
+        "steering_active_phases": [
+          "plan",
+          "resolution",
+          "reward"
+        ],
+        "resolution_lock": "crowd_counter_only",
+        "manual_counter_confirmation": false,
+        "manual_counter_override": false,
+        "invalid_crowd_default": "abstain",
+        "auto_forward_active_phases": [
+          "plan",
+          "resolution",
+          "reward"
+        ],
+        "movement_ends": "terminal_state"
+      }
+    },
+    {
+      "id": "D-02",
+      "contract": "survival_contract",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "decision": "survival_contract selected for a later S1 simulation; unverified.",
+      "selected_constraints": [
+        "One localized Little Italy center-lane obstacle and clear_lane; maximum 1 obstacle/turn and 3/match; no overlap. Hazard proposal/admission is half-open [0,15.000s); one accepted human-origin hazard committed before t=15 creates the fixed center-lane warning for the entire [15,20) interval and one deduplicated bounty increment. Warning/counter/increment bind to committed hazard ID. Proposal/model result at or after t=15 expires for that turn; no backdating or rollover. No accepted hazard by cutoff means no hazard, warning or increment. Active first 3s resolution.",
+        "Collision once/obstacle: 20% forward-speed reduction for 2s; zero HP damage/stun/steering loss/displacement. No stacking, refresh or residual. Caps: 2s slowdown/turn, 6s/match; equivalent free-speed travel loss at most 0.4s/turn and 1.2s/match.",
+        "clear_lane removes before collision; missing quorum uses bounded uncountered branch. No HP/death/respawn/checkpoints. INV-02 cumulative harm limits remain mandatory; later fixtures must establish reachability from every admitted state.",
+        "Wipe means not delivered strictly before 90s active deadline; no automatic retries or carried state/pool. A new explicit match resets all state."
+      ],
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-02",
+      "evidence_origin": "project_design_inference",
+      "evidence_caveat": "Selected project design inference, not external validation, runtime evidence or gameplay authorization.",
+      "parameters": {
+        "max_obstacles_per_turn": 1,
+        "max_obstacles_per_match": 3,
+        "obstacle_lane": "center",
+        "overlap": false,
+        "warning_final_planning_seconds": 5,
+        "active_first_resolution_seconds": 3,
+        "collision_applications_per_obstacle": 1,
+        "slowdown_fraction": [
+          1,
+          5
+        ],
+        "slowdown_seconds": 2,
+        "hp_damage": 0,
+        "stun_seconds": 0,
+        "steering_loss_seconds": 0,
+        "displacement": 0,
+        "stack": false,
+        "refresh": false,
+        "residual": false,
+        "max_slowdown_seconds_per_turn": 2,
+        "max_slowdown_seconds_per_match": 6,
+        "clear_lane_before_collision": true,
+        "missing_quorum": "bounded_uncountered",
+        "hp_death_respawn_checkpoints": false,
+        "wipe": "not_delivered_strictly_before_active_deadline",
+        "automatic_retries": 0,
+        "state_or_pool_carry": false,
+        "new_explicit_match_resets_all_state": true,
+        "later_reachability_fixtures_required": true,
+        "hazard_admission_close_planning_seconds": 15,
+        "hazard_admission_interval": "half_open",
+        "hazard_at_or_after_admission_close": "expired_for_turn_no_backdating_no_rollover",
+        "warning_planning_interval_seconds": [
+          15,
+          20
+        ],
+        "warning_requires_committed_human_origin_hazard": true,
+        "warning_counter_bounty_binding": "committed_hazard_id",
+        "no_committed_hazard": "no_hazard_warning_or_bounty_increment"
+      }
+    },
+    {
+      "id": "D-03",
+      "contract": "audience_fairness",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "decision": "audience_fairness selected for a later S1 simulation; unverified.",
+      "selected_constraints": [
+        "Live eligibility requires authenticated platform subject at account level with linked chat/button identity; reject unlinked input. This is not one-human proof. Offline actors are labeled fixtures.",
+        "Freeze eligible roster at planning start; joins/leaves next turn; reconnect retains identity/influence. S1 K=2: stable-sort subjects then alternate assignment; squads display groupings, not equal electoral blocks.",
+        "Each eligible subject weight 1, max 1 influence/turn across channels. First valid receipt wins atomically; zero replacements. Transport dedupe is separate.",
+        "clear_lane requires ceil(0.60*N) frozen-roster votes and at least 1 eligible vote; otherwise abstain, which wins ties. Bots have weight/quorum/vote/bounty contribution 0 and remain labeled. Account-level quota does not prove human-level fairness or prevent Sybils.",
+        "Counter votes remain open in the half-open planning interval [0,20), bound to the committed hazard ID; general input cutoff remains t=20."
+      ],
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-03",
+      "evidence_origin": "project_design_inference",
+      "evidence_caveat": "Selected project design inference, not external validation, runtime evidence or gameplay authorization.",
+      "parameters": {
+        "live_identity": "authenticated_linked_platform_account_subject",
+        "one_human_proof": false,
+        "unlinked_input": "reject",
+        "offline_actors": "labeled_fixtures",
+        "roster_freeze": "planning_start",
+        "joins_leaves": "next_turn",
+        "reconnect": "retain_subject_and_influence",
+        "squads": 2,
+        "assignment": "stable_sort_alternating",
+        "squads_are_electoral_blocks": false,
+        "subject_weight": 1,
+        "max_influence_per_subject_per_turn": 1,
+        "channels": [
+          "chat",
+          "button"
+        ],
+        "atomic_admission": "first_valid_receipt",
+        "replacements": 0,
+        "quorum_fraction": [
+          3,
+          5
+        ],
+        "quorum_rounding": "ceil",
+        "minimum_eligible_votes": 1,
+        "no_quorum": "abstain",
+        "tie_winner": "abstain",
+        "bot_weight": 0,
+        "bot_quorum": 0,
+        "bot_votes": 0,
+        "bot_bounty": 0,
+        "counter_vote_planning_interval_seconds": [
+          0,
+          20
+        ],
+        "counter_vote_interval": "half_open",
+        "counter_binding": "committed_hazard_id"
+      }
+    },
+    {
+      "id": "D-04",
+      "contract": "reward_contract",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "decision": "reward_contract selected for a later S1 simulation; unverified.",
+      "selected_constraints": [
+        "Fictional Hype only. Pool starts 0; each distinct accepted human-origin hazard committed before planning t=15 adds 20, max 1 increment/turn, cap 60, multiplier 1. Deduplicate by committed hazard ID; no committed hazard means no increment. Counter/avoidance preserves increment; harm adds no bonus.",
+        "Reward displays outcome/pending pool only; no interim payout. Delivery performs exactly one final settlement, 50/50 streamer/audience, and immediately ends active simulation; any collision, including same-time pre-deadline collision, halves total once before splitting. Wipe/deadline/build-drop settles 0.",
+        "Audience eligibility: at least 1 accepted counter vote that match, even if aggregate quorum fails; danger creation alone earns none. Equal exact rational audience shares; no rounding redistribution; absent audience share withheld without carry.",
+        "Bots/fixtures add and earn 0; fixture arithmetic is synthetic only. Residual safe-danger farming risk remains; caps do not prove grief resistance."
+      ],
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-04",
+      "evidence_origin": "project_design_inference",
+      "evidence_caveat": "Selected project design inference, not external validation, runtime evidence or gameplay authorization.",
+      "retired_formulas": [
+        "100+25/voter"
+      ],
+      "parameters": {
+        "unit": "fictional_Hype",
+        "starting_pool": 0,
+        "accepted_distinct_human_origin_hazard_increment": 20,
+        "max_increments_per_turn": 1,
+        "pool_cap": 60,
+        "multiplier": 1,
+        "counter_or_avoidance_removes_increment": false,
+        "harm_bonus": 0,
+        "streamer_share": [
+          1,
+          2
+        ],
+        "audience_share": [
+          1,
+          2
+        ],
+        "collision_total_multiplier": [
+          1,
+          2
+        ],
+        "max_collision_penalty_applications": 1,
+        "collision_penalty_before_split": true,
+        "wipe_or_build_drop_settlement": 0,
+        "minimum_accepted_counter_votes_for_audience_eligibility": 1,
+        "danger_creation_alone_earns_share": false,
+        "audience_allocation": "equal_exact_rational_shares",
+        "rounding_redistribution": false,
+        "absent_audience_share": "withheld",
+        "bot_increment_or_earnings": 0,
+        "fixture_increment_or_earnings": 0,
+        "residual_risk": "safe_danger_farming",
+        "hazard_increment_binding": "committed_hazard_id",
+        "hazard_increment_requires_commit_before_planning_seconds": 15,
+        "reward_phase_settlement": false,
+        "reward_phase_display": "outcome_and_pending_pool_only",
+        "final_settlements_per_match": 1,
+        "delivery_ends_active_simulation_immediately": true,
+        "deadline_settlement": 0
+      }
+    },
+    {
+      "id": "D-05",
+      "contract": "clock_contract",
+      "status": "selected_for_s1_simulation_unverified",
+      "gate": "before_gameplay",
+      "decision": "clock_contract selected for a later S1 simulation; unverified.",
+      "selected_constraints": [
+        "90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 20Hz authoritative target, not measured runtime. No real-world deadline claim.",
+        "Monotonic host clock, integer nanoseconds, authoritative sequence; replay uses logical time/sequence. Planning half-open: receipt exactly t=20 expires. Zero post-cutoff grace; client timestamps cannot backdate.",
+        "Equal-time ordering: deadline first, phase-close, pause request, authoritative sequence-ordered commands, effects/settlement. Pause cannot suspend a reached deadline. Admitted effects: clear_lane removal, collision adjudication, delivery detection, one final settlement. Same-time pre-deadline collision is recorded before delivery and halves settlement once. Delivery strictly precedes deadline; equality wipes for zero settlement.",
+        "Model timeout min(dispatch+2s, applicable admission close): planning t=15 for hazards, t=20 for general input/counter votes. No retry; cutoff/late results expire without backdating, rollover or tick blocking. Local validation remains required; statuses applied/expired/rejected/duplicate.",
+        "Pause freezes all simulation clocks/effects, rejects commands, invalidates pending model work; resume anchor reset, no catch-up."
+      ],
+      "source_path": "docs/planning/S1-SIMULATION-PROFILE.md",
+      "source_locator": "D-05",
+      "evidence_origin": "project_design_inference",
+      "evidence_caveat": "Selected project design inference, not external validation, runtime evidence or gameplay authorization.",
+      "parameters": {
+        "match_active_seconds": 90,
+        "planning_seconds": 20,
+        "resolution_seconds": 5,
+        "reward_seconds": 5,
+        "reward_approximate": false,
+        "max_turns": 3,
+        "authoritative_hz_target": 20,
+        "clock": "single_monotonic_host_integer_nanoseconds",
+        "replay_clock": "recorded_logical_time_and_sequence",
+        "planning_interval": "half_open",
+        "receipt_at_planning_close": "expired",
+        "same_time_order": [
+          "deadline",
+          "phase_close",
+          "pause_request",
+          "authoritative_sequence_ordered_commands",
+          "effects_settlement"
+        ],
+        "model_timeout_seconds": 2,
+        "model_cutoff": "min_dispatch_plus_timeout_or_applicable_admission_close",
+        "automatic_model_retries": 0,
+        "late_model_result": "discard_no_rollover",
+        "post_cutoff_grace_nanoseconds": 0,
+        "client_backdating": false,
+        "pause": "freeze_all_simulation_clocks_and_effects_reject_commands_invalidate_pending_model",
+        "resume": "reset_anchor_no_catch_up",
+        "delivery_at_deadline": "wipe",
+        "real_world_deadline_claim": false,
+        "reward_presentation_approximate": true,
+        "turn_end_active_seconds": [
+          30,
+          60,
+          90
+        ],
+        "third_turn_reward_active_interval_seconds": [
+          85,
+          90
+        ],
+        "after_third_reward": "process_deadline_no_turn_four",
+        "admitted_effect_order": [
+          "clear_lane_removal",
+          "collision_adjudication",
+          "delivery_detection",
+          "one_final_settlement"
+        ],
+        "pause_at_reached_deadline": "cannot_suspend_deadline",
+        "same_time_pre_deadline_collision_delivery": "record_collision_then_delivery_halve_settlement_once",
+        "hazard_admission_close_planning_seconds": 15,
+        "general_input_close_planning_seconds": 20,
+        "hazard_model_admission_close_planning_seconds": 15
+      }
+    }
+  ],
+  "s1_review": {
+    "path": "docs/planning/S1-ASTRA-REVIEW.md",
+    "sha256": "29280f55a0d69fd4f8cb06d70f22e7daa23cf0d511c1e0b8eb8a82614c71e530",
+    "reviewed_plan_revision": 3,
+    "verdict": "REVISE",
+    "response_path": "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md",
+    "revised_plan_review_status": "fresh_version_bound_review_required"
+  }
+}
