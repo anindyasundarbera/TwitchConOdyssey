@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "task": "TASK-011",
+  "plan_namespace": "development-closure-20261102",
+  "review_gate": "final independent review (terminal, invoked once)",
+  "recorded_at_project_date": "2026-11-02",
+  "host_utc": "2026-11-01T20:16:52Z",
+  "reviewed_head": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "executor_packet_sha256": "b09b765382db8ba30754cab1b9017227205afd6cc8036706a90f8ccc7a4cb342",
+  "configured_route": {
+    "task": "plan_review",
+    "provider": "codex_subagent",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high"
+  },
+  "reviewer_route_actual": {
+    "invocation": "independent requester-supplied invocation of the supplied review packet",
+    "serving_provider_model_effort": "not disclosed to the orchestrator; recorded only as requester-supplied",
+    "substituted": true
+  },
+  "substitution_authorization": {
+    "authorized": true,
+    "decision_option_selected": "Authorize recorded substitute",
+    "context": "Requester decision in the development-closure session, 2026-11-02, after the configured route was confirmed unavailable in the orchestrator harness. The option label is recorded as selected; it is not quoted as free-text user wording.",
+    "explicit_user_authorization": true
+  },
+  "configured_gate_satisfied": false,
+  "packet_hash": "e03ebbd39935c0b8cd05066403e8111f46e928bf308e0b562a3b0c9dc71b02c1",
+  "packet_hash_convention": "SHA-256 of the exact review-packet bytes handed to the reviewer (Correction C-2). Distinct from every evidence-component digest; the packet is the prompt at /tmp/opencode/FINAL-REVIEW-PACKET-20261102.md (1065 words, 10376 bytes, external to the repository).",
+  "packet_word_count": 1065,
+  "packet_byte_count": 10376,
+  "invocation_count": 1,
+  "retries": 0,
+  "verdict": "NOT-READY",
+  "verdict_propagation": "verbatim",
+  "review_outputs": {
+    "markdown": {
+      "path": "docs/planning/development-closure-20261102/review/FINAL-INDEPENDENT-REVIEW.md",
+      "sha256": "100cd627397ee06dcdbbead1e6dfcdb9e3f9dfa56fde71b3333923fc398afecf"
+    },
+    "structured_json": {
+      "path": "docs/planning/development-closure-20261102/review/FINAL-INDEPENDENT-REVIEW.json",
+      "sha256": "f0da96d8e5453a053f9175abc7e86a0abbb0d9a109124043183dcb811de95eab"
+    }
+  },
+  "evidence_component_digests": {
+    "server/engine.py": "64eeaea38a890943c11095d27e7b7024147adccc72c5f13ea345d26f95747b91",
+    "server/intake.py": "098c883c08d069204965766879aadd30650bcf216cc42b9a62e846f5e08c6877",
+    "server/telemetry.py": "d4b7787f0a8f0972f86aa844b767396e013a742c4ec67ccd6a8e866323b13e9e",
+    "client/hud.js": "0f362b1c123296f641def63d3f9573fd7c3f8307f0d372d7460bbb9aa73c40ce",
+    "tools/package_submission.py": "161504229db4fa459c1bfddeb55d5019e8c82071d942ba9e59b67719db2325e4",
+    "tests/test_gameplay_core.py": "ea90b52dadb06229ab2726aa825c6f4d5bc94e4a92fed2409e4ec55c70059435",
+    "tests/test_command_intake.py": "739c7061503cff7ab5493a351fd05ad12df510ba6d899fd93d0e6069807345c4",
+    "tests/test_telemetry.py": "af0a4396999f5e430fab100faff9d3670579fce2ae62232544db2523c55d51d6",
+    "tests/test_submission_package.py": "29025e8c3e9ee552ce5333e5ca44dc1196fec8c34a14b75062504c2ad4fa004c",
+    "config/directive-policy.json": "28bd85c53a1d96e51c040c37a0edd30e3f7d8484ed836d9c653971e18e2778d3",
+    "docs/planning/STATUS.md": "5f71f5a9067efa89ffc2675320d635ebe3968a6f79c69804d8225bc5c528b988",
+    "docs/planning/development-closure-20261102/verification/DEVELOPMENT-CLOSURE-VERIFICATION.md": "cdd3b3f5f45b0205ecd8be76476ab96aa8005dbe864f20d90d5e73582c4e80d0",
+    "evidence/remediation-kernel-20261101/09_CORRECTIONS-20261102.md": "644fe8d3e27aca36bf1a8fe11ec44a4d3b6293980bffa9bd611f760f342d16f4",
+    "evidence/remediation-kernel-20261101/10_RUN-ROOT-DISPOSITION-20261102.md": "156d012906b001809510d49a6f6bc7a062e50b7bf1890f3740923b0af39a902d",
+    "evidence/remediation-kernel-20261101/11_D-T1-DISPOSITION-20261102.md": "fab54895807401d22547f11ad272d71372ce3e733efec237bd8a2c9200501f67"
+  },
+  "tripwire": {
+    "root": "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043",
+    "file_count": 116,
+    "tree_sha256_before": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d",
+    "tree_sha256_after": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d"
+  },
+  "sealed_roots_modified": false,
+  "notes": "Verdict propagates exactly as returned. NOT-READY blocks submission-readiness work; W1-W2 history is untouched. This is the single terminal review invocation; no retries or route escalation were performed. R-W1 remediation (all R1-R5, with R2 in its own governance transaction and ledger rebind) requires fresh authorization, and a fresh independent review must return READY before any submission-readiness claim."
+}

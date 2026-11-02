@@ -1,0 +1,188 @@
+{
+  "timestamp": "2026-11-02T18:10:34Z",
+  "mode": "deterministic_fixture_simulation",
+  "events_count": 20,
+  "events": [
+    {
+      "tick": 247,
+      "turn": 1,
+      "viewer": "viewer_neon_fox",
+      "action": "patch left",
+      "result": "queued"
+    },
+    {
+      "tick": 261,
+      "turn": 1,
+      "viewer": "viewer_bay_phantom",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 275,
+      "turn": 1,
+      "viewer": "viewer_pixel_pirate",
+      "action": "shield",
+      "result": "queued"
+    },
+    {
+      "tick": 289,
+      "turn": 1,
+      "viewer": "viewer_gaslamp_pro",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 303,
+      "turn": 1,
+      "viewer": "viewer_convention_fan",
+      "action": "patch left",
+      "result": "queued"
+    },
+    {
+      "tick": 317,
+      "turn": 1,
+      "viewer": "viewer_neon_fox",
+      "action": "patch left",
+      "result": "queued"
+    },
+    {
+      "tick": 331,
+      "turn": 1,
+      "viewer": "viewer_bay_phantom",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 345,
+      "turn": 1,
+      "viewer": "viewer_pixel_pirate",
+      "action": "shield",
+      "result": "queued"
+    },
+    {
+      "tick": 359,
+      "turn": 1,
+      "viewer": "viewer_gaslamp_pro",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 373,
+      "turn": 1,
+      "viewer": "viewer_convention_fan",
+      "action": "patch left",
+      "result": "queued"
+    },
+    {
+      "tick": 387,
+      "turn": 1,
+      "viewer": "viewer_neon_fox",
+      "action": "patch left",
+      "result": "queued"
+    },
+    {
+      "tick": 612,
+      "turn": 2,
+      "viewer": "viewer_bay_phantom",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 626,
+      "turn": 2,
+      "viewer": "viewer_pixel_pirate",
+      "action": "shield",
+      "result": "queued"
+    },
+    {
+      "tick": 640,
+      "turn": 2,
+      "viewer": "viewer_gaslamp_pro",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 654,
+      "turn": 2,
+      "viewer": "viewer_convention_fan",
+      "action": "patch left",
+      "result": "queued"
+    },
+    {
+      "tick": 668,
+      "turn": 2,
+      "viewer": "viewer_neon_fox",
+      "action": "patch left",
+      "result": "queued"
+    },
+    {
+      "tick": 682,
+      "turn": 2,
+      "viewer": "viewer_bay_phantom",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 696,
+      "turn": 2,
+      "viewer": "viewer_pixel_pirate",
+      "action": "shield",
+      "result": "queued"
+    },
+    {
+      "tick": 710,
+      "turn": 2,
+      "viewer": "viewer_gaslamp_pro",
+      "action": "boost right",
+      "result": "queued"
+    },
+    {
+      "tick": 724,
+      "turn": 2,
+      "viewer": "viewer_convention_fan",
+      "action": "patch left",
+      "result": "queued"
+    }
+  ],
+  "final_state": {
+    "audience": {
+      "counter_votes_count": 0,
+      "eligible_voters_count": 0,
+      "roster_size": 0
+    },
+    "audio_state": "solution",
+    "avatar": {
+      "lane": 2,
+      "lateral_pos": 2.0,
+      "transition_remaining_ticks": 0
+    },
+    "booths": [
+      "twitch_booth"
+    ],
+    "bounty": {
+      "collision_halved": false,
+      "collisions_total": 0,
+      "pool": 0,
+      "synthetic_fixture_pool": 0
+    },
+    "hazard": {
+      "committed": null,
+      "hazard_countered": false,
+      "obstacle_active": false,
+      "warning_active": false
+    },
+    "is_paused": false,
+    "movement": {
+      "district": "Embarcadero Waterfront / Marina",
+      "match_slowdown_ticks": 0,
+      "progress": 41.1364,
+      "slowdown_ticks_remaining": 0,
+      "turn_slowdown_ticks": 0
+    },
+    "phase": "planning",
+    "schema_version": 1,
+    "status": "racing",
+    "tick": 724,
+    "turn": 2
+  }
+}

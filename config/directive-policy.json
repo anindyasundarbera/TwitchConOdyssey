@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 12,
+  "revision": 16,
   "current_phase": "plan",
   "allowed_phases": [
     "plan"
@@ -13,20 +13,16 @@
     "historical_research_rehearsal_and_agent_opinion"
   ],
   "gate": {
-    "gameplay_enabled": false,
+    "gameplay_enabled": true,
     "automatic_phase_advance": false,
-    "rule": "S1 plan selection, evidence synthesis and bounded static context-framework checks are authorized. D-01..D-05 are selected for later S1 simulation as unverified; gameplay remains disabled until separate later explicit user authorization."
+    "rule": "Local gameplay, service startup, browser gameplay, simulations, targeted tests and capture authorized by instruction 'Everything means including the blocked gate as well then ui and design'. Real credentials, live services, deployment, publication and submission remain forbidden.",
+    "authorization_directive": "gate_to_game_interface_authorization_20261102"
   },
   "forbidden_tasks": [
     "gameplay_actor",
     "chat_action"
   ],
   "forbidden_actions": [
-    "server.app",
-    "server.replay",
-    "gameplay tests",
-    "browser gameplay",
-    "harness.run",
     "automatic phase advance",
     "automatic retry/escalation/provider change/silent fallback",
     "runtime migration",
@@ -43,24 +39,48 @@
     "bounded_subagents",
     "manual_escalation",
     "packet_limits",
-    "gameplay_gate",
+    "gate_to_game_interface_authorization_20261102",
     "evidence_independence",
     "frozen_artifacts",
     "precedence",
     "remediation_rerun_and_decision_delegation"
   ],
   "tasks": {
+    "task_01_gate_reconciliation": {
+      "routing_task": "planner_orchestrator",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    },
+    "task_worker_a_ux_visual": {
+      "routing_task": "visual_interpretation_forms_medium",
+      "directive_ids": []
+    },
+    "task_worker_b_interface": {
+      "routing_task": "development",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    },
+    "task_worker_c_qa_evidence": {
+      "routing_task": "development",
+      "directive_ids": [
+        "code_workflow"
+      ]
+    },
     "complex_coding_debugging": {
       "routing_task": "complex_coding_debugging",
       "directive_ids": [
-        "code_workflow"
+        "code_workflow",
+        "live_submission_authorization_20261102"
       ]
     },
     "development": {
       "routing_task": "development",
       "directive_ids": [
         "code_workflow",
-        "gameplay_development_authorization_20261102"
+        "gameplay_development_authorization_20261102",
+        "live_submission_authorization_20261102"
       ]
     },
     "everyday_writing_summarization": {
@@ -86,13 +106,15 @@
     "plan_review": {
       "routing_task": "plan_review",
       "directive_ids": [
-        "gameplay_development_authorization_20261102"
+        "gameplay_development_authorization_20261102",
+        "live_submission_authorization_20261102"
       ]
     },
     "plan_security": {
       "routing_task": "plan_security",
       "directive_ids": [
-        "code_workflow"
+        "code_workflow",
+        "live_submission_authorization_20261102"
       ]
     },
     "plan_stage_operator": {
@@ -111,7 +133,8 @@
       "routing_task": "planner_orchestrator",
       "directive_ids": [
         "code_workflow",
-        "gameplay_development_authorization_20261102"
+        "gameplay_development_authorization_20261102",
+        "live_submission_authorization_20261102"
       ]
     },
     "research_synthesis_long_doc": {
@@ -145,21 +168,21 @@
     "AGENTS.md": "4b7b04be8b6c14b2744c5f2f74638bd6a95081b60f7b11cd169a6c26ef351b6a",
     "config/model-policy.json": "7cfe130f28ff0c02f270320560e4a27cb6ca99edd88d39fbf8afe7127e6a289d",
     "coordination/content_cache.py": "c70694c893540d80a50498a0ba700a7a9599cdc7290524c5a98e63004be12a95",
-    "coordination/context_contract.py": "6998844f22691df022a3f76cae155b818a83aa398e4e2eef278e600b69dc0c5f",
+    "coordination/context_contract.py": "e66d917a62071fa80181d8925a9f5fa3edbd87314c12a22d7e950866afd16c0f",
     "coordination/evidence_pipeline.py": "ff7eba561014dcba2493f244d48080391a540fdbd37a26775dc71f50702783ee",
-    "coordination/full_game_simulator.py": "151ade893ccded3d535375f7e8f38d834ff5259ad5bfb36ef49bc84f78b48aff",
+    "coordination/full_game_simulator.py": "1a6c55e1cbca0cf895025eb999ca14f56ce47c32ce9a2a7945b5545c9f51fda2",
     "coordination/model_router.py": "41394c38bb981448e88cefbe41c444f6d0cc4b5500570f9b4a5301bb85344317",
     "coordination/run_full_game_simulation.py": "978c24a2df0680ed8e005b9ab255e29fc0f486c3de79024a224b6fd79303e10b",
     "coordination/scenario_inputs.py": "e3eed7ae21e7cb62a1e9bd0496f581b6a6adf93b28c01e874ee58bacc05a57af",
     "docs/planning/CONTEXT-RETENTION-RESEARCH.md": "cf6eb23e1010b86caf172d6915c221bb80053178bd15bd24bfc332ea236fd7c3",
-    "docs/planning/CONTEXT-v2.md": "eb8b6530ffbe210d62bf513f53eb384d6f87c527cbd57e5a5eb42bf08ec0f140",
+    "docs/planning/CONTEXT-v2.md": "73c62dd33c60235ad4a4d03cc7bbfa37e603a82c13a14237a7d30d2c4e4b65e1",
     "docs/planning/DECISIONS.md": "639bebcaba808e75697641fd5810b7f2e7e130f4bf4b63eb690259892fcf81f1",
     "docs/planning/GAMEPLAN-v2.md": "d7da3bc1d390a7f1ec37412c9b8d9c455eb54f43e9eefc26b95dc76b43df6752",
     "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md": "4cf48c7fcc2492529b2b7b13c68cce251c7a6356453aa5582c37499cd8bf15a3",
     "docs/planning/S1-ASTRA-REVIEW.md": "29280f55a0d69fd4f8cb06d70f22e7daa23cf0d511c1e0b8eb8a82614c71e530",
     "docs/planning/S1-SIMULATION-PROFILE.md": "2647e033fca26875916446d2b9d45419fcd1d3dcde09b5cb03a5f576ff9bc4a6",
     "docs/planning/SIMULATION-EVIDENCE-AUDIT.md": "adcc2692789d29aae24b35acb522ea494c96748c5a20a04605461dcc52f3a798",
-    "docs/planning/STATUS.md": "5f71f5a9067efa89ffc2675320d635ebe3968a6f79c69804d8225bc5c528b988",
+    "docs/planning/STATUS.md": "15d852fbc7a28f953fc88980d80c1f3213dda0234253df6b77f1de7d3aa516af",
     "docs/planning/USER-DIRECTIVE-AUDIT.md": "8270ea8e29da1097fcb2d21c381350174444b835a7f9b651c4ec3cedd8a86096",
     "docs/planning/development-closure-20261102/06_G-A-AUTHORIZATION-20261102.md": "965a1608d03a2fe5dd1b2aea57c873a54e84099cdd73d35a999276ae0c55ef3a",
     "docs/planning/development-closure-20261102/verification/DEVELOPMENT-CLOSURE-VERIFICATION.md": "cdd3b3f5f45b0205ecd8be76476ab96aa8005dbe864f20d90d5e73582c4e80d0",
@@ -167,13 +190,15 @@
     "docs/planning/research/S1-PLATFORM-EVIDENCE.md": "3bc1910f2d55d9cc1b26c6c7644ad759c48e28c32d11e462dfac966b3b23a4d6",
     "docs/planning/research/S1-SYSTEMS-EVIDENCE.md": "b727a60099d9fd3a11809f0e24d1c989d6f87bf5a5ad185f041ababd37ac128c",
     "evidence/remediation-kernel-20261101/11_D-T1-DISPOSITION-20261102.md": "fab54895807401d22547f11ad272d71372ce3e733efec237bd8a2c9200501f67",
-    "server/engine.py": "64eeaea38a890943c11095d27e7b7024147adccc72c5f13ea345d26f95747b91",
-    "tests/test_context_contract.py": "9806d851535b47cd1f76459014f980a95f55bb0ebcdd052c619df105693c2d37",
+    "server/engine.py": "0728ef30141f3bac7faeca9c68a45b0fae288e73c4cfc84ede083ffc2561293a",
+    "tests/test_context_contract.py": "c74b890c3e3c49daeddd897e313111188188b20c2e302a7272b642d740b3bfaf",
     "tests/test_deterministic_kernel.py": "075be5aa81b2334ec0bad2ff948b3b361979c759cd00f838c84e875d3da7fecb",
     "tests/test_full_game_simulation.py": "e16ef8d68437b28d59ff39f77ef20f17107430187e81a988d0a8514199f7a221",
-    "tests/test_gameplan_rules.py": "8a1b27c80d4791adc4d33f5fde612567c48ca54c3786e0a23cf6bd4afc86e757",
+    "tests/test_gameplan_rules.py": "642f659bf871182880beab5366d133b74023c96454d641970037e0cc3140e20d",
     "coordination/review_boundary.py": "9b3833a048c768112e682811c37b9a3e8b7189c3ccf7f7d4ba4252d7535fefce",
-    "coordination/deterministic_kernel.py": "10850339d2ae2969b679c7e20a394ae516e10edee5a0666d694b3322f6237db6"
+    "coordination/deterministic_kernel.py": "10850339d2ae2969b679c7e20a394ae516e10edee5a0666d694b3322f6237db6",
+    "docs/planning/development-closure-20261102/submission-readiness/SUBMISSION-READINESS-CLOSEOUT-PLAN.md": "c99ae3d445857dc4cde1ffe8bed24adb133ebcc546e826927cc409eaf82c6003",
+    "docs/planning/development-closure-20261102/submission-readiness/SUBMISSION-CLOSEOUT-STATE.json": "eeb83d68b3a1a4803f4421819fd0dc000b10e90263995eb8bafcc137494d324b"
   },
   "directives": [
     {
@@ -393,7 +418,7 @@
     },
     {
       "id": "gameplay_gate",
-      "status": "active",
+      "status": "superseded",
       "scope": [
         "plan"
       ],
@@ -413,6 +438,34 @@
           "locator": "Gameplay remains disabled",
           "source_kind": "project_record"
         }
+      ],
+      "superseded_by": "gate_to_game_interface_authorization_20261102"
+    },
+    {
+      "id": "gate_to_game_interface_authorization_20261102",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "phase_authorization",
+      "rule": "AUTHORIZATION: Gate-to-game interface. Exact user wording 'Everything means including the blocked gate as well then ui and design' (2026-11-02). Local gameplay, service startup, browser play, tests, simulation and local capture authorized. Credentials, live calls, publication, push and submission forbidden. submission_ready stays false.",
+      "wording": "exact",
+      "exact_user_wording": "Everything means including the blocked gate as well then ui and design",
+      "wording_availability": "recorded_verbatim",
+      "provenance": [
+        {
+          "path": "docs/planning/STATUS.md",
+          "locator": "Gate-to-game interface authorization (2026-11-02)",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/CONTEXT-v2.md",
+          "locator": "Gate-to-game interface authorization state",
+          "source_kind": "project_record"
+        }
+      ],
+      "supersedes": [
+        "gameplay_gate"
       ]
     },
     {
@@ -563,15 +616,45 @@
           "source_kind": "project_record"
         }
       ]
+    },
+    {
+      "id": "live_submission_authorization_20261102",
+      "status": "active",
+      "scope": [
+        "plan"
+      ],
+      "topic": "live_submission_authorization",
+      "rule": "AUTHORIZATION: close submission readiness. Granted by requester on 2026-11-02 with exact wording 'close the submission readiness' and 'Make it in such a way that Astra review does not get blocked. We can do astra review at the end.'. Scope: implement and test the official Twitch EventSub WebSocket channel.chat.message adapter, honest live/disconnected/fixture presentation, rendered desktop 1440x1100 and mobile 390x844 evidence, and a sanitized under-180-second demo assembled only from observed live operation and sanitized Codex evidence. submission_ready remains false until every live, capture, video, repository and independent-review predicate is evidenced. Excluded: repository push, YouTube upload, Devpost final submission, credential exposure and any claim that fixtures, mocks or configured credentials are live evidence. publication booleans remain false.",
+      "wording": "exact",
+      "exact_user_wording": "Make it in such a way that Astra review does not get blocked. We can do astra review at the end.",
+      "wording_availability": "recorded_verbatim",
+      "provenance": [
+        {
+          "path": "docs/planning/development-closure-20261102/submission-readiness/SUBMISSION-READINESS-CLOSEOUT-PLAN.md",
+          "locator": "Authorization recorded from the requester",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/STATUS.md",
+          "locator": "Submission-readiness authorization (2026-11-02)",
+          "source_kind": "project_record"
+        },
+        {
+          "path": "docs/planning/CONTEXT-v2.md",
+          "locator": "Live submission authorization state",
+          "source_kind": "project_record"
+        }
+      ]
     }
   ],
   "unresolved_decisions": [
     {
       "id": "live_submission_external_capture",
-      "status": "unresolved",
-      "rule": "Live external Twitch channel integration, rendered browser/mobile viewport capture and 3-minute public demo video recording remain deferred until separate live-submission authorization.",
+      "status": "authorized_in_progress",
+      "rule": "Bounded live submission capture is authorized in progress from 2026-11-02. It remains open until real current evidence and an independent READY review pass. submission_ready stays false.",
       "gate": "before_live_submission",
-      "source_path": "docs/planning/CONTEXT-v2.md"
+      "source_path": "docs/planning/CONTEXT-v2.md",
+      "authorization_ref": "live_submission_authorization"
     }
   ],
   "superseded_decisions": [
@@ -829,5 +912,59 @@
       "rule": "90s active match; 20s planning/5s resolution/exactly 5.0s reward, max 3 turns; presentation may say approximately 5s reward. Without earlier terminal state, turns end at t=30,60,90; turn 3 reward is [85,90), then process deadline, never turn 4. Auto-forward and steering continue in reward until terminal state, subject to pause. 100.0-unit route at nominal free speed 100/88 units/s (88.0s nominal, 89.2s with max 3 collisions); diegetic booth waypoints at 35.0% (twitch_booth), 60.0% (codex_booth), 80.0% (aws_booth), and 100.0% (fictional_main_stage). 20Hz authoritative target, not measured runtime. No real-world deadline claim. Monotonic host clock, integer nanoseconds, authoritative sequence; replay uses logical time/sequence. Planning half-open: receipt exactly t=20 expires. Zero post-cutoff grace; client timestamps cannot backdate. Equal-time ordering: deadline first, phase-close, pause request, authoritative sequence-ordered commands, effects/settlement. Pause cannot suspend a reached deadline. Admitted effects: clear_lane removal, collision adjudication, delivery detection, one final settlement. Same-time pre-deadline collision is recorded before delivery and halves settlement once. Delivery strictly precedes deadline; equality wipes for zero settlement. Model timeout min(dispatch+2s, applicable admission close): planning t=15 for hazards, t=20 for general input/counter votes. No retry; cutoff/late results expire without backdating, rollover or tick blocking. Local validation remains required; statuses applied/expired/rejected/duplicate. Pause freezes all simulation clocks/effects, rejects commands, invalidates pending model work; resume anchor reset, no catch-up."
     }
   ],
-  "revision_note": "Revision 12 rebinds server/engine.py after the W3/TASK-006 authoritative-boundary implementation: new AuthoritativeGame facade (private simulator, canonical command intake, detached snapshots, pause/replay/hotfix views) plus a non-authoritative legacy-Engine docstring; no kernel, gate, decision, provider or submission change. The static ledger-revision assertion advances to 12. Gameplay execution remains off by compiler gate and service startup is not authorized."
+  "revision_note": "Revision 16 reconciles the blocked gameplay gate for the local gate-to-game interface scope under explicit user instruction 'Everything means including the blocked gate as well then ui and design'. gameplay_enabled is set to true bound to active directive gate_to_game_interface_authorization_20261102; local gameplay execution, local service startup, browser gameplay, deterministic simulation, targeted gameplay/UI tests, and local evidence capture are authorized. Real credentials, external/live services, deployment, publication, pushes, releases, and submission remain strictly forbidden; submission_ready stays false. Former gameplay_gate is superseded. Revision 14 and 12 historical notes retained.",
+  "live_submission_authorization": {
+    "wording": "exact",
+    "exact_user_wording": "Make it in such a way that Astra review does not get blocked. We can do astra review at the end.",
+    "wording_availability": "recorded_verbatim",
+    "authorized_at": "2026-11-02",
+    "authorized_actions": [
+      "run the local authoritative runtime only for the bounded live-capture session",
+      "open one Twitch EventSub WebSocket and subscribe to channel.chat.message with a validated user token",
+      "send one consent-safe test message from the authorized test account",
+      "capture rendered desktop 1440x1100 and mobile 390x844 evidence",
+      "assemble a sanitized under-180-second demo from observed live and sanitized Codex segments"
+    ],
+    "excluded_actions": [
+      "publication",
+      "credential_exposure",
+      "repository_push_without_explicit_yes",
+      "youtube_upload_without_explicit_yes",
+      "devpost_final_submit_without_explicit_yes",
+      "automatic_retry_or_substitution",
+      "fabricated_live_or_codex_footage"
+    ],
+    "external_inputs_required": [
+      "twitch_client_id_source",
+      "twitch_user_oauth_token_source",
+      "twitch_broadcaster_user_id",
+      "twitch_chat_user_id",
+      "twitch_channel_login",
+      "consent_safe_test_account_and_message",
+      "repository_destination_url",
+      "youtube_upload_target_and_visibility",
+      "devpost_project_url",
+      "allow_repository_push",
+      "allow_youtube_upload",
+      "allow_devpost_final_submit"
+    ],
+    "publication_authorizations": {
+      "repository_push": false,
+      "youtube_upload": false,
+      "devpost_final_submit": false
+    },
+    "submission_ready": false,
+    "compiler_gate_unchanged": true,
+    "review_route": {
+      "requested": {
+        "provider": "codex_subagent",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "high",
+        "fork_turns": "none"
+      },
+      "substitution_fails_closed": true,
+      "serving_attestation_unavailable_is_not_a_substantive_blocker": true
+    },
+    "decision_id": "live_submission_external_capture"
+  }
 }

@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "record_id": "twitchcon-odyssey-submission-readiness-2026-11-02",
+  "schema": "schemas/submission-readiness.json",
+  "evaluated_at": "2026-11-02T18:30:00+05:30",
+  "declared_submission_ready": false,
+  "candidate": {
+    "starting_head": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+    "final_head": null,
+    "tracked_diff_sha256": null,
+    "note": "The final candidate is not frozen. Workers A-C and coordinator integration still change the tracked tree, so writing a final HEAD or diff hash now would be stale by construction."
+  },
+  "live": {
+    "live_validated": false,
+    "token_validation": {
+      "validated": false,
+      "scopes": [],
+      "expires_at": null,
+      "validated_at": null,
+      "client_id_sha256": null,
+      "user_id_sha256": null,
+      "origin": null
+    },
+    "eventsub": {
+      "connected": false,
+      "subscription_type": null,
+      "subscription_version": null,
+      "subscription_id": null,
+      "session_id": null,
+      "receipt_id_sha256": null,
+      "received_at": null
+    },
+    "canonical_command": {
+      "command": null,
+      "result": null,
+      "visible_consequence": null,
+      "consequence_sha256": null
+    },
+    "note": "No live Twitch token validation, EventSub subscription or channel.chat.message receipt has been observed. All fourteen external inputs remain placeholders; fixtures and mocked transports cannot satisfy this section."
+  },
+  "captures": {
+    "desktop": null,
+    "mobile": null,
+    "note": "No live-rendered desktop 1440x1100 or mobile 390x844 capture exists. Offline fixture and disconnected renders exist under evidence/submission-capture and are expressly non-live readiness evidence."
+  },
+  "video": null,
+  "repository": {
+    "url": null,
+    "commit": null,
+    "clean_checkout_verified": false,
+    "setup_verified": false,
+    "observed_accessible": false,
+    "observed_at": null,
+    "note": "No judge-accessible repository destination was supplied; no push occurred."
+  },
+  "project": {
+    "description_path": "docs/submission/PROJECT-DESCRIPTION.md",
+    "description_sha256": "09bb54c6d580b3c2cac1a17a6e38f189ab8a523562412532e89c3d90ed76fcef",
+    "setup_path": "docs/submission/SETUP.md",
+    "setup_sha256": "93f366795a10712e2472a45d78010bef45b7080f8ae72392810bab0338382f9a",
+    "codex_session_id": "01a1955f-ecad-7053-a225-82baa06d86bd",
+    "licensing_checklist_path": "docs/submission/LICENSING-CHECKLIST.md",
+    "licensing_checklist_sha256": "e7b02f98c5a9607253406a39fc69965a61a4b21097d7a11059d627527447d863",
+    "audio_licensed": false,
+    "note": "The Codex session ID is the recorded root session. It is not proof of feature completeness or live operation. No repository LICENSE file exists and no final video audio has been cleared."
+  },
+  "package": {
+    "manifest_path": "build/submission-package",
+    "note": "The verifier checks this manifest. Package completeness is derived from the manifest and its pending list, never assumed."
+  },
+  "hygiene": {
+    "cleanup_performed": false,
+    "secret_scan_passed": false,
+    "raw_chat_absent": true,
+    "sealed_roots": [
+      {
+        "path": "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043",
+        "file_count": 116,
+        "tree_sha256": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d",
+        "algorithm": "sha256-sorted-relative-path-colon-file-sha256-lf-v1"
+      },
+      {
+        "path": "artifacts/simulations/full-game/full-game-20261101T185524Z-2647e033",
+        "file_count": 170,
+        "tree_sha256": "9cb21a1f5109e1fcfecb9d6860173854621e3ba384026ed487b7a78df3ec3b9e",
+        "algorithm": "sha256-sorted-relative-path-colon-file-sha256-lf-v1"
+      }
+    ],
+    "note": "The sealed-root hashes are recomputed by the verifier. No post-capture cleanup or full secret scan has been completed. raw_chat_absent records that no raw chat is included in the submission package; ignored local runtime files are excluded."
+  },
+  "review": {
+    "requested_route": {
+      "provider": "codex_subagent",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high",
+      "fork_turns": "none"
+    },
+    "configured_route": {
+      "provider": "codex_subagent",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high",
+      "fork_turns": "none"
+    },
+    "spawn": {
+      "accepted": false,
+      "substitution_reported": false,
+      "reported_route": null
+    },
+    "serving_attestation_available": false,
+    "candidate_match": false,
+    "substantive_verdict": "NOT-READY",
+    "review_packet_sha256": null,
+    "reviewed_candidate_diff_sha256": null,
+    "note": "No independent Astra review has been requested for a frozen candidate. The record does not treat the Worker C route deviation as a review or serving attestation."
+  },
+  "publication": {
+    "repository_push": false,
+    "youtube_upload": false,
+    "devpost_final_submit": false
+  },
+  "agent_execution": {
+    "worker": "C",
+    "packet": "docs/planning/development-closure-20261102/submission-readiness/agents/WORKER-C-PACKAGE-READINESS.md",
+    "compiler_packet_hash": "8e216381f74be07e458ff5d72e058ceaf54aaa53dc7af44f5d4b4fcfa00a468d",
+    "requested_route": {
+      "provider": "codex_subagent",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "high"
+    },
+    "actual_route": {
+      "provider": "ollama-cloud",
+      "model": "deepseek-v4.1-flash",
+      "harness": "OpenCode"
+    },
+    "route_deviation": true,
+    "note": "The configured codex_subagent/gpt-6.1-sol/high route was unavailable in this OpenCode session. The current session route was used and the deviation is recorded for audit. This is not an Astra review route or serving attestation."
+  }
+}

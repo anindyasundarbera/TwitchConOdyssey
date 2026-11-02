@@ -1,0 +1,57 @@
+{
+  "evidence_root": "evidence/ui-readiness/20261102T161855Z",
+  "generated_at": "2026-11-02T19:12:53Z",
+  "artifacts": {
+    "active-gameplay-mobile.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/active-gameplay-mobile.png",
+      "sha256": "cfb00e51ae4483a8a1674e67877acc19103a71b3e525d70bde1c0b760d906e85",
+      "size_bytes": 191718
+    },
+    "help-modal-desktop.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/help-modal-desktop.png",
+      "sha256": "d928b042b3c34a8c1277ec3eae49ea2981200318809a83d48f3ea96ce5df3aeb",
+      "size_bytes": 283389
+    },
+    "pause-modal-desktop.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/pause-modal-desktop.png",
+      "sha256": "35e48ad933e157a0163da687f93347fb0a45400faac4afe9a5d50ddf7dc8d83a",
+      "size_bytes": 194144
+    },
+    "active-gameplay-desktop.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/active-gameplay-desktop.png",
+      "sha256": "e60a15f2265f77191e69d16d27d379cd61c085735610216a200c98a678b3c740",
+      "size_bytes": 312579
+    },
+    "disconnected-mobile.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/disconnected/disconnected-mobile.png",
+      "sha256": "72f8b693c4eeeb286d8eb9fc72ca22279fbea22ab2565ff3192ed4c4c7c647e5",
+      "size_bytes": 62236
+    },
+    "disconnected-desktop.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/disconnected/disconnected-desktop.png",
+      "sha256": "840cdf497e206f09f62b2eef513e1c8b8f622ea3fae8b46b9b246d4ff46f7172",
+      "size_bytes": 111105
+    },
+    "fixture-mobile.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/fixture/fixture-mobile.png",
+      "sha256": "5d9a5647146cb66b9446553827d0cf966637a1fb3897819ef70986cd0ef7f645",
+      "size_bytes": 65205
+    },
+    "fixture-desktop.png": {
+      "path": "evidence/ui-readiness/20261102T161855Z/fixture/fixture-desktop.png",
+      "sha256": "def9095b1fa2ad207617be4b0563c1880099f766f9edfb9c5a1a82b41018d3ed",
+      "size_bytes": 112623
+    }
+  },
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1100
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "status": "locally_game_ready"
+}

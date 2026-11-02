@@ -55,3 +55,16 @@ Primary repository handoffs:
 The raw rollout transcript was **not copied into the repository**. It can contain user messages, tool output, machine paths, and other context inappropriate for a public submission. This record preserves the judge-facing identifier and local provenance without exposing credentials or claiming that repository summaries reproduce the full session.
 
 The session ID identifies the Codex session; it does not by itself prove that every planned feature works. Runtime, simulation, review, and live-service claims must still be evaluated against their cited artifacts and evidence.
+
+## Worker execution route note (2026-11-02)
+
+The Worker C readiness/package packet requested
+`codex_subagent / gpt-6.1-sol / high`. That route was unavailable in the
+OpenCode harness, so the work ran on the current session route
+`ollama-cloud / deepseek-v4.1-flash`. This is a recorded route deviation for
+audit; it is not a Codex session, not an Astra review, and does not change the
+session ID above or constitute serving attestation for the final review.
+
+The Codex session ID itself is available and is not a missing predicate. Its
+presence is evidence of the development session only, not of live Twitch
+operation or submission readiness.

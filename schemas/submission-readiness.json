@@ -1,0 +1,623 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://twitchcon-odyssey.invalid/schemas/submission-readiness.json",
+  "title": "TwitchCon Odyssey submission readiness record",
+  "description": "Mechanical readiness record for the TwitchCon Odyssey submission. Missing, stale or fixture-only predicates keep submission_ready false. Publication booleans are permissions, never evidence.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_id",
+    "evaluated_at",
+    "declared_submission_ready",
+    "candidate",
+    "live",
+    "captures",
+    "video",
+    "repository",
+    "project",
+    "package",
+    "hygiene",
+    "review",
+    "publication",
+    "agent_execution"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "record_id": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "evaluated_at": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "declared_submission_ready": {
+      "type": "boolean",
+      "description": "Advisory only. The verifier recomputes readiness and never trusts this value."
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "starting_head",
+        "final_head",
+        "tracked_diff_sha256"
+      ],
+      "properties": {
+        "starting_head": {
+          "$ref": "#/$defs/nullableSha1"
+        },
+        "final_head": {
+          "$ref": "#/$defs/nullableSha1"
+        },
+        "tracked_diff_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "live": {
+      "type": "object",
+      "required": [
+        "live_validated",
+        "token_validation",
+        "eventsub",
+        "canonical_command"
+      ],
+      "properties": {
+        "live_validated": {
+          "type": "boolean"
+        },
+        "token_validation": {
+          "$ref": "#/$defs/tokenValidation"
+        },
+        "eventsub": {
+          "$ref": "#/$defs/eventsub"
+        },
+        "canonical_command": {
+          "$ref": "#/$defs/canonicalCommand"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "captures": {
+      "type": "object",
+      "required": [
+        "desktop",
+        "mobile"
+      ],
+      "properties": {
+        "desktop": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/capture"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mobile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/capture"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "video": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/video"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "repository": {
+      "type": "object",
+      "required": [
+        "url",
+        "commit",
+        "clean_checkout_verified",
+        "setup_verified",
+        "observed_accessible",
+        "observed_at"
+      ],
+      "properties": {
+        "url": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "commit": {
+          "$ref": "#/$defs/nullableSha1"
+        },
+        "clean_checkout_verified": {
+          "type": "boolean"
+        },
+        "setup_verified": {
+          "type": "boolean"
+        },
+        "observed_accessible": {
+          "type": "boolean"
+        },
+        "observed_at": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        }
+      },
+      "additionalProperties": true
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "description_path",
+        "description_sha256",
+        "setup_path",
+        "setup_sha256",
+        "codex_session_id",
+        "licensing_checklist_path",
+        "licensing_checklist_sha256",
+        "audio_licensed"
+      ],
+      "properties": {
+        "description_path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "description_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "setup_path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "setup_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "codex_session_id": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "licensing_checklist_path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "licensing_checklist_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "audio_licensed": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "package": {
+      "type": "object",
+      "required": [
+        "manifest_path"
+      ],
+      "properties": {
+        "manifest_path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "hygiene": {
+      "type": "object",
+      "required": [
+        "cleanup_performed",
+        "secret_scan_passed",
+        "raw_chat_absent",
+        "sealed_roots"
+      ],
+      "properties": {
+        "cleanup_performed": {
+          "type": "boolean"
+        },
+        "secret_scan_passed": {
+          "type": "boolean"
+        },
+        "raw_chat_absent": {
+          "type": "boolean"
+        },
+        "sealed_roots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sealedRoot"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "review": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/reviewRoute"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "review_packet_sha256": {
+              "$ref": "#/$defs/nullableSha256"
+            },
+            "reviewed_candidate_diff_sha256": {
+              "$ref": "#/$defs/nullableSha256"
+            }
+          }
+        }
+      ]
+    },
+    "publication": {
+      "type": "object",
+      "description": "Explicit permissions for irreversible external actions. Never evidence of readiness.",
+      "required": [
+        "repository_push",
+        "youtube_upload",
+        "devpost_final_submit"
+      ],
+      "properties": {
+        "repository_push": {
+          "type": "boolean"
+        },
+        "youtube_upload": {
+          "type": "boolean"
+        },
+        "devpost_final_submit": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "agent_execution": {
+      "type": "object",
+      "description": "Execution-route provenance for agents that authored this record. Not a review route or serving attestation.",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nullableNonEmptyString": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sha1": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "nullableSha1": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nullableSha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tokenValidation": {
+      "type": "object",
+      "required": [
+        "validated",
+        "scopes",
+        "expires_at",
+        "validated_at",
+        "client_id_sha256",
+        "user_id_sha256",
+        "origin"
+      ],
+      "properties": {
+        "validated": {
+          "type": "boolean"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expires_at": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "validated_at": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "client_id_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "user_id_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "origin": {
+          "enum": [
+            "observed_live",
+            "fixture",
+            null
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "eventsub": {
+      "type": "object",
+      "required": [
+        "connected",
+        "subscription_type",
+        "subscription_version",
+        "subscription_id",
+        "session_id",
+        "receipt_id_sha256",
+        "received_at"
+      ],
+      "properties": {
+        "connected": {
+          "type": "boolean"
+        },
+        "subscription_type": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "subscription_version": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "subscription_id": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "session_id": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "receipt_id_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "received_at": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        }
+      },
+      "additionalProperties": true
+    },
+    "canonicalCommand": {
+      "type": "object",
+      "required": [
+        "command",
+        "result",
+        "visible_consequence",
+        "consequence_sha256"
+      ],
+      "properties": {
+        "command": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "result": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "visible_consequence": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "consequence_sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        }
+      },
+      "additionalProperties": true
+    },
+    "capture": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "width",
+        "height",
+        "origin"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "width": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "origin": {
+          "enum": [
+            "live",
+            "fixture",
+            null
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "video": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "duration_seconds",
+        "url",
+        "visibility",
+        "observed_available",
+        "observed_at",
+        "contains_live_twitch",
+        "contains_codex_evidence"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "sha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "duration_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMaximum": 180,
+          "exclusiveMinimum": 0
+        },
+        "url": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "visibility": {
+          "enum": [
+            "public",
+            "unlisted",
+            "private",
+            null
+          ]
+        },
+        "observed_available": {
+          "type": "boolean"
+        },
+        "observed_at": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "contains_live_twitch": {
+          "type": "boolean"
+        },
+        "contains_codex_evidence": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "sealedRoot": {
+      "type": "object",
+      "required": [
+        "path",
+        "file_count",
+        "tree_sha256",
+        "algorithm"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "file_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tree_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "algorithm": {
+          "const": "sha256-sorted-relative-path-colon-file-sha256-lf-v1"
+        }
+      },
+      "additionalProperties": true
+    },
+    "reviewRoute": {
+      "type": "object",
+      "required": [
+        "requested_route",
+        "configured_route",
+        "spawn",
+        "serving_attestation_available",
+        "candidate_match",
+        "substantive_verdict"
+      ],
+      "properties": {
+        "requested_route": {
+          "$ref": "#/$defs/route"
+        },
+        "configured_route": {
+          "$ref": "#/$defs/route"
+        },
+        "spawn": {
+          "type": "object",
+          "required": [
+            "accepted",
+            "substitution_reported"
+          ],
+          "properties": {
+            "accepted": {
+              "type": "boolean"
+            },
+            "substitution_reported": {
+              "type": "boolean"
+            },
+            "reported_route": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/route"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "additionalProperties": true
+        },
+        "serving_attestation_available": {
+          "type": "boolean"
+        },
+        "candidate_match": {
+          "type": "boolean"
+        },
+        "substantive_verdict": {
+          "enum": [
+            "READY",
+            "NOT-READY"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "route": {
+      "type": "object",
+      "required": [
+        "provider",
+        "model",
+        "reasoning_effort",
+        "fork_turns"
+      ],
+      "properties": {
+        "provider": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "model": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "reasoning_effort": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "fork_turns": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

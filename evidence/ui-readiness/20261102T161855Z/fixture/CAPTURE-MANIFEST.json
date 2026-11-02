@@ -1,0 +1,38 @@
+{
+  "artifacts": {
+    "accessibility.json": {
+      "sha256": "e831ee1a4ecc1e36657c4619acc16b2031cc8e1293e8b031058da1cf3ee2c436"
+    },
+    "fixture-desktop.png": {
+      "height": 1100,
+      "sha256": "def9095b1fa2ad207617be4b0563c1880099f766f9edfb9c5a1a82b41018d3ed",
+      "width": 1440
+    },
+    "fixture-mobile.png": {
+      "height": 844,
+      "sha256": "5d9a5647146cb66b9446553827d0cf966637a1fb3897819ef70986cd0ef7f645",
+      "width": 390
+    },
+    "timeline.json": {
+      "sha256": "d36eadff890acfd143f9fa83e2a44781730d0f48f3854a10df6dd6bc0e17aaf9"
+    }
+  },
+  "label": "FIXTURE — offline fixture render (not live Twitch activity)",
+  "live_verified": false,
+  "mode": "fixture",
+  "notes": [
+    "Fixture and disconnected captures are offline renders; they are not live Twitch evidence.",
+    "Live captures require an observed, adapter-verified evidence record.",
+    "The final video additionally requires the ordered Twitch-to-Codex segments and is never produced from fixtures."
+  ],
+  "schema_version": 1,
+  "source_bindings": {
+    "client/app.js": "509fa88c7701eeb404ea64c3700596d45aa3cc95805d406546fe4dab1cc1a4cb",
+    "client/hud.js": "77017eb6f37bea6958f3971bc79cccdfb938f516dad423fe6ee8e1249a9d7792",
+    "client/index.html": "8688b21004ebf5426d03a5c30c47f570757dbc8ea11b931d1abd3c5af36c7cd7",
+    "client/style.css": "5d65b6573d75fb298dbcdaeeea1186d304708e03b3709b26466b49ace61afdc1"
+  },
+  "submission_video_eligible": false,
+  "timeline_sha256": "d36eadff890acfd143f9fa83e2a44781730d0f48f3854a10df6dd6bc0e17aaf9",
+  "tool": "tools/capture_submission.py"
+}

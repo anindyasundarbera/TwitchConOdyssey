@@ -23,13 +23,19 @@
     expired: "Too late — the window closed. Input was not counted.",
   };
   const MODE_LABELS = {
-    live: "Live Twitch participation",
+    live: "Live Twitch participation (verified EventSub adapter)",
     fixture: "Offline fixture (not live Twitch activity)",
+    disconnected: "Disconnected — no authoritative state",
+  };
+  const MODE_BADGES = {
+    live: "LIVE · VERIFIED TWITCH",
+    fixture: "OFFLINE FIXTURE",
+    disconnected: "DISCONNECTED",
   };
   const CONNECTION_LABELS = {
     online: "Connected to the authoritative simulation.",
     retrying: "Reconnecting to the authoritative simulation — controls are paused.",
-    offline: "Connection lost. The last authoritative state is shown; retry to reconnect.",
+    offline: "Disconnected — no authoritative state. Retry to reconnect; live status is not inferred.",
   };
 
   function requireState(state) {
@@ -80,18 +86,119 @@
     return "Reward phase: the settled outcome is shown; the next turn starts automatically.";
   }
 
-  function deriveView(state, options) {
+  function requireEvidence(evidence) {
+    if (!evidence || typeof evidence !== "object") throw new TypeError("authoritative evidence context required");
+    if (evidence.authority !== "authoritative-runtime") throw new TypeError("untrusted evidence context");
+    if (evidence.origin !== "fixture" && evidence.origin !== "live" && evidence.origin !== "disconnected") {
+      throw new TypeError("invalid evidence origin");
+    }
+    if ("live_verified" in evidence && typeof evidence.live_verified !== "boolean") {
+      throw new TypeError("invalid live verification flag");
+    }
+    if (evidence.origin === "fixture" &&
+        (evidence.live_participation !== false || evidence.live_verified === true)) {
+      throw new TypeError("inconsistent evidence origin: fixture cannot claim live participation");
+    }
+    if (evidence.origin === "live" && evidence.live_participation !== true) {
+      throw new TypeError("inconsistent evidence origin");
+    }
+    if (evidence.origin === "live" && evidence.fixture === true) {
+      throw new TypeError("inconsistent evidence origin: fixture flag on live evidence");
+    }
+    return evidence;
+  }
+
+  function evidenceMode(evidence) {
+    if (evidence.origin === "disconnected") return "disconnected";
+    if (evidence.origin === "fixture") {
+      const adapter = evidence.adapter;
+      if (adapter && typeof adapter === "object" && adapter.transport === "live" &&
+          adapter.state !== "active_live") {
+        return "disconnected";
+      }
+      return "fixture";
+    }
+    const adapter = evidence.adapter;
+    if (adapter && typeof adapter === "object" && adapter.transport === "live" &&
+        adapter.state !== "active_live") {
+      return "disconnected";
+    }
+    return "live";
+  }
+
+  function disconnectedView(reason, state) {
+    const safe = state && typeof state === "object" &&
+      typeof state.tick === "number" && typeof state.turn === "number" &&
+      state.movement && state.bounty && state.avatar;
+    const note = reason || CONNECTION_LABELS.offline;
+    return {
+      mode: "disconnected",
+      modeLabel: MODE_LABELS.disconnected,
+      badge: MODE_BADGES.disconnected,
+      modeDetail: "No live status is inferred while the authoritative state is unavailable.",
+      connectionNotice: note,
+      liveVerified: false,
+      hasState: Boolean(safe),
+      tick: safe ? state.tick : null,
+      turn: safe ? state.turn : null,
+      phase: safe ? state.phase : "unavailable",
+      paused: true,
+      terminal: false,
+      progressPercent: safe ? Number(Math.min(100, Math.max(0, Number(state.movement.progress) || 0)).toFixed(1)) : null,
+      district: safe ? state.movement.district : "Unavailable",
+      lane: safe ? state.avatar.lane : null,
+      transitioning: false,
+      hazard: { id: null, warning: false, secondsLeft: null, active: false, countered: false },
+      pool: safe ? state.bounty.pool : null,
+      fixtureHype: safe ? state.bounty.synthetic_fixture_pool : null,
+      collisions: safe ? state.bounty.collisions_total : null,
+      preview: "Controls are disabled. No live status is inferred from local state, a query parameter or a screenshot.",
+      statusLine: safe
+        ? "Disconnected — last authoritative state shown. Controls locked."
+        : "Disconnected — no authoritative state received.",
+      audience: { liveEligible: 0, counterVotes: 0, liveCounters: 0 },
+      controls: {
+        enabled: false,
+        buttons: [
+          { action: "left", label: "Steer left", kind: "streamer.steer", disabled: true },
+          { action: "right", label: "Steer right", kind: "streamer.steer", disabled: true },
+        ],
+      },
+      accessibilitySummary:
+        "Disconnected. No authoritative state. Live status is not inferred. Controls disabled.",
+    };
+  }
+
+  function deriveView(state, evidence) {
+    const context = requireEvidence(evidence);
+    const mode = evidenceMode(context);
+    if (mode === "disconnected") {
+      const reason = context.origin === "disconnected"
+        ? (context.reason || context.origin_label)
+        : "Live adapter is not active. Controls locked; live status is not claimed.";
+      return disconnectedView(reason, state);
+    }
+    if (context.origin === "live" && context.live_verified !== true) {
+      return disconnectedView(
+        "Live evidence was not verified by the live adapter. Controls locked; live status is not claimed.", state);
+    }
     requireState(state);
-    const opts = options || {};
-    const mode = opts.mode === "live" ? "live" : "fixture";
     const progress = Math.min(100, Math.max(0, Number(state.movement.progress) || 0));
     const terminal = TERMINAL.has(state.status);
     const controlsEnabled = state.status === "racing" && !state.is_paused;
     const hazard = hazardView(state);
     const audience = state.audience || {};
+    const notice = connectionNotice("online", mode);
     return {
       mode,
-      modeLabel: MODE_LABELS[mode],
+      modeLabel: context.origin_label || MODE_LABELS[mode],
+      badge: MODE_BADGES[mode],
+      modeDetail: mode === "live"
+        ? "Server-owned live provenance; the verified adapter is active."
+        : "Server-owned fixture provenance; this is not live Twitch activity.",
+      connectionNotice: notice,
+      liveVerified: mode === "live",
+      hasState: true,
       tick: state.tick,
       turn: state.turn,
       phase: state.phase,
@@ -138,7 +245,13 @@
     return { status, message: STATUS_LABELS[status], announce: STATUS_LABELS[status] };
   }
 
-  function connectionNotice(status) {
+  function connectionNotice(status, mode) {
+    if (status === "online" && mode === "live") {
+      return "Connected to the authoritative runtime. Verified live Twitch adapter active.";
+    }
+    if (status === "online" && mode === "fixture") {
+      return "Connected to the authoritative offline fixture. Not live Twitch activity.";
+    }
     return CONNECTION_LABELS[status] || CONNECTION_LABELS.offline;
   }
 
@@ -146,33 +259,55 @@
     if (!view || !root || typeof root.querySelector !== "function") {
       throw new TypeError("view and root are required");
     }
+    const node = (selector) => root.querySelector(selector);
     const set = (selector, text) => {
-      const node = root.querySelector(selector);
-      if (node) node.textContent = text;
+      const target = node(selector);
+      if (target) target.textContent = text;
     };
+    const disconnected = view.mode === "disconnected";
     set("[data-hud=mode]", view.modeLabel);
+    set("[data-hud=mode-detail]", view.modeDetail || "");
     set("[data-hud=status]", view.statusLine);
-    set("[data-hud=progress]", "Route " + view.progressPercent + "% — " + view.district);
-    set("[data-hud=phase]", "Turn " + view.turn + " · " + view.phase +
-      (view.paused ? " · paused" : ""));
+    set("[data-hud=progress]", disconnected && !view.hasState
+      ? "Route progress unavailable"
+      : "Route " + view.progressPercent + "% — " + view.district);
+    set("[data-hud=phase]", disconnected && !view.hasState
+      ? "No authoritative phase"
+      : "Turn " + view.turn + " · " + view.phase + (view.paused ? " · paused" : ""));
     set("[data-hud=hazard]", view.hazard.id
       ? ("Hazard " + view.hazard.id + (view.hazard.warning
           ? " — warning " + view.hazard.secondsLeft + "s"
-          : (view.hazard.countered ? " — cleared" : " — resolved")))
-      : "No committed hazard this turn");
+          : (view.hazard.countered ? " — cleared"
+            : (view.hazard.active ? " — active" : " — resolved"))))
+      : (disconnected ? "No authoritative hazard" : "No committed hazard this turn"));
     set("[data-hud=preview]", view.preview);
-    set("[data-hud=pool]", "Hype " + view.pool);
+    set("[data-hud=pool]", disconnected && !view.hasState ? "Hype unavailable" : "Hype " + view.pool);
     set("[data-hud=audience]", view.mode === "live"
       ? (view.audience.liveCounters + " of " + view.audience.liveEligible + " eligible accounts countered")
-      : "Fixture run — no live Twitch participation");
-    const fill = root.querySelector("[data-hud=progress-fill]");
-    if (fill && fill.style) fill.style.width = view.progressPercent + "%";
+      : (disconnected
+        ? "No audience data — not live"
+        : "Fixture run — no live Twitch participation"));
+    set("[data-hud=connection]", view.connectionNotice);
+    const modeNode = node("[data-hud=mode]");
+    if (modeNode && typeof modeNode.setAttribute === "function") {
+      modeNode.setAttribute("data-mode", view.mode);
+    }
+    const badge = node("[data-hud=badge]");
+    if (badge) {
+      badge.textContent = view.badge;
+      if (typeof badge.setAttribute === "function") {
+        badge.setAttribute("data-mode", view.mode);
+        badge.setAttribute("aria-label", "Presentation mode: " + view.modeLabel);
+      }
+    }
+    const fill = node("[data-hud=progress-fill]");
+    if (fill && fill.style) fill.style.width = (disconnected ? 0 : view.progressPercent) + "%";
     for (const button of view.controls.buttons) {
-      const node = root.querySelector("[data-control=" + button.action + "]");
-      if (node) {
-        node.disabled = button.disabled;
-        if (typeof node.setAttribute === "function") {
-          node.setAttribute("aria-label", button.label);
+      const control = node("[data-control=" + button.action + "]");
+      if (control) {
+        control.disabled = button.disabled;
+        if (typeof control.setAttribute === "function") {
+          control.setAttribute("aria-label", button.label);
         }
       }
     }
@@ -180,7 +315,7 @@
   }
 
   return {
-    TURN_TICKS, PLANNING_TICKS,
-    deriveView, controlIntent, statusMessage, connectionNotice, renderHud,
+    TURN_TICKS, PLANNING_TICKS, MODE_LABELS, MODE_BADGES, CONNECTION_LABELS,
+    deriveView, disconnectedView, controlIntent, statusMessage, connectionNotice, renderHud,
   };
 });

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "task": "TASK-012-R1-R5",
+  "candidate_base": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "candidate_diff_sha256": "3df90ab5f142192abf9c8448d9a891b4eae6729be1a1f1d2b5101c95cf15615a",
+  "review_packet_sha256": "16a8aa0310ac9248e00e5bb415bc3b8dca0cab479df19c9e7ca521f8c3f9a8ff",
+  "verdict": "NOT-READY",
+  "findings": [
+    {"id":"R1-controls","severity":"BLOCKER","status":"unresolved","summary":"Shipped client lacks steering controls, command submission, and command-status feedback; fails TASK-007 acceptance."},
+    {"id":"R1-async-results","severity":"MAJOR","status":"unresolved","summary":"Asynchronous results can apply using the current tick/turn without checking original round/deadline."},
+    {"id":"R2-initial-roster-leave","severity":"MAJOR","status":"unresolved","summary":"Linked subjects in the engine's initial roster cannot leave unless CommandIntake previously registered them."},
+    {"id":"R5-clean-checkout","severity":"MAJOR","status":"unresolved","summary":"Fresh-checkout reproduction was not verified for the candidate."}
+  ],
+  "submission_ready": false,
+  "unresolved_decisions": ["live_submission_external_capture"]
+}

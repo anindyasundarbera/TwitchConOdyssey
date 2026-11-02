@@ -14,7 +14,7 @@ class TelemetryTests(unittest.TestCase):
 
     def test_observation_never_mutates_gameplay_state(self):
         game = self.game()
-        recorder = TelemetryRecorder(game, "match-1", origin="fixture")
+        recorder = TelemetryRecorder(game, "match-1")
         before = game.state_hash()
         before_commands = len(game._simulator.command_history)
         recorder.poll()
@@ -36,7 +36,7 @@ class TelemetryTests(unittest.TestCase):
 
     def test_hazard_warning_and_booth_waypoint_linkage(self):
         game = self.game(initial_progress=34.99, base_speed_override=1.25)
-        recorder = TelemetryRecorder(game, "match-3", origin="fixture")
+        recorder = TelemetryRecorder(game, "match-3")
         recorder.poll()
         game.step()  # progress crosses 35.0 -> twitch_booth
         booth_events = [e for e in recorder.poll() if e["event"] == "booth_waypoint"]
@@ -76,19 +76,18 @@ class TelemetryTests(unittest.TestCase):
         for event in recorder.events:
             self.assertTrue(set(event) <= allowed, set(event) - allowed)
 
-    def test_fixture_and_live_labels_are_explicit(self):
-        fixture = TelemetryRecorder(self.game(), "match-6", origin="fixture")
-        live = TelemetryRecorder(self.game(), "match-7", origin="live")
+    def test_fixture_label_is_fixed_and_callers_cannot_mint_live_evidence(self):
+        fixture = TelemetryRecorder(self.game(), "match-6")
         fixture.poll()
-        live.poll()
         self.assertFalse(fixture.events[0]["live_participation"])
         self.assertIn("not live", fixture.events[0]["origin_label"])
-        self.assertTrue(live.events[0]["live_participation"])
         with self.assertRaises(ValueError):
-            TelemetryRecorder(self.game(), "match-8", origin="replay")
+            TelemetryRecorder(self.game(), "")
+        with self.assertRaises(TypeError):
+            TelemetryRecorder(self.game(), "match-7", origin="live")
 
     def test_evidence_bundle_hashes_match_repo_manifest_convention(self):
-        recorder = TelemetryRecorder(self.game(), "match-9", origin="fixture")
+        recorder = TelemetryRecorder(self.game(), "match-9")
         recorder.poll()
         recorder.poll()
         bundle = recorder.evidence_bundle()

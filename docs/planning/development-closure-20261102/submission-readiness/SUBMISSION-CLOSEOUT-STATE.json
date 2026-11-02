@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "status": "authorized_in_progress_implementation_complete_waiting_for_external_inputs",
+  "submission_ready": false,
+  "base_head": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "offline_candidate_diff_sha256": "c215b22a8735e15a88a38d6a64f7d7f9234729ef2db3af394b1b2a233f2420bd",
+  "ledger_revision": 15,
+  "authorization": {
+    "recorded_at": "2026-11-02",
+    "exact_user_wording": [
+      "close the submission readiness",
+      "Make it in such a way that Astra review does not get blocked. We can do astra review at the end."
+    ],
+    "status": "recorded_and_bound",
+    "governance_record": "docs/planning/development-closure-20261102/submission-readiness/GOVERNANCE-TRANSACTION-20261102.md",
+    "decision": "live_submission_external_capture",
+    "decision_status": "authorized_in_progress"
+  },
+  "publication_authorizations": {
+    "repository_push": false,
+    "youtube_upload": false,
+    "devpost_final_submit": false
+  },
+  "required_inputs": [
+    "TWITCH_CLIENT_ID_SOURCE",
+    "TWITCH_USER_OAUTH_TOKEN_SOURCE",
+    "TWITCH_BROADCASTER_USER_ID",
+    "TWITCH_CHAT_USER_ID",
+    "TWITCH_CHANNEL_LOGIN",
+    "TWITCH_TEST_ACCOUNT",
+    "TWITCH_TEST_MESSAGE",
+    "REPOSITORY_DESTINATION_URL",
+    "YOUTUBE_UPLOAD_TARGET",
+    "YOUTUBE_VISIBILITY",
+    "DEVPOST_PROJECT_URL",
+    "ALLOW_REPOSITORY_PUSH",
+    "ALLOW_YOUTUBE_UPLOAD",
+    "ALLOW_DEVPOST_FINAL_SUBMIT"
+  ],
+  "input_request": {
+    "status": "blocked_no_values_supplied",
+    "rule": "Blank or placeholder bracketed values authorize no inference, live call, upload, push or submission.",
+    "note": "All 14 invocation values are placeholders as received; no secret, identifier or destination may be inferred."
+  },
+  "workers": [
+    {
+      "id": "live_twitch_adapter",
+      "packet": "docs/planning/development-closure-20261102/submission-readiness/agents/WORKER-A-LIVE-TWITCH.md",
+      "packet_sha256": "95863c0dd208f2a1f55188ea40e893547db45c35176704e4771804500ea9ca08",
+      "status": "completed",
+      "return_limit_words": 250
+    },
+    {
+      "id": "presentation_and_capture",
+      "packet": "docs/planning/development-closure-20261102/submission-readiness/agents/WORKER-B-PRESENTATION-CAPTURE.md",
+      "packet_sha256": "121a29e2129f5f42eda08e8891bac08a29b8cbf766ce17214f9657b320ff06d8",
+      "status": "completed",
+      "return_limit_words": 250
+    },
+    {
+      "id": "readiness_package_and_governance",
+      "packet": "docs/planning/development-closure-20261102/submission-readiness/agents/WORKER-C-PACKAGE-READINESS.md",
+      "packet_sha256": "ecfe66e7f6a7fe277d004180cf72fe42ec48c0765394bc50222288b4aa711604",
+      "status": "completed",
+      "return_limit_words": 250
+    }
+  ],
+  "live_capture": {
+    "status": "not_started_missing_inputs",
+    "twitch_token_validated": false,
+    "eventsub_subscribed": false,
+    "event_received": false,
+    "desktop_capture": null,
+    "mobile_capture": null,
+    "video": null
+  },
+  "final_review": {
+    "status": "not_started_candidate_not_frozen",
+    "provider": "codex_subagent",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "fork_turns": "none",
+    "serving_attestation_unavailable_is_not_a_substantive_blocker": true,
+    "reported_substitution_fails_closed": true,
+    "route_available_in_harness": false,
+    "route_note": "The exact gpt-6-astra/high route is unavailable in this OpenCode harness; no Astra review was requested because the candidate is not frozen and live/capture/video evidence is missing. Missing serving attestation is caveat-only by policy; a rejected or substituted route fails closed."
+  },
+  "known_gaps": [
+    "All external Twitch, repository, YouTube and Devpost inputs are placeholders.",
+    "The EventSub adapter is implemented and unit-tested with fake transports; no live token validation, subscription or event receipt exists.",
+    "No live rendered desktop/mobile capture or sanitized final video exists; offline fixture/disconnected captures are expressly non-live.",
+    "No judge-accessible repository URL, video URL or Devpost URL is bound.",
+    "No independent Astra review has been requested for the changed candidate; the configured gpt-6-astra route is unavailable in this harness.",
+    "No repository LICENSE exists and final video audio has not been cleared.",
+    "The exact configured codebase-memory project name is not indexed; current-tree discovery used direct source inspection."
+  ],
+  "integration": {
+    "completed_at": "2026-11-02",
+    "targeted_python_tests": {
+      "command": "python3 -m unittest tests.test_context_contract tests.test_review_route tests.test_gameplan_rules tests.test_command_intake tests.test_runtime_integration tests.test_telemetry tests.test_submission_package tests.test_submission_readiness tests.test_twitch_live tests.test_deterministic_kernel tests.test_model_router tests.test_plan_rehearsal tests.test_city_setting tests.test_presentation_capture",
+      "tests": 169,
+      "result": "OK"
+    },
+    "node_tests": {
+      "command": "node --test client/hud.test.js",
+      "tests": 13,
+      "result": "OK"
+    },
+    "package": {
+      "manifest": "build/submission-package/MANIFEST.json",
+      "manifest_sha256": "d373461f0ca87bcdfdf6911110eb69a08ff275a4324dc163489fb8eebff778d2",
+      "artifacts": 55,
+      "check": "ok",
+      "complete": true,
+      "pending": 0
+    },
+    "readiness": {
+      "record": "docs/submission/SUBMISSION-METADATA.json",
+      "submission_ready": false,
+      "reason_count": 53,
+      "verifier": "tools/verify_submission_readiness.py"
+    },
+    "offline_capture_evidence": {
+      "fixture": {
+        "manifest": "evidence/submission-capture/fixture/CAPTURE-MANIFEST.json",
+        "manifest_sha256": "bdf554bc0b89297abf002a35da770ee06de912f08f9d03b87cff6bea09f7c0eb",
+        "desktop_sha256": "4a8cd3735099c8c27fbdbb86efd0cc231f1cf8e5c54f52289b76fc2fdcd2840e",
+        "mobile_sha256": "5d14d07e7e5c581b4e54600e7047bb8ceb334a9e8751ca8ebbcdc754a87e000b",
+        "desktop": "1440x1100",
+        "mobile": "390x844",
+        "label": "fixture, not live evidence"
+      },
+      "disconnected": {
+        "manifest": "evidence/submission-capture/disconnected/CAPTURE-MANIFEST.json",
+        "manifest_sha256": "460420578d9daa12152692626e6abbe17089a1ba5bac6e796a603f665e90ca48",
+        "desktop_sha256": "eca57e18b3b68fa15f10caf55a4fda9658693a4d32283da5f73c81efbe16f66f",
+        "mobile_sha256": "aa5c196d4a1ae3b4a73b1e72fdb263ce7e4d1740a1c56108386f05d1bd9f496d",
+        "desktop": "1440x1100",
+        "mobile": "390x844",
+        "label": "disconnected, not live evidence"
+      }
+    },
+    "secret_scan": {
+      "files_scanned": 1478,
+      "hits": 0,
+      "patterns": [
+        "private_key",
+        "github_token",
+        "github_pat",
+        "aws_key",
+        "slack_token",
+        "openai_key",
+        "oauth_literal",
+        "bearer_literal",
+        "env_token_value",
+        "env_client_value"
+      ],
+      "note": "Synthetic test sentinels and code interpolation are not credentials; no live token or raw chat is present."
+    },
+    "sealed_roots": [
+      {
+        "path": "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043",
+        "files": 116,
+        "tree_sha256": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d",
+        "match": true
+      },
+      {
+        "path": "artifacts/simulations/full-game/full-game-20261101T185524Z-2647e033",
+        "files": 170,
+        "tree_sha256": "9cb21a1f5109e1fcfecb9d6860173854621e3ba384026ed487b7a78df3ec3b9e",
+        "match": true
+      }
+    ],
+    "governance_record": "docs/planning/development-closure-20261102/submission-readiness/GOVERNANCE-TRANSACTION-20261102.md"
+  },
+  "worker_route_deviations": {
+    "configured_route": {
+      "provider": "codex_subagent",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "high"
+    },
+    "actual_route": {
+      "provider": "ollama-cloud",
+      "model": "deepseek-v4.1-flash",
+      "harness": "OpenCode"
+    },
+    "affected_workers": [
+      "live_twitch_adapter",
+      "presentation_and_capture",
+      "readiness_package_and_governance"
+    ],
+    "note": "The configured Codex route was unavailable in this harness. Deviations are recorded and do not constitute Codex or Astra serving evidence."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "task": "TASK-012-R1-R5",
+  "candidate_base": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "candidate_diff_sha256": "c215b22a8735e15a88a38d6a64f7d7f9234729ef2db3af394b1b2a233f2420bd",
+  "review_packet_sha256": "90dc0ab37f3444a0bfdc26c638198d010956921f85f742f7c22aa1c0737336bb",
+  "verdict": "NOT-READY",
+  "implementation_findings": [],
+  "gate_findings": [
+    {
+      "id": "configured-route-unverified",
+      "severity": "BLOCKER",
+      "status": "unresolved",
+      "summary": "Serving model and effort are not independently observable; the configured final-review route cannot be certified."
+    }
+  ],
+  "r1_r5": "PASS",
+  "submission_ready": false,
+  "unresolved_decisions": ["live_submission_external_capture"]
+}

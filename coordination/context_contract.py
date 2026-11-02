@@ -14,7 +14,8 @@ DEFAULT_POLICY = "config/directive-policy.json"
 MODEL_POLICY = "config/model-policy.json"
 MUST_HAVE = frozenset({
     "setting_san_diego", "fresh_packets", "context_reuse", "scripted_actors",
-    "model_allocation", "manual_escalation", "packet_limits", "gameplay_gate",
+    "model_allocation", "manual_escalation", "packet_limits",
+    "gate_to_game_interface_authorization_20261102",
     "evidence_independence", "frozen_artifacts", "precedence", "bounded_subagents",
 })
 MODEL_CAPS = {"gpt-6-luna": 24000, "gpt-6.1-terra": 24000,
@@ -40,12 +41,15 @@ SELECTED_DECISIONS = {"D-01": "player_agency", "D-02": "survival_contract",
 DECISION_IDS = frozenset(SELECTED_DECISIONS)
 SELECTED_STATUS = "selected_for_s1_simulation_unverified"
 SELECTED_SOURCE = "docs/planning/S1-SIMULATION-PROFILE.md"
-FORBIDDEN_ACTIONS = frozenset({
-    "server.app", "server.replay", "gameplay tests", "browser gameplay", "harness.run",
+MANDATORY_FORBIDDEN_ACTIONS = frozenset({
     "automatic phase advance", "automatic retry/escalation/provider change/silent fallback",
     "runtime migration", "deployment/publication/platform provisioning/provider setup/live calls",
     "frozen v1/context/rehearsal edits",
 })
+CLOSED_GATE_FORBIDDEN_ACTIONS = frozenset({
+    "server.app", "server.replay", "gameplay tests", "browser gameplay", "harness.run",
+})
+FORBIDDEN_ACTIONS = MANDATORY_FORBIDDEN_ACTIONS
 
 
 def _unique_object(pairs):
@@ -125,14 +129,23 @@ def _validate(policy):
             or policy.get("precedence") != PRECEDENCE or policy.get("conflicts") != []):
         raise ValueError("Unauthorized phase, precedence or unresolved directive conflict")
     gate = policy.get("gate")
-    if (type(gate) is not dict or gate.get("gameplay_enabled") is not False
-            or gate.get("automatic_phase_advance") is not False):
-        raise ValueError("Gameplay gate must remain closed")
+    if type(gate) is not dict or gate.get("automatic_phase_advance") is not False:
+        raise ValueError("Invalid gate or automatic phase advance enabled")
+    gameplay_enabled = gate.get("gameplay_enabled")
+    if gameplay_enabled is not True and gameplay_enabled is not False:
+        raise ValueError("Invalid gameplay gate state")
     _text(gate.get("rule"), "gate rule")
     _text(policy.get("instruction_prefix"), "instruction prefix")
-    if not FORBIDDEN_ACTIONS.issubset(_strings(policy.get("forbidden_actions"),
-                                             "forbidden actions")):
+    policy_forbidden = _strings(policy.get("forbidden_actions"), "forbidden actions")
+    if not MANDATORY_FORBIDDEN_ACTIONS.issubset(policy_forbidden):
         raise ValueError("Missing mandatory forbidden action")
+    if not gameplay_enabled:
+        if not CLOSED_GATE_FORBIDDEN_ACTIONS.issubset(policy_forbidden):
+            raise ValueError("Closed gameplay gate requires forbidden gameplay actions")
+    else:
+        auth_id = gate.get("authorization_directive")
+        if not auth_id or type(auth_id) is not str:
+            raise ValueError("Authorized gameplay gate requires a bound active authorization directive")
     forbidden = _strings(policy.get("forbidden_tasks"), "forbidden tasks")
     if not {"gameplay_actor", "chat_action"}.issubset(forbidden):
         raise ValueError("Missing forbidden gameplay task")
@@ -191,6 +204,16 @@ def _validate(policy):
         for old in item.get("supersedes", []):
             if old not in by_id or by_id[old].get("superseded_by") != item["id"]:
                 raise ValueError("Inconsistent supersession links")
+    if gameplay_enabled:
+        auth_id = gate.get("authorization_directive")
+        if auth_id not in by_id or by_id[auth_id].get("status") != "active":
+            raise ValueError("Gameplay gate authorization directive must be active")
+        auth_dir = by_id[auth_id]
+        if auth_dir.get("topic") != "phase_authorization":
+            raise ValueError("Gameplay gate authorization directive must cover phase_authorization")
+        if auth_dir.get("wording") != "exact" or auth_dir.get("wording_availability") != "recorded_verbatim":
+            raise ValueError("Gameplay gate authorization directive must have verbatim recorded wording")
+        _text(auth_dir.get("exact_user_wording"), "gameplay authorization exact user wording")
     common = _strings(policy.get("common_directive_ids"), "common directive IDs")
     if not MUST_HAVE.issubset(common):
         raise ValueError("Missing mandatory directive selection")
@@ -234,8 +257,10 @@ def _validate(policy):
     if type(decisions) is not list or not decisions:
         raise ValueError("Missing unresolved decisions")
     unresolved_ids = set()
+    publication_keys = {"repository_push", "youtube_upload", "devpost_final_submit"}
     for item in decisions:
-        if (type(item) is not dict or item.get("status") != "unresolved"
+        if (type(item) is not dict
+                or item.get("status") not in ("unresolved", "authorized_in_progress")
                 or item.get("source_path") not in required):
             raise ValueError("Invalid unresolved decision")
         for key in ("id", "rule", "gate"):
@@ -244,6 +269,34 @@ def _validate(policy):
                 or item["id"] in SELECTED_DECISIONS.values()):
             raise ValueError("Duplicate or cross-list decision ID")
         unresolved_ids.add(item["id"])
+        if item["status"] != "authorized_in_progress":
+            continue
+        auth = policy.get(item.get("authorization_ref"))
+        if type(auth) is not dict or auth.get("decision_id") != item["id"]:
+            raise ValueError("Authorized decision requires a bound authorization record")
+        _text(auth.get("exact_user_wording"), "authorization exact wording")
+        if auth.get("wording_availability") != "recorded_verbatim":
+            raise ValueError("Authorization wording must be recorded verbatim")
+        _strings(auth.get("authorized_actions"), "authorized actions")
+        excluded = _strings(auth.get("excluded_actions"), "excluded actions")
+        if not {"publication", "credential_exposure"}.issubset(
+                {value for value in excluded if isinstance(value, str)}):
+            raise ValueError("Authorization must exclude publication and credential exposure")
+        _strings(auth.get("external_inputs_required"), "external inputs")
+        publications = auth.get("publication_authorizations")
+        if (type(publications) is not dict or set(publications) != publication_keys
+                or any(type(value) is not bool or value for value in publications.values())):
+            raise ValueError("Publication booleans must remain false until exact targets authorize them")
+        if auth.get("submission_ready") is not False or auth.get("compiler_gate_unchanged") is not True:
+            raise ValueError("Authorization cannot claim readiness or change the plan compiler gate")
+        review = auth.get("review_route")
+        if (type(review) is not dict
+                or review.get("requested") != {
+                    "provider": "codex_subagent", "model": "gpt-6-astra",
+                    "reasoning_effort": "high", "fork_turns": "none"}
+                or review.get("substitution_fails_closed") is not True
+                or review.get("serving_attestation_unavailable_is_not_a_substantive_blocker") is not True):
+            raise ValueError("Invalid final review-route policy")
     return by_id
 
 
@@ -288,6 +341,19 @@ def compile_packet(task, phase="plan", owned_paths=(), *, root=ROOT,
         if digest != expected:
             raise ValueError(f"Changed required source hash: {path}; reconcile ledger first")
         paths[path] = digest
+    for item in policy["unresolved_decisions"]:
+        auth = policy.get(item.get("authorization_ref"))
+        if auth is None:
+            continue
+        quote = auth["exact_user_wording"].encode("utf-8")
+        if not any(quote in raw for raw in source_raw.values()):
+            raise ValueError("Authorization exact wording is absent from bound sources")
+    if policy["gate"].get("gameplay_enabled"):
+        auth_id = policy["gate"].get("authorization_directive")
+        auth_dir = by_id[auth_id]
+        quote = auth_dir["exact_user_wording"].encode("utf-8")
+        if not any(quote in source_raw[source["path"]] for source in auth_dir["provenance"]):
+            raise ValueError("Gameplay gate exact authorization wording is absent from bound provenance")
     owned_bindings = [_owned_binding(root, path, paths.get(path)) for path in owned]
     paths.update({item["path"]: item["sha256"] for item in owned_bindings
                   if item["state"] == "existing"})

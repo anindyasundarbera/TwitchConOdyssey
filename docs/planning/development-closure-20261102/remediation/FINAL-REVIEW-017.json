@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "task": "TASK-012-R1-R5",
+  "candidate_base": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "candidate_diff_sha256": "34867262701d01afbdd49d76cdfad95ac5d42c45387bbf329e5d385f1580bae3",
+  "review_packet_sha256": "dca9f0bf3538a281298edc8c33365d6112f876e877b46048a6cf1340bba49d67",
+  "verdict": "NOT-READY",
+  "findings": [
+    {
+      "id": "R1-hazard-display",
+      "severity": "MAJOR",
+      "status": "unresolved",
+      "summary": "HUD labels an active uncountered hazard resolved while preview says the obstacle is active.",
+      "evidence": "client/hud.js:168-171"
+    },
+    {
+      "id": "R1-packaged-assertion",
+      "severity": "MAJOR",
+      "status": "unresolved",
+      "summary": "Runtime integration test asserts a client source literal with spacing that does not exist, so the packaged assertion fails.",
+      "evidence": "tests/test_runtime_integration.py:31; client/app.js:79"
+    }
+  ],
+  "submission_ready": false,
+  "unresolved_decisions": ["live_submission_external_capture"]
+}

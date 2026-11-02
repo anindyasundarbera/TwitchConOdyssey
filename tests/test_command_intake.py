@@ -1,8 +1,9 @@
 """W5/TASK-008 offline intake matrix: identity, dedupe, sequence, timing, roster, isolation."""
+from concurrent.futures import ThreadPoolExecutor
 import unittest
 
 from server.engine import AuthoritativeGame
-from server.intake import CommandIntake, IdentityRegistry
+from server.intake import CommandIntake, IdentityRegistry, MAX_TRACKED
 
 
 class CommandIntakeTests(unittest.TestCase):
@@ -112,6 +113,37 @@ class CommandIntakeTests(unittest.TestCase):
         self.assertEqual(intake.submit("r2", "chat:subject_2", "streamer.steer",
                                        {"direction": "left"}, 1), "rejected")
         self.assertEqual(intake.decisions[-1]["reason"], "subject_left")
+        self.assertIn(other, game._simulator.frozen_roster)
+        for _ in range(600):
+            game.step()
+        self.assertNotIn(other, game._simulator.frozen_roster)
+        self.assertEqual(game.snapshot()["audience"]["roster_size"], 0)
+
+    def test_linked_initial_roster_subject_can_leave(self):
+        game = AuthoritativeGame(seed=42, initial_lane=1, initial_roster=[self.subject])
+        intake = CommandIntake(game, self.registry)
+        self.assertEqual(intake.leave(self.subject), "applied")
+        self.assertIn(self.subject, game._simulator.pending_leaves)
+
+    def test_receipt_admission_is_atomic_across_threads(self):
+        def submit_once(sequence):
+            return self.intake.submit("same-receipt", "chat:subject_1", "streamer.steer",
+                                      {"direction": "right"}, sequence)
+
+        with ThreadPoolExecutor(max_workers=16) as pool:
+            statuses = list(pool.map(submit_once, range(16)))
+        self.assertEqual(statuses.count("applied"), 1)
+        self.assertEqual(statuses.count("duplicate"), 15)
+        self.assertEqual(len(self.game._simulator.command_history), 1)
+
+    def test_rejected_receipt_flood_is_bounded(self):
+        for index in range(MAX_TRACKED + 25):
+            self.intake.submit(f"unknown-{index}", "chat:ghost", "streamer.steer",
+                               {"direction": "right"}, index)
+        self.assertEqual(len(self.intake._seen_receipts), MAX_TRACKED)
+        self.assertEqual(len(self.intake.decisions), MAX_TRACKED)
+        self.assertNotIn("unknown-0", self.intake._seen_receipts)
+        self.assertIn(f"unknown-{MAX_TRACKED + 24}", self.intake._seen_receipts)
 
 
 if __name__ == "__main__":

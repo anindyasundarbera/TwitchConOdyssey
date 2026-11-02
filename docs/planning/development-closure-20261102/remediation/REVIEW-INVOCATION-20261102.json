@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "task": "TASK-012-R1-R5",
+  "candidate_base": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "candidate_diff_sha256": "44c6cd4907117db618c624538a8eea0c6c27f2dbef26693c5b0b4b19111c608a",
+  "review_packet": "docs/planning/development-closure-20261102/remediation/REVIEW-PACKET-20261102.md",
+  "review_packet_sha256": "10e9be66ad79ed8a8e754fa64fae7e608809419fc18c71ac4da3986c9e7128e7",
+  "configured_route": {
+    "task": "plan_review",
+    "provider": "codex_subagent",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high"
+  },
+  "actual_route": {
+    "provider": "Google DeepMind (Antigravity)",
+    "model": "Gemini 3.8 Flash",
+    "reasoning_effort": "high",
+    "route_type": "requester-supplied independent reviewer",
+    "substituted": true
+  },
+  "configured_gate_satisfied": false,
+  "invocation_count": 1,
+  "verdict": "READY",
+  "verdict_source": "reviewer response supplied by requester in this conversation",
+  "tripwire": {
+    "file_count": 116,
+    "tree_sha256_before": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d",
+    "tree_sha256_after": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d"
+  },
+  "notes": "The supplied independent review returned READY and confirmed candidate, packet, and tripwire hashes. Route was substituted; configured gate remains unsatisfied. No submission-readiness claim follows."
+}

@@ -262,11 +262,14 @@ class FullGameSimulator:
             self._record_trace_delta("set_roster", "set_roster")
 
     def register_account(self, account_id: str):
-        if self.phase == "planning":
-            # Joins take effect next turn
-            self.pending_joins.add(account_id)
-        else:
-            self.pending_joins.add(account_id)
+        """Queue a join for the next roster freeze."""
+        self.pending_leaves.discard(account_id)
+        self.pending_joins.add(account_id)
+
+    def unregister_account(self, account_id: str):
+        """Queue a leave for the next roster freeze without changing current quorum."""
+        self.pending_joins.discard(account_id)
+        self.pending_leaves.add(account_id)
 
     def _record_boundary_hash(self, label: str):
         state = self.get_canonical_state()
@@ -509,6 +512,17 @@ class FullGameSimulator:
             if type(account_id) is not str or not account_id.strip():
                 return self._finish_command(cmd, "rejected")
             self.register_account(account_id)
+            return self._finish_command(cmd, "applied")
+
+        elif kind == "audience.leave":
+            account_id = payload.get("account_id")
+            if (type(account_id) is not str or not account_id.strip()
+                    or account_id != actor_id
+                    or cmd["provenance"] != "human"):
+                return self._finish_command(cmd, "rejected")
+            if account_id not in self.frozen_roster and account_id not in self.pending_joins:
+                return self._finish_command(cmd, "rejected")
+            self.unregister_account(account_id)
             return self._finish_command(cmd, "applied")
 
         return self._finish_command(cmd, "rejected")

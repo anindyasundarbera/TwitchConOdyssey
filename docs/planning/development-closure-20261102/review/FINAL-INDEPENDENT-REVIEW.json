@@ -1,0 +1,40 @@
+{
+  "verdict": "NOT-READY",
+  "findings": [
+    {
+      "severity": "BLOCKER",
+      "summary": "W4 is not wired to the authoritative runtime, and fixture/live HUD mode is caller-selected.",
+      "evidence": "server/app.py:11-19; client/index.html:21-24; client/app.js:54-62; client/hud.js:83-87"
+    },
+    {
+      "severity": "MAJOR",
+      "summary": "W5 leave never updates the engine roster, leaving departed accounts in the quorum denominator.",
+      "evidence": "server/intake.py:17-22,101-107; coordination/full_game_simulator.py:243-255"
+    },
+    {
+      "severity": "MAJOR",
+      "summary": "W5 receipt dedupe and rate-limit state is unsynchronized and unbounded.",
+      "evidence": "server/intake.py:75-83,123-148"
+    },
+    {
+      "severity": "MAJOR",
+      "summary": "W6 live provenance is caller-asserted and can mislabel fixture evidence.",
+      "evidence": "server/telemetry.py:44-52,94-101"
+    },
+    {
+      "severity": "MAJOR",
+      "summary": "W7 clean-checkout reproduction is broken/unexecuted and referenced work-package evidence is not fully hashed.",
+      "evidence": "docs/submission/CLOSURE-DEMO-RUNBOOK.md:11-20; tools/package_submission.py:22-53"
+    }
+  ],
+  "confirmations": [
+    "All seven sealed-root hashes and the 116-file rejected-root tripwire match.",
+    "W1-W2 corrections are append-only and sealed bytes remain unchanged.",
+    "Readiness separation and closed gate booleans remain intact.",
+    "Supplied hashes match; 104 Python tests, Node command, compiler validation, and 17-artifact package verification succeeded."
+  ],
+  "scope_notes": [
+    "Requester-authorized substitute route; configured_gate_satisfied is false.",
+    "Read-only HEAD review; no browser, gameplay service, live integration, or fresh-clone reproduction."
+  ]
+}

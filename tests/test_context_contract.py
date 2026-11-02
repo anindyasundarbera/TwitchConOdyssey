@@ -49,10 +49,42 @@ class ContextContractTests(unittest.TestCase):
             for name in sorted(paths)])
         self.assertNotIn("timestamp", first)
 
+    def test_authorized_live_decision_requires_bounded_false_publication_booleans(self):
+        packet = self.compile()
+        decision = packet["unresolved_decisions"][0]
+        self.assertEqual(decision["id"], "live_submission_external_capture")
+        self.assertEqual(decision["status"], "authorized_in_progress")
+        self.assertEqual(decision["authorization_ref"], "live_submission_authorization")
+        auth = self.policy["live_submission_authorization"]
+        self.assertEqual(auth["decision_id"], decision["id"])
+        self.assertFalse(auth["submission_ready"])
+        self.assertTrue(auth["compiler_gate_unchanged"])
+        self.assertTrue(all(value is False for value in auth["publication_authorizations"].values()))
+        self.assertEqual(auth["review_route"]["requested"]["model"], "gpt-6-astra")
+        absent = "Invented " + "authorization " + "not present in bound bytes"
+        baseline = copy.deepcopy(self.policy)
+        mutations = [
+            lambda p: p["unresolved_decisions"][0].pop("authorization_ref"),
+            lambda p: p["live_submission_authorization"].update(submission_ready=True),
+            lambda p: p["live_submission_authorization"]["publication_authorizations"].update(youtube_upload=True),
+            lambda p: p["live_submission_authorization"].update(exact_user_wording=absent),
+            lambda p: p["live_submission_authorization"]["review_route"].update(
+                serving_attestation_unavailable_is_not_a_substantive_blocker=False),
+            lambda p: p["live_submission_authorization"]["review_route"]["requested"].update(
+                model="gpt-6.1-sol"),
+            lambda p: p["live_submission_authorization"].update(decision_id="other_decision"),
+        ]
+        for index, mutate in enumerate(mutations):
+            self.policy = copy.deepcopy(baseline)
+            mutate(self.policy)
+            self.write_policy()
+            with self.subTest(mutation=index), self.assertRaises(ValueError):
+                self.compile()
+
     def test_must_have_directives_gate_and_selected_decisions(self):
         packet = self.compile()
         self.assertTrue(contract.MUST_HAVE.issubset({d["id"] for d in packet["directives"]}))
-        self.assertFalse(packet["gate"]["gameplay_enabled"])
+        self.assertTrue(packet["gate"]["gameplay_enabled"])
         self.assertFalse(packet["gate"]["automatic_phase_advance"])
         self.assertEqual(packet["precedence"], contract.PRECEDENCE)
         self.assertEqual(packet["return_limit_words"], 250)
@@ -128,8 +160,8 @@ class ContextContractTests(unittest.TestCase):
             for phrase in phrases:
                 self.assertIn(phrase, decisions[ident]["rule"])
             self.assertEqual(decisions[ident]["status"], contract.SELECTED_STATUS)
-        self.assertEqual(packet["ledger_revision"], 12)
-        self.assertFalse(packet["gate"]["gameplay_enabled"])
+        self.assertEqual(packet["ledger_revision"], 16)
+        self.assertTrue(packet["gate"]["gameplay_enabled"])
         for name in ("docs/planning/S1-ASTRA-REVIEW.md",
                      "docs/planning/S1-ASTRA-REVIEW-RESPONSE.md",
                      "docs/planning/DECISIONS.md"):
@@ -225,11 +257,30 @@ class ContextContractTests(unittest.TestCase):
         self.assertEqual(len(reads), 6)
 
     def test_configuration_cannot_enable_gameplay(self):
-        self.policy["gate"]["gameplay_enabled"] = True
+        # A bare boolean flip without valid bound authorization directive fails closed
+        self.policy["gate"]["authorization_directive"] = "non_existent_directive"
         self.write_policy()
         with self.assertRaisesRegex(ValueError, "gate"):
             self.compile()
-        self.policy["gate"]["gameplay_enabled"] = False
+        self.policy["gate"].pop("authorization_directive")
+        self.write_policy()
+        with self.assertRaisesRegex(ValueError, "gate"):
+            self.compile()
+        # Restore authorization directive, but test tampered user wording fails closed
+        self.policy["gate"]["authorization_directive"] = "gate_to_game_interface_authorization_20261102"
+        for directive in self.policy["directives"]:
+            if directive["id"] == "gate_to_game_interface_authorization_20261102":
+                directive["exact_user_wording"] = "tampered unauthorized user instruction"
+        self.write_policy()
+        with self.assertRaisesRegex(ValueError, "absent from bound provenance"):
+            self.compile()
+        # Automatic phase advance remains strictly forbidden
+        self.policy["gate"]["automatic_phase_advance"] = True
+        self.write_policy()
+        with self.assertRaisesRegex(ValueError, "automatic phase advance"):
+            self.compile()
+        self.policy["gate"]["automatic_phase_advance"] = False
+        # Adding an unauthorized phase fails closed
         self.policy["allowed_phases"].append("gameplay")
         self.write_policy()
         with self.assertRaisesRegex(ValueError, "task/phase"):
@@ -353,7 +404,7 @@ class ContextContractTests(unittest.TestCase):
             lambda p: p["unresolved_decisions"].pop(0),
             lambda p: p["required_paths"].update({"AGENTS.md": "invalid hash"}),
             lambda p: p.update(schema_version=True),
-            lambda p: p["forbidden_actions"].remove("server.app"),
+            lambda p: p["forbidden_actions"].remove("deployment/publication/platform provisioning/provider setup/live calls"),
             lambda p: p["unresolved_decisions"][0].update(id=[]),
             lambda p: p["directives"][0].update(superseded_by=[]),
         ]

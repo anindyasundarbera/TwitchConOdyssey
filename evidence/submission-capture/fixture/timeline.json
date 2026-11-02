@@ -1,0 +1,100 @@
+{
+  "accessibility_sha256": "19acca4e30f7a279cc393815f53acf612d6cc5147318d8be16394fdc5d4a4a4a",
+  "blocked_requests": [],
+  "captures": [
+    {
+      "file": "fixture-desktop.png",
+      "height": 1100,
+      "label": "FIXTURE — offline fixture render (not live Twitch activity)",
+      "offenders": [],
+      "overflow": false,
+      "sha256": "4a8cd3735099c8c27fbdbb86efd0cc231f1cf8e5c54f52289b76fc2fdcd2840e",
+      "target": "desktop",
+      "width": 1440
+    },
+    {
+      "file": "fixture-mobile.png",
+      "height": 844,
+      "label": "FIXTURE — offline fixture render (not live Twitch activity)",
+      "offenders": [],
+      "overflow": false,
+      "sha256": "5d14d07e7e5c581b4e54600e7047bb8ceb334a9e8751ca8ebbcdc754a87e000b",
+      "target": "mobile",
+      "width": 390
+    }
+  ],
+  "label": "FIXTURE — offline fixture render (not live Twitch activity)",
+  "live_verified": false,
+  "measurements": {
+    "desktop": {
+      "bodyScrollWidth": 1440,
+      "documentScrollWidth": 1440,
+      "innerHeight": 1100,
+      "innerWidth": 1440,
+      "offenders": [],
+      "overflow": false
+    },
+    "mobile": {
+      "bodyScrollWidth": 390,
+      "documentScrollWidth": 390,
+      "innerHeight": 844,
+      "innerWidth": 390,
+      "offenders": [],
+      "overflow": false
+    }
+  },
+  "mode": "fixture",
+  "page_errors": [],
+  "plan": {
+    "label": "FIXTURE — offline fixture render (not live Twitch activity)",
+    "live_verified": false,
+    "mode": "fixture",
+    "schema_version": 1,
+    "source_bindings": {
+      "client/app.js": "bdae4777fda478f744e4477d35e8fd7d8ef40184e8c2c5a6d0310745c58d912d",
+      "client/hud.js": "77017eb6f37bea6958f3971bc79cccdfb938f516dad423fe6ee8e1249a9d7792",
+      "client/index.html": "a48d2a8bc7ed2087fa0c365b212e9ec5230fea208294dbb10d69d059c5ac2bbd",
+      "client/style.css": "1484e8e1eb9653d323a715b872db4cc0d552c2f634a70f21a54446039a5a102b"
+    },
+    "steps": [
+      {
+        "expected": "fixture evidence envelope; no live claim",
+        "name": "render-fixture-page",
+        "order": 1
+      },
+      {
+        "expected": "Offline fixture (not live Twitch activity)",
+        "name": "assert-mode-label",
+        "order": 2
+      },
+      {
+        "expected": "1440x1100 fixture PNG; controls enabled",
+        "name": "capture-desktop",
+        "order": 3
+      },
+      {
+        "expected": "390x844 fixture PNG; no horizontal overflow",
+        "name": "capture-mobile",
+        "order": 4
+      },
+      {
+        "expected": "labelled controls, live regions and contrast pass",
+        "name": "assert-accessibility",
+        "order": 5
+      }
+    ],
+    "tool": "tools/capture_submission.py",
+    "viewports": {
+      "desktop": {
+        "height": 1100,
+        "width": 1440
+      },
+      "mobile": {
+        "height": 844,
+        "width": 390
+      }
+    }
+  },
+  "schema_version": 1,
+  "tool": "tools/capture_submission.py"
+}

@@ -1,0 +1,496 @@
+{
+  "desktop": {
+    "buttons": [
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Mission briefing and controls"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Toggle sound"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Toggle Fullscreen"
+      },
+      {
+        "control": null,
+        "disabled": true,
+        "name": "Pause match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Next match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Toggle bullet time"
+      },
+      {
+        "control": "left",
+        "disabled": true,
+        "name": "Steer left"
+      },
+      {
+        "control": "right",
+        "disabled": true,
+        "name": "Steer right"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Start Odyssey in Fullscreen"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Start Odyssey in Windowed Mode"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Resume match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "View instructions"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Restart match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Close help briefing"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Resume playing"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Start new match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Retry connecting"
+      }
+    ],
+    "checks": [
+      {
+        "detail": "lang=en",
+        "id": "html-lang",
+        "pass": true
+      },
+      {
+        "detail": "TwitchCon Odyssey · Authoritative Demo",
+        "id": "document-title",
+        "pass": true
+      },
+      {
+        "detail": "width=device-width,initial-scale=1",
+        "id": "viewport-meta",
+        "pass": true
+      },
+      {
+        "detail": "17 buttons checked",
+        "id": "accessible-button-names",
+        "pass": true
+      },
+      {
+        "detail": "Steer left, Steer right",
+        "id": "steer-labels",
+        "pass": true
+      },
+      {
+        "detail": "Stylized San Diego route to a fictional Main Stage",
+        "id": "canvas-label",
+        "pass": true
+      },
+      {
+        "detail": "3 aria-live regions",
+        "id": "live-regions",
+        "pass": true
+      },
+      {
+        "detail": "CSS focus-visible outline present",
+        "id": "focus-visible",
+        "pass": true
+      },
+      {
+        "detail": "CSS reduced-motion rule present",
+        "id": "reduced-motion",
+        "pass": true
+      },
+      {
+        "detail": "scrollWidth=1440 innerWidth=1440",
+        "id": "no-horizontal-overflow",
+        "pass": true
+      },
+      {
+        "detail": "2 control buttons disabled",
+        "id": "controls-disabled",
+        "pass": true
+      },
+      {
+        "detail": "DISCONNECTED",
+        "id": "badge-disconnected",
+        "pass": true
+      },
+      {
+        "detail": "Disconnected — no authoritative state",
+        "id": "mode-disconnected",
+        "pass": true
+      },
+      {
+        "detail": "body=18.04; [data-hud=mode]=6.1; [data-hud=mode-detail]=7.75; .hud-status=7.75; [data-hud=preview]=15.4; [data-hud=status]=7.75; [data-hud=pool]=13.51; .note=7.75",
+        "id": "contrast",
+        "pass": true
+      }
+    ],
+    "contrast": [
+      {
+        "background": "rgb(7, 11, 18)",
+        "foreground": "rgb(242, 245, 251)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 18.04,
+        "selector": "body"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(255, 92, 119)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 6.1,
+        "selector": "[data-hud=mode]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": "[data-hud=mode-detail]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": ".hud-status"
+      },
+      {
+        "background": "rgb(12, 21, 32)",
+        "foreground": "rgb(228, 236, 245)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 15.4,
+        "selector": "[data-hud=preview]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": "[data-hud=status]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(168, 242, 118)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 13.51,
+        "selector": "[data-hud=pool]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": ".note"
+      }
+    ],
+    "live_regions": [
+      {
+        "live": "polite",
+        "tag": "div",
+        "text": "Disconnected — no authoritative state"
+      },
+      {
+        "live": "polite",
+        "tag": "p",
+        "text": "authoritative state unavailable (offline disconnected render)"
+      },
+      {
+        "live": "polite",
+        "tag": "p",
+        "text": "Controls locked — no authoritative state. Live status is not inferred."
+      }
+    ],
+    "mode": "disconnected",
+    "passed": true,
+    "schema_version": 1
+  },
+  "mobile": {
+    "buttons": [
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Mission briefing and controls"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Toggle sound"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Toggle Fullscreen"
+      },
+      {
+        "control": null,
+        "disabled": true,
+        "name": "Pause match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Next match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Toggle bullet time"
+      },
+      {
+        "control": "left",
+        "disabled": true,
+        "name": "Steer left"
+      },
+      {
+        "control": "right",
+        "disabled": true,
+        "name": "Steer right"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Start Odyssey in Fullscreen"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Start Odyssey in Windowed Mode"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Resume match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "View instructions"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Restart match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Close help briefing"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Resume playing"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Start new match"
+      },
+      {
+        "control": null,
+        "disabled": false,
+        "name": "Retry connecting"
+      }
+    ],
+    "checks": [
+      {
+        "detail": "lang=en",
+        "id": "html-lang",
+        "pass": true
+      },
+      {
+        "detail": "TwitchCon Odyssey · Authoritative Demo",
+        "id": "document-title",
+        "pass": true
+      },
+      {
+        "detail": "width=device-width,initial-scale=1",
+        "id": "viewport-meta",
+        "pass": true
+      },
+      {
+        "detail": "17 buttons checked",
+        "id": "accessible-button-names",
+        "pass": true
+      },
+      {
+        "detail": "Steer left, Steer right",
+        "id": "steer-labels",
+        "pass": true
+      },
+      {
+        "detail": "Stylized San Diego route to a fictional Main Stage",
+        "id": "canvas-label",
+        "pass": true
+      },
+      {
+        "detail": "3 aria-live regions",
+        "id": "live-regions",
+        "pass": true
+      },
+      {
+        "detail": "CSS focus-visible outline present",
+        "id": "focus-visible",
+        "pass": true
+      },
+      {
+        "detail": "CSS reduced-motion rule present",
+        "id": "reduced-motion",
+        "pass": true
+      },
+      {
+        "detail": "scrollWidth=390 innerWidth=390",
+        "id": "no-horizontal-overflow",
+        "pass": true
+      },
+      {
+        "detail": "2 control buttons disabled",
+        "id": "controls-disabled",
+        "pass": true
+      },
+      {
+        "detail": "DISCONNECTED",
+        "id": "badge-disconnected",
+        "pass": true
+      },
+      {
+        "detail": "Disconnected — no authoritative state",
+        "id": "mode-disconnected",
+        "pass": true
+      },
+      {
+        "detail": "body=18.04; [data-hud=mode]=6.1; [data-hud=mode-detail]=7.75; .hud-status=7.75; [data-hud=preview]=15.4; [data-hud=status]=7.75; [data-hud=pool]=13.51; .note=7.75",
+        "id": "contrast",
+        "pass": true
+      }
+    ],
+    "contrast": [
+      {
+        "background": "rgb(7, 11, 18)",
+        "foreground": "rgb(242, 245, 251)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 18.04,
+        "selector": "body"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(255, 92, 119)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 6.1,
+        "selector": "[data-hud=mode]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": "[data-hud=mode-detail]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": ".hud-status"
+      },
+      {
+        "background": "rgb(12, 21, 32)",
+        "foreground": "rgb(228, 236, 245)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 15.4,
+        "selector": "[data-hud=preview]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": "[data-hud=status]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(168, 242, 118)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 13.51,
+        "selector": "[data-hud=pool]"
+      },
+      {
+        "background": "rgb(14, 22, 34)",
+        "foreground": "rgb(154, 171, 192)",
+        "minimum": 4.5,
+        "pass": true,
+        "ratio": 7.75,
+        "selector": ".note"
+      }
+    ],
+    "live_regions": [
+      {
+        "live": "polite",
+        "tag": "div",
+        "text": "Disconnected — no authoritative state"
+      },
+      {
+        "live": "polite",
+        "tag": "p",
+        "text": "authoritative state unavailable (offline disconnected render)"
+      },
+      {
+        "live": "polite",
+        "tag": "p",
+        "text": "Controls locked — no authoritative state. Live status is not inferred."
+      }
+    ],
+    "mode": "disconnected",
+    "passed": true,
+    "schema_version": 1
+  }
+}

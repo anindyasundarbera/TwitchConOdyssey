@@ -13,9 +13,10 @@ Privacy rules (documented retention/redaction):
 - Retention is bounded in memory (MAX_EVENTS); evidence is exported as an
   explicit manifest with per-artifact SHA-256 so W7 can package and W8 verify.
 
-Fixture activity is always labeled: `origin` is `fixture` or `live`, and fixture
-events additionally set `live_participation: false` and are never presented as
-live human participation.
+This repository has no authorized live identity/evidence adapter. The recorder
+therefore emits fixture provenance only. There is deliberately no constructor
+argument that can mint a live label; adding live evidence requires a separate
+authorized adapter and review.
 """
 from typing import Any, Dict, List, Optional
 
@@ -25,8 +26,8 @@ from coordination.content_cache import canonical_bytes, canonical_hash
 
 SCHEMA_VERSION = 1
 MAX_EVENTS = 2000
-ORIGINS = {"fixture": "offline fixture / simulation (not live Twitch activity)",
-           "live": "live Twitch participation"}
+FIXTURE_ORIGIN = "fixture"
+FIXTURE_LABEL = "offline fixture / simulation (not live Twitch activity)"
 
 # Selected geometry (D-05): diegetic booth waypoints at exact route percentages.
 BOOTH_WAYPOINTS = {
@@ -41,14 +42,12 @@ TERMINAL_STATUSES = {"delivered", "wiped", "failed"}
 class TelemetryRecorder:
     """Privacy-bounded, append-only observer of authoritative engine state."""
 
-    def __init__(self, game: Any, match_id: str, origin: str = "fixture") -> None:
+    def __init__(self, game: Any, match_id: str) -> None:
         if type(match_id) is not str or not match_id.strip() or len(match_id) > 128:
             raise ValueError("match_id must be bounded nonempty text")
-        if origin not in ORIGINS:
-            raise ValueError("origin must be 'fixture' or 'live'")
         self.game = game
         self.match_id = match_id
-        self.origin = origin
+        self.origin = FIXTURE_ORIGIN
         self.events: List[Dict[str, Any]] = []
         self._last: Optional[Dict[str, Any]] = None
         self._warned_hazards: set = set()
@@ -96,8 +95,8 @@ class TelemetryRecorder:
             "schema_version": SCHEMA_VERSION,
             "match_id": self.match_id,
             "origin": self.origin,
-            "origin_label": ORIGINS[self.origin],
-            "live_participation": self.origin == "live",
+            "origin_label": FIXTURE_LABEL,
+            "live_participation": False,
             "tick": state["tick"],
             "turn": state["turn"],
             "phase": state["phase"],
@@ -145,7 +144,7 @@ class TelemetryRecorder:
             "schema_version": SCHEMA_VERSION,
             "match_id": self.match_id,
             "origin": self.origin,
-            "live_participation": self.origin == "live",
+            "live_participation": False,
             "artifact_count": len(artifacts),
             "artifacts": artifacts,
         }

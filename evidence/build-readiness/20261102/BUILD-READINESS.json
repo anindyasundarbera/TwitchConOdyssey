@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "evaluated_at": "2026-11-02T23:04:30+05:30",
+  "evidence_origin": "local_offline_reproduction",
+  "candidate": {
+    "starting_head": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+    "final_head": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+    "tracked_diff_sha256": "c01cce358d168d2dbc4a36733d928b39993013d84b6e8340e0088cf590f748c3",
+    "dirty_worktree": true
+  },
+  "hygiene": {
+    "secret_scan_passed": true,
+    "files_scanned": 1453,
+    "findings_count": 0,
+    "real_secrets_found": false,
+    "raw_chat_absent": true,
+    "notes": "Full regex scan across all tracked and candidate untracked files found no live credentials, oauth tokens, or private keys. Two synthetic pattern matches occurred inside negative test fixtures in tests/test_submission_readiness.py."
+  },
+  "reproduction": {
+    "offline_setup_verified": true,
+    "package_build_status": "ok",
+    "package_artifacts_verified": 55,
+    "package_pending_count": 0,
+    "tests": {
+      "clean_checkout_suite": {
+        "command": "python3 -m unittest tests.test_context_contract tests.test_review_route tests.test_submission_package tests.test_submission_readiness",
+        "passed": 57,
+        "failed": 0,
+        "status": "OK"
+      },
+      "hud_suite": {
+        "command": "node client/hud.test.js",
+        "passed": 13,
+        "failed": 0,
+        "status": "OK"
+      },
+      "presentation_and_flow_suite": {
+        "command": "python3 -m unittest tests.test_city_setting tests.test_presentation_capture tests.test_runtime_integration tests.test_game_interface_flow",
+        "passed": 24,
+        "failed": 0,
+        "status": "OK"
+      }
+    }
+  },
+  "build_ready_status": {
+    "offline_build_ready": true,
+    "live_submission_ready": false,
+    "blockers_to_live_submission": [
+      "No live Twitch credentials or EventSub channel.chat.message receipts recorded",
+      "No public/unlisted YouTube video under 180 seconds recorded from live operation",
+      "Repository destination URL and final git push not executed (publication booleans remain false)",
+      "Independent Astra review with attested gpt-6-astra serving verification not yet conducted"
+    ]
+  }
+}

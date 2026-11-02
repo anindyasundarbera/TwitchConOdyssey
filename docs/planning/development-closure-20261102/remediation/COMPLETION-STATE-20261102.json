@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "offline_development_closed",
+  "candidate_base": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "candidate_diff_sha256": "c215b22a8735e15a88a38d6a64f7d7f9234729ef2db3af394b1b2a233f2420bd",
+  "review_packet_sha256": "90dc0ab37f3444a0bfdc26c638198d010956921f85f742f7c22aa1c0737336bb",
+  "work": {
+    "implementation_audit": {"status": "complete_pass", "agent": "/root/implementation_audit", "report": "IMPLEMENTATION-AUDIT-018.md; R1–R5 pass on candidate 018."},
+    "governance_audit": {
+      "status": "complete_pass",
+      "agent": "/root/governance_audit",
+      "compiler_packet_sha256": null,
+      "summary": "GOVERNANCE-AUDIT-018.md; candidate identity, revision-14 bindings, package record, readiness gate, and sealed-root tripwire match."
+    },
+    "final_review": {"status": "ready_offline_route_unverified", "agent": "/root/final_review_020", "report": "FINAL-REVIEW-020.md/.json; retry independently returned READY for offline development and R1–R5 pass. Serving attestation remains unavailable."}
+  },
+  "configured_final_review_route": {
+    "provider": "codex_subagent",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high"
+  },
+  "submission_ready": false,
+  "unresolved_decisions": ["live_submission_external_capture"]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "task": "TASK-012-R1-R5",
+  "candidate_base": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "candidate_diff_sha256": "c215b22a8735e15a88a38d6a64f7d7f9234729ef2db3af394b1b2a233f2420bd",
+  "review_packet_sha256": "90dc0ab37f3444a0bfdc26c638198d010956921f85f742f7c22aa1c0737336bb",
+  "verdict": "READY",
+  "scope": "offline development only",
+  "r1_r5": "PASS",
+  "package_manifest_sha256": "a72357d48dc741c6295166f6216ee3e5201cbea7ae3feb715da2aaa34617a616",
+  "route_verification": "unverified; explicit invocation request matches configured route, serving attestation unavailable",
+  "submission_ready": false,
+  "unresolved_decisions": ["live_submission_external_capture"]
+}

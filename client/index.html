@@ -1,26 +1,199 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TwitchCon Odyssey · San Diego Crisis</title><link rel="stylesheet" href="/style.css"></head>
-<body><header><a class="brand" href="/">◈ <span>ODYSSEY<span class="wordmark">TWITCHCON / SAN DIEGO</span></span></a><nav><span class="live"><i></i> LOCAL DEMO</span><button id="sound" aria-pressed="false">♫ Sound off</button><button id="bullet" aria-pressed="false">◷ Bullet time</button></nav></header>
-<section class="hud" aria-label="Match HUD">
-<div class="hud-mode" data-hud="mode">Offline fixture (not live Twitch activity)</div>
-<div class="hud-grid">
-<div><p class="eyebrow">ROUTE PROGRESS</p><strong data-hud="progress">Route 0%</strong><div class="hud-meter" role="progressbar" aria-label="Route progress"><div data-hud="progress-fill"></div></div></div>
-<div><p class="eyebrow">HAZARD</p><strong data-hud="hazard">No committed hazard this turn</strong></div>
-<div><p class="eyebrow">NEXT</p><strong data-hud="preview">Waiting for authoritative state…</strong></div>
-</div>
-<div class="hud-status"><span data-hud="phase">Turn 1 · planning</span><span data-hud="status">Awaiting state</span><span data-hud="pool">Hype 0</span><span data-hud="audience">Fixture run — no live Twitch participation</span></div>
-<div class="hud-controls"><button data-control="left" aria-label="Steer left" disabled>◀ Left</button><button data-control="right" aria-label="Steer right" disabled>Right ▶</button></div>
-</section>
-<main><div class="intro"><div><p class="eyebrow">THE CITY IS YOUR CO-OP CAMPAIGN</p><h1>One build. Four squads.<br><em>Make it to the main stage.</em></h1></div><p class="mission">San Diego is glitching. Rally your squad,<br>counter the chaos, and deliver the build.<br><span>20s to plan. 5s to change everything.</span></p></div>
-<div class="layout"><section class="arena" aria-label="San Diego game"><div class="arena-top"><span><i class="dot"></i> <b id="district">Little Italy / North Embarcadero</b></span><span id="tick">AUTHORITATIVE / 20 HZ</span></div><canvas id="game" width="1100" height="620" aria-label="Stylized San Diego route from Little Italy to the San Diego Convention Center and a fictional Main Stage"></canvas><div class="map-legend"><span>● YOU + THE BUILD</span><span>◇ SPONSOR BOOTH</span><span>⚑ MAIN STAGE</span></div><div class="phase"><div><span class="eyebrow" id="round">ROUND 01 / PLANNING</span><h2 id="phase-title">Your move, chat.</h2><p id="crisis">Platform outage incoming</p></div><div class="clock"><strong id="clock">20.0</strong><span>SECONDS LEFT</span></div></div><div class="timer-track"><div id="timer-fill"></div></div></section>
-<aside><section class="panel bounty"><p class="eyebrow">COLLECTIVE BOUNTY / FICTIONAL HYPE</p><div class="bounty-value"><strong id="pool">1,000</strong><span>◈</span></div><p>50% broadcaster · 50% participating viewers</p><div class="build"><span>BUILD INTEGRITY</span><b id="integrity">100%</b></div><div class="integrity-track"><div id="integrity-fill"></div></div><div class="build"><span>DELIVERY PROGRESS</span><b id="progress">0%</b></div><div class="integrity-track"><div id="progress-fill"></div></div></section>
-<section class="panel squads"><div class="section-label"><h2>Rival squads</h2><span id="viewers">0 VIEWERS</span></div><div id="squads"></div><p class="note">One viewer, one vote budget. Empty squads get a bot.</p></section>
-<section class="panel control"><p class="eyebrow">CAST YOUR COUNTER-MOVE</p><div class="abilities"><button data-action="shield"><span>◈ TWITCH</span><b>Moderation Shield</b><small>Block incoming damage</small></button><button data-action="patch"><span>⌘ OPENAI CODEX</span><b>Live Hotfix Patch</b><small>Restore build integrity</small></button><button data-action="boost"><span>ϟ AWS / AMAZON IVS</span><b>Autoscale Speed Boost</b><small>Reach the Convention Center faster</small></button><button data-action="sabotage"><span>☄ RIVAL SQUAD</span><b>Traffic Jam</b><small>Raise the stakes</small></button></div><form id="chat"><label for="message">Or send a chat command</label><div class="chat-input"><input id="message" maxlength="240" placeholder="patch the build and boost!" autocomplete="off"><button aria-label="Send chat">↗</button></div></form><p id="feedback" role="status">Join the next wave. Your latest vote replaces the last.</p></section></aside></div>
-<section class="telemetry panel"><div class="section-label"><div><p class="eyebrow">UNDER THE HOOD</p><h2>From chat to city. <span>Every move, accounted for.</span></h2></div><span id="provider">DETERMINISTIC MOCK</span></div><div class="pipeline"><div><span class="step">01 / TWITCH CHAT INPUT</span><pre id="chat-event">Waiting for spectator input…</pre></div><span class="arrow">→</span><div><span class="step">02 / STRUCTURED TOOL PROPOSAL</span><pre id="tool-event">submit_game_action({ choices: […] })</pre></div><span class="arrow">→</span><div><span class="step">03 / AUTHORITATIVE EXECUTION</span><pre id="exec-event">Schema → phase → cohort → engine</pre></div></div><p class="note" id="connection">Connecting to the local simulation…</p></section><footer><span>TWITCHCON ODYSSEY <b> / </b> SAN DIEGO CRISIS</span><span>LOCAL FIXTURE · SIMULATED SERVICES · NO REAL PAYOUTS</span></footer></main><script src="/hud.js"></script>
-<script>
-window.addEventListener("odyssey:state", function (event) {
-  if (!window.Hud || !event.detail || !event.detail.state) return;
-  window.Hud.renderHud(window.Hud.deriveView(event.detail.state, { mode: event.detail.mode }), document);
-});
-</script>
-<script type="module" src="/app.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="TwitchCon Odyssey: an authoritative deterministic San Diego route demo with server-owned live, fixture and disconnected provenance labels.">
+  <title>TwitchCon Odyssey · Authoritative Demo</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="game-root" class="game-root">
+    <!-- Playfield Canvas (Full bleed, scaled for device pixel ratio) -->
+    <canvas id="game" width="1440" height="1100" aria-label="Stylized San Diego route to a fictional Main Stage"></canvas>
+
+    <!-- In-Game HUD Layer (Absolute overlay on top of canvas) -->
+    <div id="hud-layer" class="hud-layer">
+      <!-- Top Bar: Brand, District, Tick, Honest Provenance Badge, In-Game Action Toggles -->
+      <header class="hud-header" aria-label="In-Game Status & Broadcast Header">
+        <div class="hud-brand-group">
+          <span class="hud-brand">◈ ODYSSEY</span>
+          <span class="hud-district"><i class="dot"></i> <b id="district">Little Italy / North Embarcadero</b></span>
+          <span class="hud-tick" id="tick">AUTHORITATIVE / 20 HZ</span>
+        </div>
+        <div class="hud-progress-group">
+          <div class="hud-progress-label">
+            <span class="eyebrow">ROUTE PROGRESS</span>
+            <strong data-hud="progress">Route 0%</strong>
+          </div>
+          <div class="hud-meter" role="progressbar" aria-label="Route progress">
+            <div data-hud="progress-fill"></div>
+          </div>
+        </div>
+        <nav class="hud-actions" aria-label="Game and broadcast controls">
+          <span class="live" data-hud="badge" data-mode="disconnected" aria-label="Presentation mode: awaiting authoritative state"><i></i> CONNECTING</span>
+          <button id="btn-help" class="hud-btn" aria-label="Mission briefing and controls" title="Help & Controls">? Rules</button>
+          <button id="sound" class="hud-btn" aria-pressed="false" aria-label="Toggle sound">♫ Sound off</button>
+          <button id="btn-fullscreen" class="hud-btn" aria-label="Toggle Fullscreen" title="Toggle Fullscreen">⛶ Fullscreen</button>
+          <button id="pause" class="hud-btn" aria-label="Pause match" disabled>Pause</button>
+          <button id="restart" class="hud-btn" aria-label="Next match" hidden>Next match</button>
+          <button id="bullet" aria-pressed="false" class="hud-btn" style="display:none;" aria-label="Toggle bullet time">◷ Bullet time</button>
+        </nav>
+      </header>
+
+      <!-- Center Telemetry & Consequence Chips -->
+      <section class="hud-telemetry" aria-label="Authoritative match HUD">
+        <div class="hud-mode-row">
+          <div class="hud-mode" data-hud="mode" data-mode="disconnected" role="status" aria-live="polite">Awaiting authoritative state — live status is not inferred</div>
+          <p class="hud-mode-detail" data-hud="mode-detail">Mode comes only from the server-owned evidence envelope.</p>
+        </div>
+        <div class="hud-chips-grid">
+          <div class="hud-chip">
+            <span class="eyebrow">HAZARD STATUS</span>
+            <strong data-hud="hazard">No committed hazard this turn</strong>
+          </div>
+          <div class="hud-chip">
+            <span class="eyebrow">CONSEQUENCE PREVIEW</span>
+            <strong data-hud="preview">Waiting for authoritative state…</strong>
+          </div>
+        </div>
+        <div class="hud-status">
+          <span data-hud="phase">Turn 1 · planning</span>
+          <span data-hud="status">Awaiting state</span>
+          <span data-hud="pool">Hype 0</span>
+          <span data-hud="audience">Fixture run — no live Twitch participation</span>
+        </div>
+      </section>
+
+      <!-- Bottom Bar: Touch Steering Controls & Accessible Live Announcements -->
+      <footer class="hud-footer" aria-label="In-Game Navigation Controls">
+        <div class="hud-controls">
+          <button class="arcade-btn" data-control="left" aria-label="Steer left" disabled>◀ STEER LEFT [← / A]</button>
+          <button class="arcade-btn" data-control="right" aria-label="Steer right" disabled>STEER RIGHT [→ / D] ▶</button>
+        </div>
+        <div class="hud-live-feedback">
+          <p class="note" id="connection" data-hud="connection" role="status" aria-live="polite">Connecting to the authoritative runtime…</p>
+          <p class="note" id="feedback" role="status" aria-live="polite">Controls unlock when an authoritative state envelope arrives.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- IN-GAME MODAL OVERLAYS (Accessible focus trap, dismissible, non-mutating) -->
+
+    <!-- 1. Start / Attract Screen Modal -->
+    <div id="modal-start" class="game-modal" role="dialog" aria-modal="true" aria-labelledby="start-title">
+      <div class="modal-card">
+        <p class="modal-eyebrow">SAN DIEGO ARCADE RUNNER</p>
+        <h1 id="start-title">TWITCHCON ODYSSEY</h1>
+        <p class="modal-tagline">Deliver the code build to the Main Stage before the 90s deadline!</p>
+        <div class="modal-sponsors">
+          <span class="sponsor-pill sponsor-twitch">✦ TWITCH STAGE</span>
+          <span class="sponsor-pill sponsor-codex">✦ OPENAI CODEX</span>
+          <span class="sponsor-pill sponsor-aws">✦ AWS CLOUD</span>
+        </div>
+        <div class="modal-info-box">
+          <div class="info-row"><span>🎮 Steering</span><b>3 Discrete Lanes (Left, Center, Right) via Arrow Keys / Touch</b></div>
+          <div class="info-row"><span>⚠️ Center Hazard</span><b>Roadblocks spawn only in center lane. Steer around or audience votes clear_lane!</b></div>
+          <div class="info-row"><span>⏱ Turn Cadence</span><b>20s Planning (Steering & Votes) → 5s Resolution → 5s Reward Display</b></div>
+          <div class="info-row"><span>🏆 Settlement</span><b>Fictional Hype only · 50/50 Streamer & Audience on Main Stage delivery</b></div>
+        </div>
+        <div class="modal-button-group">
+          <button id="btn-start" class="btn-primary-arcade" aria-label="Start Odyssey in Fullscreen">⚡ START ODYSSEY (FULLSCREEN)</button>
+          <button id="btn-start-windowed" class="btn-secondary-arcade" aria-label="Start Odyssey in Windowed Mode">PLAY IN WINDOW</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. In-Game Pause Modal -->
+    <div id="modal-pause" class="game-modal" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
+      <div class="modal-card">
+        <p class="modal-eyebrow">STAGE OPERATOR CONTROL</p>
+        <h2 id="pause-title">SIMULATION PAUSED</h2>
+        <p class="modal-desc">Authoritative clocks, forward speed, and input ingestion are frozen. Clocks do not drift.</p>
+        <div class="modal-button-group">
+          <button id="btn-modal-resume" class="btn-primary-arcade" aria-label="Resume match">▶ RESUME MATCH</button>
+          <button id="btn-modal-help" class="btn-secondary-arcade" aria-label="View instructions">? MISSION BRIEFING</button>
+          <button id="btn-modal-restart" class="btn-secondary-arcade" aria-label="Restart match">↺ RESET NEW MATCH</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. In-Game Instructions & Controls Modal -->
+    <div id="modal-help" class="game-modal" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden>
+      <div class="modal-card modal-wide">
+        <div class="modal-header-row">
+          <h2 id="help-title">MISSION BRIEFING & CONTROLS</h2>
+          <button id="btn-close-help" class="btn-close" aria-label="Close help briefing">✕</button>
+        </div>
+        <div class="modal-grid">
+          <div>
+            <h3>🎯 The Mission</h3>
+            <p>You are the courier transporting the game build across 5 San Diego districts to the San Diego Convention Center Main Stage. Reach 100% progress strictly before the 90-second active deadline.</p>
+            <h3>🚦 3 Discrete Lanes</h3>
+            <p>Lane 0 (Waterfront/Left), Lane 1 (Center Boulevard), Lane 2 (Gaslamp/Right). Each tap requests one adjacent-lane shift taking 0.5s (10 ticks at 20 Hz).</p>
+          </div>
+          <div>
+            <h3>⚠️ Hazards & Audience Fairness</h3>
+            <p>One center-lane roadblock per turn. In the final 5s of planning, warning strobes alert you. Audience votes <code>clear_lane</code> during planning. A collision reduces speed by 20% for 2s and halves fictional Hype once.</p>
+            <h3>⌨️ Key Bindings</h3>
+            <ul class="key-list">
+              <li><kbd>←</kbd> or <kbd>A</kbd>: Steer Left</li>
+              <li><kbd>→</kbd> or <kbd>D</kbd>: Steer Right</li>
+              <li><kbd>P</kbd> or <kbd>Esc</kbd>: Pause / Resume</li>
+              <li><kbd>H</kbd>: Toggle Help</li>
+              <li><kbd>M</kbd>: Toggle Sound</li>
+              <li><kbd>F</kbd>: Toggle Fullscreen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-button-group">
+          <button id="btn-dismiss-help" class="btn-primary-arcade" aria-label="Resume playing">BACK TO GAME</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Terminal Match Outcome Modal (Delivered or Wiped) -->
+    <div id="modal-terminal" class="game-modal" role="dialog" aria-modal="true" aria-labelledby="terminal-title" hidden>
+      <div class="modal-card">
+        <p class="modal-eyebrow" id="terminal-badge">MATCH CONCLUDED</p>
+        <h2 id="terminal-title">BUILD DELIVERED!</h2>
+        <p id="terminal-detail" class="modal-desc">Main Stage reached before the 90s deadline. Fictional Hype settled 50/50.</p>
+        <div class="modal-button-group">
+          <button id="btn-terminal-restart" class="btn-primary-arcade" aria-label="Start new match">PLAY NEXT MATCH</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Disconnected State Modal -->
+    <div id="modal-disconnected" class="game-modal" role="dialog" aria-modal="true" aria-labelledby="disconnect-title" hidden>
+      <div class="modal-card">
+        <p class="modal-eyebrow">CONNECTION REQUIRED</p>
+        <h2 id="disconnect-title">DISCONNECTED</h2>
+        <p id="disconnect-detail" class="modal-desc">No authoritative state envelope is arriving from the local runtime. Controls are paused. Live status is never inferred.</p>
+        <div class="modal-button-group">
+          <button id="btn-reconnect" class="btn-primary-arcade" aria-label="Retry connecting">RETRY CONNECTION</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/hud.js"></script>
+  <script>
+    window.addEventListener("odyssey:state", function (event) {
+      if (!window.Hud || !event.detail || !event.detail.state || !event.detail.evidence) return;
+      try {
+        window.Hud.renderHud(window.Hud.deriveView(event.detail.state, event.detail.evidence), document);
+      } catch (error) {
+        window.Hud.renderHud(window.Hud.disconnectedView(error.message), document);
+      }
+    });
+    window.addEventListener("odyssey:disconnected", function (event) {
+      if (!window.Hud) return;
+      var reason = event.detail && event.detail.reason;
+      window.Hud.renderHud(window.Hud.disconnectedView(reason), document);
+    });
+  </script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

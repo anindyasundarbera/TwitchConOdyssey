@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "task": "TASK-012-R1-R5",
+  "invocation_count": 1,
+  "retries": 0,
+  "reviewed_head": "bb02cea7e1c260eb30ea9491e7759761c0f290d4",
+  "candidate_diff_sha256": "c215b22a8735e15a88a38d6a64f7d7f9234729ef2db3af394b1b2a233f2420bd",
+  "review_packet": "docs/planning/development-closure-20261102/remediation/REVIEW-PACKET-018.md",
+  "packet_hash": "90dc0ab37f3444a0bfdc26c638198d010956921f85f742f7c22aa1c0737336bb",
+  "executor_packet_sha256": "1fcfd16690969c9383de721ce545db3ee4eb3161ecbaf1a880e6dd5917e3cc2e",
+  "configured_route": {
+    "task": "plan_review",
+    "provider": "codex_subagent",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high"
+  },
+  "actual_route": {
+    "provider": "codex_subagent",
+    "model": "gpt-6-astra (spawn-specified; serving metadata unobservable)",
+    "reasoning_effort": "high (spawn-specified; serving metadata unobservable)",
+    "substituted": false
+  },
+  "configured_gate_satisfied": false,
+  "route_verification": "unverified",
+  "verdict": "NOT-READY",
+  "tripwire": {
+    "root": "artifacts/simulations/full-game/full-game-20261101T102226Z-a8e33043",
+    "file_count": 116,
+    "tree_sha256_before": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d",
+    "tree_sha256_after": "411de7291dd8db030b656452a2dccb14292af6162cc38e680af9a6a80778282d"
+  },
+  "sealed_roots_modified": false,
+  "submission_ready": false,
+  "unresolved_decisions": ["live_submission_external_capture"]
+}

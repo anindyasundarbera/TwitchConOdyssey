@@ -1,6 +1,35 @@
 # Current authorization and handoff
 
-Updated 2026-11-01.
+Updated 2026-11-01; submission-readiness and gate-to-game interface authorizations added 2026-11-02
+(ledger revision 16).
+
+## Gate-to-game interface authorization (2026-11-02)
+
+The requester explicitly authorized reconciling the blocked gameplay gate and implementing the fullscreen game interface with the verbatim recorded wording:
+
+> "Everything means including the blocked gate as well then ui and design"
+
+Ledger revision 16 moves the gameplay gate from closed to scoped-active: local gameplay execution, local service startup, browser gameplay, deterministic simulation, targeted gameplay/UI tests, and local evidence capture are authorized for fullscreen game interface development and verification. Real credentials, external/live services, deployment, publication, pushes, releases, and submission remain strictly forbidden. `submission_ready` remains false.
+
+## Submission-readiness authorization (2026-11-02)
+
+The requester explicitly authorized the bounded live-submission readiness work
+with the recorded wording "close the submission readiness" and:
+
+> "Make it in such a way that Astra review does not get blocked. We can do astra review at the end."
+
+Ledger revision 15 moves `live_submission_external_capture` to
+`authorized_in_progress`: implement and test the official Twitch EventSub
+WebSocket `channel.chat.message` boundary, render honest live/disconnected/fixture
+states, record real desktop/mobile capture, and assemble a sanitized demo under
+180 seconds only from observed live operation and sanitized Codex evidence.
+`submission_ready` remains false until every live/capture/video/repository
+predicate is evidenced and the frozen candidate receives an independent READY
+review. Publication booleans remain false: no repository push, YouTube upload or
+Devpost final submission is authorized by this entry. Credentials, tokens, raw
+chat and unhashed handles must never be printed, committed or packaged. Fixtures,
+mocks, screenshots alone and configured credentials cannot satisfy live
+predicates.
 
 ## Approved by the user in the current turn
 
@@ -94,3 +123,21 @@ gates remain unchanged. No gameplay/simulation test, server, replay, browser,
 harness, external network, deployment, publication, or live-service execution
 was performed. `remediation_rerun_and_decision_delegation` remains the only
 active runtime authorization; no later phase starts automatically.
+
+> Historical note (appended 2026-11-02, ledger revision 16): the closed-gate
+> statement above describes the development-closure state at that time. It is
+> superseded for local work by the "Gate-to-game interface authorization"
+> section at the top of this file (`gameplay_enabled: true`, local scope only).
+> `submission_ready` remains false; live Twitch calls, credentials, deployment,
+> publication and submission remain forbidden.
+
+## Build-readiness gap closure (2026-11-02)
+
+Requester instruction: "Activate swarms and have them close the gaps and fix the blockers".
+Locally closable gaps (client modal focus management, reduced-motion canvas,
+secret/hygiene scan, offline clean-checkout reproduction, review-provenance
+correction) are tracked in [BUILD-GAP-REGISTER.md](BUILD-GAP-REGISTER.md).
+The earlier `GAME-INTERFACE-ASTRA-REVIEW.md` ran on an inherited subagent model,
+not an attested `gpt-6-astra` route; it is an agent opinion and cannot satisfy
+the review predicate. Live, video, repository-publication and attested-review
+predicates remain open and require separate user action/authorization.

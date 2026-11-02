@@ -1,7 +1,9 @@
 """Pure, fixed-step authoritative simulation. No network, filesystem, or wall clock."""
 import copy
 import hashlib
+from contextlib import contextmanager
 from fractions import Fraction
+import threading
 from typing import Any, Dict, List, Optional
 from coordination.canonical_commands import make_command, validate_command
 from coordination.content_cache import canonical_hash
@@ -125,7 +127,7 @@ class AuthoritativeGame:
     No network, provider, filesystem or wall-clock I/O is reachable here.
     """
 
-    __slots__ = ("_simulator",)
+    __slots__ = ("_simulator", "_lock")
 
     def __init__(
         self,
@@ -135,6 +137,7 @@ class AuthoritativeGame:
         initial_roster: Optional[List[str]] = None,
         **kwargs: Any,
     ):
+        self._lock = threading.RLock()
         self._simulator = create_s1_simulator(
             seed=seed,
             initial_lane=initial_lane,
@@ -181,11 +184,19 @@ class AuthoritativeGame:
 
     def submit(self, command: Dict[str, Any]) -> str:
         """Submit one canonical command envelope; returns applied/expired/rejected/duplicate."""
-        return self._simulator.submit_command(command)
+        with self._lock:
+            return self._simulator.submit_command(command)
 
     def step(self) -> None:
         """Advance exactly one authoritative 20 Hz logical tick."""
-        self._simulator.step()
+        with self._lock:
+            self._simulator.step()
+
+    @contextmanager
+    def synchronized(self):
+        """Serialize a compound adapter decision with engine submission and ticks."""
+        with self._lock:
+            yield
 
     def pause(self, paused: bool = True) -> str:
         """Apply or release the operator pause through the canonical command path."""

@@ -1,0 +1,100 @@
+{
+  "accessibility_sha256": "9e9596c9ba411aa1d0b4bd4bc501aadd449323a9dde6ece6f8a85f11d4fcc685",
+  "blocked_requests": [],
+  "captures": [
+    {
+      "file": "disconnected-desktop.png",
+      "height": 1100,
+      "label": "DISCONNECTED — no authoritative state (offline render)",
+      "offenders": [],
+      "overflow": false,
+      "sha256": "eca57e18b3b68fa15f10caf55a4fda9658693a4d32283da5f73c81efbe16f66f",
+      "target": "desktop",
+      "width": 1440
+    },
+    {
+      "file": "disconnected-mobile.png",
+      "height": 844,
+      "label": "DISCONNECTED — no authoritative state (offline render)",
+      "offenders": [],
+      "overflow": false,
+      "sha256": "aa5c196d4a1ae3b4a73b1e72fdb263ce7e4d1740a1c56108386f05d1bd9f496d",
+      "target": "mobile",
+      "width": 390
+    }
+  ],
+  "label": "DISCONNECTED — no authoritative state (offline render)",
+  "live_verified": false,
+  "measurements": {
+    "desktop": {
+      "bodyScrollWidth": 1440,
+      "documentScrollWidth": 1440,
+      "innerHeight": 1100,
+      "innerWidth": 1440,
+      "offenders": [],
+      "overflow": false
+    },
+    "mobile": {
+      "bodyScrollWidth": 390,
+      "documentScrollWidth": 390,
+      "innerHeight": 844,
+      "innerWidth": 390,
+      "offenders": [],
+      "overflow": false
+    }
+  },
+  "mode": "disconnected",
+  "page_errors": [],
+  "plan": {
+    "label": "DISCONNECTED — no authoritative state (offline render)",
+    "live_verified": false,
+    "mode": "disconnected",
+    "schema_version": 1,
+    "source_bindings": {
+      "client/app.js": "bdae4777fda478f744e4477d35e8fd7d8ef40184e8c2c5a6d0310745c58d912d",
+      "client/hud.js": "77017eb6f37bea6958f3971bc79cccdfb938f516dad423fe6ee8e1249a9d7792",
+      "client/index.html": "a48d2a8bc7ed2087fa0c365b212e9ec5230fea208294dbb10d69d059c5ac2bbd",
+      "client/style.css": "1484e8e1eb9653d323a715b872db4cc0d552c2f634a70f21a54446039a5a102b"
+    },
+    "steps": [
+      {
+        "expected": "fetch unavailable; no live inference",
+        "name": "render-disconnected-page",
+        "order": 1
+      },
+      {
+        "expected": "Disconnected — no authoritative state",
+        "name": "assert-mode-label",
+        "order": 2
+      },
+      {
+        "expected": "1440x1100 disconnected PNG; controls disabled",
+        "name": "capture-desktop",
+        "order": 3
+      },
+      {
+        "expected": "390x844 disconnected PNG; no horizontal overflow",
+        "name": "capture-mobile",
+        "order": 4
+      },
+      {
+        "expected": "labelled controls, disabled state and contrast pass",
+        "name": "assert-accessibility",
+        "order": 5
+      }
+    ],
+    "tool": "tools/capture_submission.py",
+    "viewports": {
+      "desktop": {
+        "height": 1100,
+        "width": 1440
+      },
+      "mobile": {
+        "height": 844,
+        "width": 390
+      }
+    }
+  },
+  "schema_version": 1,
+  "tool": "tools/capture_submission.py"
+}
