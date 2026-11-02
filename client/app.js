@@ -1196,6 +1196,9 @@ function drawCodexBooth(ctx, x, y, scale, now) {
   ctx.fillStyle = "#ffffff";
   ctx.font = "900 9px monospace";
   ctx.fillText("OPENAI CODEX ARENA", 0, -4);
+  ctx.fillStyle = "#a8f276";
+  ctx.font = "800 6px monospace";
+  ctx.fillText("SESSION 01a1955f", 0, 6);
 
   ctx.restore();
 }

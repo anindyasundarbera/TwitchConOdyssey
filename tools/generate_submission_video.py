@@ -7,7 +7,7 @@ Produces build/twitchcon-odyssey-demo.mp4 (< 180 seconds) featuring:
 - Streamer evasion steering around holographic center roadblocks.
 - Sponsor milestone activations: Twitch Stage Booth (35%), OpenAI Codex Arena (60%), AWS Cloud Waypoint (80%).
 - Final delivery into Fictional Main Stage Stadium (100%) with 50/50 settlement.
-- Voice narration synthesized via libespeak-ng.
+- Voice narration synthesized via libespeak-ng explicitly explaining Twitch integration and Codex session ID.
 - Synthwave musical bed and burned-in accessible subtitles.
 """
 import ctypes
@@ -62,34 +62,76 @@ def post_json(path, data):
 # -----------------------------------------------------------------------------
 NARRATION_SCRIPTS = [
     {
-        "id": "act1_intro",
-        "start": 0.5,
-        "text": "Welcome to TwitchCon Odyssey, an authoritative real-time crisis runner where streamer and community unite to transport a game build across San Diego to the TwitchCon Main Stage.",
+        "id": "act1_1",
+        "start": 1.0,
+        "duration": 7.0,
+        "text": "Welcome to TwitchCon Odyssey, an authoritative real-time co-op crisis runner built for streamers and their communities.",
     },
     {
-        "id": "act2_audience",
+        "id": "act1_2",
+        "start": 8.5,
+        "duration": 6.5,
+        "text": "As the courier transports the game build across San Diego, Twitch chat actively shapes the race.",
+    },
+    {
+        "id": "act2_1",
         "start": 16.0,
-        "text": "As the streamer races down Embarcadero boulevard, viewers actively shape the race. Chat submits hazard proposals and votes clear lane. When the center roadblock activates, audience voting collapses the barrier into an emerald gate while the streamer banks right to evade.",
+        "duration": 7.5,
+        "text": "Viewers in rival squads propose hazards and coordinate clear-lane votes through live Twitch chat.",
     },
     {
-        "id": "act3_sponsors",
-        "start": 44.0,
-        "text": "Along the route, the runner navigates diegetic sponsor milestones: the Twitch Stage Booth converts audience chaos into Hype credits; the OpenAI Codex Arena optimizes delivery vectors; and the AWS Cloud Waypoint demonstrates ultra-low latency infrastructure scaling.",
+        "id": "act2_2",
+        "start": 24.5,
+        "duration": 9.0,
+        "text": "Watch the top-right Twitch chat overlay: community votes collapse roadblocks into emerald gates as the streamer banks right.",
     },
     {
-        "id": "act4_codex",
+        "id": "act3_1",
+        "start": 35.0,
+        "duration": 7.5,
+        "text": "At thirty-five percent progress, the runner passes the Twitch Stage Booth with signature purple trusses and LED equalizers.",
+    },
+    {
+        "id": "act3_2",
+        "start": 43.5,
+        "duration": 8.0,
+        "text": "Next, the OpenAI Codex Arena emits matrix data streams, followed by the high-density AWS Cloud Waypoint.",
+    },
+    {
+        "id": "act4_1",
+        "start": 53.0,
+        "duration": 9.5,
+        "text": "This entire project was pair-programmed with OpenAI Codex, session ID zero one a one nine five five f.",
+    },
+    {
+        "id": "act4_2",
+        "start": 63.5,
+        "duration": 9.0,
+        "text": "Codex formulated our 3D pseudo-perspective engine, enforced invariant safety gates, and conducted multi-agent audits.",
+    },
+    {
+        "id": "act5_1",
         "start": 74.0,
-        "text": "The entire architecture was pair-programmed with OpenAI Codex, session ID zero one a one nine five five f. Codex engineered the deterministic twenty hertz physics engine, reconciled the authorization gate, and built a comprehensive suite of one hundred and forty passing regression tests.",
+        "duration": 8.0,
+        "text": "The courier enters the Fictional Main Stage stadium under golden fireworks, delivering the build before deadline!",
     },
     {
-        "id": "act5_climax",
-        "start": 104.0,
-        "text": "With seconds left on the match clock, the courier reaches the TwitchCon Main Stage! The build is successfully delivered, settling the Hype pool fifty-fifty between the broadcaster and the participating community.",
+        "id": "act5_2",
+        "start": 83.0,
+        "duration": 7.5,
+        "text": "The match concludes with a fifty-fifty Hype settlement split between the broadcaster and participating audience.",
     },
     {
-        "id": "act6_outro",
-        "start": 128.0,
-        "text": "All code, tests, and deterministic simulation tools are open source. Visit our repository and Devpost showcase. Thank you for watching TwitchCon Odyssey!",
+        "id": "act6_1",
+        "start": 91.5,
+        "duration": 8.0,
+        "text": "All source code and deterministic simulation tools are public on GitHub at anindyasundarbera slash TwitchConOdyssey.",
+    },
+    {
+        "id": "act6_2",
+        "start": 100.0,
+        "duration": 4.0,
+        "text": "Thank you for watching TwitchCon Odyssey!",
     },
 ]
 
@@ -135,7 +177,7 @@ def synthesize_narration_audio(output_wav: Path, total_duration_s: float):
     synth_bed = np.sin(2 * np.pi * bass_freq * t) * 0.08
     # Add arp pulse
     synth_arp = np.sin(2 * np.pi * (bass_freq * 2) * t) * 0.04 * (0.5 + 0.5 * np.sin(2 * np.pi * 2 * t))
-    combined_audio = master_audio * 0.85 + (synth_bed + synth_arp) * 0.25
+    combined_audio = master_audio * 0.85 + (synth_bed + synth_arp) * 0.22
 
     # Normalize to 16-bit PCM
     max_val = np.max(np.abs(combined_audio))
@@ -163,10 +205,9 @@ def format_srt_time(seconds: float) -> str:
 
 def generate_subtitles_srt(output_srt: Path):
     lines = []
-    durations = [14.0, 26.0, 28.0, 28.0, 22.0, 18.0]
     for idx, item in enumerate(NARRATION_SCRIPTS, start=1):
         start_t = item["start"]
-        end_t = start_t + durations[idx - 1]
+        end_t = start_t + item.get("duration", 6.0)
         lines.append(f"{idx}")
         lines.append(f"{format_srt_time(start_t)} --> {format_srt_time(end_t)}")
         lines.append(item["text"])
@@ -183,6 +224,12 @@ def record_gameplay_match():
     for old_file in RAW_VIDEO_DIR.glob("*.webm"):
         old_file.unlink(missing_ok=True)
 
+    # 1. Reset match to t=0, progress=0.0%
+    print("Resetting server match to progress 0.0%...")
+    post_json("/api/restart", {})
+    post_json("/api/pause", {"paused": False})
+    time.sleep(0.5)
+
     print("Launching Playwright video capture session...")
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -196,16 +243,12 @@ def record_gameplay_match():
         )
         page = context.new_page()
 
-        # Unpause server if paused
-        post_json("/api/pause", {"paused": False})
-        time.sleep(0.3)
-
         print("Navigating to http://127.0.0.1:8000...")
         page.goto("http://127.0.0.1:8000")
         page.wait_for_selector("#modal-start")
 
-        # Let start attract screen show for 4 seconds
-        time.sleep(4.0)
+        # Let start attract screen show for 3.5 seconds
+        time.sleep(3.5)
         page.click("#btn-start-windowed")
         print("Engaged racing mode!")
 
@@ -216,12 +259,14 @@ def record_gameplay_match():
             ("viewer_pixel_pirate", "shield"),
             ("viewer_gaslamp_pro", "boost right"),
             ("viewer_convention_fan", "patch left"),
+            ("viewer_codex_coder", "patch center"),
         ]
 
-        # Drive simulation over 135 seconds (complete 3-turn match to finish)
+        # Drive simulation until match conclusion + settlement showcase
         start_t = time.time()
         step = 0
-        while time.time() - start_t < 140:
+        delivered_t = None
+        while time.time() - start_t < 115:
             step += 1
             try:
                 st = get_state()["state"]
@@ -246,14 +291,21 @@ def record_gameplay_match():
                 # Streamer steering evasion
                 if step % 5 == 0:
                     steer_dir = "right" if (step // 5) % 2 == 0 else "left"
-                    page.click(f'[data-control="{steer_dir}"]')
+                    try:
+                        page.click(f'[data-control="{steer_dir}"]')
+                    except Exception:
+                        pass
 
             if status in ("delivered", "wiped"):
-                print(f"Match concluded: {status.upper()} at progress {progress:.1f}%!")
-                time.sleep(6.0) # show terminal settlement modal
-                break
+                if delivered_t is None:
+                    delivered_t = time.time()
+                    print(f"Match concluded: {status.upper()} at progress {progress:.1f}%! Showing settlement...")
+                # Stay on settlement screen for 12 seconds to let final narration finish
+                if time.time() - delivered_t >= 12.0:
+                    print("Settlement showcase complete.")
+                    break
 
-            time.sleep(0.6)
+            time.sleep(0.5)
 
         page.close()
         context.close()
@@ -273,15 +325,14 @@ def assemble_final_video(raw_webm: Path, audio_wav: Path, srt_file: Path, output
     output_mp4.parent.mkdir(parents=True, exist_ok=True)
     ffmpeg_bin = "/snap/bin/ffmpeg" if Path("/snap/bin/ffmpeg").exists() else "ffmpeg"
 
-    # Merge video, audio, burned-in subtitles
-    # Subtitles escaped for ffmpeg filter
+    # Merge video, audio, burned-in subtitles with compact, elegant typography
     escaped_srt = str(srt_file).replace(":", "\\:").replace("'", "\\'")
     cmd = [
         ffmpeg_bin,
         "-y",
         "-i", str(raw_webm),
         "-i", str(audio_wav),
-        "-filter_complex", f"[0:v]subtitles='{escaped_srt}':force_style='FontSize=18,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=3,BackColour=&H80000000,MarginV=28'[v]",
+        "-filter_complex", f"[0:v]subtitles='{escaped_srt}':force_style='FontSize=12,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=3,BackColour=&H90000000,MarginV=18,Alignment=2'[v]",
         "-map", "[v]",
         "-map", "1:a",
         "-c:v", "libx264",
@@ -296,7 +347,6 @@ def assemble_final_video(raw_webm: Path, audio_wav: Path, srt_file: Path, output
     print(f"Encoding final MP4 video via FFmpeg...")
     res = subprocess.run(cmd, capture_output=True, text=True)
     if res.returncode != 0:
-        # Fallback if subtitles filter has font issues: encode without filter_complex
         print(f"Subtitles filter warning: {res.stderr[-200:]}, falling back to direct video+audio mux...")
         fallback_cmd = [
             ffmpeg_bin,
@@ -332,7 +382,7 @@ def main():
 
     # 1. Synthesize Audio & Subtitles
     print("\n-> Phase 1: Synthesizing voice narration and subtitles...")
-    synthesize_narration_audio(audio_wav, total_duration_s=148.0)
+    synthesize_narration_audio(audio_wav, total_duration_s=106.0)
     generate_subtitles_srt(subtitles_srt)
 
     # 2. Record Gameplay & Simulation
