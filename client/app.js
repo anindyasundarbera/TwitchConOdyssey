@@ -1306,60 +1306,140 @@ function drawMainStageFinish(ctx, x, y, rWidth, scale, now, isDelivered) {
 }
 
 function drawTwitchChatStream(ctx, w, h, now) {
-  const chatW = 230;
-  const chatH = 145;
-  const chatX = w - chatW - 16;
-  const chatY = 68;
+  // Dynamic Zoom: During Audience Voting Act (progress 12% - 32%) or via window flag
+  const isZoomed = (typeof movement !== "undefined" && movement.progress >= 12.0 && movement.progress <= 32.0) || !!window.__zoomChat;
+  const zoomScale = isZoomed ? 1.28 : 1.0;
+
+  const baseW = w >= 1400 ? 380 : Math.max(260, Math.floor(w * 0.28));
+  const baseH = w >= 1400 ? 250 : 180;
+  const chatW = baseW * zoomScale;
+  const chatH = baseH * zoomScale;
+  const chatX = w - chatW - (isZoomed ? 32 : 18);
+  const chatY = isZoomed ? 76 : 68;
 
   ctx.save();
-  ctx.fillStyle = "rgba(8, 12, 22, 0.75)";
-  ctx.strokeStyle = "rgba(145, 70, 255, 0.35)";
-  ctx.lineWidth = 1;
+
+  // Glassmorphic Cyberpunk Twitch Panel Container
+  ctx.fillStyle = isZoomed ? "rgba(10, 14, 28, 0.92)" : "rgba(8, 12, 22, 0.82)";
+  ctx.strokeStyle = isZoomed ? "rgba(168, 110, 255, 0.95)" : "rgba(145, 70, 255, 0.55)";
+  ctx.lineWidth = isZoomed ? 2.5 : 1.5;
+  ctx.shadowColor = isZoomed ? "rgba(145, 70, 255, 0.8)" : "rgba(145, 70, 255, 0.3)";
+  ctx.shadowBlur = isZoomed ? 24 : 10;
+
   ctx.beginPath();
   if (ctx.roundRect) {
-    ctx.roundRect(chatX, chatY, chatW, chatH, 8);
+    ctx.roundRect(chatX, chatY, chatW, chatH, 10);
   } else {
     ctx.rect(chatX, chatY, chatW, chatH);
   }
   ctx.fill();
   ctx.stroke();
+  ctx.shadowBlur = 0;
 
-  // Chat Header Bar
-  ctx.fillStyle = "rgba(145, 70, 255, 0.35)";
+  // Header Bar with Twitch Purple Accent
+  const headerH = 32 * zoomScale;
+  ctx.fillStyle = isZoomed ? "rgba(145, 70, 255, 0.45)" : "rgba(145, 70, 255, 0.30)";
   ctx.beginPath();
   if (ctx.roundRect) {
-    ctx.roundRect(chatX, chatY, chatW, 22, [8, 8, 0, 0]);
+    ctx.roundRect(chatX, chatY, chatW, headerH, [10, 10, 0, 0]);
   } else {
-    ctx.rect(chatX, chatY, chatW, 22);
+    ctx.rect(chatX, chatY, chatW, headerH);
   }
   ctx.fill();
 
+  // Twitch Glitch Icon + Title
   ctx.fillStyle = "#ffffff";
-  ctx.font = "800 10px monospace";
+  ctx.font = `800 ${Math.round(11 * zoomScale)}px monospace`;
   ctx.textAlign = "left";
-  ctx.fillText("💬 TWITCH CHAT · ODYSSEY LIVE", chatX + 10, chatY + 15);
+  ctx.fillText("💬 TWITCH STREAM CHAT · ODYSSEY", chatX + 10 * zoomScale, chatY + 20 * zoomScale);
 
-  // Rolling Chat Messages
-  const step = Math.floor(now * 0.0005);
-  for (let m = 0; m < 4; m++) {
+  // Live Indicator Badge
+  ctx.fillStyle = "#ff4f79";
+  ctx.beginPath();
+  ctx.arc(chatX + chatW - 65 * zoomScale, chatY + 16 * zoomScale, 4 * zoomScale, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#ffffff";
+  ctx.font = `700 ${Math.round(9 * zoomScale)}px monospace`;
+  ctx.fillText("LIVE 14K", chatX + chatW - 55 * zoomScale, chatY + 20 * zoomScale);
+
+  // Active Squad Voting Status Bar
+  const voteBarY = chatY + headerH;
+  const voteBarH = 20 * zoomScale;
+  ctx.fillStyle = "rgba(0, 240, 255, 0.15)";
+  ctx.fillRect(chatX, voteBarY, chatW, voteBarH);
+  ctx.fillStyle = "#00f0ff";
+  ctx.font = `800 ${Math.round(9 * zoomScale)}px monospace`;
+  ctx.fillText("⚡ SQUAD VOTE: clear_lane  [████████░░] 84%", chatX + 10 * zoomScale, voteBarY + 14 * zoomScale);
+
+  // Rolling Chat Messages (5 items)
+  const step = Math.floor(now * 0.0006);
+  const msgCount = 5;
+  const startMsgY = voteBarY + voteBarH + 8 * zoomScale;
+  const rowH = 34 * zoomScale;
+
+  for (let m = 0; m < msgCount; m++) {
     const msg = CHAT_STREAM[(step + m) % CHAT_STREAM.length];
-    const my = chatY + 40 + m * 26;
+    const my = startMsgY + m * rowH;
+    if (my + rowH > chatY + chatH) break;
 
-    // Badge
+    // Badge configuration
+    const badgeText = `${msg.badge}`;
+    ctx.font = `800 ${Math.round(8.5 * zoomScale)}px monospace`;
+    const badgeW = ctx.measureText(badgeText).width + 8 * zoomScale;
+    const badgeH = 13 * zoomScale;
+
+    // Distinct Pill Color
+    let pillBg = "rgba(255, 255, 255, 0.12)";
+    let pillBorder = msg.color;
+    if (msg.badge === "MOD") pillBg = "rgba(0, 240, 255, 0.25)";
+    else if (msg.badge === "SUB") pillBg = "rgba(168, 242, 118, 0.22)";
+    else if (msg.badge === "VIP") pillBg = "rgba(255, 184, 77, 0.25)";
+    else if (msg.badge === "STAFF") pillBg = "rgba(145, 70, 255, 0.35)";
+
+    ctx.beginPath();
+    ctx.fillStyle = pillBg;
+    ctx.strokeStyle = pillBorder;
+    ctx.lineWidth = 1;
+    if (ctx.roundRect) {
+      ctx.roundRect(chatX + 10 * zoomScale, my, badgeW, badgeH, 3);
+    } else {
+      ctx.rect(chatX + 10 * zoomScale, my, badgeW, badgeH);
+    }
+    ctx.fill();
+    ctx.stroke();
+
+    // Badge Text inside pill
     ctx.fillStyle = msg.color;
-    ctx.font = "800 9px monospace";
-    ctx.fillText(`[${msg.badge}]`, chatX + 10, my);
+    ctx.textAlign = "center";
+    ctx.fillText(badgeText, chatX + 10 * zoomScale + badgeW / 2, my + 10 * zoomScale);
 
-    // User
-    ctx.fillStyle = "#d0d8e2";
-    ctx.fillText(msg.user + ":", chatX + 48, my);
-
-    // Text
+    // Username
+    ctx.textAlign = "left";
     ctx.fillStyle = "#ffffff";
-    ctx.font = "600 9px monospace";
-    const truncated = msg.text.length > 22 ? msg.text.substring(0, 21) + "…" : msg.text;
-    ctx.fillText(truncated, chatX + 10, my + 11);
+    ctx.font = `800 ${Math.round(10.5 * zoomScale)}px monospace`;
+    ctx.fillText(msg.user + ":", chatX + 10 * zoomScale + badgeW + 6 * zoomScale, my + 10 * zoomScale);
+
+    // Message Body Text (crisp white, high readability)
+    ctx.fillStyle = "#e8f0fe";
+    ctx.font = `600 ${Math.round(11 * zoomScale)}px sans-serif`;
+    const maxChars = Math.floor(chatW / (7.2 * zoomScale));
+    const cleanText = msg.text.length > maxChars ? msg.text.substring(0, maxChars - 1) + "…" : msg.text;
+    ctx.fillText(cleanText, chatX + 10 * zoomScale, my + 25 * zoomScale);
   }
+
+  // Spotlight Banner when Zoomed
+  if (isZoomed) {
+    ctx.fillStyle = "rgba(145, 70, 255, 0.9)";
+    const tagH = 16 * zoomScale;
+    if (ctx.roundRect) {
+      ctx.roundRect(chatX + chatW - 140 * zoomScale, chatY - tagH / 2, 130 * zoomScale, tagH, 4);
+      ctx.fill();
+    }
+    ctx.fillStyle = "#ffffff";
+    ctx.font = `900 ${Math.round(8 * zoomScale)}px monospace`;
+    ctx.fillText("★ LIVE CHAT CO-OP FOCUS", chatX + chatW - 135 * zoomScale, chatY + 2 * zoomScale);
+  }
+
   ctx.restore();
 }
 

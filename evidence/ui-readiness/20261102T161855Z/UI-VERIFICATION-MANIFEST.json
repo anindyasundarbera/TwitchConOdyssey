@@ -1,26 +1,26 @@
 {
   "evidence_root": "evidence/ui-readiness/20261102T161855Z",
-  "generated_at": "2026-11-02T19:24:34Z",
+  "generated_at": "2026-11-02T19:29:39Z",
   "artifacts": {
     "active-gameplay-mobile.png": {
       "path": "evidence/ui-readiness/20261102T161855Z/active-gameplay-mobile.png",
-      "sha256": "c91b9cbe71c77de06cdf63da8073fd76629d9c7481a288435edff00a48de7215",
-      "size_bytes": 190735
+      "sha256": "7a7b1cf28ed6ac06b4b4cf6b8f6dfc68e413fd01d88482bc6b0f2c875520c614",
+      "size_bytes": 191199
     },
     "help-modal-desktop.png": {
       "path": "evidence/ui-readiness/20261102T161855Z/help-modal-desktop.png",
-      "sha256": "4a9e0d866b35fde02d2688f0b96d16625ea0cb8d4edaf70f941886e0d02ca174",
-      "size_bytes": 283850
+      "sha256": "91f948ccec0c78397cb4788306a36f2a40fd22e0e0a055e488006ae92d03379b",
+      "size_bytes": 281849
     },
     "pause-modal-desktop.png": {
       "path": "evidence/ui-readiness/20261102T161855Z/pause-modal-desktop.png",
-      "sha256": "ac17452b82a08523c192d1f60b7fc349ae24e881ee6cec7a3dfe3afcf7ce7a96",
-      "size_bytes": 194778
+      "sha256": "4f174d106f830520d3ac724e6a455cb44e599cd300b8b1204c22b803acb41e97",
+      "size_bytes": 195032
     },
     "active-gameplay-desktop.png": {
       "path": "evidence/ui-readiness/20261102T161855Z/active-gameplay-desktop.png",
-      "sha256": "c58813ec9c6974d931bcce3fe191da8f99f36e5df56562f0969237fd5476f7c7",
-      "size_bytes": 298726
+      "sha256": "3548e7506310450ea8cc938ac4b07ff6db5d54a53e6c38ea26c9b90151ecffd9",
+      "size_bytes": 310943
     },
     "disconnected-mobile.png": {
       "path": "evidence/ui-readiness/20261102T161855Z/disconnected/disconnected-mobile.png",
