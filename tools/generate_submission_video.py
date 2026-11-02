@@ -319,52 +319,31 @@ def record_gameplay_match():
     return webm_files[0]
 
 # -----------------------------------------------------------------------------
-# 5. FFmpeg Encoding & Assembly
+# 5. FFmpeg Encoding & Assembly (Clean View: No Subtitles Blocking Canvas)
 # -----------------------------------------------------------------------------
 def assemble_final_video(raw_webm: Path, audio_wav: Path, srt_file: Path, output_mp4: Path):
     output_mp4.parent.mkdir(parents=True, exist_ok=True)
     ffmpeg_bin = "/snap/bin/ffmpeg" if Path("/snap/bin/ffmpeg").exists() else "ffmpeg"
 
-    # Merge video, audio, burned-in subtitles with compact, elegant typography
-    escaped_srt = str(srt_file).replace(":", "\\:").replace("'", "\\'")
+    # Direct mux without subtitles: pristine unblocked canvas view
     cmd = [
         ffmpeg_bin,
         "-y",
         "-i", str(raw_webm),
         "-i", str(audio_wav),
-        "-filter_complex", f"[0:v]subtitles='{escaped_srt}':force_style='FontSize=12,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=3,BackColour=&H90000000,MarginV=18,Alignment=2'[v]",
-        "-map", "[v]",
-        "-map", "1:a",
         "-c:v", "libx264",
         "-preset", "fast",
-        "-crf", "20",
+        "-crf", "19",
         "-pix_fmt", "yuv420p",
         "-c:a", "aac",
         "-b:a", "192k",
         "-shortest",
         str(output_mp4)
     ]
-    print(f"Encoding final MP4 video via FFmpeg...")
+    print(f"Encoding final MP4 video via FFmpeg (pristine view without subtitles)...")
     res = subprocess.run(cmd, capture_output=True, text=True)
     if res.returncode != 0:
-        print(f"Subtitles filter warning: {res.stderr[-200:]}, falling back to direct video+audio mux...")
-        fallback_cmd = [
-            ffmpeg_bin,
-            "-y",
-            "-i", str(raw_webm),
-            "-i", str(audio_wav),
-            "-c:v", "libx264",
-            "-preset", "fast",
-            "-crf", "20",
-            "-pix_fmt", "yuv420p",
-            "-c:a", "aac",
-            "-b:a", "192k",
-            "-shortest",
-            str(output_mp4)
-        ]
-        res_fb = subprocess.run(fallback_cmd, capture_output=True, text=True)
-        if res_fb.returncode != 0:
-            raise RuntimeError(f"FFmpeg assembly failed: {res_fb.stderr[-300:]}")
+        raise RuntimeError(f"FFmpeg assembly failed: {res.stderr[-300:]}")
 
     if not output_mp4.is_file():
         raise RuntimeError("Final MP4 was not created!")
